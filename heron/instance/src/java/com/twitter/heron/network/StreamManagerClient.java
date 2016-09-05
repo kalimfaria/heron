@@ -105,6 +105,7 @@ public class StreamManagerClient extends HeronClient {
   private void registerMessagesToHandle() {
     registerOnMessage(StreamManager.NewInstanceAssignmentMessage.newBuilder());
     registerOnMessage(StreamManager.TupleMessage.newBuilder());
+    registerOnMessage(HeronTuples.HeronTupleSet2.newBuilder());
   }
 
 
@@ -184,6 +185,8 @@ public class StreamManagerClient extends HeronClient {
       handleAssignmentMessage(m.getPplan());
     } else if (message instanceof StreamManager.TupleMessage) {
       handleNewTuples((StreamManager.TupleMessage) message);
+    } else if (message instanceof HeronTuples.HeronTupleSet2) {
+      handleNewTuples2((HeronTuples.HeronTupleSet2) message);
     } else {
       throw new RuntimeException("Unknown kind of message received from Stream Manager");
     }
@@ -211,20 +214,42 @@ public class StreamManagerClient extends HeronClient {
     }
   }
 
+  StreamManager.TupleMessage toSend = null;
+
   private void sendStreamMessageIfNeeded() {
     if (isStreamMgrReadyReceiveTuples()) {
-      if (getOutstandingPackets() == 0) {
-        // In order to avoid packets back up in Client side,
-        // We would poll message from queue and send them only when there are no outstanding packets
-        while (!outStreamQueue.isEmpty()) {
-          HeronTuples.HeronTupleSet tupleSet = outStreamQueue.poll();
-          StreamManager.TupleMessage msg = StreamManager.TupleMessage.newBuilder()
-              .setSet(tupleSet).build();
+//      if (getOutstandingPackets() <= 0) {
+//        // In order to avoid packets back up in Client side,
+//        // We would poll message from queue and send them only when there are no outstanding packets
+//        while (!outStreamQueue.isEmpty()) {
+//          HeronTuples.HeronTupleSet tupleSet = outStreamQueue.poll();
+//          StreamManager.TupleMessage msg = StreamManager.TupleMessage.newBuilder()
+//              .setSet(tupleSet).build();
+//
+//          gatewayMetrics.updateSentPacketsCount(1);
+//          gatewayMetrics.updateSentPacketsSize(msg.getSerializedSize());
+//
+//          // For performance benchmark
+//          int rep = 20;
+//          for (int i = 0; i < rep; i++) {
+//            sendMessage(msg);
+//          }
+//        }
+//      }
+      if (getOutstandingPackets() <= 2) {
+        if (toSend == null) {
+          if (!outStreamQueue.isEmpty()) {
+            HeronTuples.HeronTupleSet tupleSet = outStreamQueue.poll();
+            toSend = StreamManager.TupleMessage.newBuilder()
+                .setSet(tupleSet).build();
+          }
+        }
 
-          gatewayMetrics.updateSentPacketsCount(1);
-          gatewayMetrics.updateSentPacketsSize(msg.getSerializedSize());
-
-          sendMessage(msg);
+        if (toSend != null) {
+          int rep = 5;
+          for (int i = 0; i < rep; i++) {
+            sendMessage(toSend);
+          }
         }
       }
 
@@ -265,6 +290,34 @@ public class StreamManagerClient extends HeronClient {
 
   private void handleNewTuples(StreamManager.TupleMessage message) {
     inStreamQueue.offer(message.getSet());
+  }
+
+  private void handleNewTuples2(HeronTuples.HeronTupleSet2 set) {
+////    HeronTuples.HeronTupleSet2 set = message.getSet();
+//    HeronTuples.HeronTupleSet.Builder toFeed = HeronTuples.HeronTupleSet.newBuilder();
+//    if (set.hasControl()) {
+//      toFeed.setControl(set.getControl());
+//    }
+//
+//    HeronTuples.HeronDataTupleSet.Builder builder = HeronTuples.HeronDataTupleSet.newBuilder();
+//    builder.setStream(set.getData().getStream());
+//    try {
+//      for (ByteString bs : set.getData().getTuplesList()) {
+////        if (new Random().nextInt(100) == 0) {
+////          LOG.info("data received: " + bs);
+////        }
+//        builder.addTuples(HeronTuples.HeronDataTuple.parseFrom(bs));
+//      }
+//    } catch (InvalidProtocolBufferException e) {
+//      LOG.log(Level.SEVERE, "Failed to parse protobuf", e);
+//    }
+//    toFeed.setData(builder);
+//
+//    HeronTuples.HeronTupleSet s = toFeed.build();
+////    LOG.info("data to feed: " + s);
+//    inStreamQueue.offer(s);
+    // Just throw this message for benchmark..
+    return;
   }
 
   private void handleAssignmentMessage(PhysicalPlans.PhysicalPlan pplan) {

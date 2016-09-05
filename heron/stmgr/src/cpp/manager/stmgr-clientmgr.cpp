@@ -123,7 +123,7 @@ StMgrClient* StMgrClientMgr::CreateClient(const sp_string& _other_stmgr_id,
 }
 
 void StMgrClientMgr::SendTupleStreamMessage(const sp_string& _stmgr_id,
-                                            proto::stmgr::TupleStreamMessage* _msg) {
+                                            proto::stmgr::TupleStreamMessage2* _msg) {
   std::map<sp_string, StMgrClient*>::iterator iter;
   iter = clients_.find(_stmgr_id);
   CHECK(iter != clients_.end());

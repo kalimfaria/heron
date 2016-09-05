@@ -46,7 +46,8 @@ class StMgrServer : public Server {
               heron::common::MetricsMgrSt* _metrics_manager_client);
   virtual ~StMgrServer();
 
-  void SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMessage& _message);
+  void SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMessage2& _message);
+  void SendToInstance2(sp_int32 _task_id, const proto::system::HeronTupleSet2& _message);
 
   void BroadcastNewPhysicalPlan(const proto::system::PhysicalPlan& _pplan);
 
@@ -77,7 +78,7 @@ class StMgrServer : public Server {
   // First from other stream managers
   void HandleStMgrHelloRequest(REQID _id, Connection* _conn,
                                proto::stmgr::StrMgrHelloRequest* _request);
-  void HandleTupleStreamMessage(Connection* _conn, proto::stmgr::TupleStreamMessage* _message);
+  void HandleTupleStreamMessage(Connection* _conn, proto::stmgr::TupleStreamMessage2* _message);
 
   // Next from local instances
   void HandleRegisterInstanceRequest(REQID _id, Connection* _conn,

@@ -237,7 +237,7 @@ void StMgrServer::HandleStMgrHelloRequest(REQID _id, Connection* _conn,
 }
 
 void StMgrServer::HandleTupleStreamMessage(Connection* _conn,
-                                           proto::stmgr::TupleStreamMessage* _message) {
+                                           proto::stmgr::TupleStreamMessage2* _message) {
   ConnectionStreamManagerMap::iterator iter = rstmgrs_.find(_conn);
   if (iter == rstmgrs_.end()) {
     LOG(INFO) << "Recieved Tuple messages from unknown streammanager connection" << std::endl;
@@ -254,7 +254,7 @@ void StMgrServer::HandleTupleStreamMessage(Connection* _conn,
     }
     stmgr_->HandleStreamManagerData(iter->second, _message);
   }
-  delete _message;
+   release(_message);
 }
 
 void StMgrServer::HandleRegisterInstanceRequest(REQID _reqid, Connection* _conn,
@@ -333,10 +333,10 @@ void StMgrServer::HandleTupleSetMessage(Connection* _conn, proto::stmgr::TupleMe
   ConnectionTaskIdMap::iterator iter = active_instances_.find(_conn);
   if (iter == active_instances_.end()) {
     LOG(ERROR) << "Received TupleSet from unknown instance connection. Dropping.." << std::endl;
-    delete _message;
+    release(_message);
     return;
   }
-  stmgr_server_metrics_->scope(METRIC_BYTES_FROM_INSTANCES)->incr_by(_message->ByteSize());
+//  stmgr_server_metrics_->scope(METRIC_BYTES_FROM_INSTANCES)->incr_by(_message->ByteSize());
   if (_message->set().has_data()) {
     stmgr_server_metrics_->scope(METRIC_DATA_TUPLES_FROM_INSTANCES)
         ->incr_by(_message->set().data().tuples_size());
@@ -347,10 +347,10 @@ void StMgrServer::HandleTupleSetMessage(Connection* _conn, proto::stmgr::TupleMe
         ->incr_by(_message->set().control().fails_size());
   }
   stmgr_->HandleInstanceData(iter->second, instance_info_[iter->second]->local_spout_, _message);
-  delete _message;
+  release(_message);
 }
 
-void StMgrServer::SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMessage& _message) {
+void StMgrServer::SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMessage2& _message) {
   bool drop = false;
   TaskIdInstanceDataMap::iterator iter = instance_info_.find(_task_id);
   if (iter == instance_info_.end() || iter->second->conn_ == NULL) {
@@ -359,7 +359,7 @@ void StMgrServer::SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMes
     drop = true;
   }
   if (drop) {
-    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES_LOST)->incr_by(_message.ByteSize());
+//    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES_LOST)->incr_by(_message.ByteSize());
     if (_message.set().has_data()) {
       stmgr_server_metrics_->scope(METRIC_DATA_TUPLES_TO_INSTANCES_LOST)
           ->incr_by(_message.set().data().tuples_size());
@@ -370,7 +370,7 @@ void StMgrServer::SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMes
           ->incr_by(_message.set().control().fails_size());
     }
   } else {
-    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES)->incr_by(_message.ByteSize());
+//    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES)->incr_by(_message.ByteSize());
     if (_message.set().has_data()) {
       stmgr_server_metrics_->scope(METRIC_DATA_TUPLES_TO_INSTANCES)
           ->incr_by(_message.set().data().tuples_size());
@@ -379,6 +379,40 @@ void StMgrServer::SendToInstance(sp_int32 _task_id, const proto::stmgr::TupleMes
           ->incr_by(_message.set().control().acks_size());
       stmgr_server_metrics_->scope(METRIC_FAIL_TUPLES_TO_INSTANCES)
           ->incr_by(_message.set().control().fails_size());
+    }
+    SendMessage(iter->second->conn_, _message);
+  }
+}
+
+void StMgrServer::SendToInstance2(sp_int32 _task_id, const proto::system::HeronTupleSet2& _message) {
+  bool drop = false;
+  TaskIdInstanceDataMap::iterator iter = instance_info_.find(_task_id);
+  if (iter == instance_info_.end() || iter->second->conn_ == NULL) {
+    LOG(ERROR) << "task_id " << _task_id << " has not yet connected to us. Dropping..."
+               << std::endl;
+    drop = true;
+  }
+  if (drop) {
+//    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES_LOST)->incr_by(_message.ByteSize());
+    if (_message.has_data()) {
+      stmgr_server_metrics_->scope(METRIC_DATA_TUPLES_TO_INSTANCES_LOST)
+          ->incr_by(_message.data().tuples_size());
+    } else if (_message.has_control()) {
+      stmgr_server_metrics_->scope(METRIC_ACK_TUPLES_TO_INSTANCES_LOST)
+          ->incr_by(_message.control().acks_size());
+      stmgr_server_metrics_->scope(METRIC_FAIL_TUPLES_TO_INSTANCES_LOST)
+          ->incr_by(_message.control().fails_size());
+    }
+  } else {
+//    stmgr_server_metrics_->scope(METRIC_BYTES_TO_INSTANCES)->incr_by(_message.ByteSize());
+    if (_message.has_data()) {
+      stmgr_server_metrics_->scope(METRIC_DATA_TUPLES_TO_INSTANCES)
+          ->incr_by(_message.data().tuples_size());
+    } else if (_message.has_control()) {
+      stmgr_server_metrics_->scope(METRIC_ACK_TUPLES_TO_INSTANCES)
+          ->incr_by(_message.control().acks_size());
+      stmgr_server_metrics_->scope(METRIC_FAIL_TUPLES_TO_INSTANCES)
+          ->incr_by(_message.control().fails_size());
     }
     SendMessage(iter->second->conn_, _message);
   }
@@ -496,6 +530,8 @@ void StMgrServer::HandleStartBackPressureMessage(Connection* _conn,
     LOG(ERROR) << "Received start back pressure message from unknown stream manager "
                << _message->topology_name() << " " << _message->topology_id() << " "
                << _message->stmgr() << " " << _message->message_id();
+
+    release(_message);
     return;
   }
   CHECK(rstmgrs_.find(_conn) != rstmgrs_.end());
@@ -503,6 +539,8 @@ void StMgrServer::HandleStartBackPressureMessage(Connection* _conn,
   stmgrs_who_announced_back_pressure_.insert(stmgr_id);
 
   StartBackPressureOnSpouts();
+
+  release(_message);
 }
 
 void StMgrServer::HandleStopBackPressureMessage(Connection* _conn,
@@ -512,6 +550,8 @@ void StMgrServer::HandleStopBackPressureMessage(Connection* _conn,
     LOG(ERROR) << "Received stop back pressure message from unknown stream manager "
                << _message->topology_name() << " " << _message->topology_id() << " "
                << _message->stmgr();
+
+    release(_message);
     return;
   }
   CHECK(rstmgrs_.find(_conn) != rstmgrs_.end());
@@ -523,6 +563,8 @@ void StMgrServer::HandleStopBackPressureMessage(Connection* _conn,
     stmgrs_who_announced_back_pressure_.erase(stmgr_id);
     AttemptStopBackPressureFromSpouts();
   }
+
+  release(_message);
 }
 
 void StMgrServer::SendStartBackPressureToOtherStMgrs() {
