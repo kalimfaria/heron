@@ -1,188 +1,474 @@
-<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.16" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content=""><meta property="og:site_name" content="Writing and Launching a Topology in Python"><meta property="og:url" content=""><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Writing and Launching a Topology in Python</title><link rel="stylesheet" href="/heron/css/style.min.css"><link rel="stylesheet" href="/heron/css/font-awesome.min.css"><link rel="stylesheet" href="/heron/css/pygments.css"></head><body><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="/heron/"><img class="pull-left" src="/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="/heron/docs/getting-started">Docs</a></li><li><a href="/heron/api">API</a></li><li><a href="/heron/docs/resources">Resources</a></li><li><a href="/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs col-sm-4 col-md-3 col-lg-2 collapse"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="/heron/docs/upgrade-storm-to-heron">Upgrade Storm Topologies</a></li><li><a href="/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="/heron/docs/concepts/topologies">Heron Topology</a></li><li><a href="/heron/docs/concepts/architecture">Heron Architecture</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="/heron/docs/operators/deployment">Overview</a></li><li><a href="/heron/docs/operators/deployment/configuration">Configuration</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="/heron/docs/operators/observability/graphite">Graphite</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="topology-writers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-topology-writers" aria-labelledby="topology-writers"><i class="fa fa-caret-right"></i>Topology Writers</a></h4></section><div id="collapse-topology-writers" class="panel-collapse collapse" aria-labelledby="topology-writers"><div class="panel-body"><ul><li><a href="/heron/docs/developers/java/topologies">Writing Java Topologies</a></li><li><a href="/heron/docs/developers/python/topologies">Writing Python Topologies</a></li><li><a href="/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li><li><a href="/heron/api">Javadoc</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="/heron/docs/contributors/testing">Running Tests</a></li><li><a href="/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="/heron/docs/contributors/community">Community</a></li><li><a href="/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-sm-8 col-md-9 col-lg-10 col-sm-offset-4 col-md-offset-3 col-lg-offset-2"><header class="hn-docs-header page-header"><h1>Writing and Launching a Topology in Python</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.25-DEV" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Python Topologies"><meta property="og:url" content="/docs/developers/python/topologies/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Python Topologies</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs col-sm-4 col-md-3 col-lg-2 collapse"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="topology-writers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-topology-writers" aria-labelledby="topology-writers"><i class="fa fa-caret-right"></i>Topology Writers</a></h4></section><div id="collapse-topology-writers" class="panel-collapse collapse" aria-labelledby="topology-writers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">Java Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-sm-8 col-md-9 col-lg-10 col-sm-offset-4 col-md-offset-3 col-lg-offset-2"><header class="hn-docs-header page-header"><h1>Python Topologies</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
 
-<p>Currently, support for developing a Heron topology in Python is still experimental.
-It is compatible with the Streamparse API, so Python topologies written
-for the Streamparse can be deployed on Heron with ease.
-This page describes how to write and launch a topology in Python, as well as
-how to convert a Streamparse topology to a PyHeron topology.</p>
+<blockquote>
+<p>The current version of <code>py_heron</code> is <a href="https://pypi.python.org/pypi/heronpy/0.0.1">0.0.1</a>.</p>
+</blockquote>
 
-<p>Note that a Python topology is known to be approximately 20-40 times slower
-than a topology written in Java. This performance issue will be resolved in later releases.</p>
+<p>Support for developing Heron topologies in Python is provided by a Python library called <a href="https://pypi.python.org/pypi/heronpy"><code>heronpy</code></a>.</p>
 
-<p>You need to first download <code>PyHeron</code> library and include it in your project.</p>
+<blockquote>
+<h4 id="python-api-docs">Python API docs</h4>
 
-<h1 id="writing-your-own-topology-in-python">Writing your own topology in Python</h1>
+<p>You can find API docs for the <code>heronpy</code> library <a href="https://twitter.github.io/heron/api/python">here</a>.</p>
+</blockquote>
 
-<p><a href="../spouts">Spouts</a> and <a href="../bolts">Bolts</a> discuss how to implement spouts and
-bolts in Python, respectively.</p>
+<h2 id="setup">Setup</h2>
 
-<p>After defining the spouts and bolts, a topology can be composed by two ways:</p>
+<p>First, you need to install the <code>heronpy</code> library using <a href="https://pip.pypa.io/en/stable/">pip</a>, <a href="https://wiki.python.org/moin/EasyInstall">EasyInstall</a>, or an analogous tool:</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ pip install heronpy
+$ easy_install heronpy
+</code></pre></div>
+
+<p>Then you can include <code>heronpy</code> in your project files. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">Bolt</span><span class="p">,</span> <span class="n">Spout</span><span class="p">,</span> <span class="n">Topology</span>
+</code></pre></div>
+
+<h2 id="writing-topologies-in-python">Writing topologies in Python</h2>
+
+<p>Heron <a href="../../../concepts/topologies">topologies</a> are networks of <a href="../spouts">spouts</a> that pull data into a topology and <a href="../bolts">bolts</a> that process that ingested data.</p>
+
+<blockquote>
+<p>You can see how to create Python spouts in the <a href="../spouts">Implementing Python Spouts</a> guide and how to create Python bolts in the <a href="../bolts">Implementing Python Bolts</a> guide.</p>
+</blockquote>
+
+<p>Once you&rsquo;ve defined spouts and bolts for a topology, you can then compose the topology in one of two ways:</p>
 
 <ul>
-<li>Using <code>TopologyBuilder</code> (not compatible with the Streamparse API)</li>
-<li>Subclassing <code>Topology</code> class (compatible with the Streamparse API)</li>
+<li><p>You can use the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder"><code>TopologyBuilder</code></a> class inside of a main function.</p>
+
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">TopologyBuilder</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="s2">&quot;MyTopology&quot;</span><span class="p">)</span>
+    <span class="c1"># Add spouts and bolts</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">build_and_submit</span><span class="p">()</span>
+</code></pre></div></li>
+
+<li><p>You can subclass the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.Topology"><code>Topology</code></a> class.</p>
+
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">MyTopology</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+    <span class="n">my_spout</span> <span class="o">=</span> <span class="n">MySpout</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">my_bolt</span> <span class="o">=</span> <span class="n">MyBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                          <span class="n">inputs</span><span class="o">=</span><span class="p">{</span>
+                            <span class="n">spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="s1">&#39;some-input-field&#39;</span><span class="p">)</span>
+                          <span class="p">})</span>
+</code></pre></div></li>
 </ul>
 
-<h2 id="defining-a-topology-using-a-topologybuilder">Defining a topology using a TopologyBuilder</h2>
+<h2 id="defining-topologies-using-the-topologybuilder-api-python-topology-m-html-heronpy-topology-topologybuilder-class">Defining topologies using the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder"><code>TopologyBuilder</code></a> class</h2>
 
-<p>This way of defining a topology is similar to defining a topology in Java,
-and is not compatible with the Streamparse API.</p>
+<p>If you create a Python topology using a <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder"><code>TopologyBuilder</code></a>, you need to instantiate a <code>TopologyBuilder</code> inside of a standard Python main function, like this:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="s2">&quot;MyTopology&quot;</span><span class="p">)</span>
+</code></pre></div>
 
-<p>The <code>TopologyBuilder</code> has two major methods to specify the components:</p>
+<p>Once you&rsquo;ve created a <code>TopologyBuilder</code> object, you can add <a href="../bolts">bolts</a> using the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder.add_bolt"><code>add_bolt</code></a> method and <a href="../spouts">spouts</a> using the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder.add_spout"><code>add_spout</code></a> method. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="n">builder</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="s2">&quot;MyTopology&quot;</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_bolt</span><span class="p">(</span><span class="s2">&quot;my_bolt&quot;</span><span class="p">,</span> <span class="n">MyBolt</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_spout</span><span class="p">(</span><span class="s2">&quot;my_spout&quot;</span><span class="p">,</span> <span class="n">MySpout</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
 
-<ul>
-<li><p><code>add_spout(self, name, spout_cls, par, config=None)</code></p>
+<p>Both the <code>add_bolt</code> and <code>add_spout</code> methods return the corresponding <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a> object.</p>
 
-<ul>
-<li><code>name</code> is <code>str</code> specifying the unique identifier that is assigned to this spout.</li>
-<li><code>spout_cls</code> is a subclass of <code>Spout</code> that defines this spout.</li>
-<li><code>par</code> is <code>int</code> specifying the number of instances of this spout.</li>
-<li><code>config</code> is <code>dict</code> specifying this spout-specific configuration.</li>
-</ul></li>
+<p>The <code>add_bolt</code> method takes four arguments and an optional <code>config</code> parameter:</p>
 
-<li><p><code>add_bolt(self, name, bolt_cls, par, inputs, config=None)</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">Argument</th>
+<th align="left">Data type</th>
+<th align="left">Description</th>
+<th align="left">Default</th>
+</tr>
+</thead>
 
-<ul>
-<li><code>name</code> is <code>str</code> specifying the unique identifier that is assigned to this bolt.</li>
-<li><code>bolt_cls</code> is a subclass of <code>Bolt</code> that defines this bolt.</li>
-<li><code>par</code> is <code>int</code> specifying the number of instances of this bolt.</li>
-<li><code>inputs</code> is either <code>dict</code> mapping from <code>HeronComponentSpec</code> to <code>Grouping</code>;
-or <code>list</code> of <code>HeronComponentSpec</code>, in which case the shuffle grouping is used.</li>
-<li><code>config</code> is <code>dict</code> specifying this bolt-specific configuration.</li>
-</ul></li>
-</ul>
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left"><code>str</code></td>
+<td align="left">The unique identifier assigned to this bolt</td>
+<td align="left"></td>
+</tr>
 
-<p>Each method returns the corresponding <code>HeronComponentSpec</code> object.</p>
+<tr>
+<td align="left"><code>bolt_cls</code></td>
+<td align="left">class</td>
+<td align="left">The subclass of <a href="https://twitter.github.io/heron/api/python/bolt/bolt.m.html#heronpy.bolt.bolt.Bolt"><code>Bolt</code></a> that defines this bolt</td>
+<td align="left"></td>
+</tr>
 
-<p>The following is an example implementation of WordCountTopology in Python.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">pyheron</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">TopologyBuilder</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">your_spout</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">WordSpout</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">your_bolt</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">CountBolt</span>
+<tr>
+<td align="left"><code>par</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">The number of instances of this bolt in the topology</td>
+<td align="left"></td>
+</tr>
 
-<span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">__name__</span> <span style="color: #f92672">==</span> <span style="color: #e6db74">&quot;__main__&quot;</span><span style="color: #f8f8f2">:</span>
-  <span style="color: #f8f8f2">builder</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">TopologyBuilder(</span><span style="color: #e6db74">&quot;WordCountTopology&quot;</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">word_spout</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">builder</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_spout(</span><span style="color: #e6db74">&quot;word_spout&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">WordSpout,</span> <span style="color: #f8f8f2">par</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">count_bolt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">builder</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">add_bolt(</span><span style="color: #e6db74">&quot;count_bolt&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">CountBolt,</span> <span style="color: #f8f8f2">par</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span>
-                                <span style="color: #f8f8f2">inputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{word_spout:</span> <span style="color: #f8f8f2">Grouping</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fields(</span><span style="color: #e6db74">&#39;word&#39;</span><span style="color: #f8f8f2">)})</span>
-  <span style="color: #f8f8f2">builder</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">build_and_submit()</span>
-</pre></div>
+<tr>
+<td align="left"><code>config</code></td>
+<td align="left"><code>dict</code></td>
+<td align="left">Specifies the configuration for this spout</td>
+<td align="left"><code>None</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>The <code>add_spout</code> method takes three arguments and an optional <code>config</code> parameter:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Argument</th>
+<th align="left">Data type</th>
+<th align="left">Description</th>
+<th align="left">Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left"><code>str</code></td>
+<td align="left">The unique identifier assigned to this spout</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>spout_cls</code></td>
+<td align="left">class</td>
+<td align="left">The subclass of <a href="https://twitter.github.io/heron/api/python/spout/spout.m.html#heronpy.spout.spout.Spout"><code>Spout</code></a> that defines this spout</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>par</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">The number of instances of this spout in the topology</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>inputs</code></td>
+<td align="left"><code>dict</code> or <code>list</code></td>
+<td align="left">Either a <code>dict</code> mapping from <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a> to <a href="https://twitter.github.io/heron/api/python/stream.m.html#heronpy.stream.Grouping"><code>Grouping</code></a> <em>or</em> a list of <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a>s, in which case the <a href="https://twitter.github.io/heron/api/python/stream.m.html#heronpy.stream.Grouping.SHUFFLE"><code>shuffle</code></a> grouping is used</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>config</code></td>
+<td align="left"><code>dict</code></td>
+<td align="left">Specifies the configuration for this spout</td>
+<td align="left"><code>None</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="example">Example</h3>
+
+<p>The following is an example implementation of a word count topology in Python that subclasses <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder"><code>TopologyBuilder</code></a>.</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">TopologyBuilder</span>
+<span class="kn">from</span> <span class="nn">your_spout</span> <span class="kn">import</span> <span class="n">WordSpout</span>
+<span class="kn">from</span> <span class="nn">your_bolt</span> <span class="kn">import</span> <span class="n">CountBolt</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="s2">&quot;WordCountTopology&quot;</span><span class="p">)</span>
+    <span class="n">word_spout</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">add_spout</span><span class="p">(</span><span class="s2">&quot;word_spout&quot;</span><span class="p">,</span> <span class="n">WordSpout</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">count_bolt_input</span> <span class="o">=</span>
+    <span class="n">count_bolt</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">add_bolt</span><span class="p">(</span><span class="s2">&quot;count_bolt&quot;</span><span class="p">,</span> <span class="n">CountBolt</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                  <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">word_spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)})</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">build_and_submit</span><span class="p">()</span>
+</code></pre></div>
 
 <p>Note that arguments to the main method can be passed by providing them in the
 <code>heron submit</code> command.</p>
 
-<h2 id="defining-a-topology-by-subclassing-topology-class">Defining a topology by subclassing Topology class</h2>
+<h3 id="topology-wide-configuration">Topology-wide configuration</h3>
 
-<p>This way of defining a topology is compatible with the Streamparse API.
-All you need to do is to place <code>HeronComponentSpec</code> as the class attributes
-of your topology class, which are returned by the <code>spec()</code> method of
-your spout or bolt class.</p>
+<p>If you&rsquo;re building a Python topology using a <code>TopologyBuilder</code>, you can specify configuration for the topology using the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder.set_config"><code>set_config</code></a> method. A topology&rsquo;s config is a <code>dict</code> in which the keys are a series constants from the <a href="https://twitter.github.io/heron/api/python/api_constants.m.html"><code>api_constants</code></a> module and values are configuration values for those parameters.</p>
+
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">api_constants</span><span class="p">,</span> <span class="n">TopologyBuilder</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">topology_config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_ACKING</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS</span><span class="p">:</span> <span class="bp">True</span>
+    <span class="p">}</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="s2">&quot;MyTopology&quot;</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">topology_config</span><span class="p">)</span>
+    <span class="c1"># Add bolts and spouts, etc.</span>
+</code></pre></div>
+
+<h3 id="launching-the-topology">Launching the topology</h3>
+
+<p>If you want to <a href="../../../operators/heron-cli#submitting-a-topology">submit</a> Python topologies to a Heron cluster, they need to be packaged as a <a href="https://pex.readthedocs.io/en/stable/whatispex.html">PEX</a> file. In order to produce PEX files, we recommend using a build tool like <a href="http://www.pantsbuild.org/python_readme.html">Pants</a> or <a href="https://github.com/benley/bazel_rules_pex">Bazel</a>.</p>
+
+<p>If you defined your topology by subclassing the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder"><code>TopologyBuilder</code></a> class and built a <code>word_count.pex</code> file for that topology in the <code>~/topology</code> folder. You can submit the topology to a cluster called <code>local</code> like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  ~/topology/word_count.pex <span class="se">\</span>
+  - <span class="c1"># No class specified</span>
+</code></pre></div>
+
+<p>Note the <code>-</code> in this submission command. If you define a topology by subclassing <code>TopologyBuilder</code> you do not need to instruct Heron where your main method is located.</p>
+
+<blockquote>
+<h4 id="example-topologies-buildable-as-pexes">Example topologies buildable as PEXes</h4>
 
 <ul>
-<li><p><code>Spout.spec(cls, name=None, par=1, config=None)</code></p>
-
-<ul>
-<li><code>name</code> is either <code>str</code> specifying the unique identifier that is assigned to this spout, or
-<code>None</code> if you want to use the variable name of the returned <code>HeronComponentSpec</code> as
-the unique identifier for this spout.</li>
-<li><code>par</code> is <code>int</code> specifying the number of instances of this spout.</li>
-<li><code>config</code> is <code>dict</code> specifying this spout-specific configuration.</li>
-</ul></li>
-
-<li><p><code>Bolt.spec(cls, name=None, inputs=None, par=1, config=None)</code></p>
-
-<ul>
-<li><code>name</code> is either <code>str</code> specifying the unique identifier that is assigned to this bolt; or
-<code>None</code> if you want to use the variable name of the returned <code>HeronComponentSpec</code> as
-the unique identifier for this bolt.</li>
-<li><code>inputs</code> is either <code>dict</code> mapping from <code>HeronComponentSpec</code> to <code>Grouping</code>;
-or <code>list</code> of <code>HeronComponentSpec</code>, in which case the shuffle grouping is used.</li>
-<li><code>par</code> is <code>int</code> specifying the number of instances of this bolt.</li>
-<li><code>config</code> is <code>dict</code> specifying this bolt-specific configuration.</li>
-</ul></li>
+<li>See <a href="https://github.com/streamlio/pants-dev-environment">this repo</a> for an example of a Heron topology written in Python and deployable as a Pants-packaged PEX.</li>
+<li>See <a href="https://github.com/streamlio/bazel-dev-environment">this repo</a> for an example of a Heron topology written in Python and deployable as a Bazel-packaged PEX.</li>
 </ul>
+</blockquote>
 
-<p>The same WordCountTopology is defined in the following manner.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #f92672">from</span> <span style="color: #f8f8f2">pyheron</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">Topology</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">your_spout</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">WordSpout</span>
-<span style="color: #f92672">from</span> <span style="color: #f8f8f2">your_bolt</span> <span style="color: #f92672">import</span> <span style="color: #f8f8f2">CountBolt</span>
+<h2 id="defining-a-topology-by-subclassing-the-topology-api-python-topology-m-html-heronpy-topology-topology-class">Defining a topology by subclassing the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.Topology"><code>Topology</code></a> class</h2>
 
-<span style="color: #66d9ef">class</span> <span style="color: #a6e22e">WordCount</span><span style="color: #f8f8f2">(Topology):</span>
-  <span style="color: #f8f8f2">word_spout</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">WordSpout</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec(par</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">)</span>
-  <span style="color: #f8f8f2">count_bolt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">CountBolt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec(par</span><span style="color: #f92672">=</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">inputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{word_spout:</span> <span style="color: #f8f8f2">Grouping</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">fields(</span><span style="color: #e6db74">&#39;word&#39;</span><span style="color: #f8f8f2">)})</span>
-</pre></div>
+<p>If you create a Python topology by subclassing the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.Topology"><code>Topology</code></a> class, you need to create a new topology class, like this:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">Grouping</span><span class="p">,</span> <span class="n">Topology</span>
+<span class="kn">from</span> <span class="nn">my_spout</span> <span class="kn">import</span> <span class="n">MySpout</span>
+<span class="kn">from</span> <span class="nn">my_bolt</span> <span class="kn">import</span> <span class="n">MyBolt</span>
 
-<h2 id="topology-wide-configuration">Topology-wide configuration</h2>
+<span class="k">class</span> <span class="nc">MyTopology</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+    <span class="n">my_spout</span> <span class="o">=</span> <span class="n">MySpout</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">my_bolt_inputs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">my_spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="s1">&#39;some-input-field&#39;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="n">my_bolt</span> <span class="o">=</span> <span class="n">MyBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">my_bolt_inputs</span><span class="p">)</span>
+</code></pre></div>
 
-<p>Topology-wide configuration can be specified by using <code>set_config()</code> method if
-you are using <code>TopologyBuilder</code>, or by placing <code>config</code> containing <code>dict</code>
-as the class attribute of your topology. Note that these configuration will be
-overriden by component-specific configuration at runtime</p>
+<p>All you need to do is place <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a>s as the class attributes
+of your topology class, which are returned by the <code>spec()</code> method of
+your spout or bolt class. You do <em>not</em> need to run a <code>build</code> method or anything like that; the <code>Topology</code> class will automatically detect which spouts and bolts are included in the topology.</p>
+
+<blockquote>
+<p>If you use this method to define a new Python topology, you do <em>not</em> need to have a main function.</p>
+</blockquote>
+
+<p>For bolts, the <a href="https://twitter.github.io/heron/api/python/bolt/bolt.m.html#heronpy.bolt.bolt.Bolt.spec"><code>spec</code></a> method for spouts takes three optional arguments::</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Argument</th>
+<th align="left">Data type</th>
+<th align="left">Description</th>
+<th align="left">Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left"><code>str</code></td>
+<td align="left">The unique identifier assigned to this bolt or <code>None</code> if you want to use the variable name of the return <code>HeronComponentSpec</code> as the unique identifier for this bolt</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>par</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">The number of instances of this bolt in the topology</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>config</code></td>
+<td align="left"><code>dict</code></td>
+<td align="left">Specifies the configuration for this bolt</td>
+<td align="left"><code>None</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>For spouts, the <a href="https://twitter.github.io/heron/api/python/spout/spout.m.html#heronpy.spout.spout.Spout.spec"><code>spec</code></a> method takes four optional arguments:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Argument</th>
+<th align="left">Data type</th>
+<th align="left">Description</th>
+<th align="left">Default</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>name</code></td>
+<td align="left"><code>str</code></td>
+<td align="left">The unique identifier assigned to this spout or <code>None</code> if you want to use the variable name of the return <code>HeronComponentSpec</code> as the unique identifier for this spout</td>
+<td align="left"><code>None</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>inputs</code></td>
+<td align="left"><code>dict</code> or <code>list</code></td>
+<td align="left">Either a <code>dict</code> mapping from <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a> to <a href="https://twitter.github.io/heron/api/python/stream.m.html#heronpy.stream.Grouping"><code>Grouping</code></a> <em>or</em> a list of <a href="https://twitter.github.io/heron/api/python/component/component_spec.m.html#heronpy.component.component_spec.HeronComponentSpec"><code>HeronComponentSpec</code></a>s, in which case the <a href="https://twitter.github.io/heron/api/python/stream.m.html#heronpy.stream.Grouping.SHUFFLE"><code>shuffle</code></a> grouping is used</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><code>par</code></td>
+<td align="left"><code>int</code></td>
+<td align="left">The number of instances of this spout in the topology</td>
+<td align="left"><code>1</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>config</code></td>
+<td align="left"><code>dict</code></td>
+<td align="left">Specifies the configuration for this spout</td>
+<td align="left"><code>None</code></td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="example-1">Example</h3>
+
+<p>Here&rsquo;s an example topology definition with one spout and one bolt:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">Topology</span>
+<span class="kn">from</span> <span class="nn">your_spout</span> <span class="kn">import</span> <span class="n">WordSpout</span>
+<span class="kn">from</span> <span class="nn">your_bolt</span> <span class="kn">import</span> <span class="n">CountBolt</span>
+
+<span class="k">class</span> <span class="nc">WordCount</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+    <span class="n">word_spout</span> <span class="o">=</span> <span class="n">WordSpout</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">count_bolt</span> <span class="o">=</span> <span class="n">CountBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">par</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">word_spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">fields</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)})</span>
+</code></pre></div>
+
+<h3 id="launching">Launching</h3>
+
+<p>If you defined your topology by subclassing the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.Topology"><code>Topology</code></a> class,
+your main Python file should <em>not</em> contain a main method. You will, however, need to instruct Heron which class contains your topology definition.</p>
+
+<p>Let&rsquo;s say that you&rsquo;ve defined a topology by subclassing <code>Topology</code> and built a PEX stored in <code>~/topology/dist/word_count.pex</code>. The class containing your topology definition is <code>topology.word_count.WordCount</code>. You can submit the topology to a cluster called <code>local</code> like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  ~/topology/dist/word_count.pex <span class="se">\</span>
+  topology.word_count.WordCount <span class="se">\ </span><span class="c1"># Specifies the topology class definition</span>
+  WordCountTopology
+</code></pre></div>
+
+<h3 id="topology-wide-configuration-1">Topology-wide configuration</h3>
+
+<p>If you&rsquo;re building a Python topology by subclassing <code>Topology</code>, you can specify configuration for the topology using the <a href="https://twitter.github.io/heron/api/python/topology.m.html#heronpy.topology.TopologyBuilder.set_config"><code>set_config</code></a> method. A topology&rsquo;s config is a <code>dict</code> in which the keys are a series constants from the <a href="https://twitter.github.io/heron/api/python/api_constants.m.html"><code>api_constants</code></a> module and values are configuration values for those parameters.</p>
+
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="kn">from</span> <span class="nn">heronpy</span> <span class="kn">import</span> <span class="n">api_constants</span><span class="p">,</span> <span class="n">Topology</span>
+
+<span class="k">class</span> <span class="nc">MyTopology</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_ACKING</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS</span><span class="p">:</span> <span class="bp">True</span>
+    <span class="p">}</span>
+    <span class="c1"># Add bolts and spouts, etc.</span>
+</code></pre></div>
 
 <h2 id="multiple-streams">Multiple streams</h2>
 
 <p>To specify that a component has multiple output streams, instead of using a list of
 strings for <code>outputs</code>, you can specify a list of <code>Stream</code> objects, in the following manner.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">MultiStreamSpout</span><span style="color: #f8f8f2">(Spout):</span>
-  <span style="color: #f8f8f2">outputs</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[Stream(fields</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;normal&#39;</span><span style="color: #f8f8f2">,</span> <span style="color: #e6db74">&#39;fields&#39;</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;default&#39;</span><span style="color: #f8f8f2">),</span>
-             <span style="color: #f8f8f2">Stream(fields</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;error_message&#39;</span><span style="color: #f8f8f2">],</span> <span style="color: #f8f8f2">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&#39;error_stream&#39;</span><span style="color: #f8f8f2">)]</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">MultiStreamSpout</span><span class="p">(</span><span class="n">Spout</span><span class="p">):</span>
+  <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Stream</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;fields&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">),</span>
+             <span class="n">Stream</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;error_message&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;error_stream&#39;</span><span class="p">)]</span>
+</code></pre></div>
 
 <p>To select one of these streams as the input for your bolt, you can simply
 use <code>[]</code> to specify the stream you want. Without any stream specified, the <code>default</code>
 stream will be used.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">MultiStreamTopology</span><span style="color: #f8f8f2">(Topology):</span>
-  <span style="color: #f8f8f2">spout</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">MultiStreamSpout</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec()</span>
-  <span style="color: #f8f8f2">error_bolt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ErrorBolt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec(inputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{spout[</span><span style="color: #e6db74">&#39;error_stream&#39;</span><span style="color: #f8f8f2">]:</span> <span style="color: #f8f8f2">Grouping</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">LOWEST})</span>
-  <span style="color: #f8f8f2">consume_bolt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">ConsumeBolt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec(inputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{spout:</span> <span style="color: #f8f8f2">Grouping</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">SHUFFLE})</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">MultiStreamTopology</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+  <span class="n">spout</span> <span class="o">=</span> <span class="n">MultiStreamSpout</span><span class="o">.</span><span class="n">spec</span><span class="p">()</span>
+  <span class="n">error_bolt</span> <span class="o">=</span> <span class="n">ErrorBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">spout</span><span class="p">[</span><span class="s1">&#39;error_stream&#39;</span><span class="p">]:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">LOWEST</span><span class="p">})</span>
+  <span class="n">consume_bolt</span> <span class="o">=</span> <span class="n">ConsumeBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">SHUFFLE</span><span class="p">})</span>
+</code></pre></div>
 
-<p>For further information about the API, refer to the Streamparse API documentation,
-although there are some methods and functionalities that are not supported or
-are invalid in Heron.</p>
+<h2 id="declaring-output-fields-using-the-spec-method">Declaring output fields using the <code>spec()</code> method</h2>
 
-<h2 id="declaring-output-fields-from-the-spec-method">Declaring output fields from the spec() method</h2>
-
-<p>In Python topologies, the <code>declareOutputFields()</code> method doesn&rsquo;t exist, so
-the output fields of your spout and bolt need to be declared by placing
-<code>outputs</code> class attributes. This is compatible with the Streamparse API, but
-dynamically declaring output fields is more complicated in this way.
-So, PyHeron provides a way to dynamically declare output fields via the
+<p>In Python topologies, the output fields of your spouts and bolts
+need to be declared by placing <code>outputs</code> class attributes, as there is
+no <code>declareOutputFields()</code> method. <code>heronpy</code> enables you to dynamically declare output fields as a list using the
 <code>optional_outputs</code> argument in the <code>spec()</code> method.</p>
 
 <p>This is useful in a situation like below.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">IdentityBolt</span><span style="color: #f8f8f2">(Bolt):</span>
-  <span style="color: #75715e"># can&#39;t statically declare output fields</span>
-  <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">process</span><span style="color: #f8f8f2">(self,</span> <span style="color: #f8f8f2">tup):</span>
-    <span style="color: #f8f8f2">emit([tup</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">values])</span>
-</pre></div>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">DynamicOutputField</span><span style="color: #f8f8f2">(Topology):</span>
-  <span style="color: #f8f8f2">spout</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">WordSpout</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec()</span>
-  <span style="color: #f8f8f2">bolt</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">IdentityBolt</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">spec(inputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">{spout:</span> <span style="color: #f8f8f2">Grouping</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">ALL},</span>
-                           <span style="color: #f8f8f2">optional_outputs</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">[</span><span style="color: #e6db74">&#39;word&#39;</span><span style="color: #f8f8f2">])</span>
-</pre></div>
+<div class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">IdentityBolt</span><span class="p">(</span><span class="n">Bolt</span><span class="p">):</span>
+  <span class="c1"># Statically declaring output fields is not allowed</span>
+  <span class="k">class</span> <span class="nc">process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tup</span><span class="p">):</span>
+    <span class="n">emit</span><span class="p">([</span><span class="n">tup</span><span class="o">.</span><span class="n">values</span><span class="p">])</span>
+
+<span class="k">class</span> <span class="nc">DynamicOutputField</span><span class="p">(</span><span class="n">Topology</span><span class="p">):</span>
+  <span class="n">spout</span> <span class="o">=</span> <span class="n">WordSpout</span><span class="o">.</span><span class="n">spec</span><span class="p">()</span>
+  <span class="n">bolt</span> <span class="o">=</span> <span class="n">IdentityBolt</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="n">spout</span><span class="p">:</span> <span class="n">Grouping</span><span class="o">.</span><span class="n">ALL</span><span class="p">},</span>
+                           <span class="n">optional_outputs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">])</span>
+</code></pre></div>
 
 <p>You can also declare outputs in the <code>add_spout()</code> and the <code>add_bolt()</code>
 method for the <code>TopologyBuilder</code> in the same way.</p>
 
-<h1 id="launching-your-python-topology">Launching your python topology</h1>
+<h2 id="example-topologies">Example topologies</h2>
 
-<p>You need to first package your Python topology project to a PEX file.</p>
+<p>There are a number of example topologies that you can peruse in the <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python"><code>heron/examples/src/python</code></a> directory of the <a href="https://github.com/twitter/heron/tree/master">Heron repo</a>:</p>
 
-<p>If you defined your topology using <code>TopologyBuilder</code>, your topology
-definition python file should have <code>if __name__ = &quot;__main__&quot;</code> method.
-The following shows the submission command of an example WordCountTopology, where its
-pex file is located in <code>~/project/word_count.pex</code>.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ heron submit <span style="color: #f8f8f2">local</span> ~/project/word_count.pex - WordCountTopology
-</pre></div>
+<table>
+<thead>
+<tr>
+<th align="left">Topology</th>
+<th align="left">File</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-<p>If you defined your topology by subclassing <code>Topology</code>, your topology
-definition python file should not contain main method.
-The following shows the submission command of an example WordCountTopology, where
-its pex file is located in <code>~/project/word_count.pex</code>, inside which your <code>WordCount</code>
-class resides under <code>topology.word_count_topology.WordCount</code>.</p>
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>$ heron submit <span style="color: #f8f8f2">local</span> <span style="color: #ae81ff">\</span>
-~/project/word_count.pex <span style="color: #ae81ff">\</span>
-topology.word_count_topology.WordCount <span style="color: #ae81ff">\</span>
-WordCountTopology
-</pre></div>
-</article></section></div></div></div><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="/heron/js/app.min.js"></script></body></html>
+<tbody>
+<tr>
+<td align="left">Word count</td>
+<td align="left"><a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/word_count_topology.py"><code>word_count_topology.py</code></a></td>
+<td align="left">The <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/spout/word_spout.py"><code>WordSpout</code></a> spout emits random words from a list, while the <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/bolt/count_bolt.py"><code>CountBolt</code></a> bolt counts the number of words that have been emitted.</td>
+</tr>
+
+<tr>
+<td align="left">Multiple streams</td>
+<td align="left"><a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/multi_stream_topology.py"><code>multi_stream_topology.py</code></a></td>
+<td align="left">The <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/spout/multi_stream_spout.py"><code>MultiStreamSpout</code></a> emits multiple streams to downstream bolts.</td>
+</tr>
+
+<tr>
+<td align="left">Half acking</td>
+<td align="left"><a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/half_acking_topology.py"><code>half_acking_topology.py</code></a></td>
+<td align="left">The <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/bolt/half_ack_bolt.py"><code>HalfAckBolt</code></a> acks only half of all received tuples.</td>
+</tr>
+
+<tr>
+<td align="left">Custom grouping</td>
+<td align="left"><a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/custom_grouping_topology.py"><code>custom_grouping_topology.py</code></a></td>
+<td align="left">The <a href="https://github.com/twitter/heron/tree/master/heron/examples/src/python/custom_grouping_topology.py#L26"><code>SampleCustomGrouping</code></a> class provides a custom field grouping.</td>
+</tr>
+</tbody>
+</table>
+
+<p>You can build the respective PEXes for these topologies using the following commands:</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ bazel build heron/examples/src/python:word_count
+$ bazel build heron/examples/src/python:multi_stream
+$ bazel build heron/examples/src/python:half_acking
+$ bazel build heron/examples/src/python:custom_grouping
+</code></pre></div>
+
+<p>All built PEXes will be stored in <code>bazel-bin/heron/examples/src/python</code>. You can submit them to Heron like so:</p>
+<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  bazel-bin/heron/examples/src/python/word_count.pex - <span class="se">\</span>
+  WordCount
+$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  bazel-bin/heron/examples/src/python/multi_stream.pex <span class="se">\</span>
+  heron.examples.src.python.multi_stream_topology.MultiStream
+$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  bazel-bin/heron/examples/src/python/half_acking.pex - <span class="se">\</span>
+  HalfAcking
+$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  bazel-bin/heron/examples/src/python/custom_grouping.pex <span class="se">\</span>
+  heron.examples.src.python.custom_grouping_topology.CustomGrouping
+</code></pre></div>
+
+<p>By default, the <code>submit</code> command also activates topologies. To disable this behavior, set the <code>--deploy-deactivated</code> flag.</p>
+</article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script></body></html>
