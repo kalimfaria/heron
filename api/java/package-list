@@ -17,7 +17,6 @@ com.twitter.bazel.checkstyle
 com.twitter.heron.api
 com.twitter.heron.api.bolt
 com.twitter.heron.api.exception
-com.twitter.heron.api.generated
 com.twitter.heron.api.grouping
 com.twitter.heron.api.hooks
 com.twitter.heron.api.hooks.info
@@ -28,6 +27,9 @@ com.twitter.heron.api.state
 com.twitter.heron.api.topology
 com.twitter.heron.api.tuple
 com.twitter.heron.api.utils
+com.twitter.heron.api.windowing
+com.twitter.heron.api.windowing.evictors
+com.twitter.heron.api.windowing.triggers
 com.twitter.heron.apiserver
 com.twitter.heron.apiserver.actions
 com.twitter.heron.apiserver.resources
@@ -45,9 +47,10 @@ com.twitter.heron.common.utils.metrics
 com.twitter.heron.common.utils.misc
 com.twitter.heron.common.utils.topology
 com.twitter.heron.common.utils.tuple
-com.twitter.heron.connectors.pulsar
 com.twitter.heron.downloader
 com.twitter.heron.examples
+com.twitter.heron.examples.bolt
+com.twitter.heron.examples.spout
 com.twitter.heron.grouping
 com.twitter.heron.healthmgr
 com.twitter.heron.healthmgr.common
@@ -77,6 +80,10 @@ com.twitter.heron.integration_test.topology.one_spout_multi_tasks
 com.twitter.heron.integration_test.topology.one_spout_two_bolts
 com.twitter.heron.integration_test.topology.serialization
 com.twitter.heron.integration_test.topology.shuffle_grouping
+com.twitter.heron.integration_test.topology.windowing
+com.twitter.heron.integration_test.topology.windowing.count
+com.twitter.heron.integration_test.topology.windowing.time
+com.twitter.heron.integration_test.topology.windowing.watermark
 com.twitter.heron.local_integration_test.topology.local_readwrite
 com.twitter.heron.metrics
 com.twitter.heron.metricscachemgr
@@ -94,12 +101,6 @@ com.twitter.heron.packing.binpacking
 com.twitter.heron.packing.builder
 com.twitter.heron.packing.roundrobin
 com.twitter.heron.packing.utils
-com.twitter.heron.proto.ckptmgr
-com.twitter.heron.proto.scheduler
-com.twitter.heron.proto.stmgr
-com.twitter.heron.proto.system
-com.twitter.heron.proto.testing
-com.twitter.heron.proto.tmaster
 com.twitter.heron.resource
 com.twitter.heron.scheduler
 com.twitter.heron.scheduler.aurora
@@ -114,7 +115,6 @@ com.twitter.heron.scheduler.server
 com.twitter.heron.scheduler.slurm
 com.twitter.heron.scheduler.utils
 com.twitter.heron.scheduler.yarn
-com.twitter.heron.serializer.kryo
 com.twitter.heron.simulator
 com.twitter.heron.simulator.executors
 com.twitter.heron.simulator.grouping
@@ -148,8 +148,6 @@ org.apache.storm.generated
 org.apache.storm.grouping
 org.apache.storm.hooks
 org.apache.storm.hooks.info
-org.apache.storm.kafka
-org.apache.storm.kafka.trident
 org.apache.storm.metric.api
 org.apache.storm.serialization
 org.apache.storm.serialization.types

@@ -159,10 +159,10 @@ following:</p>
 <span class="k">ENV</span><span class="s"> JAVA_HOME /usr/lib/jvm/java-8-oracle</span>
 </code></pre></div>
 
-<h4 id="step-5-an-installation-script-for-bazel-http-bazel-io-version-hahahugoshortcode-1hbhb-or-above">Step 5 - An installation script for <a href="http://bazel.io/">Bazel</a> version 0.3.1 or above.</h4>
+<h4 id="step-5-an-installation-script-for-bazel-http-bazel-io-version-hahahugoshortcode-1hbhb-or-above">Step 5 - An installation script for <a href="http://bazel.io/">Bazel</a> version 0.5.4 or above.</h4>
 
 <p>Here&rsquo;s an example:</p>
-<div class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile"><span></span><span class="k">RUN</span> wget -O /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/0.3.1/bazel-0.3.1-installer-linux-x86_64.sh <span class="se">\</span>
+<div class="highlight"><pre><code class="language-dockerfile" data-lang="dockerfile"><span></span><span class="k">RUN</span> wget -O /tmp/bazel.sh https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-installer-linux-x86_64.sh <span class="se">\</span>
          <span class="o">&amp;&amp;</span> chmod +x /tmp/bazel.sh <span class="se">\</span>
          <span class="o">&amp;&amp;</span> /tmp/bazel.sh
 </code></pre></div>
