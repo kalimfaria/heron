@@ -180,6 +180,17 @@ Accessing Primitive Types By Index Heron Tuples support a wide variety of primit
     </item>
     
     <item>
+      <title>Heron Delivery Semantics</title>
+      <link>https://twitter.github.io/heron/docs/concepts/delivery-semantics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/concepts/delivery-semantics/</guid>
+      <description>Heron provides support for multiple delivery semantics, and you can select delivery semantics on a topology-by-topology basis. Thus, if you have topologies for which at-most-once semantics are perfectly acceptable, for example, you can run them alongside topologies with more stringent semantics (such as effectively once).
+Available semantics Heron supports three delivery semantics:
+   Semantics Description When to use?     At most once Heron processes tuples using a best-effort strategy.</description>
+    </item>
+    
+    <item>
       <title>Heron Design Goals</title>
       <link>https://twitter.github.io/heron/docs/concepts/design-goals/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -443,7 +454,7 @@ $ pip install heronpy $ easy_install heronpy  Then you can include heronpy in yo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/getting-started/</guid>
-      <description>The current version of Heron is 0.15.2.
+      <description>The current version of Heron is 0.15.2
  The easiest way to get started learning Heron is to install the Heron client tools, which are currently available for:
  MacOS Ubuntu &amp;gt;= 14.04 CentOS  For other platforms, you need to build from source. Please refer to the guide to compiling Heron.
 Step 1 &amp;mdash; Download the Heron tools Heron tools can be installed on MacOS using Homebrew and on Linux using installation scripts.</description>
@@ -553,7 +564,7 @@ Configure Heron State Manager By default, Heron uses Local File System State Man
       <guid>https://twitter.github.io/heron/docs/developers/simulator-mode/</guid>
       <description>Simulator mode is specifically designed for topology developers to easily debug or optimize their topologies.
 Simulator mode simulates a heron cluster in a single JVM process, which is useful for developing and testing topologies. Running topologies under simulator mode is similar to running topologies on a cluster.
-Develop a topology using simulator mode To run in simulator mode, use the SimulatorMode class, which is in storm-compatibility-unshaded_deploy.jar (under bazel-bin/heron/storm/src/java).
+Develop a topology using simulator mode To run in simulator mode, use the SimulatorMode class, which is in storm-compatibility-unshaded_deploy.jar (under bazel-bin/storm-compatibility/src/java).
 For example:</description>
     </item>
     
