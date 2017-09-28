@@ -3,6 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://twitter.github.io/heron/snippets/heron-functional-api/</loc>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn/</loc>
   </url>
   
@@ -221,6 +225,11 @@
   </url>
   
   <url>
+    <loc>https://twitter.github.io/heron/snippets/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/operators/configuration/stmgr/</loc>
   </url>
   
@@ -243,6 +252,10 @@
   
   <url>
     <loc>https://twitter.github.io/heron/docs/developers/packing/ffdpacking/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/developers/java/functional-api/</loc>
   </url>
   
   <url>

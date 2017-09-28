@@ -11,6 +11,16 @@
     
     
     <item>
+      <title></title>
+      <link>https://twitter.github.io/heron/snippets/heron-functional-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/snippets/heron-functional-api/</guid>
+      <description>Heron processing topologies can be written using a domain-specific language called the Heron DSL. The Heron Functional API is currently available for the following languages:
+ Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
+    </item>
+    
+    <item>
       <title>Apache Hadoop YARN Cluster (Experimental)</title>
       <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -441,7 +451,7 @@ To accomplish this, you need to do the following:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/python/topologies/</guid>
-      <description>The current version of py_heron is 0.15.2.
+      <description>The current version of py_heron is 0.16.0.
  Support for developing Heron topologies in Python is provided by a Python library called heronpy.
  Python API docs You can find API docs for the heronpy library here.
  Setup First, you need to install the heronpy library using pip, EasyInstall, or an analogous tool:
@@ -454,7 +464,7 @@ $ pip install heronpy $ easy_install heronpy  Then you can include heronpy in yo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/getting-started/</guid>
-      <description>The current version of Heron is 0.15.2
+      <description>The current version of Heron is 0.16.0
  The easiest way to get started learning Heron is to install the Heron client tools, which are currently available for:
  MacOS Ubuntu &amp;gt;= 14.04 CentOS  For other platforms, you need to build from source. Please refer to the guide to compiling Heron.
 Step 1 &amp;mdash; Download the Heron tools Heron tools can be installed on MacOS using Homebrew and on Linux using installation scripts.</description>
@@ -628,6 +638,16 @@ $ bazel test --config=darwin heron/statemgrs/tests/java:localfs-statemgr_unittes
       <guid>https://twitter.github.io/heron/docs/developers/packing/ffdpacking/</guid>
       <description>Overview This guide provides basic steps at using and tuning the First Fit Decreasing packing algorithm in order to utilize the resources efficiently. This packing algorithm aims at utilizing as few containers as possible, thus limiting the overall resources used. The algorithm is based on the First Fit Decreasing heuristic for the Binpacking problem. The algorithm is useful in the following scenarios:
  The user does not know how many containers to use.</description>
+    </item>
+    
+    <item>
+      <title>The Heron Functional API for Java</title>
+      <link>https://twitter.github.io/heron/docs/developers/java/functional-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/developers/java/functional-api/</guid>
+      <description>Heron processing topologies can be written using a domain-specific language called the Heron DSL. The Heron Functional API is currently available for the following languages:
+ Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
     </item>
     
     <item>
