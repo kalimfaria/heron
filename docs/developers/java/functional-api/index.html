@@ -111,7 +111,7 @@ $ heron submit <span class="nb">local</span> <span class="se">\</span>
 
 <h3 id="java-functional-api-starter-project">Java Functional API starter project</h3>
 
-<p>If you'd like to up and running quickly with the Java DSL, you can clone <a href="https://github.com/streamlio/heron-java-dsl-example">this repository</a>, which includes an example topology built using the DSL as well as the necessary Maven configuration. To build a JAR with dependencies of this example topology:</p>
+<p>If you'd like to up and running quickly with the Heron Functional API for Java, you can clone <a href="https://github.com/streamlio/heron-java-functional-api-example">this repository</a>, which includes an example topology built using the DSL as well as the necessary Maven configuration. To build a JAR with dependencies of this example topology:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git clone https://github.com/streamlio/heron-java-functional-api-example
 $ <span class="nb">cd</span> heron-java-functional-api-example
 $ mvn assembly:assembly
@@ -128,7 +128,7 @@ heron-java-functional-api-example-latest.jar
 
 <h4 id="selecting-delivery-semantics">Selecting delivery semantics</h4>
 
-<p>Heron enables you to apply one of three <a href="../../../concepts/delivery-semantics">delivery semantics</a> to any Heron topology. For the [example topology]()#java-functional-api-starter-project) above, you can select the delivery semantics when you submit the topology with the topology's second argument. This command, for example, would apply <a href="../../../concepts/delivery-semantics">effectively-once</a> to the example topology:</p>
+<p>Heron enables you to apply one of three <a href="../../../concepts/delivery-semantics">delivery semantics</a> to any Heron topology. For the <a href="#java-functional-api-starter-project">example topology</a> above, you can select the delivery semantics when you submit the topology with the topology's second argument. This command, for example, would apply <a href="../../../concepts/delivery-semantics">effectively-once</a> to the example topology:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> target/heron-java-functional-api-example-latest-jar-with-dependencies.jar <span class="se">\</span>
   io.streaml.heron.functionalapi.IntegerProcessingTopology <span class="se">\</span>
   IntegerProcessingTopology <span class="se">\</span>
