@@ -56,9 +56,10 @@ com.twitter.heron.dsl.impl.operators
 com.twitter.heron.dsl.impl.sinks
 com.twitter.heron.dsl.impl.sources
 com.twitter.heron.dsl.impl.streamlets
-com.twitter.heron.examples
-com.twitter.heron.examples.bolt
-com.twitter.heron.examples.spout
+com.twitter.heron.examples.api
+com.twitter.heron.examples.api.bolt
+com.twitter.heron.examples.api.spout
+com.twitter.heron.examples.dsl
 com.twitter.heron.grouping
 com.twitter.heron.healthmgr
 com.twitter.heron.healthmgr.common

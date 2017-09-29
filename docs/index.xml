@@ -238,8 +238,9 @@ The port to connect to heron shell for each container is stored in the physical 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/concepts/topologies/</guid>
-      <description>A Heron topology is a directed acyclic graph used to process streams of data. Heron topologies consist of three basic components: spouts and bolts, which are connected via streams of tuples. Below is a visual illustration of a simple topology:
-Spouts are responsible for emitting tuples into the topology, while bolts are responsible for processing those tuples. In the diagram above, spout S1 feeds tuples to bolts B1 and B2 for processing; in turn, bolt B1 feeds processed tuples to bolts B3 and B4, while bolt B2 feeds processed tuples to bolt B4.</description>
+      <description>New Functional API for Heron As of version 0.16.0, Heron offers a new Functional API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Functional API is currently in beta and available for Java. The Functional API for Python will be available soon.
+More information on the Functional API can be found below.
+ A Heron topology is a directed acyclic graph (DAG) used to process streams of data.</description>
     </item>
     
     <item>
@@ -636,7 +637,7 @@ $ bazel test --config=darwin heron/statemgrs/tests/java:localfs-statemgr_unittes
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/functional-api/</guid>
-      <description>Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
+      <description>&amp;times; The Heron Functional API is in betaThe Heron Functional API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
  Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
     </item>
     
