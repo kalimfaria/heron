@@ -139,6 +139,7 @@ com.twitter.heron.spi.statemgr
 com.twitter.heron.spi.uploader
 com.twitter.heron.spi.utils
 com.twitter.heron.statefulstorage
+com.twitter.heron.statefulstorage.dlog
 com.twitter.heron.statefulstorage.hdfs
 com.twitter.heron.statefulstorage.localfs
 com.twitter.heron.statemgr
@@ -162,6 +163,7 @@ org.apache.storm.grouping
 org.apache.storm.hooks
 org.apache.storm.hooks.info
 org.apache.storm.metric.api
+org.apache.storm.metric.internal
 org.apache.storm.serialization
 org.apache.storm.serialization.types
 org.apache.storm.spout

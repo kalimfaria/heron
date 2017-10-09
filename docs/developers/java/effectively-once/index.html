@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.29" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Effectively-once Java topologies"><meta property="og:url" content="/docs/developers/java/effectively-once/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Effectively-once Java topologies</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-functional-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-functional-api" aria-labelledby="the-heron-functional-api"><i class="fa fa-caret-right"></i>The Heron Functional API</a></h4></section><div id="collapse-the-heron-functional-api" class="panel-collapse collapse" aria-labelledby="the-heron-functional-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/functional-api">The Heron Functional API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">Java Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1>Effectively-once Java topologies</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
+
+
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button><h4 class="alert-heading">This document pertains to the older, Storm-based, Heron Topology API</h4>Heron now offers two separate APIs for building topologies: the original, <a href="https://storm.apache.org">Storm</a>-based Topology API, and the newer <a href="../../../concepts/topologies#the-heron-functional-api">Functional API</a>. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Functional API for future work.
+</div>
+
+<p>You can create Heron topologies that have <a href="../../../concepts/delivery-semantics#stateful-topologies">effectively-once</a> semantics by doing two things:</p>
+
+<ol>
+<li>Set the <a href="#specifying-delivery-semantics">delivery semantics</a> of the topology to <code>EFFECTIVELY_ONCE</code>.</li>
+<li>Create topology processing logic in which each component (i.e. each spout and bolt) implements the <a href="https://twitter.github.io/heron/api/java/com/twitter/heron/api/topology/IStatefulComponent.html"><code>IStatefulComponent</code></a> interface.</li>
+</ol>
+
+<h2 id="specifying-delivery-semantics">Specifying delivery semantics</h2>
+
+<p>You can specify the <a href="../../../concepts/delivery-semantics">delivery semantics</a> of a Heron topology via configuration. To apply effectively-once semantics to a topology:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.Config</span><span class="o">;</span>
+
+<span class="n">Config</span> <span class="n">topologyConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="n">topologyConfig</span><span class="o">.</span><span class="na">setTopologyReliabilityMode</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">TopologyReliabilityMode</span><span class="o">.</span><span class="na">ATLEAST_ONCE</span><span class="o">);</span>
+</code></pre></div>
+
+<p>The other possible values for the <code>TopologyReliabilityMode</code> enum are <code>ATMOST_ONCE</code> and <code>EFFECTIVELY_ONCE</code>.</p>
+
+<blockquote>
+<p>Instead of &ldquo;delivery semantics&rdquo; terminology, the original Topology API for Heron uses &ldquo;reliability mode&rdquo; terminology. In spite of the terminological difference, the two sets of terms are synonymous.</p>
+</blockquote>
+
+<h2 id="stateful-components">Stateful components</h2>
+
+<p>Stateful spouts and bolts need to implement the <a href="https://twitter.github.io/heron/api/java/com/twitter/heron/api/topology/IStatefulComponent.html"><code>IStatefulComponent</code></a> interface, which requires implementing two methods (both of which are <code>void</code> methods):</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Input</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>preSave</code></td>
+<td align="left">Checkpoint ID (<code>String</code>)</td>
+<td align="left">The action taken immediately prior to the component&rsquo;s state being saved.</td>
+</tr>
+
+<tr>
+<td align="left"><code>initState</code></td>
+<td align="left">Initial state (<a href="https://twitter.github.io/heron/api/java/com/twitter/heron/examples/api/StatefulWordCountTopology.ConsumerBolt.html#initState-com.twitter.heron.api.state.State-"><code>State&lt;K, V&gt;</code></a>)</td>
+<td align="left">Initializes the state of the function or operator to that of a previous checkpoint.</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Remember that stateful components automatically handle all state storage in the background using a State Manager (the currently available State Managers are <a href="../../../operators/deployment/statemanagers/zookeeper">ZooKeeper</a> and the <a href="../../../operators/deployment/statemanagers/localfs">local filesystem</a>. You don&rsquo;t need to, for example, save state to an external database.</p>
+</blockquote>
+
+<h2 id="the-state-class">The <code>State</code> class</h2>
+
+<p>Heron topologies with effectively-once semantics need to be stateful topologies (you can also create stateful topologies with at-least-once or at-most-once semantics). All state in stateful topologies is handled through a <a href="https://twitter.github.io/heron/api/java/com/twitter/heron/api/state/State.html"><code>State</code></a> class which has the same semantics as a standard Java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html"><code>Map</code></a>, and so it includes methods like <code>get</code>, <code>set</code>, <code>put</code>, <code>putIfAbsent</code>, <code>keySet</code>, <code>compute</code>, <code>forEach</code>, <code>merge</code>, and so on.</p>
+
+<p>Each stateful spout or bolt must be associated with a single <code>State</code> object that handles the state, and that object must also be typed as <code>State&lt;K, V&gt;</code>, for example <code>State&lt;String, Integer&gt;</code>, <code>State&lt;long, MyPojo&gt;</code>, etc. An example usage of the state object can be found in the <a href="#example-effectively-once-topology">example topology</a> below.</p>
+
+<h2 id="example-effectively-once-topology">Example effectively-once topology</h2>
+
+<p>In the sections below, we&rsquo;ll build a stateful topology with effectively-once semantics from scratch. The topology will work like this:</p>
+
+<ul>
+<li>A <a href="#example-stateful-spout"><code>RandomIntSpout</code></a> will continuously emit random integers between 1 and 100</li>
+<li>An <a href="#example-stateful-bolt"><code>AdditionBolt</code></a> will receive those random numbers and add each number to a running sum. When the sum reaches 1,000,000, it will go back to zero. The bolt won&rsquo;t emit any data but will simply log the current sum.</li>
+</ul>
+
+<blockquote>
+<p>You can see the code for another stateful Heron topology with effectively-once semantics in <a href="https://github.com/twitter/heron/blob/master/examples/src/java/com/twitter/heron/examples/api/StatefulWordCountTopology.java">this word count example</a>.</p>
+</blockquote>
+
+<h3 id="example-stateful-spout">Example stateful spout</h3>
+
+<p>The <code>RandomIntSpout</code> shown below continuously emits a never-ending series of random integers between 1 and 100 in the <code>random-int</code> field.</p>
+
+<blockquote>
+<p>It&rsquo;s important to note that <em>all</em> components in stateful topologies must be stateful (i.e. implement the <code>IStatefulComponent</code> interface) for the topology to provide effectively-once semantics. That includes spouts, even simple ones like the spout in this example.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.spout.BaseRichSpout</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.spout.SpoutOutputCollector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.state.State</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.IStatefulComponent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.TopologyContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.tuple.Fields</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.tuple.Values</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ThreadLocalRandom</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RandomIntSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="kd">implements</span> <span class="n">IStatefulComponent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">SpoutOutputCollector</span> <span class="n">spoutOutputCollector</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">count</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">RandomIntSpout</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="c1">// Generates a random integer between 1 and 100</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">randomInt</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">101</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="c1">// These two methods are required to implement the IStatefulComponent interface</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">preSave</span><span class="o">(</span><span class="n">String</span> <span class="n">checkpointId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Saving spout state at checkpoint %s&quot;</span><span class="o">,</span> <span class="n">checkpointId</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initState</span><span class="o">(</span><span class="n">State</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// These three methods are required to extend the BaseRichSpout abstract class</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">open</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">SpoutOutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">spoutOutputCollector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">declarer</span><span class="o">.</span><span class="na">declare</span><span class="o">(</span><span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&quot;random-int&quot;</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">randomInt</span> <span class="o">=</span> <span class="n">randomInt</span><span class="o">();</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">randomInt</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>A few things to note in this spout:</p>
+
+<ul>
+<li>All state is handled by the <code>count</code> variable, which is of type <code>State&lt;String, Integer&gt;</code>. In that state object, the key is always <code>count</code>, while the value is the current sum.</li>
+<li>This is a very simple topology, so the <code>preSave</code> method simply logs the current checkpoint ID. This method could be used in a variety of more complex ways.</li>
+<li>The <code>initState</code> method simply accepts the current state as-is. This method can be used for a wide variety of purposes, for example deserializing the <code>State</code> object to a user-defined type.</li>
+<li>Only one field will be declared: the <code>random-int</code> field.</li>
+</ul>
+
+<h3 id="example-stateful-bolt">Example stateful bolt</h3>
+
+<p>The <code>AdditionBolt</code></p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.bolt.BaseRichBolt</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.bolt.OutputCollector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.state.State</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.IStatefulComponent</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.TopologyContext</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AdditionBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="kd">implements</span> <span class="n">IStatefulComponent</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">outputCollector</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">State</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">count</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">AdditionBolt</span><span class="o">()</span> <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="c1">// These two methods are required to implement the IStatefulComponent interface</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">preSave</span><span class="o">(</span><span class="n">String</span> <span class="n">checkpointId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Saving spout state at checkpoint %s&quot;</span><span class="o">,</span> <span class="n">checkpointId</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initState</span><span class="o">(</span><span class="n">State</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="c1">// These three methods are required to extend the BaseRichSpout abstract class</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;,</span> <span class="n">TopologyContext</span> <span class="n">ctx</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">outputCollector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">declareOutputFields</span><span class="o">(</span><span class="n">OutputFieldsDeclarer</span> <span class="n">declarer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// This bolt has no output fields, so none will be declared</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Extract the incoming random integer from the arriving tuple</span>
+        <span class="kt">int</span> <span class="n">incomingRandomInt</span> <span class="o">=</span> <span class="n">tuple</span><span class="o">.</span><span class="na">getInt</span><span class="o">(</span><span class="n">tuple</span><span class="o">.</span><span class="na">fieldIndex</span><span class="o">(</span><span class="s">&quot;random-int&quot;</span><span class="o">));</span>
+
+        <span class="c1">// Get the current sum from the count object, defaulting to zero in case</span>
+        <span class="c1">// this is the first processing operation.</span>
+        <span class="kt">int</span> <span class="n">currentSum</span> <span class="o">=</span> <span class="n">count</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="s">&quot;count&quot;</span><span class="o">,</span> <span class="mi">0</span><span class="o">);</span>
+
+        <span class="kt">int</span> <span class="n">newSum</span> <span class="o">=</span> <span class="n">incomingValue</span> <span class="o">+</span> <span class="n">currentSum</span><span class="o">;</span>
+
+        <span class="c1">// Reset the sum to zero if it exceeds 1,000,000</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">newSum</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="o">^</span><span class="mi">6</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">newSum</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Update the count state</span>
+        <span class="n">count</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;count&quot;</span><span class="o">,</span> <span class="n">newSum</span><span class="o">);</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;The current saved sum is: %d&quot;</span><span class="o">,</span> <span class="n">newSum</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>A few things to notice in this bolt:</p>
+
+<ul>
+<li>As in the <code>RandomIntSpout</code>, all state is handled by the <code>count</code> variable, which is of type <code>State&lt;String, Integer&gt;</code>. In that state object, the key is always <code>count</code>, while the value is the current sum.</li>
+<li>As in the <code>RandomIntSpout</code>, the <code>preSave</code> method simply logs the current checkpoint ID.</li>
+<li>The bolt has no output (it simply logs the current stored sum), so no output fields need to be declared.</li>
+</ul>
+
+<h3 id="putting-the-topology-together">Putting the topology together</h3>
+
+<p>Now that we have a stateful spout and bolt in place, we can build and configure the topology:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.Config</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.HeronSubmitter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.exception.AlreadyAliveException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.exception.InvalidTopologyException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.TopologyBuilder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.tuple.Fields</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EffectivelyOnceTopology</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">AlreadyAliveException</span><span class="o">,</span> <span class="n">InvalidTopologyException</span> <span class="o">{</span>
+        <span class="n">Config</span> <span class="n">topologyConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+
+        <span class="c1">// Apply effectively-once semantics and set the checkpoint interval to 10 seconds</span>
+        <span class="n">topologyConfig</span><span class="o">.</span><span class="na">setTopologyReliabilityMode</span><span class="o">(</span><span class="n">Config</span><span class="o">.</span><span class="na">TopologyReliabilityMode</span><span class="o">.</span><span class="na">EFFECTIVELY_ONCE</span><span class="o">);</span>
+        <span class="n">topologyConfig</span><span class="o">.</span><span class="na">setTopologyStatefulCheckpointIntervalSecs</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+
+        <span class="c1">// Build the topology out of the example spout and bolt</span>
+        <span class="n">TopologyBuilder</span> <span class="n">topologyBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TopologyBuilder</span><span class="o">();</span>
+        <span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setSpout</span><span class="o">(</span><span class="s">&quot;random-int-spout&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">RandomIntSpout</span><span class="o">());</span>
+        <span class="n">topologyBuilder</span><span class="o">.</span><span class="na">setBolt</span><span class="o">(</span><span class="s">&quot;addition-bolt&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">AdditionBolt</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">fieldsGrouping</span><span class="o">(</span><span class="s">&quot;random-int-spout&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">Fields</span><span class="o">(</span><span class="s">&quot;random-int&quot;</span><span class="o">));</span>
+
+        <span class="n">HeronSubmitter</span><span class="o">.</span><span class="na">submitTopology</span><span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">],</span> <span class="n">config</span><span class="o">,</span> <span class="n">topologyBuilder</span><span class="o">.</span><span class="na">createTopology</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h3 id="submitting-the-topology">Submitting the topology</h3>
+
+<p>The code for this topology can be found in <a href="https://github.com/streamlio/heron-java-effectively-once-example">this GitHub repository</a>. You can clone the repo locally like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git clone https://github.com/streamlio/heron-java-effectively-once-example
+</code></pre></div>
+
+<p>Once you have the repo locally, you can submit the topology to a <a href="../../../getting-started">running Heron installation</a> like this (if you have <a href="https://maven.apache.org/">Maven</a> installed):</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> heron-java-effectively-once-example
+$ mvn assembly:assembly
+$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  target/effectivelyonce-latest-jar-with-dependencies.jar <span class="se">\</span>
+  io.streaml.example.effectivelyonce.RunningSumTopology <span class="se">\</span>
+  RunningSumTopology
+</code></pre></div>
+
+<blockquote>
+<p>By default, Heron uses the <a href="../../../operators/deployment/statemanagers/localfs">local filesystem</a> as a State Manager. If you&rsquo;re running Heron locally using the instructions in the <a href="../../../getting-started">Quick Start Guide</a> then you won&rsquo;t need to change any settings to run this example stateful topology with effectively-once semantics.</p>
+</blockquote>
+
+<p>From there, you can see the log output for the bolt by running the <a href="../../../operators/heron-tracker">Heron Tracker</a> and <a href="../../../operators/heron-ui">Heron UI</a>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron-tracker
+
+<span class="c1"># In a different terminal window</span>
+$ heron-ui
+</code></pre></div>
+
+<blockquote>
+<p>For installation instructions for the Heron Tracker and the Heron UI, see the <a href="../../../getting-started">Quick Start Guide</a>.</p>
+</blockquote>
+
+<p>Once the Heron UI is running, navigate to <a href="http://localhost:8889">http://localhost:8889</a> and click on the <code>RunningSumTopology</code> link. You should see something like this in the window that opens up:</p>
+
+<p><img src="https://twitter.github.io/heron/img/logical-topology.png" alt="Logical topology drilldown" /></p>
+
+<p>Click on <strong>addition-bolt</strong> on the right (under <strong>1 Container and 1 Instances</strong>) and then click on the blug <strong>logs</strong> button. You should see log output like this:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 0
+<span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 68
+<span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 93
+<span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 117
+<span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 123
+<span class="o">[</span>2017-10-06 13:39:07 -0700<span class="o">]</span> <span class="o">[</span>STDOUT<span class="o">]</span> stdout: The current saved sum is: 185
+</code></pre></div>
+</article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script></body></html>

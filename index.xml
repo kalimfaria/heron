@@ -133,6 +133,15 @@ A Heron deployment requires several components working together. The following m
     </item>
     
     <item>
+      <title>Effectively-once Java topologies</title>
+      <link>https://twitter.github.io/heron/docs/developers/java/effectively-once/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/developers/java/effectively-once/</guid>
+      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Functional API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Functional API for future work.  You can create Heron topologies that have effectively-once semantics by doing two things:</description>
+    </item>
+    
+    <item>
       <title>Feature Roadmap</title>
       <link>https://twitter.github.io/heron/docs/contributors/roadmap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -209,6 +218,16 @@ Available semantics Heron supports three delivery semantics:
       <description>From its very conception, Heron was built to fulfill a set of core design goals, including:
 Isolation Topologies should be process based rather than thread based, and each process should run in isolation for the sake of easy debugging, profiling, and troubleshooting.
 Resource constraints Topologies should use only those resources that they are initially allocated and never exceed those bounds. This makes Heron safe to run in shared infrastructure.</description>
+    </item>
+    
+    <item>
+      <title>Heron Explorer</title>
+      <link>https://twitter.github.io/heron/docs/operators/heron-explorer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/heron-explorer/</guid>
+      <description>The Heron Explorer is a CLI tool that you can use to gain insight into a Heron installation, including:
+ which clusters are currently running in the installation information about a given topology&amp;rsquo;s components (spouts and bolts) metrics for a topology the containers in which a topology is running the topologies running in a given cluster, role, or environment   The Heron Explorer vs. Heron CLI There are two important differences between the Heron Explorer and Heron CLI.</description>
     </item>
     
     <item>
@@ -708,8 +727,9 @@ Kryo Heron uses Kryo for tuple serialization and deserialization. You can create
       
       <guid>https://twitter.github.io/heron/docs/developers/java/topologies/</guid>
       <description>A topology specifies components like spouts and bolts, as well as the relation between components and proper configurations.
-Install Heron APIs for development Before getting started writing a topology, you need to install the Heron API and import its library into your own topology project.
- Go to the releases page for Heron and download the Heron API installation script for your platform. The name of the script for Mac OS X (darwin), for example, would be heron-api-install-0.</description>
+ If you&amp;rsquo;re interested in creating stateful topologies with effectively-once semantics in Java, see this new guide.
+ Install Heron APIs for development Before getting started writing a topology, you need to install the Heron API and import its library into your own topology project.
+ Go to the releases page for Heron and download the Heron API installation script for your platform.</description>
     </item>
     
   </channel>
