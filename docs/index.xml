@@ -333,9 +333,8 @@ class Bolt(BaseBolt): def initialize(self, config, context) def process(self, tu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/bolts/</guid>
-      <description>Bolts must implement the IBolt interface.
-public interface IBolt extends Serializable { void prepare(Map&amp;lt;String, Object&amp;gt; heronConf, TopologyContext context, OutputCollector collector); void execute(Tuple input); void cleanup(); }   The prepare method is called when the bolt is first initialized and provides the bolt with the executing environment.
- The execute method is called to process a single input Tuple. The Tuple contains metadata about component/stream/task it comes from. And OutputCollector is used to emit the result.</description>
+      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Functional APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Functional API for Java, which enables you to create your topology logic using a highly streamlined logic reminiscent of functional programming.  Bolts must implement the IBolt interface.
+public interface IBolt extends Serializable { void prepare(Map&amp;lt;String, Object&amp;gt; heronConf, TopologyContext context, OutputCollector collector); void execute(Tuple input); void cleanup(); }   The prepare method is called when the bolt is first initialized and provides the bolt with the executing environment.</description>
     </item>
     
     <item>
@@ -365,9 +364,8 @@ Currently-supported Sinks Heron comes equipped out of the box with three metrics
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/spouts/</guid>
-      <description>Spouts must implement the ISpout interface.
-public interface ISpout extends Serializable { void open(Map&amp;lt;String, Object&amp;gt; conf, TopologyContext context, SpoutOutputCollector collector); void close(); void activate(); void deactivate(); void nextTuple(); void ack(Object msgId); void fail(Object msgId); }   The open method is called when the spout is initialized and provides the spout with the executing environment.
- The close method is called when the spout is shutdown. There&amp;rsquo;s no guarantee that this method is called due to how the instance is killed.</description>
+      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Functional APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Functional API for Java, which enables you to create your topology logic using a highly streamlined logic reminiscent of functional programming.  Spouts must implement the ISpout interface.
+public interface ISpout extends Serializable { void open(Map&amp;lt;String, Object&amp;gt; conf, TopologyContext context, SpoutOutputCollector collector); void close(); void activate(); void deactivate(); void nextTuple(); void ack(Object msgId); void fail(Object msgId); }   The open method is called when the spout is initialized and provides the spout with the executing environment.</description>
     </item>
     
     <item>
@@ -440,8 +438,9 @@ Network Configuration You can configure how the MM collects and transmits data i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/migrate-storm-to-heron/</guid>
-      <description>Heron is designed to be fully backward compatible with existing Apache Storm projects, which means that you can migrate an existing Storm topology to Heron by making just a few adjustments to the topology&amp;rsquo;s pom.xml Maven configuration file.
-Step 1 &amp;mdash; Download Heron API binaries with an installation script Go to the releases page for Heron and download the appropriate installation script for your platform. The name of the script has this form:</description>
+      <description>Heron is designed to be fully backwards compatible with existing Apache Storm projects, which means that you can migrate an existing Storm topology to Heron by making just a few adjustments to the topology&amp;rsquo;s pom.xml Maven configuration file.
+Step 1. Add Heron dependencies to pom.xml Copy the pom.xml segments below and paste them into your existing Storm pom.xml file in the dependencies block.
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.16.1&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
     </item>
     
     <item>
@@ -711,15 +710,12 @@ Kryo Heron uses Kryo for tuple serialization and deserialization. You can create
     </item>
     
     <item>
-      <title>Writing and Launching a Topology in Java</title>
+      <title>Writing and Launching Topologies in Java</title>
       <link>https://twitter.github.io/heron/docs/developers/java/topologies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/topologies/</guid>
-      <description>A topology specifies components like spouts and bolts, as well as the relation between components and proper configurations.
- If you&amp;rsquo;re interested in creating stateful topologies with effectively-once semantics in Java, see this new guide.
- Install Heron APIs for development Before getting started writing a topology, you need to install the Heron API and import its library into your own topology project.
- Go to the releases page for Heron and download the Heron API installation script for your platform.</description>
+      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Functional API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Functional API for future work.  A topology specifies components like spouts and bolts, as well as the relation between components and proper configurations.</description>
     </item>
     
   </channel>
