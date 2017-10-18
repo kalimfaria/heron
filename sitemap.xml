@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://twitter.github.io/heron/snippets/heron-functional-api/</loc>
+    <loc>https://twitter.github.io/heron/snippets/heron-streamlet-api/</loc>
   </url>
   
   <url>
@@ -69,10 +69,6 @@
   </url>
   
   <url>
-    <loc>https://twitter.github.io/heron/docs/concepts/architecture/</loc>
-  </url>
-  
-  <url>
     <loc>https://twitter.github.io/heron/docs/contributors/codebase/</loc>
   </url>
   
@@ -82,10 +78,6 @@
   
   <url>
     <loc>https://twitter.github.io/heron/docs/concepts/delivery-semantics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://twitter.github.io/heron/docs/concepts/design-goals/</loc>
   </url>
   
   <url>
@@ -122,6 +114,18 @@
   
   <url>
     <loc>https://twitter.github.io/heron/docs/developers/ui-guide/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/concepts/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/concepts/design-goals/</loc>
   </url>
   
   <url>
@@ -193,10 +197,6 @@
   </url>
   
   <url>
-    <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</loc>
-  </url>
-  
-  <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs/</loc>
   </url>
   
@@ -222,6 +222,10 @@
   
   <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</loc>
   </url>
   
   <url>
@@ -263,7 +267,11 @@
   </url>
   
   <url>
-    <loc>https://twitter.github.io/heron/docs/developers/java/functional-api/</loc>
+    <loc>https://twitter.github.io/heron/docs/operators/heron-api-server/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</loc>
   </url>
   
   <url>

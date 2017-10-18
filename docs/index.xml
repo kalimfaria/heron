@@ -128,7 +128,7 @@ A Heron deployment requires several components working together. The following m
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/effectively-once/</guid>
-      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Functional API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Functional API for future work.  You can create Heron topologies that have effectively-once semantics by doing two things:</description>
+      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Streamlet API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Streamlet API for future work.  You can create Heron topologies that have effectively-once semantics by doing two things:</description>
     </item>
     
     <item>
@@ -150,18 +150,6 @@ For beta releases, the Heron team will maintain two code repositories:
       <guid>https://twitter.github.io/heron/docs/contributors/governance/</guid>
       <description>The Heron project was initially developed at Twitter and is now led by a group of self-managing core contributors with additional contributions by the community. Core contributors expect that candidate core contributors will successfully submit a number of patches or new functionality, demonstrate an understanding of project codebase, and express a willingness to be active group members before they become core contributors.
 Core contributors are added by two supporting votes from core contributors on the mailing list and no core contributor veto within four business days.</description>
-    </item>
-    
-    <item>
-      <title>Heron Architecture</title>
-      <link>https://twitter.github.io/heron/docs/concepts/architecture/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://twitter.github.io/heron/docs/concepts/architecture/</guid>
-      <description>Heron is a general purpose streaming engine designed for performance, low latency, isolation and reliability. It also provides API compatibility with Apache Storm.
-The sections below clarify the distinction between Heron and Storm, describe the design goals behind Heron, and explain major components of its architecture.
-Codebase A detailed guide to the Heron codebase can be found here.
-Topologies You can think of a Heron cluster as a mechanism for managing the lifecycle of stream-processing entities called topologies.</description>
     </item>
     
     <item>
@@ -197,17 +185,6 @@ Accessing Primitive Types By Index Heron Tuples support a wide variety of primit
       <description>Heron provides support for multiple delivery semantics, and you can select delivery semantics on a topology-by-topology basis. Thus, if you have topologies for which at-most-once semantics are perfectly acceptable, for example, you can run them alongside topologies with more stringent semantics (such as effectively once).
 Available semantics Heron supports three delivery semantics:
    Semantics Description When to use?     At most once Heron processes tuples using a best-effort strategy.</description>
-    </item>
-    
-    <item>
-      <title>Heron Design Goals</title>
-      <link>https://twitter.github.io/heron/docs/concepts/design-goals/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://twitter.github.io/heron/docs/concepts/design-goals/</guid>
-      <description>From its very conception, Heron was built to fulfill a set of core design goals, including:
-Isolation Topologies should be process based rather than thread based, and each process should run in isolation for the sake of easy debugging, profiling, and troubleshooting.
-Resource constraints Topologies should use only those resources that they are initially allocated and never exceed those bounds. This makes Heron safe to run in shared infrastructure.</description>
     </item>
     
     <item>
@@ -257,8 +234,8 @@ The port to connect to heron shell for each container is stored in the physical 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/concepts/topologies/</guid>
-      <description>New Functional API for Heron As of version 0.16.0, Heron offers a new Functional API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Functional API is currently in beta and available for Java. The Functional API for Python will be available soon.
-More information on the Functional API can be found below.
+      <description>New Streamlet API for Heron As of version 0.16.0, Heron offers a new Streamlet API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Streamlet API is currently in beta and available for Java. The Streamlet API for Python will be available soon.
+More information on the Streamlet API can be found below.
  A Heron topology is a directed acyclic graph (DAG) used to process streams of data.</description>
     </item>
     
@@ -306,6 +283,38 @@ The UI provides a lot of information about a topology or a part of it quickly, t
     </item>
     
     <item>
+      <title>Heron uploaders</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</guid>
+      <description>Heron currently supports a variety of storage systems via configurable uploaders:
+ Amazon S3 SCP The Hadoop Filesystem (HDFS) The local filesystem  </description>
+    </item>
+    
+    <item>
+      <title>Heron&#39;s Architecture</title>
+      <link>https://twitter.github.io/heron/docs/concepts/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/concepts/architecture/</guid>
+      <description>Heron is a general-purpose stream processing engine designed for speedy performance, low latency, isolation, reliability, and ease of use for developers and administrators alike. Heron was open sourced by Twitter in May 2016.
+ We recommend reading Heron&amp;rsquo;s Design Goals and Heron Topologies in conjunction with this guide.
+ The sections below:
+ clarify the distinction between Heron and Apache Storm describe Heron&amp;rsquo;s basic system architecture explain the role of major components of Heron&amp;rsquo;s architecture provide an overview of what happens when submit a topology  Topologies You can think of a Heron cluster as a mechanism for managing the lifecycle of stream-processing entities called topologies.</description>
+    </item>
+    
+    <item>
+      <title>Heron&#39;s Design Goals</title>
+      <link>https://twitter.github.io/heron/docs/concepts/design-goals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/concepts/design-goals/</guid>
+      <description>From the beginning, Heron was envisioned as a new kind of stream processing system, built to meet the most demanding of technological requirements, to handle even the most massive of workloads, and to meet the needs of organizations of all sizes and degrees of complexity. Amongst these requirements:
+ The ability to process billions of events per minute Extremely low end-to-end latency Predictable behavior regardless of scale and in the face of issue like extreme traffic spikes and pipeline congestion Simple administration, including:  The ability to deploy on shared infrastructure Powerful monitoring capabilities Fine-grained configurability  Easy debuggability  To meet these requirements, a few core design goals have guided&amp;mdash;and continue to guide&amp;mdash;Heron&amp;rsquo;s development:</description>
+    </item>
+    
+    <item>
       <title>Implementing Python Spouts</title>
       <link>https://twitter.github.io/heron/docs/developers/python/spouts/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -333,7 +342,7 @@ class Bolt(BaseBolt): def initialize(self, config, context) def process(self, tu
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/bolts/</guid>
-      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Functional APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Functional API for Java, which enables you to create your topology logic using a highly streamlined logic reminiscent of functional programming.  Bolts must implement the IBolt interface.
+      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Streamlet APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Streamlet API for Java, which enables you to create your topology logic using a highly streamlined logic inspired by functional programming concepts.  Bolts must implement the IBolt interface.
 public interface IBolt extends Serializable { void prepare(Map&amp;lt;String, Object&amp;gt; heronConf, TopologyContext context, OutputCollector collector); void execute(Tuple input); void cleanup(); }   The prepare method is called when the bolt is first initialized and provides the bolt with the executing environment.</description>
     </item>
     
@@ -364,7 +373,7 @@ Currently-supported Sinks Heron comes equipped out of the box with three metrics
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/spouts/</guid>
-      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Functional APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Functional API for Java, which enables you to create your topology logic using a highly streamlined logic reminiscent of functional programming.  Spouts must implement the ISpout interface.
+      <description>&amp;times; Don&amp;#39;t want to manually create spouts and bolts? Try the Heron Streamlet APIIf you find manually creating and connecting spouts and bolts to be overly cumbersome, we recommend trying out the Heron Streamlet API for Java, which enables you to create your topology logic using a highly streamlined logic inspired by functional programming concepts.  Spouts must implement the ISpout interface.
 public interface ISpout extends Serializable { void open(Map&amp;lt;String, Object&amp;gt; conf, TopologyContext context, SpoutOutputCollector collector); void close(); void activate(); void deactivate(); void nextTuple(); void ack(Object msgId); void fail(Object msgId); }   The open method is called when the spout is initialized and provides the spout with the executing environment.</description>
     </item>
     
@@ -491,17 +500,6 @@ heron submit ... ExclamationTopology --verbose  2. Why does the topology launch 
     </item>
     
     <item>
-      <title>Setting Up HDFS Uploader</title>
-      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</guid>
-      <description>With Heron, you have the option to use HDFS as stable storage for user submitted topology jars. Since HDFS replicates the data, it provides a scalable mechanism for distributing the user topology jars. This is desirable when the job runs in a distributed cluster and requires several hundred containers to run.
-There are a few things you should be aware of HDFS uploader:
- It requires hadoop client be installed in the machine where the topology is being submitted  HDFS Uploader Configuration You can make Heron use HDFS uploader by modifying the uploader.</description>
-    </item>
-    
-    <item>
       <title>Setting Up Local File System State Manager</title>
       <link>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -573,6 +571,17 @@ Step 1: Install VirtualBox and Vagrant Download and install VirtualBox and Vagra
 Install Heron Follow Quick Start Guide to install Heron.
 Setting up an Apache Mesos Cluster Locally Follow Installing Mesos on your Mac with Homebrew to install and run Mesos. To confirm Mesos cluster is ready for accepting Heron topologies, access the Mesos management console http://localhost:5050 and confirm there is activated slaves.
 Configure Heron State Manager By default, Heron uses Local File System State Manager on Mesos to manage states.</description>
+    </item>
+    
+    <item>
+      <title>Setting up the HDFS uploader</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</guid>
+      <description>With Heron, you have the option to use HDFS as stable storage for user submitted topology jars. Since HDFS replicates the data, it provides a scalable mechanism for distributing the user topology jars. This is desirable when the job runs in a distributed cluster and requires several hundred containers to run.
+There are a few things you should be aware of HDFS uploader:
+ It requires hadoop client be installed in the machine where the topology is being submitted  HDFS Uploader Configuration You can make Heron use HDFS uploader by modifying the uploader.</description>
     </item>
     
     <item>
@@ -650,12 +659,24 @@ $ bazel test --config=darwin heron/statemgrs/tests/java:localfs-statemgr_unittes
     </item>
     
     <item>
-      <title>The Heron Functional API for Java</title>
-      <link>https://twitter.github.io/heron/docs/developers/java/functional-api/</link>
+      <title>The Heron API server</title>
+      <link>https://twitter.github.io/heron/docs/operators/heron-api-server/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://twitter.github.io/heron/docs/developers/java/functional-api/</guid>
-      <description>&amp;times; The Heron Functional API is in betaThe Heron Functional API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
+      <guid>https://twitter.github.io/heron/docs/operators/heron-api-server/</guid>
+      <description>The Heron API server is a necessary component
+ If you&amp;rsquo;re running Heron locally on your laptop, you won&amp;rsquo;t need to run the Heron API server separately; its functions will be handled automatically.
+ Installation The Heron API server executable (heron-apiserver) is installed automatically when you install the Heron tools.
+Running the Heron API server You can start up the Heron API server using the heron-apiserver command. When you do so you&amp;rsquo;ll need to specify two things:</description>
+    </item>
+    
+    <item>
+      <title>The Heron Streamlet API for Java</title>
+      <link>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</guid>
+      <description>&amp;times; The Heron Streamlet API is in betaThe Heron Streamlet API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
  Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
     </item>
     
@@ -715,7 +736,7 @@ Kryo Heron uses Kryo for tuple serialization and deserialization. You can create
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/topologies/</guid>
-      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Functional API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Functional API for future work.  A topology specifies components like spouts and bolts, as well as the relation between components and proper configurations.</description>
+      <description>&amp;times; This document pertains to the older, Storm-based, Heron Topology APIHeron now offers two separate APIs for building topologies: the original, Storm-based Topology API, and the newer Streamlet API. Topologies created using the Topology API can still run on Heron and there are currently no plans to deprecate this API. We would, however, recommend that you use the Streamlet API for future work.  A topology specifies components like spouts and bolts, as well as the relation between components and proper configurations.</description>
     </item>
     
   </channel>

@@ -12,10 +12,10 @@
     
     <item>
       <title></title>
-      <link>https://twitter.github.io/heron/snippets/heron-functional-api/</link>
+      <link>https://twitter.github.io/heron/snippets/heron-streamlet-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://twitter.github.io/heron/snippets/heron-functional-api/</guid>
+      <guid>https://twitter.github.io/heron/snippets/heron-streamlet-api/</guid>
       <description>Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
  Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
     </item>
