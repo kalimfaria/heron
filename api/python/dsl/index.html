@@ -4,7 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
     <title>heronpy.dsl API documentation</title>
-    <meta name="description" content="" />
+    <meta name="description" content="module for heronpy dsl" />
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
   
@@ -1041,15 +1041,18 @@ table {
 
     <li class="set"><h3><a href="#header-submodules">Sub-modules</a></h3>
       <ul>
-        <li class="mono"><a href="dslboltbase.m.html">heronpy.dsl.dslboltbase</a></li>
-        <li class="mono"><a href="filterbolt.m.html">heronpy.dsl.filterbolt</a></li>
-        <li class="mono"><a href="flatmapbolt.m.html">heronpy.dsl.flatmapbolt</a></li>
-        <li class="mono"><a href="joinbolt.m.html">heronpy.dsl.joinbolt</a></li>
-        <li class="mono"><a href="mapbolt.m.html">heronpy.dsl.mapbolt</a></li>
-        <li class="mono"><a href="reducebykeyandwindowbolt.m.html">heronpy.dsl.reducebykeyandwindowbolt</a></li>
-        <li class="mono"><a href="repartitionbolt.m.html">heronpy.dsl.repartitionbolt</a></li>
-        <li class="mono"><a href="samplebolt.m.html">heronpy.dsl.samplebolt</a></li>
+        <li class="mono"><a href="builder.m.html">heronpy.dsl.builder</a></li>
+        <li class="mono"><a href="config.m.html">heronpy.dsl.config</a></li>
+        <li class="mono"><a href="context.m.html">heronpy.dsl.context</a></li>
+        <li class="mono"><a href="generator.m.html">heronpy.dsl.generator</a></li>
+        <li class="mono"><a href="impl/index.html">heronpy.dsl.impl</a></li>
+        <li class="mono"><a href="keyedwindow.m.html">heronpy.dsl.keyedwindow</a></li>
+        <li class="mono"><a href="resources.m.html">heronpy.dsl.resources</a></li>
+        <li class="mono"><a href="runner.m.html">heronpy.dsl.runner</a></li>
         <li class="mono"><a href="streamlet.m.html">heronpy.dsl.streamlet</a></li>
+        <li class="mono"><a href="transformoperator.m.html">heronpy.dsl.transformoperator</a></li>
+        <li class="mono"><a href="window.m.html">heronpy.dsl.window</a></li>
+        <li class="mono"><a href="windowconfig.m.html">heronpy.dsl.windowconfig</a></li>
       </ul>
     </li>
     </ul>
@@ -1064,11 +1067,12 @@ table {
 
   <header id="section-intro">
   <h1 class="title"><span class="name">heronpy.dsl</span> module</h1>
-  
+  <p>module for heronpy dsl</p>
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl" class="source">
-    <div class="codehilite"><pre><span></span><span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkg_resources&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">declare_namespace</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+    <div class="codehilite"><pre><span></span><span class="sd">&#39;&#39;&#39;module for heronpy dsl&#39;&#39;&#39;</span>
+<span class="nb">__import__</span><span class="p">(</span><span class="s1">&#39;pkg_resources&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">declare_namespace</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1081,62 +1085,59 @@ table {
 
     <h2 class="section-title" id="header-submodules">Sub-modules</h2>
       <div class="item">
-      <p class="name"><a href="dslboltbase.m.html">heronpy.dsl.dslboltbase</a></p>
+      <p class="name"><a href="builder.m.html">heronpy.dsl.builder</a></p>
       
   
-    <div class="desc"><p>module for base dsl bolt: DslBoltBase</p></div>
+    <div class="desc"><p>builder.py: module for creating streamlets</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="filterbolt.m.html">heronpy.dsl.filterbolt</a></p>
+      <p class="name"><a href="config.m.html">heronpy.dsl.config</a></p>
       
   
-    <div class="desc"><p>module for filter bolt: FilterBolt</p></div>
+    <div class="desc"><p>config.py: module for defining config</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="flatmapbolt.m.html">heronpy.dsl.flatmapbolt</a></p>
+      <p class="name"><a href="context.m.html">heronpy.dsl.context</a></p>
       
   
-    <div class="desc"><p>module for flat_map bolt: FlatMapBolt</p></div>
+    <div class="desc"><p>context.py: module for defining context</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="joinbolt.m.html">heronpy.dsl.joinbolt</a></p>
+      <p class="name"><a href="generator.m.html">heronpy.dsl.generator</a></p>
       
   
-    <div class="desc"><p>module for join bolt: JoinBolt</p></div>
+    <div class="desc"><p>generator.py: API for defining generic sources in python</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="mapbolt.m.html">heronpy.dsl.mapbolt</a></p>
+      <p class="name"><a href="impl/index.html">heronpy.dsl.impl</a></p>
       
   
-    <div class="desc"><p>module for map bolt: MapBolt</p></div>
+    <div class="desc"><p>module for heronpy dsl impl</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="reducebykeyandwindowbolt.m.html">heronpy.dsl.reducebykeyandwindowbolt</a></p>
+      <p class="name"><a href="keyedwindow.m.html">heronpy.dsl.keyedwindow</a></p>
       
   
-    <div class="desc"><p>module for join bolt: ReduceByKeyAndWindowBolt</p></div>
+    <div class="desc"><p>keyedwindow.py: module for defining KeyedWindow</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="repartitionbolt.m.html">heronpy.dsl.repartitionbolt</a></p>
+      <p class="name"><a href="resources.m.html">heronpy.dsl.resources</a></p>
       
   
-    <div class="desc"><p>module for map bolt: RepartitionBolt</p></div>
+    <div class="desc"><p>resources.py: module for defining resources</p></div>
 
       </div>
       <div class="item">
-      <p class="name"><a href="samplebolt.m.html">heronpy.dsl.samplebolt</a></p>
+      <p class="name"><a href="runner.m.html">heronpy.dsl.runner</a></p>
       
   
-    <div class="desc"><p>module for sample bolt: SampleBolt
-SampleBolt is a more sophisticated FilterBolt which
-can do sampling of the data that it recieves and emit
-only sampled tuples</p></div>
+    <div class="desc"><p>runner.py: module for creating Runner</p></div>
 
       </div>
       <div class="item">
@@ -1144,6 +1145,27 @@ only sampled tuples</p></div>
       
   
     <div class="desc"><p>streamlet.py: module for defining the basic concept of the heron python dsl</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="transformoperator.m.html">heronpy.dsl.transformoperator</a></p>
+      
+  
+    <div class="desc"><p>transformoperator.py: API for defining generic transformer in python</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="window.m.html">heronpy.dsl.window</a></p>
+      
+  
+    <div class="desc"><p>window.py: module for defining Window</p></div>
+
+      </div>
+      <div class="item">
+      <p class="name"><a href="windowconfig.m.html">heronpy.dsl.windowconfig</a></p>
+      
+  
+    <div class="desc"><p>windowconfig.py: module for defining windowconfig</p></div>
 
       </div>
   </section>

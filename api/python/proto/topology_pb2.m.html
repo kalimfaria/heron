@@ -1040,6 +1040,7 @@ table {
       
   <ul>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.ALL">ALL</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPP_CLASS_INFO">CPP_CLASS_INFO</a></li>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.CUSTOM">CUSTOM</a></li>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.ComponentObjectSpec">ComponentObjectSpec</a></li>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.ConfigValueType">ConfigValueType</a></li>
@@ -1098,6 +1099,35 @@ table {
     <li class="mono"><a href="#heronpy.proto.topology_pb2.Bolt.SerializeToString">SerializeToString</a></li>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.Bolt.SetInParent">SetInParent</a></li>
     <li class="mono"><a href="#heronpy.proto.topology_pb2.Bolt.WhichOneof">WhichOneof</a></li>
+  </ul>
+
+        </li>
+        <li class="mono">
+        <span class="class_name"><a href="#heronpy.proto.topology_pb2.CPPClassInfo">CPPClassInfo</a></span>
+        
+          
+  <ul>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.FromString">FromString</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.RegisterExtension">RegisterExtension</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.__init__">__init__</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.ByteSize">ByteSize</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.Clear">Clear</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.ClearExtension">ClearExtension</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.ClearField">ClearField</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.CopyFrom">CopyFrom</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.DiscardUnknownFields">DiscardUnknownFields</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.FindInitializationErrors">FindInitializationErrors</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.HasExtension">HasExtension</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.HasField">HasField</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.IsInitialized">IsInitialized</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.ListFields">ListFields</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.MergeFrom">MergeFrom</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.MergeFromString">MergeFromString</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.ParseFromString">ParseFromString</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.SerializePartialToString">SerializePartialToString</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.SerializeToString">SerializeToString</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.SetInParent">SetInParent</a></li>
+    <li class="mono"><a href="#heronpy.proto.topology_pb2.CPPClassInfo.WhichOneof">WhichOneof</a></li>
   </ul>
 
         </li>
@@ -1374,7 +1404,7 @@ table {
   <span class="n">name</span><span class="o">=</span><span class="s1">&#39;topology.proto&#39;</span><span class="p">,</span>
   <span class="n">package</span><span class="o">=</span><span class="s1">&#39;heron.proto.api&#39;</span><span class="p">,</span>
   <span class="n">syntax</span><span class="o">=</span><span class="s1">&#39;proto2&#39;</span><span class="p">,</span>
-  <span class="n">serialized_pb</span><span class="o">=</span><span class="n">_b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\x0e</span><span class="s1">topology.proto</span><span class="se">\x12\x0f</span><span class="s1">heron.proto.api</span><span class="se">\&quot;\x80\x01\n\x0c</span><span class="s1">StreamSchema</span><span class="se">\x12\x33\n\x04</span><span class="s1">keys</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32</span><span class="s1">%.heron.proto.api.StreamSchema.KeyType</span><span class="se">\x1a</span><span class="s1">;</span><span class="se">\n\x07</span><span class="s1">KeyType</span><span class="se">\x12\x0b\n\x03</span><span class="s1">key</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12</span><span class="s1">#</span><span class="se">\n\x04</span><span class="s1">type</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x15</span><span class="s1">.heron.proto.api.Type</span><span class="se">\&quot;</span><span class="s1">.</span><span class="se">\n\x08</span><span class="s1">StreamId</span><span class="se">\x12\n\n\x02</span><span class="s1">id</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x16\n\x0e\x63</span><span class="s1">omponent_name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\&quot;</span><span class="s1">h</span><span class="se">\n\x0c</span><span class="s1">OutputStream</span><span class="se">\x12</span><span class="s1">)</span><span class="se">\n\x06</span><span class="s1">stream</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x19</span><span class="s1">.heron.proto.api.StreamId</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x06</span><span class="s1">schema</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.StreamSchema</span><span class="se">\&quot;\xf3\x01\n\x0b</span><span class="s1">InputStream</span><span class="se">\x12</span><span class="s1">)</span><span class="se">\n\x06</span><span class="s1">stream</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x19</span><span class="s1">.heron.proto.api.StreamId</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x05</span><span class="s1">gtype</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x19</span><span class="s1">.heron.proto.api.Grouping</span><span class="se">\x12\x36\n\x0f</span><span class="s1">grouping_fields</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.StreamSchema</span><span class="se">\x12\x1e\n\x16\x63</span><span class="s1">ustom_grouping_object</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12\x37\n\x04</span><span class="s1">type</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1">).heron.proto.api.CustomGroupingObjectType</span><span class="se">\&quot;\xa9\x01\n\x06\x43</span><span class="s1">onfig</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x03</span><span class="s1">kvs</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32</span><span class="s1"> .heron.proto.api.Config.KeyValue</span><span class="se">\x1a</span><span class="s1">p</span><span class="se">\n\x08</span><span class="s1">KeyValue</span><span class="se">\x12\x0b\n\x03</span><span class="s1">key</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\r\n\x05</span><span class="s1">value</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\t\x12\x18\n\x10</span><span class="s1">serialized_value</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12</span><span class="s1">.</span><span class="se">\n\x04</span><span class="s1">type</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1"> .heron.proto.api.ConfigValueType</span><span class="se">\&quot;\xa5\x01\n\t</span><span class="s1">Component</span><span class="se">\x12\x0c\n\x04</span><span class="s1">name</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x12\n\n</span><span class="s1">class_name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\t\x12\x19\n\x11</span><span class="s1">serialized_object</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12\&#39;\n\x06\x63</span><span class="s1">onfig</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x17</span><span class="s1">.heron.proto.api.Config</span><span class="se">\x12\x32\n\x04</span><span class="s1">spec</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1">$.heron.proto.api.ComponentObjectSpec</span><span class="se">\&quot;</span><span class="s1">a</span><span class="se">\n\x05</span><span class="s1">Spout</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x04\x63</span><span class="s1">omp</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1a</span><span class="s1">.heron.proto.api.Component</span><span class="se">\x12</span><span class="s1">.</span><span class="se">\n\x07</span><span class="s1">outputs</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.OutputStream</span><span class="se">\&quot;\x8e\x01\n\x04\x42</span><span class="s1">olt</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x04\x63</span><span class="s1">omp</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1a</span><span class="s1">.heron.proto.api.Component</span><span class="se">\x12</span><span class="s1">,</span><span class="se">\n\x06</span><span class="s1">inputs</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1c</span><span class="s1">.heron.proto.api.InputStream</span><span class="se">\x12</span><span class="s1">.</span><span class="se">\n\x07</span><span class="s1">outputs</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.OutputStream</span><span class="se">\&quot;\xd3\x01\n\x08</span><span class="s1">Topology</span><span class="se">\x12\n\n\x02</span><span class="s1">id</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x0c\n\x04</span><span class="s1">name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12</span><span class="s1">&amp;</span><span class="se">\n\x06</span><span class="s1">spouts</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x16</span><span class="s1">.heron.proto.api.Spout</span><span class="se">\x12</span><span class="s1">$</span><span class="se">\n\x05\x62</span><span class="s1">olts</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x15</span><span class="s1">.heron.proto.api.Bolt</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x05</span><span class="s1">state</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x1e</span><span class="s1">.heron.proto.api.TopologyState</span><span class="se">\x12\x30\n\x0f</span><span class="s1">topology_config</span><span class="se">\x18\x06</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0b\x32\x17</span><span class="s1">.heron.proto.api.Config*Z</span><span class="se">\n\x08</span><span class="s1">Grouping</span><span class="se">\x12\x0b\n\x07</span><span class="s1">SHUFFLE</span><span class="se">\x10\x01\x12\n\n\x06\x46</span><span class="s1">IELDS</span><span class="se">\x10\x02\x12\x07\n\x03\x41</span><span class="s1">LL</span><span class="se">\x10\x03\x12\n\n\x06</span><span class="s1">LOWEST</span><span class="se">\x10\x04\x12\x08\n\x04</span><span class="s1">NONE</span><span class="se">\x10\x05\x12\n\n\x06\x44</span><span class="s1">IRECT</span><span class="se">\x10\x06\x12\n\n\x06\x43</span><span class="s1">USTOM</span><span class="se">\x10\x07</span><span class="s1">*</span><span class="se">\x12\n\x04</span><span class="s1">Type</span><span class="se">\x12\n\n\x06</span><span class="s1">OBJECT</span><span class="se">\x10\x01</span><span class="s1">*]</span><span class="se">\n\x13\x43</span><span class="s1">omponentObjectSpec</span><span class="se">\x12\x13\n\x0f</span><span class="s1">JAVA_CLASS_NAME</span><span class="se">\x10\x01\x12\x1a\n\x16</span><span class="s1">JAVA_SERIALIZED_OBJECT</span><span class="se">\x10\x02\x12\x15\n\x11</span><span class="s1">PYTHON_CLASS_NAME</span><span class="se">\x10\x03</span><span class="s1">*&gt;</span><span class="se">\n\x18\x43</span><span class="s1">ustomGroupingObjectType</span><span class="se">\x12\x0f\n\x0b</span><span class="s1">JAVA_OBJECT</span><span class="se">\x10\x01\x12\x11\n\r</span><span class="s1">PYTHON_OBJECT</span><span class="se">\x10\x02</span><span class="s1">*[</span><span class="se">\n\x0f\x43</span><span class="s1">onfigValueType</span><span class="se">\x12\x10\n\x0c</span><span class="s1">STRING_VALUE</span><span class="se">\x10\x01\x12\x19\n\x15</span><span class="s1">JAVA_SERIALIZED_VALUE</span><span class="se">\x10\x02\x12\x1b\n\x17</span><span class="s1">PYTHON_SERIALIZED_VALUE</span><span class="se">\x10\x03</span><span class="s1">*4</span><span class="se">\n\r</span><span class="s1">TopologyState</span><span class="se">\x12\x0b\n\x07</span><span class="s1">RUNNING</span><span class="se">\x10\x01\x12\n\n\x06</span><span class="s1">PAUSED</span><span class="se">\x10\x02\x12\n\n\x06</span><span class="s1">KILLED</span><span class="se">\x10\x03\x42</span><span class="s1">.</span><span class="se">\n\x1f\x63</span><span class="s1">om.twitter.heron.api.generatedB</span><span class="se">\x0b</span><span class="s1">TopologyAPI&#39;</span><span class="p">)</span>
+  <span class="n">serialized_pb</span><span class="o">=</span><span class="n">_b</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\x0e</span><span class="s1">topology.proto</span><span class="se">\x12\x0f</span><span class="s1">heron.proto.api</span><span class="se">\&quot;</span><span class="s1">)</span><span class="se">\n\x0c\x43</span><span class="s1">PPClassInfo</span><span class="se">\x12\x19\n\x11\x63</span><span class="s1">lass_constructor</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\&quot;\x80\x01\n\x0c</span><span class="s1">StreamSchema</span><span class="se">\x12\x33\n\x04</span><span class="s1">keys</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32</span><span class="s1">%.heron.proto.api.StreamSchema.KeyType</span><span class="se">\x1a</span><span class="s1">;</span><span class="se">\n\x07</span><span class="s1">KeyType</span><span class="se">\x12\x0b\n\x03</span><span class="s1">key</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12</span><span class="s1">#</span><span class="se">\n\x04</span><span class="s1">type</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x15</span><span class="s1">.heron.proto.api.Type</span><span class="se">\&quot;</span><span class="s1">.</span><span class="se">\n\x08</span><span class="s1">StreamId</span><span class="se">\x12\n\n\x02</span><span class="s1">id</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x16\n\x0e\x63</span><span class="s1">omponent_name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\&quot;</span><span class="s1">h</span><span class="se">\n\x0c</span><span class="s1">OutputStream</span><span class="se">\x12</span><span class="s1">)</span><span class="se">\n\x06</span><span class="s1">stream</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x19</span><span class="s1">.heron.proto.api.StreamId</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x06</span><span class="s1">schema</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.StreamSchema</span><span class="se">\&quot;\xf3\x01\n\x0b</span><span class="s1">InputStream</span><span class="se">\x12</span><span class="s1">)</span><span class="se">\n\x06</span><span class="s1">stream</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x19</span><span class="s1">.heron.proto.api.StreamId</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x05</span><span class="s1">gtype</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x19</span><span class="s1">.heron.proto.api.Grouping</span><span class="se">\x12\x36\n\x0f</span><span class="s1">grouping_fields</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.StreamSchema</span><span class="se">\x12\x1e\n\x16\x63</span><span class="s1">ustom_grouping_object</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12\x37\n\x04</span><span class="s1">type</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1">).heron.proto.api.CustomGroupingObjectType</span><span class="se">\&quot;\xa9\x01\n\x06\x43</span><span class="s1">onfig</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x03</span><span class="s1">kvs</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32</span><span class="s1"> .heron.proto.api.Config.KeyValue</span><span class="se">\x1a</span><span class="s1">p</span><span class="se">\n\x08</span><span class="s1">KeyValue</span><span class="se">\x12\x0b\n\x03</span><span class="s1">key</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\r\n\x05</span><span class="s1">value</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\t\x12\x18\n\x10</span><span class="s1">serialized_value</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12</span><span class="s1">.</span><span class="se">\n\x04</span><span class="s1">type</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1"> .heron.proto.api.ConfigValueType</span><span class="se">\&quot;\xdc\x01\n\t</span><span class="s1">Component</span><span class="se">\x12\x0c\n\x04</span><span class="s1">name</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x12\n\n</span><span class="s1">class_name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\t\x12\x19\n\x11</span><span class="s1">serialized_object</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0c\x12\&#39;\n\x06\x63</span><span class="s1">onfig</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x17</span><span class="s1">.heron.proto.api.Config</span><span class="se">\x12\x32\n\x04</span><span class="s1">spec</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0e\x32</span><span class="s1">$.heron.proto.api.ComponentObjectSpec</span><span class="se">\x12\x35\n\x0e\x63</span><span class="s1">pp_class_info</span><span class="se">\x18\x06</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.CPPClassInfo</span><span class="se">\&quot;</span><span class="s1">a</span><span class="se">\n\x05</span><span class="s1">Spout</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x04\x63</span><span class="s1">omp</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1a</span><span class="s1">.heron.proto.api.Component</span><span class="se">\x12</span><span class="s1">.</span><span class="se">\n\x07</span><span class="s1">outputs</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.OutputStream</span><span class="se">\&quot;\x8e\x01\n\x04\x42</span><span class="s1">olt</span><span class="se">\x12</span><span class="s1">(</span><span class="se">\n\x04\x63</span><span class="s1">omp</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0b\x32\x1a</span><span class="s1">.heron.proto.api.Component</span><span class="se">\x12</span><span class="s1">,</span><span class="se">\n\x06</span><span class="s1">inputs</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1c</span><span class="s1">.heron.proto.api.InputStream</span><span class="se">\x12</span><span class="s1">.</span><span class="se">\n\x07</span><span class="s1">outputs</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x1d</span><span class="s1">.heron.proto.api.OutputStream</span><span class="se">\&quot;\xd3\x01\n\x08</span><span class="s1">Topology</span><span class="se">\x12\n\n\x02</span><span class="s1">id</span><span class="se">\x18\x01</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12\x0c\n\x04</span><span class="s1">name</span><span class="se">\x18\x02</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\t\x12</span><span class="s1">&amp;</span><span class="se">\n\x06</span><span class="s1">spouts</span><span class="se">\x18\x03</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x16</span><span class="s1">.heron.proto.api.Spout</span><span class="se">\x12</span><span class="s1">$</span><span class="se">\n\x05\x62</span><span class="s1">olts</span><span class="se">\x18\x04</span><span class="s1"> </span><span class="se">\x03</span><span class="s1">(</span><span class="se">\x0b\x32\x15</span><span class="s1">.heron.proto.api.Bolt</span><span class="se">\x12</span><span class="s1">-</span><span class="se">\n\x05</span><span class="s1">state</span><span class="se">\x18\x05</span><span class="s1"> </span><span class="se">\x02</span><span class="s1">(</span><span class="se">\x0e\x32\x1e</span><span class="s1">.heron.proto.api.TopologyState</span><span class="se">\x12\x30\n\x0f</span><span class="s1">topology_config</span><span class="se">\x18\x06</span><span class="s1"> </span><span class="se">\x01</span><span class="s1">(</span><span class="se">\x0b\x32\x17</span><span class="s1">.heron.proto.api.Config*Z</span><span class="se">\n\x08</span><span class="s1">Grouping</span><span class="se">\x12\x0b\n\x07</span><span class="s1">SHUFFLE</span><span class="se">\x10\x01\x12\n\n\x06\x46</span><span class="s1">IELDS</span><span class="se">\x10\x02\x12\x07\n\x03\x41</span><span class="s1">LL</span><span class="se">\x10\x03\x12\n\n\x06</span><span class="s1">LOWEST</span><span class="se">\x10\x04\x12\x08\n\x04</span><span class="s1">NONE</span><span class="se">\x10\x05\x12\n\n\x06\x44</span><span class="s1">IRECT</span><span class="se">\x10\x06\x12\n\n\x06\x43</span><span class="s1">USTOM</span><span class="se">\x10\x07</span><span class="s1">*</span><span class="se">\x12\n\x04</span><span class="s1">Type</span><span class="se">\x12\n\n\x06</span><span class="s1">OBJECT</span><span class="se">\x10\x01</span><span class="s1">*q</span><span class="se">\n\x13\x43</span><span class="s1">omponentObjectSpec</span><span class="se">\x12\x13\n\x0f</span><span class="s1">JAVA_CLASS_NAME</span><span class="se">\x10\x01\x12\x1a\n\x16</span><span class="s1">JAVA_SERIALIZED_OBJECT</span><span class="se">\x10\x02\x12\x15\n\x11</span><span class="s1">PYTHON_CLASS_NAME</span><span class="se">\x10\x03\x12\x12\n\x0e\x43</span><span class="s1">PP_CLASS_INFO</span><span class="se">\x10\x04</span><span class="s1">*&gt;</span><span class="se">\n\x18\x43</span><span class="s1">ustomGroupingObjectType</span><span class="se">\x12\x0f\n\x0b</span><span class="s1">JAVA_OBJECT</span><span class="se">\x10\x01\x12\x11\n\r</span><span class="s1">PYTHON_OBJECT</span><span class="se">\x10\x02</span><span class="s1">*[</span><span class="se">\n\x0f\x43</span><span class="s1">onfigValueType</span><span class="se">\x12\x10\n\x0c</span><span class="s1">STRING_VALUE</span><span class="se">\x10\x01\x12\x19\n\x15</span><span class="s1">JAVA_SERIALIZED_VALUE</span><span class="se">\x10\x02\x12\x1b\n\x17</span><span class="s1">PYTHON_SERIALIZED_VALUE</span><span class="se">\x10\x03</span><span class="s1">*4</span><span class="se">\n\r</span><span class="s1">TopologyState</span><span class="se">\x12\x0b\n\x07</span><span class="s1">RUNNING</span><span class="se">\x10\x01\x12\n\n\x06</span><span class="s1">PAUSED</span><span class="se">\x10\x02\x12\n\n\x06</span><span class="s1">KILLED</span><span class="se">\x10\x03\x42</span><span class="s1">.</span><span class="se">\n\x1f\x63</span><span class="s1">om.twitter.heron.api.generatedB</span><span class="se">\x0b</span><span class="s1">TopologyAPI&#39;</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">_GROUPING</span> <span class="o">=</span> <span class="n">_descriptor</span><span class="o">.</span><span class="n">EnumDescriptor</span><span class="p">(</span>
@@ -1414,8 +1444,8 @@ table {
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1364</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1454</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1462</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1552</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_GROUPING</span><span class="p">)</span>
 
@@ -1433,8 +1463,8 @@ table {
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1456</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1474</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1554</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1572</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_TYPE</span><span class="p">)</span>
 
@@ -1457,11 +1487,15 @@ table {
       <span class="n">name</span><span class="o">=</span><span class="s1">&#39;PYTHON_CLASS_NAME&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
       <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
       <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+    <span class="n">_descriptor</span><span class="o">.</span><span class="n">EnumValueDescriptor</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CPP_CLASS_INFO&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+      <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="nb">type</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1476</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1569</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1574</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1687</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_COMPONENTOBJECTSPEC</span><span class="p">)</span>
 
@@ -1483,8 +1517,8 @@ table {
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1571</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1633</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1689</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1751</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_CUSTOMGROUPINGOBJECTTYPE</span><span class="p">)</span>
 
@@ -1510,8 +1544,8 @@ table {
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1635</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1726</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1753</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1844</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_CONFIGVALUETYPE</span><span class="p">)</span>
 
@@ -1537,8 +1571,8 @@ table {
   <span class="p">],</span>
   <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
   <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1728</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1780</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1846</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1898</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterEnumDescriptor</span><span class="p">(</span><span class="n">_TOPOLOGYSTATE</span><span class="p">)</span>
 
@@ -1554,6 +1588,7 @@ table {
 <span class="n">JAVA_CLASS_NAME</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">JAVA_SERIALIZED_OBJECT</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">PYTHON_CLASS_NAME</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">CPP_CLASS_INFO</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">JAVA_OBJECT</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">PYTHON_OBJECT</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">STRING_VALUE</span> <span class="o">=</span> <span class="mi">1</span>
@@ -1563,6 +1598,37 @@ table {
 <span class="n">PAUSED</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">KILLED</span> <span class="o">=</span> <span class="mi">3</span>
 
+
+
+<span class="n">_CPPCLASSINFO</span> <span class="o">=</span> <span class="n">_descriptor</span><span class="o">.</span><span class="n">Descriptor</span><span class="p">(</span>
+  <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CPPClassInfo&#39;</span><span class="p">,</span>
+  <span class="n">full_name</span><span class="o">=</span><span class="s1">&#39;heron.proto.api.CPPClassInfo&#39;</span><span class="p">,</span>
+  <span class="n">filename</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+  <span class="nb">file</span><span class="o">=</span><span class="n">DESCRIPTOR</span><span class="p">,</span>
+  <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+  <span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">_descriptor</span><span class="o">.</span><span class="n">FieldDescriptor</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;class_constructor&#39;</span><span class="p">,</span> <span class="n">full_name</span><span class="o">=</span><span class="s1">&#39;heron.proto.api.CPPClassInfo.class_constructor&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+      <span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">cpp_type</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+      <span class="n">has_default_value</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="n">_b</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">),</span>
+      <span class="n">message_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">enum_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">is_extension</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">extension_scope</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+  <span class="p">],</span>
+  <span class="n">extensions</span><span class="o">=</span><span class="p">[</span>
+  <span class="p">],</span>
+  <span class="n">nested_types</span><span class="o">=</span><span class="p">[],</span>
+  <span class="n">enum_types</span><span class="o">=</span><span class="p">[</span>
+  <span class="p">],</span>
+  <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+  <span class="n">is_extendable</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+  <span class="n">syntax</span><span class="o">=</span><span class="s1">&#39;proto2&#39;</span><span class="p">,</span>
+  <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
+  <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
+  <span class="p">],</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">76</span><span class="p">,</span>
+<span class="p">)</span>
 
 
 <span class="n">_STREAMSCHEMA_KEYTYPE</span> <span class="o">=</span> <span class="n">_descriptor</span><span class="o">.</span><span class="n">Descriptor</span><span class="p">(</span>
@@ -1598,8 +1664,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">105</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">164</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">148</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">207</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">_STREAMSCHEMA</span> <span class="o">=</span> <span class="n">_descriptor</span><span class="o">.</span><span class="n">Descriptor</span><span class="p">(</span>
@@ -1628,8 +1694,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">164</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">79</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">207</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1666,8 +1732,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">166</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">212</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">209</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1704,8 +1770,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">214</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">318</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">257</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">361</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1763,8 +1829,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">321</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">564</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">364</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">607</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1815,8 +1881,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">624</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">736</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">667</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">779</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">_CONFIG</span> <span class="o">=</span> <span class="n">_descriptor</span><span class="o">.</span><span class="n">Descriptor</span><span class="p">(</span>
@@ -1845,8 +1911,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">567</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">736</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">610</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">779</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1892,6 +1958,13 @@ table {
       <span class="n">message_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">enum_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
       <span class="n">is_extension</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">extension_scope</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
       <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+    <span class="n">_descriptor</span><span class="o">.</span><span class="n">FieldDescriptor</span><span class="p">(</span>
+      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cpp_class_info&#39;</span><span class="p">,</span> <span class="n">full_name</span><span class="o">=</span><span class="s1">&#39;heron.proto.api.Component.cpp_class_info&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+      <span class="n">number</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">cpp_type</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+      <span class="n">has_default_value</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">message_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">enum_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">containing_type</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">is_extension</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">extension_scope</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+      <span class="n">options</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
   <span class="p">],</span>
   <span class="n">extensions</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
@@ -1904,8 +1977,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">739</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">904</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">782</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1002</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1942,8 +2015,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">906</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1003</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1004</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1101</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -1987,8 +2060,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1006</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1148</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1104</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1246</span><span class="p">,</span>
 <span class="p">)</span>
 
 
@@ -2053,8 +2126,8 @@ table {
   <span class="n">extension_ranges</span><span class="o">=</span><span class="p">[],</span>
   <span class="n">oneofs</span><span class="o">=</span><span class="p">[</span>
   <span class="p">],</span>
-  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1151</span><span class="p">,</span>
-  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1362</span><span class="p">,</span>
+  <span class="n">serialized_start</span><span class="o">=</span><span class="mi">1249</span><span class="p">,</span>
+  <span class="n">serialized_end</span><span class="o">=</span><span class="mi">1460</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">_STREAMSCHEMA_KEYTYPE</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">enum_type</span> <span class="o">=</span> <span class="n">_TYPE</span>
@@ -2071,6 +2144,7 @@ table {
 <span class="n">_CONFIG</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;kvs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_CONFIG_KEYVALUE</span>
 <span class="n">_COMPONENT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;config&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_CONFIG</span>
 <span class="n">_COMPONENT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;spec&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">enum_type</span> <span class="o">=</span> <span class="n">_COMPONENTOBJECTSPEC</span>
+<span class="n">_COMPONENT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;cpp_class_info&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_CPPCLASSINFO</span>
 <span class="n">_SPOUT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;comp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_COMPONENT</span>
 <span class="n">_SPOUT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_OUTPUTSTREAM</span>
 <span class="n">_BOLT</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;comp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_COMPONENT</span>
@@ -2080,6 +2154,7 @@ table {
 <span class="n">_TOPOLOGY</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;bolts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_BOLT</span>
 <span class="n">_TOPOLOGY</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">enum_type</span> <span class="o">=</span> <span class="n">_TOPOLOGYSTATE</span>
 <span class="n">_TOPOLOGY</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="s1">&#39;topology_config&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">message_type</span> <span class="o">=</span> <span class="n">_CONFIG</span>
+<span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">message_types_by_name</span><span class="p">[</span><span class="s1">&#39;CPPClassInfo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_CPPCLASSINFO</span>
 <span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">message_types_by_name</span><span class="p">[</span><span class="s1">&#39;StreamSchema&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_STREAMSCHEMA</span>
 <span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">message_types_by_name</span><span class="p">[</span><span class="s1">&#39;StreamId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_STREAMID</span>
 <span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">message_types_by_name</span><span class="p">[</span><span class="s1">&#39;OutputStream&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_OUTPUTSTREAM</span>
@@ -2096,6 +2171,13 @@ table {
 <span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">enum_types_by_name</span><span class="p">[</span><span class="s1">&#39;ConfigValueType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_CONFIGVALUETYPE</span>
 <span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">enum_types_by_name</span><span class="p">[</span><span class="s1">&#39;TopologyState&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_TOPOLOGYSTATE</span>
 <span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterFileDescriptor</span><span class="p">(</span><span class="n">DESCRIPTOR</span><span class="p">)</span>
+
+<span class="n">CPPClassInfo</span> <span class="o">=</span> <span class="n">_reflection</span><span class="o">.</span><span class="n">GeneratedProtocolMessageType</span><span class="p">(</span><span class="s1">&#39;CPPClassInfo&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">_message</span><span class="o">.</span><span class="n">Message</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span>
+  <span class="n">DESCRIPTOR</span> <span class="o">=</span> <span class="n">_CPPCLASSINFO</span><span class="p">,</span>
+  <span class="n">__module__</span> <span class="o">=</span> <span class="s1">&#39;topology_pb2&#39;</span>
+  <span class="c1"># @@protoc_insertion_point(class_scope:heron.proto.api.CPPClassInfo)</span>
+  <span class="p">))</span>
+<span class="n">_sym_db</span><span class="o">.</span><span class="n">RegisterMessage</span><span class="p">(</span><span class="n">CPPClassInfo</span><span class="p">)</span>
 
 <span class="n">StreamSchema</span> <span class="o">=</span> <span class="n">_reflection</span><span class="o">.</span><span class="n">GeneratedProtocolMessageType</span><span class="p">(</span><span class="s1">&#39;StreamSchema&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">_message</span><span class="o">.</span><span class="n">Message</span><span class="p">,),</span> <span class="nb">dict</span><span class="p">(</span>
 
@@ -2190,6 +2272,14 @@ table {
     <h2 class="section-title" id="header-variables">Module variables</h2>
       <div class="item">
       <p id="heronpy.proto.topology_pb2.ALL" class="name">var <span class="ident">ALL</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+      <div class="item">
+      <p id="heronpy.proto.topology_pb2.CPP_CLASS_INFO" class="name">var <span class="ident">CPP_CLASS_INFO</span></p>
       
   
   <div class="source_cont">
@@ -3232,6 +3322,795 @@ and propagates this to our listener iff this was a state change.</p></div>
       </div>
       
       <div class="item">
+      <p id="heronpy.proto.topology_pb2.CPPClassInfo" class="name">class <span class="ident">CPPClassInfo</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+
+      <div class="class">
+          <h3>Ancestors (in MRO)</h3>
+          <ul class="class_list">
+          <li><a href="#heronpy.proto.topology_pb2.CPPClassInfo">CPPClassInfo</a></li>
+          <li>google.protobuf.message.Message</li>
+          <li>__builtin__.object</li>
+          </ul>
+          <h3>Class variables</h3>
+            <div class="item">
+            <p id="heronpy.proto.topology_pb2.CPPClassInfo.CLASS_CONSTRUCTOR_FIELD_NUMBER" class="name">var <span class="ident">CLASS_CONSTRUCTOR_FIELD_NUMBER</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="heronpy.proto.topology_pb2.CPPClassInfo.DESCRIPTOR" class="name">var <span class="ident">DESCRIPTOR</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Static methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.FromString">
+    <p>def <span class="ident">FromString</span>(</p><p>s)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.FromString', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.FromString" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">FromString</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
+  <span class="n">message</span><span class="o">.</span><span class="n">MergeFromString</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">message</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.RegisterExtension">
+    <p>def <span class="ident">RegisterExtension</span>(</p><p>extension_handle)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.RegisterExtension', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.RegisterExtension" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">RegisterExtension</span><span class="p">(</span><span class="n">extension_handle</span><span class="p">):</span>
+  <span class="n">extension_handle</span><span class="o">.</span><span class="n">containing_type</span> <span class="o">=</span> <span class="n">cls</span><span class="o">.</span><span class="n">DESCRIPTOR</span>
+  <span class="c1"># TODO(amauryfa): Use cls.MESSAGE_FACTORY.pool when available.</span>
+  <span class="n">cls</span><span class="o">.</span><span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">pool</span><span class="o">.</span><span class="n">AddExtensionDescriptor</span><span class="p">(</span><span class="n">extension_handle</span><span class="p">)</span>
+  <span class="n">_AttachFieldHelpers</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">extension_handle</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+          <h3>Instance variables</h3>
+            <div class="item">
+            <p id="heronpy.proto.topology_pb2.CPPClassInfo.class_constructor" class="name">var <span class="ident">class_constructor</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Magic attribute generated for "class_constructor" proto field.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+          <h3>Methods</h3>
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.__init__">
+    <p>def <span class="ident">__init__</span>(</p><p>self, **kwargs)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.__init__', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.__init__" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size_dirty</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="c1"># Contains a mapping from oneof field descriptors to the descriptor</span>
+  <span class="c1"># of the currently set field in that oneof field.</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="c1"># _unknown_fields is () when empty for efficiency, and will be turned into</span>
+  <span class="c1"># a list if fields are added.</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span> <span class="o">=</span> <span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_is_present_in_parent</span> <span class="o">=</span> <span class="bp">False</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span> <span class="o">=</span> <span class="n">message_listener_mod</span><span class="o">.</span><span class="n">NullMessageListener</span><span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_listener_for_children</span> <span class="o">=</span> <span class="n">_Listener</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">field_value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">_GetFieldByName</span><span class="p">(</span><span class="n">message_descriptor</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">field</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">() got an unexpected keyword argument &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span>
+                      <span class="p">(</span><span class="n">message_descriptor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field_name</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">field_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="c1"># field=None is the same as no field at all.</span>
+      <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">LABEL_REPEATED</span><span class="p">:</span>
+      <span class="n">copy</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">_default_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>  <span class="c1"># Composite</span>
+        <span class="k">if</span> <span class="n">_IsMapField</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+          <span class="k">if</span> <span class="n">_IsMessageMapField</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">field_value</span><span class="p">:</span>
+              <span class="n">copy</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">field_value</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="n">copy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">field_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">field_value</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+              <span class="n">copy</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="o">**</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+              <span class="n">copy</span><span class="o">.</span><span class="n">add</span><span class="p">()</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>  <span class="c1"># Scalar</span>
+        <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_ENUM</span><span class="p">:</span>
+          <span class="n">field_value</span> <span class="o">=</span> <span class="p">[</span><span class="n">_GetIntegerEnumValue</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">enum_type</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+                         <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">field_value</span><span class="p">]</span>
+        <span class="n">copy</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">field_value</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span>
+    <span class="k">elif</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="n">copy</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">_default_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+      <span class="n">new_val</span> <span class="o">=</span> <span class="n">field_value</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field_value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">new_val</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">message_type</span><span class="o">.</span><span class="n">_concrete_class</span><span class="p">(</span><span class="o">**</span><span class="n">field_value</span><span class="p">)</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">copy</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">new_val</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">_ReraiseTypeErrorWithFieldName</span><span class="p">(</span><span class="n">message_descriptor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">copy</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_ENUM</span><span class="p">:</span>
+        <span class="n">field_value</span> <span class="o">=</span> <span class="n">_GetIntegerEnumValue</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">enum_type</span><span class="p">,</span> <span class="n">field_value</span><span class="p">)</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">field_value</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="n">_ReraiseTypeErrorWithFieldName</span><span class="p">(</span><span class="n">message_descriptor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field_name</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.ByteSize">
+    <p>def <span class="ident">ByteSize</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.ByteSize', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.ByteSize" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ByteSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size_dirty</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size</span>
+  <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">field_descriptor</span><span class="p">,</span> <span class="n">field_value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ListFields</span><span class="p">():</span>
+    <span class="n">size</span> <span class="o">+=</span> <span class="n">field_descriptor</span><span class="o">.</span><span class="n">_sizer</span><span class="p">(</span><span class="n">field_value</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">tag_bytes</span><span class="p">,</span> <span class="n">value_bytes</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span><span class="p">:</span>
+    <span class="n">size</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tag_bytes</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">value_bytes</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size</span> <span class="o">=</span> <span class="n">size</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size_dirty</span> <span class="o">=</span> <span class="bp">False</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_listener_for_children</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="bp">False</span>
+  <span class="k">return</span> <span class="n">size</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.Clear">
+    <p>def <span class="ident">Clear</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.Clear', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.Clear" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">_Clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="c1"># Clear fields.</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span> <span class="o">=</span> <span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_Modified</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.ClearExtension">
+    <p>def <span class="ident">ClearExtension</span>(</p><p>self, extension_handle)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.ClearExtension', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.ClearExtension" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ClearExtension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extension_handle</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.ClearField">
+    <p>def <span class="ident">ClearField</span>(</p><p>self, field_name)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.ClearField', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.ClearField" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ClearField</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">message_descriptor</span><span class="o">.</span><span class="n">fields_by_name</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+  <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">field</span> <span class="o">=</span> <span class="n">message_descriptor</span><span class="o">.</span><span class="n">oneofs_by_name</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="p">:</span>
+        <span class="n">field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Protocol message </span><span class="si">%s</span><span class="s1">() has no &quot;</span><span class="si">%s</span><span class="s1">&quot; field.&#39;</span> <span class="o">%</span>
+                       <span class="p">(</span><span class="n">message_descriptor</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">field_name</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">:</span>
+    <span class="c1"># To match the C++ implementation, we need to invalidate iterators</span>
+    <span class="c1"># for map fields when ClearField() happens.</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">],</span> <span class="s1">&#39;InvalidateIterators&#39;</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">InvalidateIterators</span><span class="p">()</span>
+    <span class="c1"># Note:  If the field is a sub-message, its listener will still point</span>
+    <span class="c1">#   at us.  That&#39;s fine, because the worst than can happen is that it</span>
+    <span class="c1">#   will call _Modified() and invalidate our byte size.  Big deal.</span>
+    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">containing_oneof</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span> <span class="ow">is</span> <span class="n">field</span><span class="p">:</span>
+      <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="p">[</span><span class="n">field</span><span class="o">.</span><span class="n">containing_oneof</span><span class="p">]</span>
+  <span class="c1"># Always call _Modified() -- even if nothing was changed, this is</span>
+  <span class="c1"># a mutating method, and thus calling it should cause the field to become</span>
+  <span class="c1"># present in the parent message.</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_Modified</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.CopyFrom">
+    <p>def <span class="ident">CopyFrom</span>(</p><p>self, other_msg)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Copies the content of the specified message into the current message.</p>
+<p>The method clears the current message and then merges the specified
+message using MergeFrom.</p>
+<p>Args:
+  other_msg: Message to copy into the current one.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.CopyFrom', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.CopyFrom" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">CopyFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_msg</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Copies the content of the specified message into the current message.</span>
+<span class="sd">  The method clears the current message and then merges the specified</span>
+<span class="sd">  message using MergeFrom.</span>
+<span class="sd">  Args:</span>
+<span class="sd">    other_msg: Message to copy into the current one.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="bp">self</span> <span class="ow">is</span> <span class="n">other_msg</span><span class="p">:</span>
+    <span class="k">return</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">other_msg</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.DiscardUnknownFields">
+    <p>def <span class="ident">DiscardUnknownFields</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.DiscardUnknownFields', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.DiscardUnknownFields" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">_DiscardUnknownFields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ListFields</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">LABEL_REPEATED</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">sub_message</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+          <span class="n">sub_message</span><span class="o">.</span><span class="n">DiscardUnknownFields</span><span class="p">()</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">value</span><span class="o">.</span><span class="n">DiscardUnknownFields</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.FindInitializationErrors">
+    <p>def <span class="ident">FindInitializationErrors</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Finds required fields which are not initialized.</p>
+<p>Returns:
+  A list of strings.  Each string is a path to an uninitialized field from
+  the top-level message, e.g. "foo.bar[5].baz".</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.FindInitializationErrors', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.FindInitializationErrors" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">FindInitializationErrors</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Finds required fields which are not initialized.</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of strings.  Each string is a path to an uninitialized field from</span>
+<span class="sd">    the top-level message, e.g. &quot;foo.bar[5].baz&quot;.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># simplify things</span>
+  <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">required_fields</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+      <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ListFields</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">is_extension</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">field</span><span class="o">.</span><span class="n">full_name</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">name</span>
+      <span class="k">if</span> <span class="n">_IsMapField</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">_IsMessageMapField</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+          <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="n">element</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%s</span><span class="s2">].&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span>
+            <span class="n">sub_errors</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">()</span>
+            <span class="n">errors</span> <span class="o">+=</span> <span class="p">[</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">error</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">sub_errors</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="c1"># ScalarMaps can&#39;t have any initialization errors.</span>
+          <span class="k">pass</span>
+      <span class="k">elif</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">LABEL_REPEATED</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
+          <span class="n">element</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+          <span class="n">prefix</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">[</span><span class="si">%d</span><span class="s2">].&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+          <span class="n">sub_errors</span> <span class="o">=</span> <span class="n">element</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">()</span>
+          <span class="n">errors</span> <span class="o">+=</span> <span class="p">[</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">error</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">sub_errors</span><span class="p">]</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span>
+        <span class="n">sub_errors</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">()</span>
+        <span class="n">errors</span> <span class="o">+=</span> <span class="p">[</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">error</span> <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">sub_errors</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">errors</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.HasExtension">
+    <p>def <span class="ident">HasExtension</span>(</p><p>self, extension_handle)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.HasExtension', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.HasExtension" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">HasExtension</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extension_handle</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.HasField">
+    <p>def <span class="ident">HasField</span>(</p><p>self, field_name)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.HasField', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.HasField" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">HasField</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">field_name</span><span class="p">):</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">hassable_fields</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
+  <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">error_msg</span> <span class="o">%</span> <span class="n">field_name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">descriptor_mod</span><span class="o">.</span><span class="n">OneofDescriptor</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">HasField</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">_is_present_in_parent</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">field</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.IsInitialized">
+    <p>def <span class="ident">IsInitialized</span>(</p><p>self, errors=None)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Checks if all required fields of a message are set.</p>
+<p>Args:
+  errors:  A list which, if provided, will be populated with the field
+           paths of all missing required fields.</p>
+<p>Returns:
+  True iff the specified message has all required fields set.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.IsInitialized', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.IsInitialized" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">IsInitialized</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Checks if all required fields of a message are set.</span>
+<span class="sd">  Args:</span>
+<span class="sd">    errors:  A list which, if provided, will be populated with the field</span>
+<span class="sd">             paths of all missing required fields.</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    True iff the specified message has all required fields set.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Performance is critical so we avoid HasField() and ListFields().</span>
+  <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">required_fields</span><span class="p">:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span> <span class="ow">or</span>
+        <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span> <span class="ow">and</span>
+         <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">_is_present_in_parent</span><span class="p">)):</span>
+      <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">())</span>
+      <span class="k">return</span> <span class="bp">False</span>
+  <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>  <span class="c1"># dict can change size!</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">_FieldDescriptor</span><span class="o">.</span><span class="n">LABEL_REPEATED</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">message_type</span><span class="o">.</span><span class="n">has_options</span> <span class="ow">and</span>
+            <span class="n">field</span><span class="o">.</span><span class="n">message_type</span><span class="o">.</span><span class="n">GetOptions</span><span class="p">()</span><span class="o">.</span><span class="n">map_entry</span><span class="p">):</span>
+          <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+          <span class="k">if</span> <span class="ow">not</span> <span class="n">element</span><span class="o">.</span><span class="n">IsInitialized</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+              <span class="n">errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">())</span>
+            <span class="k">return</span> <span class="bp">False</span>
+      <span class="k">elif</span> <span class="n">value</span><span class="o">.</span><span class="n">_is_present_in_parent</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">value</span><span class="o">.</span><span class="n">IsInitialized</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">errors</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="n">errors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">False</span>
+  <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.ListFields">
+    <p>def <span class="ident">ListFields</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.ListFields', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.ListFields" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ListFields</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="n">all_fields</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">_IsPresent</span><span class="p">(</span><span class="n">item</span><span class="p">)]</span>
+  <span class="n">all_fields</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">all_fields</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.MergeFrom">
+    <p>def <span class="ident">MergeFrom</span>(</p><p>self, msg)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.MergeFrom', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.MergeFrom" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">MergeFrom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">cls</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Parameter to MergeFrom() must be instance of same class: &quot;</span>
+        <span class="s1">&#39;expected </span><span class="si">%s</span><span class="s1"> got </span><span class="si">%s</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">__name__</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
+  <span class="k">assert</span> <span class="n">msg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">self</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_Modified</span><span class="p">()</span>
+  <span class="n">fields</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span>
+  <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">label</span> <span class="o">==</span> <span class="n">LABEL_REPEATED</span><span class="p">:</span>
+      <span class="n">field_value</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">field_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># Construct a new object to represent this field.</span>
+        <span class="n">field_value</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">_default_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
+      <span class="n">field_value</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">field</span><span class="o">.</span><span class="n">cpp_type</span> <span class="o">==</span> <span class="n">CPPTYPE_MESSAGE</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">_is_present_in_parent</span><span class="p">:</span>
+        <span class="n">field_value</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">field_value</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+          <span class="c1"># Construct a new object to represent this field.</span>
+          <span class="n">field_value</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">_default_constructor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+          <span class="n">fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span>
+        <span class="n">field_value</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_fields</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+      <span class="k">if</span> <span class="n">field</span><span class="o">.</span><span class="n">containing_oneof</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_UpdateOneofState</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">_unknown_fields</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_unknown_fields</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">_unknown_fields</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.MergeFromString">
+    <p>def <span class="ident">MergeFromString</span>(</p><p>self, serialized)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.MergeFromString', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.MergeFromString" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">MergeFromString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialized</span><span class="p">):</span>
+  <span class="n">length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">serialized</span><span class="p">)</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_InternalParse</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">length</span><span class="p">)</span> <span class="o">!=</span> <span class="n">length</span><span class="p">:</span>
+      <span class="c1"># The only reason _InternalParse would return early is if it</span>
+      <span class="c1"># encountered an end-group tag.</span>
+      <span class="k">raise</span> <span class="n">message_mod</span><span class="o">.</span><span class="n">DecodeError</span><span class="p">(</span><span class="s1">&#39;Unexpected end-group tag.&#39;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+    <span class="c1"># Now ord(buf[p:p+1]) == ord(&#39;&#39;) gets TypeError.</span>
+    <span class="k">raise</span> <span class="n">message_mod</span><span class="o">.</span><span class="n">DecodeError</span><span class="p">(</span><span class="s1">&#39;Truncated message.&#39;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="n">struct</span><span class="o">.</span><span class="n">error</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">message_mod</span><span class="o">.</span><span class="n">DecodeError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">length</span>   <span class="c1"># Return this for legacy reasons.</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.ParseFromString">
+    <p>def <span class="ident">ParseFromString</span>(</p><p>self, serialized)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Parse serialized protocol buffer data into this message.</p>
+<p>Like MergeFromString(), except we clear the object first and
+do not return the value that MergeFromString returns.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.ParseFromString', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.ParseFromString" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">ParseFromString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">serialized</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Parse serialized protocol buffer data into this message.</span>
+<span class="sd">  Like MergeFromString(), except we clear the object first and</span>
+<span class="sd">  do not return the value that MergeFromString returns.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">Clear</span><span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">MergeFromString</span><span class="p">(</span><span class="n">serialized</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.SerializePartialToString">
+    <p>def <span class="ident">SerializePartialToString</span>(</p><p>self, **kwargs)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.SerializePartialToString', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.SerializePartialToString" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">SerializePartialToString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">out</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_InternalSerialize</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">out</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.SerializeToString">
+    <p>def <span class="ident">SerializeToString</span>(</p><p>self, **kwargs)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.SerializeToString', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.SerializeToString" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">SerializeToString</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="c1"># Check if the message has all of its required fields set.</span>
+  <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">IsInitialized</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="n">message_mod</span><span class="o">.</span><span class="n">EncodeError</span><span class="p">(</span>
+        <span class="s1">&#39;Message </span><span class="si">%s</span><span class="s1"> is missing required fields: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">DESCRIPTOR</span><span class="o">.</span><span class="n">full_name</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">FindInitializationErrors</span><span class="p">())))</span>
+  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">SerializePartialToString</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.SetInParent">
+    <p>def <span class="ident">SetInParent</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Sets the _cached_byte_size_dirty bit to true,
+and propagates this to our listener iff this was a state change.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.SetInParent', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.SetInParent" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">Modified</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets the _cached_byte_size_dirty bit to true,</span>
+<span class="sd">  and propagates this to our listener iff this was a state change.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Note:  Some callers check _cached_byte_size_dirty before calling</span>
+  <span class="c1">#   _Modified() as an extra optimization.  So, if this method is ever</span>
+  <span class="c1">#   changed such that it does stuff even when _cached_byte_size_dirty is</span>
+  <span class="c1">#   already true, the callers need to be updated.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size_dirty</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cached_byte_size_dirty</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_listener_for_children</span><span class="o">.</span><span class="n">dirty</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_is_present_in_parent</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_listener</span><span class="o">.</span><span class="n">Modified</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.proto.topology_pb2.CPPClassInfo.WhichOneof">
+    <p>def <span class="ident">WhichOneof</span>(</p><p>self, oneof_name)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Returns the name of the currently set field inside a oneof, or None.</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.proto.topology_pb2.CPPClassInfo.WhichOneof', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.proto.topology_pb2.CPPClassInfo.WhichOneof" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">WhichOneof</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">oneof_name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the name of the currently set field inside a oneof, or None.&quot;&quot;&quot;</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">message_descriptor</span><span class="o">.</span><span class="n">oneofs_by_name</span><span class="p">[</span><span class="n">oneof_name</span><span class="p">]</span>
+  <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Protocol message has no oneof &quot;</span><span class="si">%s</span><span class="s1">&quot; field.&#39;</span> <span class="o">%</span> <span class="n">oneof_name</span><span class="p">)</span>
+  <span class="n">nested_field</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_oneofs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">nested_field</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="n">nested_field</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">nested_field</span><span class="o">.</span><span class="n">name</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      </div>
+      </div>
+      
+      <div class="item">
       <p id="heronpy.proto.topology_pb2.Component" class="name">class <span class="ident">Component</span></p>
       
   
@@ -3259,6 +4138,16 @@ and propagates this to our listener iff this was a state change.</p></div>
             </div>
             <div class="item">
             <p id="heronpy.proto.topology_pb2.Component.CONFIG_FIELD_NUMBER" class="name">var <span class="ident">CONFIG_FIELD_NUMBER</span></p>
+            
+
+            
+  
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="heronpy.proto.topology_pb2.Component.CPP_CLASS_INFO_FIELD_NUMBER" class="name">var <span class="ident">CPP_CLASS_INFO_FIELD_NUMBER</span></p>
             
 
             
@@ -3374,6 +4263,17 @@ and propagates this to our listener iff this was a state change.</p></div>
             
   
     <div class="desc"><p>Magic attribute generated for "config" proto field.</p></div>
+  <div class="source_cont">
+</div>
+
+            </div>
+            <div class="item">
+            <p id="heronpy.proto.topology_pb2.Component.cpp_class_info" class="name">var <span class="ident">cpp_class_info</span></p>
+            
+
+            
+  
+    <div class="desc"><p>Magic attribute generated for "cpp_class_info" proto field.</p></div>
   <div class="source_cont">
 </div>
 

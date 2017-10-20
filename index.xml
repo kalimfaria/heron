@@ -293,6 +293,38 @@ The UI provides a lot of information about a topology or a part of it quickly, t
     </item>
     
     <item>
+      <title>Heron metrics overview</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Heron observability with Graphite</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/graphite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/graphite/</guid>
+      <description>To observe Heron&amp;rsquo;s runtime metrics, you can integrate Heron and the Heron UI with Graphite and Grafana.
+To accomplish this, you need to do the following:
+ Export topology metrics from Heron Gather Aurora and Linux metrics with Diamond Set up a scripted dashboard with Grafana Configure the Heron UI to link to Grafana  Exporting Topology Metrics From Heron Heron supports custom metric exporters from the Metrics Manager. You can either build your own Graphite metrics sink or use the provided Graphite sink.</description>
+    </item>
+    
+    <item>
+      <title>Heron observability with Scribe</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/scribe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/scribe/</guid>
+      <description>You can integrate Heron with Scribe to monitor and gather runtime metrics exported by Heron topologies.
+Exporting topology metrics from Heron to Scribe Heron supports custom metric exporters from the Metrics Manager. You can either build your own Scribe metrics sink or use the provided Scribe sink.
+To set up your Heron cluster to export to Scribe, you need to make two changes to the metrics_sinks.yaml configuration file:
+ Add scribe-sink to the sinks list Add a scribe-sink map to the file that sets values for the parameters listed below.</description>
+    </item>
+    
+    <item>
       <title>Heron uploaders</title>
       <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -362,9 +394,9 @@ public interface IBolt extends Serializable { void prepare(Map&amp;lt;String, Ob
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/contributors/custom-metrics-sink/</guid>
-      <description>Each Heron container has its own centralized Metrics Manager (MM), which collects metrics from all instances in the container. You can define how the MM processes metrics by implementing a metrics sink, which specifies how the MM handles incoming MetricsRecord objects.
-Java is currently the only supported language for custom metrics sinks. This may change in the future.
-Currently-supported Sinks Heron comes equipped out of the box with three metrics sinks that you can apply for a specific topology.</description>
+      <description>Each Heron container has its own centralized Metrics Manager (MM), which collects metrics from all Heron Instances in the container. You can define how the MM processes metrics by implementing a metrics sink, which specifies how the MM handles incoming MetricsRecord objects.
+ Java is currently the only supported language for custom metrics sinks. This may change in the future.
+ Currently supported Sinks Heron comes equipped out of the box with three metrics sinks that you can apply for a specific topology.</description>
     </item>
     
     <item>
@@ -459,18 +491,19 @@ Network Configuration You can configure how the MM collects and transmits data i
       <guid>https://twitter.github.io/heron/docs/migrate-storm-to-heron/</guid>
       <description>Heron is designed to be fully backwards compatible with existing Apache Storm projects, which means that you can migrate an existing Storm topology to Heron by making just a few adjustments to the topology&amp;rsquo;s pom.xml Maven configuration file.
 Step 1. Add Heron dependencies to pom.xml Copy the pom.xml segments below and paste them into your existing Storm pom.xml file in the dependencies block.
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.16.2&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.16.3&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
     </item>
     
     <item>
-      <title>Observability With Graphite</title>
-      <link>https://twitter.github.io/heron/docs/operators/observability/graphite/</link>
+      <title>Observability with Prometheus</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://twitter.github.io/heron/docs/operators/observability/graphite/</guid>
-      <description>To observe Heron&amp;rsquo;s runtime metrics, you can integrate Heron and the Heron UI with Graphite and Grafana.
-To accomplish this, you need to do the following:
- Export topology metrics from Heron Gather Aurora and Linux metrics with Diamond Set up a scripted dashboard with Grafana Configure the Heron UI to link to Grafana  Exporting Topology Metrics From Heron Heron supports custom metric exporters from the Metrics Manager. You can build your own metrics sink or use the provided Graphite sink.</description>
+      <guid>https://twitter.github.io/heron/docs/operators/observability/prometheus/</guid>
+      <description>You can integrate Heron with Prometheus to monitor and gather runtime metrics exported by Heron topologies.
+Exporting topology metrics from Heron to Prometheus Heron supports custom metric exporters from the Metrics Manager. You can either build your own Prometheus metrics sink or use the provided Prometheus sink.
+To set up your Heron cluster to export to Prometheus, you need to make two changes to the metrics_sinks.yaml configuration file:
+ Add prometheus-sink to the sinks list Add a prometheus-sink map to the file that sets values for the parameters listed below.</description>
     </item>
     
     <item>
@@ -479,7 +512,7 @@ To accomplish this, you need to do the following:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/python/topologies/</guid>
-      <description>The current version of py_heron is 0.16.2.
+      <description>The current version of py_heron is 0.16.3.
  Support for developing Heron topologies in Python is provided by a Python library called heronpy.
  Python API docs You can find API docs for the heronpy library here.
  Setup First, you need to install the heronpy library using pip, EasyInstall, or an analogous tool:
@@ -492,7 +525,7 @@ $ pip install heronpy $ easy_install heronpy  Then you can include heronpy in yo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/getting-started/</guid>
-      <description>The current version of Heron is 0.16.2
+      <description>The current version of Heron is 0.16.3
  The easiest way to get started learning Heron is to install the Heron client tools, which are currently available for:
  MacOS Ubuntu &amp;gt;= 14.04 CentOS  For other platforms, you need to build from source. Please refer to the guide to compiling Heron.
 Step 1 &amp;mdash; Download the Heron tools Heron tools can be installed on MacOS using Homebrew and on Linux using installation scripts.</description>

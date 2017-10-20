@@ -2,40 +2,58 @@
 var shiftWindow = function() { scrollBy(0, -100) };
 window.addEventListener("hashchange", shiftWindow);
 function load() { if (window.location.hash) shiftWindow(); }
-</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-functional-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-functional-api" aria-labelledby="the-heron-functional-api"><i class="fa fa-caret-right"></i>The Heron Functional API</a></h4></section><div id="collapse-the-heron-functional-api" class="panel-collapse collapse" aria-labelledby="the-heron-functional-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/functional-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1>Implementing a Custom Metrics Sink</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">Implementing a Custom Metrics Sink</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
 
 <p>Each Heron container has its own centralized <a href="../../concepts/architecture#metrics-manager">Metrics
 Manager</a> (MM), which collects
-metrics from all instances in the container. You can define how the MM processes
-metrics by implementing a <strong>metrics sink</strong>, which specifies how the MM handles
-incoming
+metrics from all <a href="../../concepts/architecture#heron-instance">Heron Instances</a> in
+the container. You can define how the MM processes metrics by implementing a
+<strong>metrics sink</strong>, which specifies how the MM handles incoming
 <a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/metrics/MetricsRecord.html"><code>MetricsRecord</code></a>
 objects.</p>
 
-<p>Java is currently the only supported language for custom metrics sinks. This may
-change in the future.</p>
+<blockquote>
+<p>Java is currently the only supported language for custom metrics sinks. This may change in the future.</p>
+</blockquote>
 
-<h2 id="currently-supported-sinks">Currently-supported Sinks</h2>
+<h2 id="currently-supported-sinks">Currently supported Sinks</h2>
 
 <p>Heron comes equipped out of the box with three metrics sinks that you can apply
 for a specific topology. The code for these sinks may prove helpful for
 implementing your own.</p>
 
-<ul>
-<li><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/GraphiteSink.html"><code>GraphiteSink</code></a>
-&mdash; Sends each <code>MetricsRecord</code> object to a
-<a href="http://graphite.wikidot.com/">Graphite</a> instance according to a Graphite
-prefix.</li>
-<li><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/ScribeSink.html"><code>ScribeSink</code></a>
-&mdash; Sends each <code>MetricsRecord</code> object to a
-<a href="https://github.com/facebookarchive/scribe">Scribe</a> instance according to a
-Scribe category and namespace.</li>
-<li><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/FileSink.html"><code>FileSink</code></a>
-&mdash; Writes each <code>MetricsRecord</code> object to a JSON file at a specified path.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Sink</th>
+<th align="left">How it works</th>
+</tr>
+</thead>
 
-<p>More on using those sinks in a Heron cluster can be found in <a href="../../operators/configuration/metrics-manager">Metrics
-Manager</a>.</p>
+<tbody>
+<tr>
+<td align="left"><a href="../../operators/observability/prometheus">Prometheus</a></td>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/PrometheusSink.html"><code>PrometheusSink</code></a> sends each <code>MetricsRecord</code> object to a specified path in the <a href="https://prometheus.io">Prometheus</a> instance.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="../../operators/observability/graphite">Graphite</a></td>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/GraphiteSink.html"><code>GraphiteSink</code></a> sends each <code>MetricsRecord</code> object to a <a href="http://graphite.wikidot.com/">Graphite</a> instance according to a Graphite prefix.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="../../operators/observability/scribe">Scribe</a></td>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/ScribeSink.html"><code>ScribeSink</code></a> sends each <code>MetricsRecord</code> object to a <a href="https://github.com/facebookarchive/scribe">Scribe</a> instance according to a Scribe category and namespace.</td>
+</tr>
+
+<tr>
+<td align="left">Local filesystem</td>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/metricsmgr/sink/FileSink.html"><code>FileSink</code></a> writes each <code>MetricsRecord</code> object to a JSON file at a specified path.</td>
+</tr>
+</tbody>
+</table>
+
+<p>More on using those sinks in a Heron cluster can be found in the <a href="../../operators/observability">Heron metrics overview</a>.</p>
 
 <h2 id="java-setup">Java Setup</h2>
 
@@ -46,13 +64,13 @@ library into your project.</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>com.twitter.heron<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>heron-spi<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.16.2<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>0.16.3<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </code></pre></div>
 
 <h4 id="gradle">Gradle</h4>
 <div class="highlight"><pre><code class="language-groovy" data-lang="groovy"><span></span><span class="n">dependencies</span> <span class="o">{</span>
-  <span class="n">compile</span> <span class="nl">group:</span> <span class="s2">&quot;com.twitter.heron&quot;</span><span class="o">,</span> <span class="nl">name:</span> <span class="s2">&quot;heron-spi&quot;</span><span class="o">,</span> <span class="nl">version:</span> <span class="s2">&quot;0.16.2&quot;</span>
+  <span class="n">compile</span> <span class="nl">group:</span> <span class="s2">&quot;com.twitter.heron&quot;</span><span class="o">,</span> <span class="nl">name:</span> <span class="s2">&quot;heron-spi&quot;</span><span class="o">,</span> <span class="nl">version:</span> <span class="s2">&quot;0.16.3&quot;</span>
 <span class="o">}</span>
 </code></pre></div>
 
@@ -62,24 +80,36 @@ library into your project.</p>
 <a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/IMetricsSink.html"><code>IMetricsSink</code></a>
 interface, which requires you to implement the following methods:</p>
 
-<ul>
-<li><code>void init(Map&lt;String, Object&gt; conf, SinkContext context)</code> &mdash; Defines the
-initialization behavior of the sink. The <code>conf</code> map is the configuration that
-is passed to the sink by the <code>.yaml</code> configuration file at
-<code>heron/config/metrics_sink.yaml</code>; the
-<a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/SinkContext.html"><code>SinkContext</code></a>
-object enables you to access values from the sink&rsquo;s runtime context
-(the ID of the metrics manager, the ID of the sink, and the name of the
-topology).</li>
-<li><code>void processRecord(MetricsRecord record)</code> &mdash; Defines how each
-<code>MetricsRecord</code> that passes through the sink is processed.</li>
-<li><code>void flush()</code> &mdash; Flush any buffered metrics; this function is called at
-the interval specified by the <code>flush-frequency-ms</code>. More info can be found in
-the <a href="../../operators/configuration/stmgr">Stream Manager</a> document.</li>
-<li><code>void close()</code> &mdash; Closes the stream and releases any system resources
-associated with it; if the stream is already closed, invoking <code>close()</code> has no
-effect.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Method</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/IMetricsSink.html#init-java.util.Map-com.twitter.heron.spi.metricsmgr.sink.SinkContext-"><code>init</code></a></td>
+<td align="left">Defines the initialization behavior of the sink. The <code>conf</code> map is the configuration that is passed to the sink by the <code>.yaml</code> configuration file at <code>heron/config/metrics_sink.yaml</code>; the <a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/SinkContext.html"><code>SinkContext</code></a> object enables you to access values from the sink&rsquo;s runtime context (the ID of the metrics manager, the ID of the sink, and the name of the topology).</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/IMetricsSink.html#processRecord-com.twitter.heron.spi.metricsmgr.metrics.MetricsRecord-"><code>processRecord</code></a></td>
+<td align="left">Defines how each <a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/metrics/MetricsRecord.html"><code>MetricsRecord</code></a> that passes through the sink is processed.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/IMetricsSink.html#flush--"><code>flush</code></a></td>
+<td align="left">Flush any buffered metrics; this function is called at the interval specified by the <code>flush-frequency-ms</code> parameter. More info can be found in the <a href="../../concepts/architecture#stream-manager">Stream Manager</a> documentation.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://twitter.github.io/heron/api/com/twitter/heron/spi/metricsmgr/sink/IMetricsSink.html#close--"><code>close</code></a></td>
+<td align="left">Closes the stream and releases any system resources associated with it; if the stream is already closed, invoking <code>close()</code> has no effect.</td>
+</tr>
+</tbody>
+</table>
 
 <p>Your implementation of those interfaces will need to be packaged into a JAR file
 and distributed to the <code>heron-core/lib/metricsmgr</code> folder of your <a href="../../developers/compiling/compiling">Heron
@@ -129,47 +159,66 @@ metrics record as it passes through:</p>
 <h2 id="configuring-your-custom-sink">Configuring Your Custom Sink</h2>
 
 <p>The configuration for your sink needs to be provided in the
-<a href="http://www.yaml.org/">YAML</a> file at <code>heron/config/src/yaml/conf/${CLUSTER}/metrics_sinks.yaml</code>.</p>
+<code>metrics_sinks.yaml</code> configuration file in your scheduler&rsquo;s base configuration template.</p>
 
 <p>At the top of that file there&rsquo;s a <code>sinks</code> parameter that lists each available
-sink by name. You should add your sink to that list. Here&rsquo;s an example:</p>
+sink by name. You should add the sink you want to use to that list. Here&rsquo;s an example:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">sinks</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file-sink</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scribe-sink</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">tmaster-sink</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">print-sink</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">prometheus-sink</span>
 </code></pre></div>
 
-<p>For each sink you are required to specify the followings:</p>
+<p>For each sink you are required to specify the following:</p>
 
-<ul>
-<li><code>class</code> &mdash; The Java class name of your custom implementation of the
-<code>IMetricsSink</code> interface, e.g. <code>biz.acme.heron.metrics.PrintSink</code>.</li>
-<li><code>flush-frequency-ms</code> &mdash; The frequency (in milliseconds) at which the
-<code>flush()</code> method is called in your implementation of <code>IMetricsSink</code>.</li>
-<li><code>sink-restart-attempts</code> &mdash; The number of times that a sink will attempt to
-restart if it throws exceptions and dies. If you do not set this, the default
-is 0; if you set it to -1, the sink will attempt to restart forever.</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Description</th>
+</tr>
+</thead>
 
-<p>Below is an example <code>metrics_sink.yaml</code> configuration:</p>
+<tbody>
+<tr>
+<td align="left"><code>class</code></td>
+<td align="left">The Java class name of your custom implementation of the <code>IMetricsSink</code> interface, e.g. <code>biz.acme.heron.metrics.PrintSink</code>.</td>
+</tr>
+
+<tr>
+<td align="left"><code>flush-frequency-ms</code></td>
+<td align="left">The frequency (in milliseconds) at which the <code>flush()</code> method is called in your implementation of <code>IMetricsSink</code>.</td>
+</tr>
+
+<tr>
+<td align="left"><code>sink-restart-attempts</code></td>
+<td align="left">The number of times that a sink will attempt to restart if it throws exceptions and dies. If you do not set this, the default is 0; if you set it to -1, the sink will attempt to restart forever.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Here is an example <code>metrics_sinks.yaml</code> configuration:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">sinks</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">print-sink</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">custom-sink</span>
 
 <span class="l l-Scalar l-Scalar-Plain">print-sink</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="s">&quot;biz.acme.heron.metrics.PrintSink&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="s">&quot;biz.acme.heron.metrics.CustomSink&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">flush-frequency-ms</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">60000</span> <span class="c1"># One minute</span>
   <span class="l l-Scalar l-Scalar-Plain">sink-restart-attempts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-1</span> <span class="c1"># Attempt to restart forever</span>
+  <span class="l l-Scalar l-Scalar-Plain">some-other-config</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 
 <p>It is optional to add other configurations for the sink. All configurations will be constructed
- as an unmodifiable map <code>Map&lt;String, Object&gt; conf</code> and passed to <code>init(conf, context)</code>.</p>
+as an unmodifiable map <code>Map&lt;String, Object&gt; conf</code> and passed to the sink via the <code>init</code> function.</p>
 
 <h2 id="using-your-custom-sink">Using Your Custom Sink</h2>
 
 <p>Once you&rsquo;ve made a JAR for your custom Java sink, distributed that JAR to
 <code>heron-core/lib/metricsmgr</code> folder, and changed the configuration in
-<code>heron/config/src/yaml/conf/${CLUSTER}/metrics_sinks.yaml</code>.
-Any topology submitted using that configuration will include the custom sink.You must <a href="../../developers/compiling">re-compile
-Heron</a> if you want to include the configuration in a new heron-cli distribution.</p>
+<code>metrics_sinks.yaml</code> file in the base configuration template, any topology submitted using that configuration will include the custom sink.</p>
+
+<p>You must <a href="../../developers/compiling">re-compile
+Heron</a> if you want to include the configuration in a new distribution of <a href="../../operators/heron-cli">Heron CLI</a>.</p>
 </article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script></body></html>

@@ -117,6 +117,18 @@
   </url>
   
   <url>
+    <loc>https://twitter.github.io/heron/docs/operators/observability/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/operators/observability/graphite/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/operators/observability/scribe/</loc>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</loc>
   </url>
   
@@ -181,7 +193,7 @@
   </url>
   
   <url>
-    <loc>https://twitter.github.io/heron/docs/operators/observability/graphite/</loc>
+    <loc>https://twitter.github.io/heron/docs/operators/observability/prometheus/</loc>
   </url>
   
   <url>

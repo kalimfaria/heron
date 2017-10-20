@@ -1046,21 +1046,26 @@ table {
           
   <ul>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.__init__">__init__</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.clone">clone</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.consume">consume</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.filter">filter</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.flat_map">flat_map</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.get_name">get_name</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.get_num_partitions">get_num_partitions</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.join">join</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.left_join">left_join</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.log">log</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.map">map</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.outer_join">outer_join</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.reduce_by_key_and_window">reduce_by_key_and_window</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.reduce_by_window">reduce_by_window</a></li>
     <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.repartition">repartition</a></li>
-    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.run">run</a></li>
-    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.sample">sample</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.set_name">set_name</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.set_num_partitions">set_num_partitions</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.transform">transform</a></li>
+    <li class="mono"><a href="#heronpy.dsl.streamlet.Streamlet.union">union</a></li>
   </ul>
 
-        </li>
-        <li class="mono">
-        <span class="class_name"><a href="#heronpy.dsl.streamlet.TimeWindow">TimeWindow</a></span>
-        
         </li>
       </ul>
     </li>
@@ -1095,108 +1100,180 @@ table {
 <span class="c1"># See the License for the specific language governing permissions and</span>
 <span class="c1"># limitations under the License.</span>
 <span class="sd">&#39;&#39;&#39;streamlet.py: module for defining the basic concept of the heron python dsl&#39;&#39;&#39;</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
 
-<span class="kn">from</span> <span class="nn">heronpy.api.topology</span> <span class="kn">import</span> <span class="n">TopologyBuilder</span>
+<span class="kn">from</span> <span class="nn">heronpy.dsl.impl.dslboltbase</span> <span class="kn">import</span> <span class="n">DslBoltBase</span>
 
-<span class="kn">from</span> <span class="nn">heronpy.dsl.dslboltbase</span> <span class="kn">import</span> <span class="n">DslBoltBase</span>
-
-<span class="n">TimeWindow</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;TimeWindow&#39;</span><span class="p">,</span> <span class="s1">&#39;duration sliding_interval&#39;</span><span class="p">)</span>
-
-<span class="c1"># pylint: disable=too-many-instance-attributes</span>
+<span class="c1"># pylint: disable=too-many-instance-attributes, protected-access</span>
 <span class="k">class</span> <span class="nc">Streamlet</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;A Streamlet is a (potentially unbounded) ordered collection of tuples</span>
 <span class="sd">     Streamlets originate from pub/sub systems(such Pulsar/Kafka), or from static data(such as</span>
 <span class="sd">     csv files, HDFS files), or for that matter any other source. They are also created by</span>
 <span class="sd">     transforming existing Streamlets using operations such as map/flat_map, etc.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s parents have to be a list&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span> <span class="o">=</span> <span class="n">parents</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="o">=</span> <span class="n">stage_name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">=</span> <span class="n">parallelism</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">DslBoltBase</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stream_id</span>
 
-  <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets the name of the Streamlet&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+  <span class="k">def</span> <span class="nf">set_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets the number of partitions&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="n">num_partitions</span>
+    <span class="k">return</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">get_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span>
+
+  <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
-    <span class="k">return</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                        <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
+    <span class="n">map_streamlet</span> <span class="o">=</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">map_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">map_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet</span>
 <span class="sd">       and flattening the result</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
-    <span class="k">return</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                            <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
+    <span class="n">fm_streamlet</span> <span class="o">=</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">fm_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fm_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only the elements that satisfy filter_function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
-    <span class="k">return</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                           <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
+    <span class="n">filter_streamlet</span> <span class="o">=</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">filter_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filter_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_fraction</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only sample_fraction fraction of elements</span>
+  <span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing all elements of the this streamlet but having</span>
+<span class="sd">    num_partitions partitions. Note that this is different from num_partitions(n) in</span>
+<span class="sd">    that new streamlet will be created by the repartition call.</span>
+<span class="sd">    If repartiton_function is not None, it is used to decide which parititons</span>
+<span class="sd">    (from 0 to num_partitions -1), it should route each element to.</span>
+<span class="sd">    It could also return a list of partitions if it wants to send it to multiple</span>
+<span class="sd">    partitions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.samplebolt</span> <span class="kn">import</span> <span class="n">SampleStreamlet</span>
-    <span class="k">return</span> <span class="n">SampleStreamlet</span><span class="p">(</span><span class="n">sample_fraction</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                           <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
+    <span class="k">if</span> <span class="n">repartition_function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">repartition_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+    <span class="n">repartition_streamlet</span> <span class="o">=</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">repartition_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">repartition_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parallelism</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a new Streamlet with new parallelism level</span>
+  <span class="c1"># pylint: disable=unused-variable</span>
+  <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_clones</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return num_clones number of streamlets each containing all elements</span>
+<span class="sd">    of the current streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
-    <span class="k">return</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">parallelism</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">)</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">num_clones</span><span class="p">):</span>
+      <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_partitions</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">retval</span>
 
-  <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each element of this Streamlet are collected</span>
+<span class="sd">      over a window defined by window_config and then reduced using the reduce_function</span>
+<span class="sd">      reduce_function takes two element at one time and reduces them to one element that</span>
+<span class="sd">      is used in the subsequent operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebywindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByWindowStreamlet</span>
+    <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduce_streamlet</span>
+
+  <span class="c1">#pylint: disable=protected-access</span>
+  <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a new Streamlet that consists of elements of both this and other_streamlet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.unionbolt</span> <span class="kn">import</span> <span class="n">UnionStreamlet</span>
+    <span class="n">union_streamlet</span> <span class="o">=</span> <span class="n">UnionStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+    <span class="n">other_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">union_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transform_operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a  new Streamlet by applying the transform_operator on each element of this</span>
+<span class="sd">    streamlet. The transform_function is of the type TransformOperator.</span>
+<span class="sd">    Before starting to cycle over the Streamlet, the open function of the transform_operator is</span>
+<span class="sd">    called. This allows the transform_operator to do any kind of initialization/loading, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.transformbolt</span> <span class="kn">import</span> <span class="n">TransformStreamlet</span>
+    <span class="n">transform_streamlet</span> <span class="o">=</span> <span class="n">TransformStreamlet</span><span class="p">(</span><span class="n">transform_operator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">transform_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transform_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Logs all elements of this streamlet. This returns nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.logbolt</span> <span class="kn">import</span> <span class="n">LogStreamlet</span>
+    <span class="n">log_streamlet</span> <span class="o">=</span> <span class="n">LogStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">log_streamlet</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consume_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calls consume_function for each element of this streamlet. This function returns nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.consumebolt</span> <span class="kn">import</span> <span class="n">ConsumeStreamlet</span>
+    <span class="n">consume_streamlet</span> <span class="o">=</span> <span class="n">ConsumeStreamlet</span><span class="p">(</span><span class="n">consume_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">consume_streamlet</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by joining join_streamlet with this streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span>
-    <span class="k">return</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">],</span>
-                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">INNER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A short cut for reduce_by_key_and_window with parallelism of 1</span>
-<span class="sd">       over the time_window and then reduced using the reduce_function</span>
+  <span class="k">def</span> <span class="nf">outer_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet by outer joining join_streamlet with this streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-    <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                         <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">OUTER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                               <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">left_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet by left joining join_streamlet with this streamlet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each (key, value) pair of this Streamlet are collected</span>
 <span class="sd">       over the time_window and then reduced using the reduce_function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-    <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                         <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
-
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Runs the Streamlet. This is run as a Heron python topology under the name</span>
-<span class="sd">       &#39;name&#39;. The config attached is passed on to this Heron topology</span>
-<span class="sd">       Once submitted, run returns immediately</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Job Name has to be a string&quot;</span><span class="p">)</span>
-    <span class="n">bldr</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">stage_names</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">bldr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;config has to be a dict&quot;</span><span class="p">)</span>
-      <span class="n">bldr</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="n">bldr</span><span class="o">.</span><span class="n">build_and_submit</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
+    <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduce_streamlet</span>
 
   <span class="c1">##################################################################</span>
   <span class="c1">### Internal functions</span>
@@ -1204,44 +1281,45 @@ table {
 
   <span class="c1"># pylint: disable=protected-access</span>
   <span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span><span class="p">:</span>
-      <span class="n">parent</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_parallelism</span><span class="p">()</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_stage_name</span><span class="p">(</span><span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="ow">in</span> <span class="n">stage_names</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;duplicated stage name </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span><span class="p">)</span>
-    <span class="n">stage_names</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_build_this</span><span class="p">(</span><span class="n">bldr</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bldr</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Logic error while building&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_this</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="bp">True</span>
+      <span class="k">for</span> <span class="n">children</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+        <span class="n">children</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
 
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_build_this</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_build_this</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators.</span>
 <span class="sd">    :type builder: TopologyBuilder</span>
 <span class="sd">    :param builder: The operator adds in the current streamlet as a spout/bolt</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s _build_this not implemented&quot;</span><span class="p">)</span>
 
-  <span class="c1"># pylint: disable=protected-access</span>
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_calculate_parallelism</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators with a default impl</span>
-<span class="sd">    :return: The parallelism required for this operator</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">parallelism</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span><span class="p">:</span>
-      <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">&gt;</span> <span class="n">parallelism</span><span class="p">:</span>
-        <span class="n">parallelism</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_parallelism</span>
-    <span class="k">return</span> <span class="n">parallelism</span>
+  <span class="k">def</span> <span class="nf">_add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_calculate_stage_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">existing_stage_names</span><span class="p">):</span>
+  <span class="c1">#pylint: disable=no-self-use</span>
+  <span class="k">def</span> <span class="nf">_default_stage_name_calculator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">existing_stage_names</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators to get the name of the Streamlet</span>
 <span class="sd">    :return: The name of the operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s calculate stage name not implemented&quot;</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">calculated_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+      <span class="n">calculated_name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">calculated_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">existing_stage_names</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calculated_name</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="s2">&quot;Should Never Got Here&quot;</span>
+
+  <span class="k">def</span> <span class="nf">_all_built</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">child</span><span class="o">.</span><span class="n">_all_built</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
 </pre></div>
 
   </div>
@@ -1270,92 +1348,169 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
 <span class="sd">     csv files, HDFS files), or for that matter any other source. They are also created by</span>
 <span class="sd">     transforming existing Streamlets using operations such as map/flat_map, etc.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s parents have to be a list&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span> <span class="o">=</span> <span class="n">parents</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="o">=</span> <span class="n">stage_name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">=</span> <span class="n">parallelism</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">DslBoltBase</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stream_id</span>
 
-  <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets the name of the Streamlet&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">return</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+  <span class="k">def</span> <span class="nf">set_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Sets the number of partitions&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="n">num_partitions</span>
+    <span class="k">return</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">get_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span>
+
+  <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
-    <span class="k">return</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                        <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
+    <span class="n">map_streamlet</span> <span class="o">=</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">map_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">map_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet</span>
 <span class="sd">       and flattening the result</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
-    <span class="k">return</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                            <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
+    <span class="n">fm_streamlet</span> <span class="o">=</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">fm_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fm_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only the elements that satisfy filter_function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
-    <span class="k">return</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                           <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
+    <span class="n">filter_streamlet</span> <span class="o">=</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">filter_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">filter_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_fraction</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only sample_fraction fraction of elements</span>
+  <span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing all elements of the this streamlet but having</span>
+<span class="sd">    num_partitions partitions. Note that this is different from num_partitions(n) in</span>
+<span class="sd">    that new streamlet will be created by the repartition call.</span>
+<span class="sd">    If repartiton_function is not None, it is used to decide which parititons</span>
+<span class="sd">    (from 0 to num_partitions -1), it should route each element to.</span>
+<span class="sd">    It could also return a list of partitions if it wants to send it to multiple</span>
+<span class="sd">    partitions.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.samplebolt</span> <span class="kn">import</span> <span class="n">SampleStreamlet</span>
-    <span class="k">return</span> <span class="n">SampleStreamlet</span><span class="p">(</span><span class="n">sample_fraction</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                           <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
+    <span class="k">if</span> <span class="n">repartition_function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+      <span class="n">repartition_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+    <span class="n">repartition_streamlet</span> <span class="o">=</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">repartition_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">repartition_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parallelism</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return a new Streamlet with new parallelism level</span>
+  <span class="c1"># pylint: disable=unused-variable</span>
+  <span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_clones</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return num_clones number of streamlets each containing all elements</span>
+<span class="sd">    of the current streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
-    <span class="k">return</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">parallelism</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">)</span>
+    <span class="n">retval</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">num_clones</span><span class="p">):</span>
+      <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_partitions</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">retval</span>
 
-  <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each element of this Streamlet are collected</span>
+<span class="sd">      over a window defined by window_config and then reduced using the reduce_function</span>
+<span class="sd">      reduce_function takes two element at one time and reduces them to one element that</span>
+<span class="sd">      is used in the subsequent operations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebywindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByWindowStreamlet</span>
+    <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduce_streamlet</span>
+
+  <span class="c1">#pylint: disable=protected-access</span>
+  <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a new Streamlet that consists of elements of both this and other_streamlet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.unionbolt</span> <span class="kn">import</span> <span class="n">UnionStreamlet</span>
+    <span class="n">union_streamlet</span> <span class="o">=</span> <span class="n">UnionStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+    <span class="n">other_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">union_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transform_operator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a  new Streamlet by applying the transform_operator on each element of this</span>
+<span class="sd">    streamlet. The transform_function is of the type TransformOperator.</span>
+<span class="sd">    Before starting to cycle over the Streamlet, the open function of the transform_operator is</span>
+<span class="sd">    called. This allows the transform_operator to do any kind of initialization/loading, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.transformbolt</span> <span class="kn">import</span> <span class="n">TransformStreamlet</span>
+    <span class="n">transform_streamlet</span> <span class="o">=</span> <span class="n">TransformStreamlet</span><span class="p">(</span><span class="n">transform_operator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">transform_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">transform_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Logs all elements of this streamlet. This returns nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.logbolt</span> <span class="kn">import</span> <span class="n">LogStreamlet</span>
+    <span class="n">log_streamlet</span> <span class="o">=</span> <span class="n">LogStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">log_streamlet</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consume_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calls consume_function for each element of this streamlet. This function returns nothing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.consumebolt</span> <span class="kn">import</span> <span class="n">ConsumeStreamlet</span>
+    <span class="n">consume_streamlet</span> <span class="o">=</span> <span class="n">ConsumeStreamlet</span><span class="p">(</span><span class="n">consume_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">consume_streamlet</span><span class="p">)</span>
+    <span class="k">return</span>
+
+  <span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet by joining join_streamlet with this streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span>
-    <span class="k">return</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">],</span>
-                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">INNER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A short cut for reduce_by_key_and_window with parallelism of 1</span>
-<span class="sd">       over the time_window and then reduced using the reduce_function</span>
+  <span class="k">def</span> <span class="nf">outer_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet by outer joining join_streamlet with this streamlet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-    <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                         <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">OUTER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
 
-  <span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                               <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">left_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a new Streamlet by left joining join_streamlet with this streamlet</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+    <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                   <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">join_streamlet</span>
+
+  <span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each (key, value) pair of this Streamlet are collected</span>
 <span class="sd">       over the time_window and then reduced using the reduce_function</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-    <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                         <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                         <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
-
-  <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Runs the Streamlet. This is run as a Heron python topology under the name</span>
-<span class="sd">       &#39;name&#39;. The config attached is passed on to this Heron topology</span>
-<span class="sd">       Once submitted, run returns immediately</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Job Name has to be a string&quot;</span><span class="p">)</span>
-    <span class="n">bldr</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">stage_names</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">bldr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;config has to be a dict&quot;</span><span class="p">)</span>
-      <span class="n">bldr</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="n">bldr</span><span class="o">.</span><span class="n">build_and_submit</span><span class="p">()</span>
+    <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
+    <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">reduce_streamlet</span>
 
   <span class="c1">##################################################################</span>
   <span class="c1">### Internal functions</span>
@@ -1363,44 +1518,45 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
 
   <span class="c1"># pylint: disable=protected-access</span>
   <span class="k">def</span> <span class="nf">_build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span><span class="p">:</span>
-      <span class="n">parent</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_parallelism</span><span class="p">()</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_stage_name</span><span class="p">(</span><span class="n">stage_names</span><span class="p">)</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="ow">in</span> <span class="n">stage_names</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;duplicated stage name </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span><span class="p">)</span>
-    <span class="n">stage_names</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_build_this</span><span class="p">(</span><span class="n">bldr</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bldr</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Logic error while building&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_this</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="bp">True</span>
+      <span class="k">for</span> <span class="n">children</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+        <span class="n">children</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
 
   <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_build_this</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">_build_this</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">builder</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators.</span>
 <span class="sd">    :type builder: TopologyBuilder</span>
 <span class="sd">    :param builder: The operator adds in the current streamlet as a spout/bolt</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s _build_this not implemented&quot;</span><span class="p">)</span>
 
-  <span class="c1"># pylint: disable=protected-access</span>
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_calculate_parallelism</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators with a default impl</span>
-<span class="sd">    :return: The parallelism required for this operator</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">parallelism</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span><span class="p">:</span>
-      <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">&gt;</span> <span class="n">parallelism</span><span class="p">:</span>
-        <span class="n">parallelism</span> <span class="o">=</span> <span class="n">parent</span><span class="o">.</span><span class="n">_parallelism</span>
-    <span class="k">return</span> <span class="n">parallelism</span>
+  <span class="k">def</span> <span class="nf">_add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">child</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
 
-  <span class="nd">@abstractmethod</span>
-  <span class="k">def</span> <span class="nf">_calculate_stage_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">existing_stage_names</span><span class="p">):</span>
+  <span class="c1">#pylint: disable=no-self-use</span>
+  <span class="k">def</span> <span class="nf">_default_stage_name_calculator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">existing_stage_names</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This is the method that&#39;s implemented by the operators to get the name of the Streamlet</span>
 <span class="sd">    :return: The name of the operator</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s calculate stage name not implemented&quot;</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">calculated_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+      <span class="n">calculated_name</span> <span class="o">=</span> <span class="n">prefix</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">calculated_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">existing_stage_names</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">calculated_name</span>
+      <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="s2">&quot;Should Never Got Here&quot;</span>
+
+  <span class="k">def</span> <span class="nf">_all_built</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span><span class="p">:</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">child</span><span class="o">.</span><span class="n">_all_built</span><span class="p">():</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    <span class="k">return</span> <span class="bp">True</span>
 </pre></div>
 
   </div>
@@ -1417,7 +1573,7 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.__init__">
-    <p>def <span class="ident">__init__</span>(</p><p>self, parents, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">__init__</span>(</p><p>self)</p>
     </div>
     
 
@@ -1426,14 +1582,14 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.__init__', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.__init__" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parents</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parents</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Streamlet&#39;s parents have to be a list&quot;</span><span class="p">)</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_parents</span> <span class="o">=</span> <span class="n">parents</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_stage_name</span> <span class="o">=</span> <span class="n">stage_name</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_parallelism</span> <span class="o">=</span> <span class="n">parallelism</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="bp">None</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="bp">False</span>
   <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">DslBoltBase</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stream_id</span>
 </pre></div>
 
@@ -1444,8 +1600,64 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
   
             
   <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.clone">
+    <p>def <span class="ident">clone</span>(</p><p>self, num_clones)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return num_clones number of streamlets each containing all elements
+of the current streamlet</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.clone', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.clone" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">clone</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_clones</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return num_clones number of streamlets each containing all elements</span>
+<span class="sd">  of the current streamlet</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">retval</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">num_clones</span><span class="p">):</span>
+    <span class="n">retval</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_num_partitions</span><span class="p">()))</span>
+  <span class="k">return</span> <span class="n">retval</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.consume">
+    <p>def <span class="ident">consume</span>(</p><p>self, consume_function)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Calls consume_function for each element of this streamlet. This function returns nothing</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.consume', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.consume" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">consume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">consume_function</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Calls consume_function for each element of this streamlet. This function returns nothing</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.consumebolt</span> <span class="kn">import</span> <span class="n">ConsumeStreamlet</span>
+  <span class="n">consume_streamlet</span> <span class="o">=</span> <span class="n">ConsumeStreamlet</span><span class="p">(</span><span class="n">consume_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">consume_streamlet</span><span class="p">)</span>
+  <span class="k">return</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.filter">
-    <p>def <span class="ident">filter</span>(</p><p>self, filter_function, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">filter</span>(</p><p>self, filter_function)</p>
     </div>
     
 
@@ -1455,12 +1667,13 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.filter', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.filter" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_function</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only the elements that satisfy filter_function</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
-  <span class="k">return</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                         <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.filterbolt</span> <span class="kn">import</span> <span class="n">FilterStreamlet</span>
+  <span class="n">filter_streamlet</span> <span class="o">=</span> <span class="n">FilterStreamlet</span><span class="p">(</span><span class="n">filter_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">filter_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">filter_streamlet</span>
 </pre></div>
 
   </div>
@@ -1471,7 +1684,7 @@ transforming existing Streamlets using operations such as map/flat_map, etc.</p>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.flat_map">
-    <p>def <span class="ident">flat_map</span>(</p><p>self, flatmap_function, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">flat_map</span>(</p><p>self, flatmap_function)</p>
     </div>
     
 
@@ -1482,13 +1695,56 @@ and flattening the result</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.flat_map', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.flat_map" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">flat_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flatmap_function</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet</span>
 <span class="sd">     and flattening the result</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
-  <span class="k">return</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                          <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.flatmapbolt</span> <span class="kn">import</span> <span class="n">FlatMapStreamlet</span>
+  <span class="n">fm_streamlet</span> <span class="o">=</span> <span class="n">FlatMapStreamlet</span><span class="p">(</span><span class="n">flatmap_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">fm_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">fm_streamlet</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.get_name">
+    <p>def <span class="ident">get_name</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.get_name', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.get_name" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.get_num_partitions">
+    <p>def <span class="ident">get_num_partitions</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.get_num_partitions', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.get_num_partitions" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span>
 </pre></div>
 
   </div>
@@ -1499,7 +1755,7 @@ and flattening the result</p></div>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.join">
-    <p>def <span class="ident">join</span>(</p><p>self, join_streamlet, time_window, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">join</span>(</p><p>self, join_streamlet, window_config, join_function)</p>
     </div>
     
 
@@ -1509,12 +1765,71 @@ and flattening the result</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.join', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.join" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return a new Streamlet by joining join_streamlet with this streamlet</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span>
-  <span class="k">return</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">],</span>
-                       <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+  <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">INNER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                 <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">join_streamlet</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.left_join">
+    <p>def <span class="ident">left_join</span>(</p><p>self, join_streamlet, window_config, join_function)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a new Streamlet by left joining join_streamlet with this streamlet</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.left_join', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.left_join" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">left_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return a new Streamlet by left joining join_streamlet with this streamlet</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+  <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                 <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">join_streamlet</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.log">
+    <p>def <span class="ident">log</span>(</p><p>self)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Logs all elements of this streamlet. This returns nothing</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.log', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.log" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Logs all elements of this streamlet. This returns nothing</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.logbolt</span> <span class="kn">import</span> <span class="n">LogStreamlet</span>
+  <span class="n">log_streamlet</span> <span class="o">=</span> <span class="n">LogStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">log_streamlet</span><span class="p">)</span>
+  <span class="k">return</span>
 </pre></div>
 
   </div>
@@ -1525,7 +1840,7 @@ and flattening the result</p></div>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.map">
-    <p>def <span class="ident">map</span>(</p><p>self, map_function, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">map</span>(</p><p>self, map_function)</p>
     </div>
     
 
@@ -1535,12 +1850,42 @@ and flattening the result</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.map', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.map" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">map_function</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return a new Streamlet by applying map_function to each element of this Streamlet.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
-  <span class="k">return</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                      <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.mapbolt</span> <span class="kn">import</span> <span class="n">MapStreamlet</span>
+  <span class="n">map_streamlet</span> <span class="o">=</span> <span class="n">MapStreamlet</span><span class="p">(</span><span class="n">map_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">map_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">map_streamlet</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.outer_join">
+    <p>def <span class="ident">outer_join</span>(</p><p>self, join_streamlet, window_config, join_function)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Return a new Streamlet by outer joining join_streamlet with this streamlet</p></div>
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.outer_join', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.outer_join" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">outer_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">join_function</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return a new Streamlet by outer joining join_streamlet with this streamlet</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.joinbolt</span> <span class="kn">import</span> <span class="n">JoinStreamlet</span><span class="p">,</span> <span class="n">JoinBolt</span>
+  <span class="n">join_streamlet</span> <span class="o">=</span> <span class="n">JoinStreamlet</span><span class="p">(</span><span class="n">JoinBolt</span><span class="o">.</span><span class="n">OUTER</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span>
+                                 <span class="n">join_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="n">join_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">join_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">join_streamlet</span>
 </pre></div>
 
   </div>
@@ -1551,7 +1896,7 @@ and flattening the result</p></div>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.reduce_by_key_and_window">
-    <p>def <span class="ident">reduce_by_key_and_window</span>(</p><p>self, time_window, reduce_function, stage_name=None, parallelism=None)</p>
+    <p>def <span class="ident">reduce_by_key_and_window</span>(</p><p>self, window_config, reduce_function)</p>
     </div>
     
 
@@ -1562,15 +1907,14 @@ over the time_window and then reduced using the reduce_function</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.reduce_by_key_and_window', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.reduce_by_key_and_window" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                             <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">reduce_by_key_and_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each (key, value) pair of this Streamlet are collected</span>
 <span class="sd">     over the time_window and then reduced using the reduce_function</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-  <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                       <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                       <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
+  <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">reduce_streamlet</span>
 </pre></div>
 
   </div>
@@ -1581,25 +1925,29 @@ over the time_window and then reduced using the reduce_function</p></div>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.reduce_by_window">
-    <p>def <span class="ident">reduce_by_window</span>(</p><p>self, time_window, reduce_function, stage_name=None)</p>
+    <p>def <span class="ident">reduce_by_window</span>(</p><p>self, window_config, reduce_function)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>A short cut for reduce_by_key_and_window with parallelism of 1
-over the time_window and then reduced using the reduce_function</p></div>
+    <div class="desc"><p>Return a new Streamlet in which each element of this Streamlet are collected
+over a window defined by window_config and then reduced using the reduce_function
+reduce_function takes two element at one time and reduces them to one element that
+is used in the subsequent operations.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.reduce_by_window', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.reduce_by_window" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;A short cut for reduce_by_key_and_window with parallelism of 1</span>
-<span class="sd">     over the time_window and then reduced using the reduce_function</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">reduce_by_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return a new Streamlet in which each element of this Streamlet are collected</span>
+<span class="sd">    over a window defined by window_config and then reduced using the reduce_function</span>
+<span class="sd">    reduce_function takes two element at one time and reduces them to one element that</span>
+<span class="sd">    is used in the subsequent operations.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.reducebykeyandwindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByKeyAndWindowStreamlet</span>
-  <span class="k">return</span> <span class="n">ReduceByKeyAndWindowStreamlet</span><span class="p">(</span><span class="n">time_window</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span>
-                                       <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span>
-                                       <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.reducebywindowbolt</span> <span class="kn">import</span> <span class="n">ReduceByWindowStreamlet</span>
+  <span class="n">reduce_streamlet</span> <span class="o">=</span> <span class="n">ReduceByWindowStreamlet</span><span class="p">(</span><span class="n">window_config</span><span class="p">,</span> <span class="n">reduce_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">reduce_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">reduce_streamlet</span>
 </pre></div>
 
   </div>
@@ -1610,21 +1958,37 @@ over the time_window and then reduced using the reduce_function</p></div>
             
   <div class="item">
     <div class="name def" id="heronpy.dsl.streamlet.Streamlet.repartition">
-    <p>def <span class="ident">repartition</span>(</p><p>self, parallelism, stage_name=None)</p>
+    <p>def <span class="ident">repartition</span>(</p><p>self, num_partitions, repartition_function=None)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>Return a new Streamlet with new parallelism level</p></div>
+    <div class="desc"><p>Return a new Streamlet containing all elements of the this streamlet but having
+num_partitions partitions. Note that this is different from num_partitions(n) in
+that new streamlet will be created by the repartition call.
+If repartiton_function is not None, it is used to decide which parititons
+(from 0 to num_partitions -1), it should route each element to.
+It could also return a list of partitions if it wants to send it to multiple
+partitions.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.repartition', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.dsl.streamlet.Streamlet.repartition" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parallelism</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Return a new Streamlet with new parallelism level</span>
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">repartition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing all elements of the this streamlet but having</span>
+<span class="sd">  num_partitions partitions. Note that this is different from num_partitions(n) in</span>
+<span class="sd">  that new streamlet will be created by the repartition call.</span>
+<span class="sd">  If repartiton_function is not None, it is used to decide which parititons</span>
+<span class="sd">  (from 0 to num_partitions -1), it should route each element to.</span>
+<span class="sd">  It could also return a list of partitions if it wants to send it to multiple</span>
+<span class="sd">  partitions.</span>
 <span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
-  <span class="k">return</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">parallelism</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">)</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.repartitionbolt</span> <span class="kn">import</span> <span class="n">RepartitionStreamlet</span>
+  <span class="k">if</span> <span class="n">repartition_function</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="n">repartition_function</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span>
+  <span class="n">repartition_streamlet</span> <span class="o">=</span> <span class="n">RepartitionStreamlet</span><span class="p">(</span><span class="n">num_partitions</span><span class="p">,</span> <span class="n">repartition_function</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">repartition_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">repartition_streamlet</span>
 </pre></div>
 
   </div>
@@ -1634,34 +1998,21 @@ over the time_window and then reduced using the reduce_function</p></div>
   
             
   <div class="item">
-    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.run">
-    <p>def <span class="ident">run</span>(</p><p>self, name, config=None)</p>
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.set_name">
+    <p>def <span class="ident">set_name</span>(</p><p>self, name)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>Runs the Streamlet. This is run as a Heron python topology under the name
-'name'. The config attached is passed on to this Heron topology
-Once submitted, run returns immediately</p></div>
+    <div class="desc"><p>Sets the name of the Streamlet</p></div>
   <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.run', this);">Show source &equiv;</a></p>
-  <div id="source-heronpy.dsl.streamlet.Streamlet.run" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Runs the Streamlet. This is run as a Heron python topology under the name</span>
-<span class="sd">     &#39;name&#39;. The config attached is passed on to this Heron topology</span>
-<span class="sd">     Once submitted, run returns immediately</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Job Name has to be a string&quot;</span><span class="p">)</span>
-  <span class="n">bldr</span> <span class="o">=</span> <span class="n">TopologyBuilder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-  <span class="n">stage_names</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="n">bldr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build</span><span class="p">(</span><span class="n">bldr</span><span class="p">,</span> <span class="n">stage_names</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;config has to be a dict&quot;</span><span class="p">)</span>
-    <span class="n">bldr</span><span class="o">.</span><span class="n">set_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-  <span class="n">bldr</span><span class="o">.</span><span class="n">build_and_submit</span><span class="p">()</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.set_name', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.set_name" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets the name of the Streamlet&quot;&quot;&quot;</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span>
+  <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 
   </div>
@@ -1671,23 +2022,21 @@ Once submitted, run returns immediately</p></div>
   
             
   <div class="item">
-    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.sample">
-    <p>def <span class="ident">sample</span>(</p><p>self, sample_fraction, stage_name=None, parallelism=None)</p>
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.set_num_partitions">
+    <p>def <span class="ident">set_num_partitions</span>(</p><p>self, num_partitions)</p>
     </div>
     
 
     
   
-    <div class="desc"><p>Return a new Streamlet containing only sample_fraction fraction of elements</p></div>
+    <div class="desc"><p>Sets the number of partitions</p></div>
   <div class="source_cont">
-  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.sample', this);">Show source &equiv;</a></p>
-  <div id="source-heronpy.dsl.streamlet.Streamlet.sample" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sample_fraction</span><span class="p">,</span> <span class="n">stage_name</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">parallelism</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Return a new Streamlet containing only sample_fraction fraction of elements</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="kn">from</span> <span class="nn">heronpy.dsl.samplebolt</span> <span class="kn">import</span> <span class="n">SampleStreamlet</span>
-  <span class="k">return</span> <span class="n">SampleStreamlet</span><span class="p">(</span><span class="n">sample_fraction</span><span class="p">,</span> <span class="n">parents</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">],</span> <span class="n">stage_name</span><span class="o">=</span><span class="n">stage_name</span><span class="p">,</span>
-                         <span class="n">parallelism</span><span class="o">=</span><span class="n">parallelism</span><span class="p">)</span>
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.set_num_partitions', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.set_num_partitions" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_num_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_partitions</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets the number of partitions&quot;&quot;&quot;</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_num_partitions</span> <span class="o">=</span> <span class="n">num_partitions</span>
+  <span class="k">return</span> <span class="bp">self</span>
 </pre></div>
 
   </div>
@@ -1695,48 +2044,67 @@ Once submitted, run returns immediately</p></div>
 
   </div>
   
-      </div>
-      </div>
-      
-      <div class="item">
-      <p id="heronpy.dsl.streamlet.TimeWindow" class="name">class <span class="ident">TimeWindow</span></p>
-      
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.transform">
+    <p>def <span class="ident">transform</span>(</p><p>self, transform_operator)</p>
+    </div>
+    
+
+    
   
-    <div class="desc"><p>TimeWindow(duration, sliding_interval)</p></div>
+    <div class="desc"><p>Returns a  new Streamlet by applying the transform_operator on each element of this
+streamlet. The transform_function is of the type TransformOperator.
+Before starting to cycle over the Streamlet, the open function of the transform_operator is
+called. This allows the transform_operator to do any kind of initialization/loading, etc.</p></div>
   <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.transform', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.transform" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">transform_operator</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a  new Streamlet by applying the transform_operator on each element of this</span>
+<span class="sd">  streamlet. The transform_function is of the type TransformOperator.</span>
+<span class="sd">  Before starting to cycle over the Streamlet, the open function of the transform_operator is</span>
+<span class="sd">  called. This allows the transform_operator to do any kind of initialization/loading, etc.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.transformbolt</span> <span class="kn">import</span> <span class="n">TransformStreamlet</span>
+  <span class="n">transform_streamlet</span> <span class="o">=</span> <span class="n">TransformStreamlet</span><span class="p">(</span><span class="n">transform_operator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">transform_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">transform_streamlet</span>
+</pre></div>
+
+  </div>
 </div>
 
-
-      <div class="class">
-          <h3>Ancestors (in MRO)</h3>
-          <ul class="class_list">
-          <li><a href="#heronpy.dsl.streamlet.TimeWindow">TimeWindow</a></li>
-          <li>__builtin__.tuple</li>
-          <li>__builtin__.object</li>
-          </ul>
-          <h3>Instance variables</h3>
-            <div class="item">
-            <p id="heronpy.dsl.streamlet.TimeWindow.duration" class="name">var <span class="ident">duration</span></p>
-            
-
-            
+  </div>
   
-    <div class="desc"><p>Alias for field number 0</p></div>
+            
+  <div class="item">
+    <div class="name def" id="heronpy.dsl.streamlet.Streamlet.union">
+    <p>def <span class="ident">union</span>(</p><p>self, other_streamlet)</p>
+    </div>
+    
+
+    
+  
+    <div class="desc"><p>Returns a new Streamlet that consists of elements of both this and other_streamlet</p></div>
   <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.dsl.streamlet.Streamlet.union', this);">Show source &equiv;</a></p>
+  <div id="source-heronpy.dsl.streamlet.Streamlet.union" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a new Streamlet that consists of elements of both this and other_streamlet</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="kn">from</span> <span class="nn">heronpy.dsl.impl.unionbolt</span> <span class="kn">import</span> <span class="n">UnionStreamlet</span>
+  <span class="n">union_streamlet</span> <span class="o">=</span> <span class="n">UnionStreamlet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_streamlet</span><span class="p">)</span>
+  <span class="bp">self</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+  <span class="n">other_streamlet</span><span class="o">.</span><span class="n">_add_child</span><span class="p">(</span><span class="n">union_streamlet</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">union_streamlet</span>
+</pre></div>
+
+  </div>
 </div>
 
-            </div>
-            <div class="item">
-            <p id="heronpy.dsl.streamlet.TimeWindow.sliding_interval" class="name">var <span class="ident">sliding_interval</span></p>
-            
-
-            
+  </div>
   
-    <div class="desc"><p>Alias for field number 1</p></div>
-  <div class="source_cont">
-</div>
-
-            </div>
       </div>
       </div>
 
