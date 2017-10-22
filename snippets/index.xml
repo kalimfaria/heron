@@ -12,6 +12,16 @@
     
     <item>
       <title></title>
+      <link>https://twitter.github.io/heron/snippets/heron-on-kubernetes-config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/snippets/heron-on-kubernetes-config/</guid>
+      <description>Heron on Kubernetes configuration Current Limitations Only the submit and kill commands are currently supported. Other CLI commands (activate, deactivate, restart, update) are currently in development and will be released soon.
+Zookeeper To run Heron on k8s, you will need a Zookeeper cluster. You can choose to use a zookeeper cluster outside of k8s if you&amp;rsquo;d like (only if it&amp;rsquo;s accessible from the k8s cluster nodes), but most often you will probably want to deploy your own Zookeeper cluster inside of k8s.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://twitter.github.io/heron/snippets/heron-streamlet-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
