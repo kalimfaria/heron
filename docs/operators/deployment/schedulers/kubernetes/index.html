@@ -134,7 +134,7 @@ deployed to your Kubernetes cluster for that topology.</p>
 
 <h2 id="google-container-engine">Google Container Engine</h2>
 
-<p><a href="https://cloud.google.com/container-engine/">Google Container Engine</a> (GKE) enables you to run Kubernetes clusters on <a href="https://cloud.google.com/">Google Cloud Platform</a></p>
+<p>You can use <a href="https://cloud.google.com/container-engine/">Google Container Engine</a> (GKE) to run Kubernetes clusters on <a href="https://cloud.google.com/">Google Cloud Platform</a>.</p>
 
 <h3 id="requirements-2">Requirements</h3>
 
@@ -144,24 +144,43 @@ deployed to your Kubernetes cluster for that topology.</p>
   --num-nodes<span class="o">=</span>3
 </code></pre></div>
 
+<p>You can specify a non-default zone and/or project using the <code>--zone</code> and <code>--project</code> flags, respectively.</p>
+
 <p>Once the cluster is up and running, enable your local <code>kubectl</code> to interact with the cluster by fetching your GKE cluster&rsquo;s credentials:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gcloud container clusters get-credentials heron-gke-cluster
 Fetching cluster endpoint and auth data.
 kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 </code></pre></div>
 
-<p>You&rsquo;ll also need to create a <a href="https://cloud.google.com/storage/">Google Cloud Storage</a> bucket to store uploaded topology artifacts. To create a new bucket:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gsutil mb gs://my-heron-bucket
-</code></pre></div>
-
-<p>Cloud Storage bucket names must be globally unique, so make sure to choose a bucket name carefully. Once you&rsquo;ve created a bucket, you need to create a Kubernetes <a href="svc/heron-apiserver">ConfigMap</a> that specifies the bucket name. Here&rsquo;s an example:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create configmap heron-apiserver-config <span class="se">\</span>
-  --from-literal<span class="o">=</span>gcs.bucket<span class="o">=</span>BUCKET-NAME
-</code></pre></div>
-
 <p>Finally, you need to create a Kubernetes <a href="https://kubernetes.io/docs/concepts/configuration/secret">secret</a> that specifies the Cloud Platform connection credentials for your service account. First, download your Cloud Platform credentials as a JSON file, say <code>key.json</code>. This command will download your credentials:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gcloud iam service-accounts create key.json <span class="se">\</span>
   --iam-account<span class="o">=</span>YOUR-ACCOUNT
+</code></pre></div>
+
+<h3 id="topology-artifact-storage">Topology artifact storage</h3>
+
+<p>Heron on Google Container Engine supports two static file storage options for topology artifacts:</p>
+
+<ul>
+<li><a href="#google-cloud-storage-setup">Google Cloud Storage</a></li>
+<li><a href="#bookkeeper-setup">BookKeeper</a></li>
+</ul>
+
+<h4 id="google-cloud-storage-setup">Google Cloud Storage setup</h4>
+
+<p>If you&rsquo;re running Heron on GKE, you can use either <a href="https://cloud.google.com/storage/">Google Cloud Storage</a> or <a href="https://bookkeeper.apache.org">Apache BookKeeper</a> for topology artifact storage.</p>
+
+<blockquote>
+<p>If you&rsquo;d like to use BookKeeper instead of Google Cloud Storage, skip to the <a href="#bookkeeper-setup">BookKeeper</a> section below.</p>
+</blockquote>
+
+<p>To use Google Cloud Storage for artifact storage, you&rsquo;ll need to create a <a href="https://cloud.google.com/storage/">Google Cloud Storage</a> bucket. Here&rsquo;s an example bucket creation command using <a href="https://cloud.google.com/storage/docs/gsutil"><code>gsutil</code>&lsquo;</a>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ gsutil mb gs://my-heron-bucket
+</code></pre></div>
+
+<p>Cloud Storage bucket names must be globally unique, so make sure to choose a bucket name carefully. Once you&rsquo;ve created a bucket, you need to create a Kubernetes <a href="https://kubernetes.io/docs/tasks/configure-pod-container/configmap/">ConfigMap</a> that specifies the bucket name. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create configmap heron-apiserver-config <span class="se">\</span>
+  --from-literal<span class="o">=</span>gcs.bucket<span class="o">=</span>BUCKET-NAME
 </code></pre></div>
 
 <blockquote>
@@ -172,6 +191,8 @@ kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create secret generic heron-gcs-key <span class="se">\</span>
   --from-file<span class="o">=</span>key.json<span class="o">=</span>key.json
 </code></pre></div>
+
+<p>Once you&rsquo;ve created a bucket, a <code>ConfigMap</code>, and a secret, you can move on to <a href="#starting-components">starting up</a> the various components of your Heron installation.</p>
 
 <h3 id="starting-components-1">Starting components</h3>
 
@@ -185,7 +206,17 @@ kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/zookeeper.yaml
 </code></pre></div>
 
-<h4 id="heron-tools-1">Heron tools</h4>
+<h4 id="bookkeeper-setup">BookKeeper setup</h4>
+
+<blockquote>
+<p>If you&rsquo;re using <a href="#google-cloud-storage-setup">Google Cloud Storage</a> for topology artifact storage, skip to the <a href="#heron-tools-gke">Heron tools</a> section below.</p>
+</blockquote>
+
+<p>To start up an <a href="https://bookkeeper.apache.org">Apache BookKeeper</a> cluster for Heron:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/bookkeeper.yaml
+</code></pre></div>
+
+<h4 id="heron-tools-a-id-heron-tools-gke-a">Heron tools <a id="heron-tools-gke"></a></h4>
 
 <p>The so-called &ldquo;Heron tools&rdquo; include the <a href="../../../heron-ui">Heron UI</a> and the <a href="../../../heron-tracker">Heron Tracker</a>. To start up the Heron tools:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/tools.yaml
@@ -193,8 +224,14 @@ kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 
 <h4 id="heron-api-server-1">Heron API server</h4>
 
-<p>The Heron API server is the endpoint that the Heron CLI client uses to interact with the other components of Heron. To start up the Heron API server on your GKE cluster:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/apiserver.yaml
+<p>The <a href="../../../heron-api-server">Heron API server</a> is the endpoint that the <a href="../../../heron-cli">Heron CLI client</a> uses to interact with the other components of Heron. Heron on Google Container Engine has two separate versions of the Heron API server that you can run depending on which artifact storage system you&rsquo;re using (<a href="#google-cloud-storage-setup">Google Cloud Storage</a> or <a href="#bookkeeper-setup">Apache BookKeeper</a>).</p>
+
+<p>If you&rsquo;re using Google Cloud Storage:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/gcs-apiserver.yaml
+</code></pre></div>
+
+<p>If you&rsquo;re using Apache BookKeeper:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/bookkeeper-apiserver.yaml
 </code></pre></div>
 
 <h3 id="managing-topologies-1">Managing topologies</h3>
@@ -267,7 +304,7 @@ kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/general/bookkeeper.yaml
 </code></pre></div>
 
-<h4 id="heron-tools-2">Heron tools</h4>
+<h4 id="heron-tools-1">Heron tools</h4>
 
 <p>The so-called &ldquo;Heron tools&rdquo; include the <a href="../../../heron-ui">Heron UI</a> and the <a href="../../../heron-tracker">Heron Tracker</a>. To start up the Heron tools:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ kubectl create -f https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/general/tools.yaml

@@ -192,6 +192,170 @@ between a <code>word</code> spout and an <code>exclaim</code> bolt.</p>
 <li><code>ATLEAST_ONCE</code></li>
 <li><code>EFFECTIVELY_ONCE</code></li>
 </ul>
+
+<h2 id="acking">Acking</h2>
+
+<p>In distributed systems, an <strong>ack</strong> (short for &ldquo;acknowledgment&rdquo;) is a message that confirms that some action has been taken. In Heron, you can create <a href="#acking-bolts">bolts</a> that emit acks when some desired operation has occurred (for example data has been successfully stored in a database or a message has been successfully produced on a topic in a pub-sub messaging system). Those acks can then be received and acted upon by upstream <a href="#ack-receiving-spouts">spouts</a>.</p>
+
+<blockquote>
+<p>You can see acking at work in a complete Heron topology in <a href="https://github.com/twitter/heron/blob/master/examples/src/java/com/twitter/heron/examples/api/AckingTopology.java">this topology</a>.</p>
+</blockquote>
+
+<p>Whereas acking a tuple indicates that some operation has succeeded, the opposite can be indicated when a bolt <a href="#failing">fails</a> a tuple.</p>
+
+<h3 id="acking-bolts">Acking bolts</h3>
+
+<p>Each Heron bolt has an <code>OutputCollector</code> that can ack tuples using the <code>ack</code> method. Tuples can be acked inside the <code>execute</code> method that each bolt uses to process incoming tuples. <em>When</em> a bolt acks tuples is up to you. Tuples can be acked immediately upon receipt, after data has been saved to a database, after a message has been successfully published to a pub-sub topic, etc.</p>
+
+<p>Here&rsquo;s an example of a bolt that acks tuples when they&rsquo;re successfully processed:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.bolt.BaseRichBolt</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.bolt.OutputCollector</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.api.topology.TopologyContext</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckingBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">OutputCollector</span> <span class="n">outputCollector</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepare</span><span class="o">(</span><span class="n">Map</span> <span class="n">conf</span><span class="o">,</span> <span class="n">TopologyContext</span> <span class="n">context</span><span class="o">,</span> <span class="n">OutputCollector</span> <span class="n">collector</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">outputCollector</span> <span class="o">=</span> <span class="n">collector</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">applyProcessingOperation</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// Some processing logic for each tuple received by the bolt</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">applyProcessingOperation</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+            <span class="n">outputCollector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">outputCollector</span><span class="o">.</span><span class="na">fail</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In this bolt, there&rsquo;s an <code>applyProcessingOperation</code> function that processes each incoming tuple. One of two things can result from this function:</p>
+
+<ol>
+<li>The operation succeeds, in which case the bolt sends an ack. Any upstream spouts&mdash;such as a spout like the <code>AckReceivingSpout</code> below&mdash;would then receive that ack, along with the message ID that the bolt provides.</li>
+<li>The operation fails and throws an exception, in which case the tuple is failed rather than acked.</li>
+</ol>
+
+<h3 id="ack-receiving-spouts">Ack-receiving spouts</h3>
+
+<p>Heron spouts don&rsquo;t emit acks, but they can receive acks when downstream bolts have acked a tuple. In order to receive an ack from downstream bolts, spouts need to do two things:</p>
+
+<ol>
+<li><a href="#specifying-a-message-id">Specify</a> a message ID when they emit tuples using the <code>nextTuple</code> method</li>
+<li><a href="#specifying-ack-reception-logic">Implement</a> an <code>ack</code> function that specifies what will happen when an ack is received from downstream bolts</li>
+</ol>
+
+<h3 id="specifying-a-message-id">Specifying a message ID</h3>
+
+<p>If you want a spout to receive acks from downstream bolts, the spout needs to specify a message ID every time the spout&rsquo;s <code>SpoutOutputCollector</code> emits a tuple to downstream bolts. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.spout.BaseRichSpout</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckReceivingSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Object</span> <span class="nf">generateMessageId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Some logic to produce a unique ID</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">someValue</span><span class="o">),</span> <span class="n">generateMessageId</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In this example, each tuple emitted by the spout includes a unique message ID. If no ID is specified, as in the example below, then the spout simply <em>will not receive acks</em>:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NoAckReceivedSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">someValue</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<blockquote>
+<p>When implementing acking logic&mdash;as well as <a href="#failing">failing logic</a>&mdash;each tuple that is acked/failed <strong>must have a unique ID</strong>. Otherwise, the spout receiving the ack will not be able to identify <em>which</em> tuple has been acked/failed.</p>
+</blockquote>
+
+<p>When specifying an ID for the tuple being emitted, the ID is of type <code>Object</code>, which means that you can serialize to/deserialize from any data type that you&rsquo;d like. The message ID could thus be a simple <code>String</code> or <code>long</code> or something more complex, like a hash, <code>Map</code>, or POJO.</p>
+
+<h3 id="specifying-ack-reception-logic">Specifying ack reception logic</h3>
+
+<p>In order to specify what your spout does when an ack is received, you need to implement an <code>ack</code> function in your spout. That function takes a Java <code>Object</code> containing the tuple&rsquo;s ID, which means that you can potentially serialize the message ID to any type you&rsquo;d like.</p>
+
+<p>In this example, the spout simply logs the message ID:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckReceivingSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Object</span> <span class="nf">generateMessageId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">// Some logic to produce a unique ID</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">someValue</span><span class="o">),</span> <span class="n">generateMessageId</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ack</span><span class="o">(</span><span class="n">Object</span> <span class="n">messageId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// This will simply print the message ID whenever an ack arrives</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">((</span><span class="n">String</span><span class="o">)</span> <span class="n">messageId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In this example, the spout performs a series of actions when receiving the ack:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckReceivingSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">someCondition</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">String</span> <span class="n">randomHash</span> <span class="o">=</span> <span class="c1">// Generate a random hash as a message ID</span>
+            <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">val</span><span class="o">),</span> <span class="n">randomHash</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ack</span><span class="o">(</span><span class="n">Object</span> <span class="n">messageId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">saveItemToDatabase</span><span class="o">(</span><span class="n">item</span><span class="o">);</span>
+        <span class="n">publishToPubSubTopic</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<h3 id="failing">Failing</h3>
+
+<p><strong>Failing</strong> a tuple is essentially the opposite of acking it, i.e. it indicates that some operation has failed. Bolts can fail tuples by calling the <code>fail</code> method on the <code>OutputCollector</code> rather than <code>ack</code>. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckingBolt</span> <span class="kd">extends</span> <span class="n">BaseRichBolt</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="o">(</span><span class="n">Tuple</span> <span class="n">tuple</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">someProcessingOperation</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+            <span class="n">collector</span><span class="o">.</span><span class="na">ack</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">collector</span><span class="o">.</span><span class="na">fail</span><span class="o">(</span><span class="n">tuple</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In this example, an exception-throwing processing operation is attempted. If it succeeds, the tuple is acked; if it fails and an exception is thrown, the tuple is failed.</p>
+
+<p>As with acks, spouts can be set up to handle failed tuples by implementing the <code>fail</code> method, which takes the message ID as the argument (just like the <code>ack</code> method). Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AckReceivingSpout</span> <span class="kd">extends</span> <span class="n">BaseRichSpout</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextTuple</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">collector</span><span class="o">.</span><span class="na">emit</span><span class="o">(</span><span class="k">new</span> <span class="n">Values</span><span class="o">(</span><span class="n">someValue</span><span class="o">),</span> <span class="n">someMessageId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fail</span><span class="o">(</span><span class="n">Object</span> <span class="n">messageId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Process the messageId</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>As with acking, spouts must include a message ID when emitting tuples or else they will not receive fail messages.</p>
+
+<h3 id="acking-failing-and-timeouts">Acking, failing, and timeouts</h3>
+
+<p>If you&rsquo;re setting up your spouts and bolts to include an ack/fail logic, you can specify that a tuple will automatically be failed if a timeout threshold is reached before the tuple is acked. In this example, all tuples passing through all bolts will be failed if not acked within 10 seconds:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.api.Config</span><span class="o">;</span>
+
+<span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="n">config</span><span class="o">.</span><span class="na">setMessageTimeoutSecs</span><span class="o">(</span><span class="mi">10</span><span class="o">);</span>
+</code></pre></div>
 </article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
 $('pre code').each(function() {
   console.log(this);
