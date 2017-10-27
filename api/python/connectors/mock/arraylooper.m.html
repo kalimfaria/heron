@@ -1089,7 +1089,7 @@ table {
 <span class="kn">import</span> <span class="nn">itertools</span>
 <span class="kn">import</span> <span class="nn">time</span>
 
-<span class="kn">from</span> <span class="nn">heronpy.dsl.generator</span> <span class="kn">import</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">heronpy.streamlet.generator</span> <span class="kn">import</span> <span class="n">Generator</span>
 
 <span class="k">class</span> <span class="nc">ArrayLooper</span><span class="p">(</span><span class="n">Generator</span><span class="p">):</span>
   <span class="sd">&quot;&quot;&quot;A ArrayLooper loops the contents of the a user supplied array forever</span>
@@ -1108,7 +1108,7 @@ table {
   <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1145,7 +1145,7 @@ table {
   <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span><span class="p">)</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="p">)</span>
 </pre></div>
 
   </div>
@@ -1156,7 +1156,7 @@ table {
           <h3>Ancestors (in MRO)</h3>
           <ul class="class_list">
           <li><a href="#heronpy.connectors.mock.arraylooper.ArrayLooper">ArrayLooper</a></li>
-          <li>heronpy.dsl.generator.Generator</li>
+          <li>heronpy.streamlet.generator.Generator</li>
           <li>__builtin__.object</li>
           </ul>
           <h3>Methods</h3>
@@ -1200,7 +1200,7 @@ table {
     <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
   <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sleep</span><span class="p">)</span>
-  <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_curiter</span><span class="p">)</span>
 </pre></div>
 
   </div>
