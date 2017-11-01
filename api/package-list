@@ -84,6 +84,7 @@ com.twitter.heron.integration_test.topology.serialization
 com.twitter.heron.integration_test.topology.shuffle_grouping
 com.twitter.heron.integration_test.topology.windowing
 com.twitter.heron.integration_test.topology.windowing.count
+com.twitter.heron.integration_test.topology.windowing.stateful
 com.twitter.heron.integration_test.topology.windowing.time
 com.twitter.heron.integration_test.topology.windowing.watermark
 com.twitter.heron.local_integration_test.topology.local_readwrite
