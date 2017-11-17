@@ -32,7 +32,7 @@ to <code>com.twitter.heron.uploader.localfs.LocalFileSystemUploader</code></p></
 <li><p><code>heron.uploader.localfs.file.system.directory</code> &mdash; Provides the name of the directory where
 the topology jar should be uploaded. The name of the directory should be unique per cluster
 You could use the Heron environment variables <code>${CLUSTER}</code> that will be substituted by cluster
-name.</p></li>
+name. If this is not set, <code>${HOME}/.herondata/repository/${CLUSTER}/${ROLE}/${TOPOLOGY}</code> will be set as default.</p></li>
 </ul>
 
 <h3 id="example-local-file-system-uploader-configuration">Example Local File System Uploader Configuration</h3>

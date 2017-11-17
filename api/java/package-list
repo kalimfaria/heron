@@ -53,6 +53,7 @@ com.twitter.heron.examples.api
 com.twitter.heron.examples.api.bolt
 com.twitter.heron.examples.api.spout
 com.twitter.heron.examples.streamlet
+com.twitter.heron.examples.streamlet.utils
 com.twitter.heron.grouping
 com.twitter.heron.healthmgr
 com.twitter.heron.healthmgr.common
