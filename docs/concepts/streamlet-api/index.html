@@ -1,0 +1,941 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="The Heron Streamlet API"><meta property="og:url" content="/docs/concepts/streamlet-api/"><meta property="og:description" content="Create Heron topologies in Java using a simplified interface inspired by functional programming"><meta name="twitter:description" content="Create Heron topologies in Java using a simplified interface inspired by functional programming"><title>Heron Documentation - The Heron Streamlet API</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/streamlet-api">Heron Streamlet API</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes">Kubernetes</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">The Heron Streamlet API</h1><div class="hn-docs-description">Create Heron topologies in Java using a simplified interface inspired by functional programming</div></header><article class="hn-docs-content">
+
+
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button><h4 class="alert-heading">The Heron Streamlet API is in beta</h4>The Heron Streamlet API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.
+</div>
+
+<p>When it was first released, Heron offered a <strong>Topology API</strong>&mdash;heavily indebted to the <a href="http://storm.apache.org/about/simple-api.html">Storm API</a>&mdash;for developing topology logic. In the original Topology API, developers creating topologies were required to explicitly:</p>
+
+<ul>
+<li>define the behavior of every <a href="../topologies/spouts">spout</a> and <a href="../topologies/bolts">bolt</a> in the topology</li>
+<li>specify how those spouts and bolts are meant to be interconnected</li>
+</ul>
+
+<h3 id="problems-with-the-topology-api">Problems with the Topology API</h3>
+
+<p>Although the Storm-inspired API provided a powerful low-level interface for creating topologies, the spouts-and-bolts model also presented a variety of drawbacks for Heron developers:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Drawback</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Verbosity</td>
+<td align="left">In the original Topology API for both Java and Python, creating spouts and bolts required substantial boilerplate and forced developers to both provide implementations for spout and bolt classes and also to specify the connections between those spouts and bolts.</td>
+</tr>
+
+<tr>
+<td align="left">Difficult debugging</td>
+<td align="left">When spouts, bolts, and the connections between them need to be created &ldquo;by hand,&rdquo; it can be challenging to trace the origin of problems in the topology&rsquo;s processing chain</td>
+</tr>
+
+<tr>
+<td align="left">Tuple-based data model</td>
+<td align="left">In the older topology API, spouts and bolts passed <a href="https://en.wikipedia.org/wiki/Tuple">tuples</a> and nothing but tuples within topologies. Although tuples are a powerful and flexible data type, the topology API forced <em>all</em> spouts and bolts to implement their own serialization/deserialization logic.</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="advantages-of-the-streamlet-api">Advantages of the Streamlet API</h3>
+
+<p>In contrast with the Topology API, the Heron Streamlet API offers:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Advantage</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Boilerplate-free code</td>
+<td align="left">Instead of needing to implement spout and bolt classes over and over again, the Heron Streamlet API enables you to create stream processing logic out of functions, such as map, flatMap, join, and filter functions, instead.</td>
+</tr>
+
+<tr>
+<td align="left">Easy debugging</td>
+<td align="left">With the Heron Streamlet API, you don&rsquo;t have to worry about spouts and bolts, which means that you can more easily surface problems with your processing logic.</td>
+</tr>
+
+<tr>
+<td align="left">Completely flexible, type-safe data model</td>
+<td align="left">Instead of requiring that all processing components pass tuples to one another (which implicitly requires serialization to and deserializaton from your application-specific types), the Heron Streamlet API enables you to write your processing logic in accordance with whatever types you&rsquo;d like&mdash;including tuples, if you wish.<br /><br />In the Streamlet API for <a href="../../developers/java/streamlet-api">Java</a>, all streamlets are typed (e.g. <code>Streamlet&lt;MyApplicationType&gt;</code>), which means that type errors can be caught at compile time rather than at runtime.</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="streamlet-api-topology-model">Streamlet API topology model</h2>
+
+<p>Instead of spouts and bolts, as with the Topology API, the Streamlet API enables you to create <strong>processing graphs</strong> that are then automatically converted to spouts and bolts under the hood. Processing graphs consist of the following components:</p>
+
+<ul>
+<li><strong>Sources</strong> supply the processing graph with data from random generators, databases, web service APIs, filesystems, pub-sub messaging systems, or anything that implements the <a href="#source-operations">source</a> interface.</li>
+<li><strong>Operators</strong> supply the graph&rsquo;s processing logic, operating on data passed into the graph by sources.</li>
+<li><strong>Sinks</strong> are the terminal endpoints of the processing graph, determining what the graph <em>does</em> with the processed data. Sinks can involve storing data in a database, logging results to stdout, publishing messages to a topic in a pub-sub messaging system, and much more.</li>
+</ul>
+
+<p>The diagram below illustrates both the general model (with a single source, three operators, and one sink), and a more concrete example that includes two sources (an <a href="https://pulsar.incubator.apache.org">Apache Pulsar</a> topic and the <a href="https://developer.twitter.com/en/docs">Twitter API</a>), three operators (a <a href="#join-operations">join</a>, <a href="#flatmap-operations">flatMap</a>, and <a href="#reduce-operations">reduce</a> operation), and two <a href="#sink-operations">sinks</a> (an <a href="http://cassandra.apache.org/">Apache Cassandra</a> table and an <a href="https://spark.apache.org/">Apache Spark</a> job).</p>
+
+<img src="https://www.lucidchart.com/publicSegments/view/d84026a1-d12e-4878-b8d5-5aa274ec0415/image.png" width="80%" height="100%">
+
+<h3 id="streamlets">Streamlets</h3>
+
+<p>The core construct underlying the Heron Streamlet API is that of the <strong>streamlet</strong>. A streamlet is an unbounded, ordered collection of <strong>elements</strong> of some data type (streamlets can consist of simple types like integers and strings or more complex, application-specific data types).</p>
+
+<p><strong>Source streamlets</strong> supply a Heron processing graph with data inputs. These inputs can come from a wide variety of sources, such as pub-sub messaging systems like <a href="http://kafka.apache.org/">Apache
+Kafka</a> and <a href="https://pulsar.incubator.apache.org">Apache Pulsar</a> (incubating), random generators, or static files like CSV or <a href="https://parquet.apache.org/">Apache Parquet</a> files.</p>
+
+<p>Source streamlets can then be manipulated in a wide variety of ways. You can, for example:</p>
+
+<ul>
+<li>apply <a href="#map-operations">map</a>, <a href="#filter-operations">filter</a>, <a href="#flatmap-operations">flatMap</a>, and many other operations to them</li>
+<li>apply operations, such as <a href="#join-operations">join</a> and <a href="#union-operations">union</a> operations, that combine streamlets together</li>
+<li><a href="#reduce-by-key-and-window-operations">reduce</a> all elements in a streamlet to some single value, based on key</li>
+<li>send data to <a href="#sink-operations">sinks</a> (store elements)</li>
+</ul>
+
+<p>The diagram below shows an example streamlet:</p>
+
+<img src="https://www.lucidchart.com/publicSegments/view/5c451e53-46f8-4e36-86f4-9a11ca015c21/image.png" width="90%" height="100%">
+
+<p>In this diagram, the <strong>source streamlet</strong> is produced by a random generator that continuously emits random integers between 1 and 100. From there:</p>
+
+<ul>
+<li>A filter operation is applied to the source streamlet that filters out all values less than or equal to 30</li>
+<li>A <em>new streamlet</em> is produced by the filter operation (with the Heron Streamlet API, you&rsquo;re always transforming streamlets into other streamlets)</li>
+<li>A map operation adds 15 to each item in the streamlet, which produces the final streamlet in our graph. We <em>could</em> hypothetically go much further and add as many transformation steps to the graph as we&rsquo;d like.</li>
+<li>Once the final desired streamlet is created, each item in the streamlet is sent to a sink. Sinks are where items leave the processing graph.</li>
+</ul>
+
+<h3 id="supported-languages">Supported languages</h3>
+
+<p>The Heron Streamlet API is currently available for:</p>
+
+<ul>
+<li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">Java</a></li>
+</ul>
+
+<h3 id="the-heron-streamlet-api-and-topologies">The Heron Streamlet API and topologies</h3>
+
+<p>With the Heron Streamlet API <em>you still create topologies</em>, but only implicitly. Heron automatically performs the heavy lifting of converting the streamlet-based processing logic that you create into spouts and bolts and, from there, into containers that are then deployed using whichever <a href="../../operators/deployment">scheduler</a> your Heron cluster relies upon.</p>
+
+<p>From the standpoint of both operators and developers <a href="#topology-lifecycle">managing topologies&rsquo; lifecycles</a>, the resulting topologies are equivalent. From a development workflow standpoint, however, the difference is profound. You can think of the Streamlet API as a highly convenient tool for creating spouts, bolts, and the logic that connects them.</p>
+
+<p>The basic workflow looks like this:</p>
+
+<img src="https://www.lucidchart.com/publicSegments/view/6b2e9b49-ef1f-45c9-8094-1e2cefbaed7b/image.png" width="60%" height="100%">
+
+<p>When creating topologies using the Heron Streamlet API, you simply write code (example <a href="#complete-streamlet-processing-graph-example">below</a>) in a highly functional style. From there:</p>
+
+<ul>
+<li>that code is automatically converted into spouts, bolts, and the necessary connective logic between spouts and bolts</li>
+<li>the spouts and bolts are automatically converted into a <a href="../topologies#logical-plan">logical plan</a> that specifies how the spouts and bolts are connected to each other</li>
+<li>the logical plan is automatically converted into a <a href="../topologies#physical-plan">physical plan</a> that determines how the spout and bolt <a href="../architecture#heron-instances">instances</a> (the colored boxes above) are distributed across the specified number of containers (in this case two)</li>
+</ul>
+
+<p>With a physical plan in place, the Streamlet API topology can be submitted to a Heron cluster.</p>
+
+<h4 id="java-processing-graph-example">Java processing graph example</h4>
+
+<p>The code below shows how you could implement the processing graph shown <a href="#streamlets">above</a> in Java:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">java.util.concurrent.ThreadLocalRandom</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Builder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Config</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Runner</span><span class="o">;</span>
+
+<span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">createBuilder</span><span class="o">();</span>
+
+<span class="c1">// Function for generating random integers</span>
+<span class="kt">int</span> <span class="nf">randomInt</span><span class="o">(</span><span class="kt">int</span> <span class="n">lower</span><span class="o">,</span> <span class="kt">int</span> <span class="n">upper</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="n">lower</span><span class="o">,</span> <span class="n">upper</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="c1">// Source streamlet</span>
+<span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">randomInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">100</span><span class="o">))</span>
+    <span class="c1">// Filter operation</span>
+    <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="o">)</span>
+    <span class="c1">// Map operation</span>
+    <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">15</span><span class="o">)</span>
+    <span class="c1">// Log sink</span>
+    <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+
+<span class="n">Config</span> <span class="n">config</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Config</span><span class="o">();</span>
+<span class="c1">// This topology will be spread across two containers</span>
+<span class="n">config</span><span class="o">.</span><span class="na">setNumContainers</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+
+<span class="c1">// Submit the processing graph to Heron as a topology</span>
+<span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="s">&quot;IntegerProcessingGraph&quot;</span><span class="o">,</span> <span class="n">config</span><span class="o">,</span> <span class="n">builder</span><span class="o">).</span><span class="na">run</span><span class="o">();</span>
+</code></pre></div>
+
+<p>As you can see, the Java code for the example streamlet processing graph requires very little boilerplate and is heavily indebted to Java 8 <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">lambda</a> patterns.</p>
+
+<h2 id="streamlet-operations">Streamlet operations</h2>
+
+<p>In the Heron Streamlet API, processing data means <em>transforming streamlets into other streamlets</em>. This can be done using a wide variety of available operations, including many that you may be familiar with from functional programming:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Operation</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="#map-operations">map</a></td>
+<td align="left">Returns a new streamlet by applying the supplied mapping function to each element in the original streamlet</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#flatMap-operations">flatMap</a></td>
+<td align="left">Like a map operation but with the important difference that each element of the streamlet is flattened into a collection type</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#filter-operations">filter</a></td>
+<td align="left">Returns a new streamlet containing only the elements that satisfy the supplied filtering function</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#filter-operations">union</a></td>
+<td align="left">Unifies two streamlets into one, without <a href="#windowing">windowing</a> or modifying the elements of the two streamlets</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#clone-operations">clone</a></td>
+<td align="left">Creates any number of identical copies of a streamlet</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#transform-operations">transform</a></td>
+<td align="left">Transform a streamlet using whichever logic you&rsquo;d like (useful for transformations that don&rsquo;t neatly map onto the available operations)</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#reduce-by-key-and-window-operations">reduceByKeyAndWindow</a></td>
+<td align="left">Produces a streamlet out of two separate key-value streamlets on a key, within a <a href="#windowing">time window</a>, and in accordance with a reduce function that you apply to all the accumulated values</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#join-operations">join</a></td>
+<td align="left">Joins two separate key-value streamlets into a single streamlet on a key, within a <a href="#windowing">time window</a>, and in accordance with a join function</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#log-operations">log</a></td>
+<td align="left">Logs the final streamlet output of the processing graph to stdout</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#sink-operations">toSink</a></td>
+<td align="left">Sink operations terminate the processing graph by storing elements in a database, logging elements to stdout, etc.</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#consume-operations">consume</a></td>
+<td align="left">Consume operations are like sink operations except they don&rsquo;t require implementing a full sink interface (consume operations are thus suited for simple operations like logging)</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="map-operations">Map operations</h3>
+
+<p>Map operations create a new streamlet by applying the supplied mapping function to each element in the original streamlet.</p>
+
+<h4 id="java-example">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Builder</span><span class="o">;</span>
+
+<span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">createBuilder</span><span class="o">();</span>
+
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ones</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">thirteens</span> <span class="o">=</span> <span class="n">ones</span><span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">12</span><span class="o">);</span>
+</code></pre></div>
+
+<p>In this example, a supplier streamlet emits an indefinite series of 1s. The <code>map</code> operation then adds 12 to each incoming element, producing a streamlet of 13s. The effect of this operation is to transform the <code>Streamlet&lt;Integer&gt;</code> into a <code>Streamlet&lt;Integer&gt;</code> with different values (map operations can also convert streamlets into streamlets of a different type).</p>
+
+<h3 id="flatmap-operations">FlatMap operations</h3>
+
+<p>FlatMap operations are like <a href="#map-operations">map operations</a> but with the important difference that each element of the streamlet is &ldquo;flattened&rdquo; into a collection type. In the Java example below, a supplier streamlet emits the same sentence over and over again; the <code>flatMap</code> operation transforms each sentence into a Java <code>List</code> of individual words.</p>
+
+<h4 id="java-example-1">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">sentences</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;I have nothing to declare but my genius&quot;</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">words</span> <span class="o">=</span> <span class="n">sentences</span>
+        <span class="o">.</span><span class="na">flatMap</span><span class="o">((</span><span class="n">sentence</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">sentence</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;\\s+&quot;</span><span class="o">)));</span>
+</code></pre></div>
+
+<p>The effect of this operation is to transform the <code>Streamlet&lt;String&gt;</code> into a <code>Streamlet&lt;List&lt;String&gt;&gt;</code> containing each word emitted by the source streamlet.</p>
+
+<h3 id="filter-operations">Filter operations</h3>
+
+<p>Filter operations retain some elements in a streamlet and exclude other elements on the basis of a provided filtering function.</p>
+
+<h4 id="java-example-2">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">randomInts</span> <span class="o">=</span>
+    <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">11</span><span class="o">));</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">lessThanSeven</span> <span class="o">=</span> <span class="n">randomInts</span>
+        <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">7</span><span class="o">);</span>
+</code></pre></div>
+
+<p>In this example, a source streamlet consisting of random integers between 1 and 10 is modified by a filter operation that removes all streamlet elements that are greater than 7.</p>
+
+<h3 id="union-operations">Union operations</h3>
+
+<p>Union operations combine two streamlets of the same type into a single streamlet without modifying the elements.</p>
+
+<h4 id="java-example-3">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">oohs</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;ooh&quot;</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">aahs</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;aah&quot;</span><span class="o">);</span>
+
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">combined</span> <span class="o">=</span> <span class="n">oohs</span>
+        <span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">aahs</span><span class="o">);</span>
+</code></pre></div>
+
+<p>Here, one streamlet is an endless series of &ldquo;ooh&rdquo;s while the other is an endless series of &ldquo;aah&rdquo;s. The <code>union</code> operation combines them into a single streamlet of alternating &ldquo;ooh&rdquo;s and &ldquo;aah&rdquo;s.</p>
+
+<h3 id="clone-operations">Clone operations</h3>
+
+<p>Clone operations enable you to create any number of &ldquo;copies&rdquo; of a streamlet. Each of the &ldquo;copy&rdquo; streamlets contains all the elements of the original and can be manipulated just like the original streamlet.</p>
+
+<h4 id="java-example-4">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.ThreadLocalRandom</span><span class="o">;</span>
+
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">integers</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">100</span><span class="o">));</span>
+
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;&gt;</span> <span class="n">copies</span> <span class="o">=</span> <span class="n">integers</span><span class="o">.</span><span class="na">clone</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ints1</span> <span class="o">=</span> <span class="n">copies</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ints2</span> <span class="o">=</span> <span class="n">copies</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ints3</span> <span class="o">=</span> <span class="n">copies</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+<span class="c1">// and so on...</span>
+</code></pre></div>
+
+<p>In this example, a streamlet of random integers between 1 and 100 is split into 5 identical streamlets.</p>
+
+<h3 id="transform-operations">Transform operations</h3>
+
+<p>Transform operations are highly flexible operations that are most useful for:</p>
+
+<ul>
+<li>operations involving state in <a href="../../concepts/delivery-semantics#stateful-topologies">stateful topologies</a></li>
+<li>operations that don&rsquo;t neatly fit into the other categories or into a lambda-based logic</li>
+</ul>
+
+<p>Transform operations require you to implement three different methods:</p>
+
+<ul>
+<li>A <code>setup</code> method that enables you to pass a context object to the operation and to specify what happens prior to the <code>transform</code> step</li>
+<li>A <code>transform</code> operation that performs the desired transformation</li>
+<li>A <code>cleanup</code> method that allows you to specify what happens after the <code>transform</code> step</li>
+</ul>
+
+<p>The context object available to a transform operation provides access to:</p>
+
+<ul>
+<li>the current state of the topology</li>
+<li>the topology&rsquo;s configuration</li>
+<li>the name of the stream</li>
+<li>the stream partition</li>
+<li>the current task ID</li>
+</ul>
+
+<p>Here&rsquo;s a Java example of a transform operation in a topology where a stateful record is kept of the number of items processed:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.SerializableTransformer</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.function.Consumer</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CountNumberOfItems</span> <span class="kd">implements</span> <span class="n">SerializableTransformer</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">numberOfItems</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setup</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">numberOfItems</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getState</span><span class="o">(</span><span class="s">&quot;number-of-items&quot;</span><span class="o">);</span>
+        <span class="n">context</span><span class="o">.</span><span class="na">getState</span><span class="o">().</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;number-of-items&quot;</span><span class="o">,</span> <span class="n">numberOfItems</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">transform</span><span class="o">(</span><span class="n">String</span> <span class="n">in</span><span class="o">,</span> <span class="n">Consumer</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">consumer</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">transformedString</span> <span class="o">=</span> <span class="c1">// Apply some operation to the incoming value</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="na">accept</span><span class="o">(</span><span class="n">transformedString</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+                <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Successfully processed new state: %d&quot;</span><span class="o">,</span> <span class="n">numberOfItems</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>This operation does a few things:</p>
+
+<ul>
+<li>In the <code>setup</code> method, the <a href="https://twitter.github.io/heron/api/java/com/twitter/heron/streamlet/Context.html"><code>Context</code></a> object is used to access the current state (which has the semantics of a Java <code>Map</code>). The current number of items processed is incremented by one and then saved as the new state.</li>
+<li>In the <code>transform</code> method, the incoming string is transformed in some way and then &ldquo;accepted&rdquo; as the new value.</li>
+<li>In the <code>cleanup</code> step, the current count of items processed is logged.</li>
+</ul>
+
+<p>Here&rsquo;s that operation within the context of a streamlet processing graph:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;Some string over and over&quot;</span><span class="o">);</span>
+        <span class="o">.</span><span class="na">transform</span><span class="o">(</span><span class="k">new</span> <span class="n">CountNumberOfItems</span><span class="o">())</span>
+        <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+</code></pre></div>
+
+<h3 id="reduce-by-key-and-window-operations">Reduce by key and window operations</h3>
+
+<p>You can apply <a href="https://docs.oracle.com/javase/tutorial/collections/streams/reduction.html">reduce</a> operations to streamlets by specifying:</p>
+
+<ul>
+<li>a key extractor that determines what counts as the key for the streamlet</li>
+<li>a value extractor that determines which final value is chosen for each element of the streamlet</li>
+<li>a <a href="../topologies#window-operations">time window</a> across which the operation will take place</li>
+<li>a reduce function that produces a single value for each key in the streamlet</li>
+</ul>
+
+<p>Reduce by key and window operations produce a new streamlet of key-value window objects (which include a key-value pair including the extracted key and calculated value, as well as information about the window in which the operation took place).</p>
+
+<h4 id="java-example-5">Java example</h4>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.WindowConfig</span><span class="o">;</span>
+
+<span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">createBuilder</span><span class="o">();</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;Mary had a little lamb&quot;</span><span class="o">)</span>
+    <span class="o">.</span><span class="na">flatMap</span><span class="o">(</span><span class="n">sentence</span> <span class="o">-&gt;</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">sentence</span><span class="o">.</span><span class="na">toLowerCase</span><span class="o">().</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;\\s+&quot;</span><span class="o">)))</span>
+    <span class="o">.</span><span class="na">reduceByKeyAndWindow</span><span class="o">(</span>
+        <span class="c1">// Key extractor (in this case, each word acts as the key)</span>
+        <span class="n">word</span> <span class="o">-&gt;</span> <span class="n">word</span><span class="o">,</span>
+        <span class="c1">// Value extractor (each word appears only once, hence the value is always 1)</span>
+        <span class="n">word</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">,</span>
+        <span class="c1">// Window configuration</span>
+        <span class="n">WindowConfig</span><span class="o">.</span><span class="na">TumblingCountWindow</span><span class="o">(</span><span class="mi">50</span><span class="o">),</span>
+        <span class="c1">// Reduce operation (a running sum)</span>
+        <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="o">)</span>
+    <span class="c1">// The result is logged</span>
+    <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+</code></pre></div>
+
+<h3 id="join-operations">Join operations</h3>
+
+<p>Join operations in the Streamlet API take two streamlets (a &ldquo;left&rdquo; and a &ldquo;right&rdquo; streamlet) and join them together:</p>
+
+<ul>
+<li>based on a key extractor for each streamlet</li>
+<li>over key-value elements accumulated during a specified <a href="#windowing">time window</a></li>
+<li>based on a <a href="#join-types">join type</a> (<a href="#inner-joins">inner</a>, <a href="#outer-left-joins">outer left</a>, <a href="#outer-right-joins">outer right</a>, or <a href="#outer-joins">outer</a>)</li>
+<li>using a join function that specifies <em>how</em> values will be processed</li>
+</ul>
+
+<p>You may already be familiar with <code>JOIN</code> operations in SQL databases, like this:</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span></span><span class="k">SELECT</span> <span class="n">username</span><span class="p">,</span> <span class="n">email</span>
+<span class="k">FROM</span> <span class="n">all_users</span>
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">banned_users</span> <span class="k">ON</span> <span class="n">all_users</span><span class="p">.</span><span class="n">username</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="n">banned_users</span><span class="p">.</span><span class="n">username</span><span class="p">;</span>
+</code></pre></div>
+
+<blockquote>
+<p>If you&rsquo;d like to unite two streamlets into one <em>without</em> applying a window or a join function, you can use a <a href="#union-operations">union</a> operation, which are available for key-value streamlets as well as normal streamlets.</p>
+</blockquote>
+
+<p>All join operations are performed:</p>
+
+<ol>
+<li>Over elements accumulated during a specified <a href="#windowing">time window</a></li>
+<li>In accordance with a key and value extracted from each streamlet element (you must provide extractor functions for both)</li>
+<li>In accordance with a join function that produces a &ldquo;joined&rdquo; value for each pair of streamlet elements</li>
+</ol>
+
+<h4 id="join-types">Join types</h4>
+
+<p>The Heron Streamlet API supports four types of joins:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">What the join operation yields</th>
+<th align="left">Default?</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="#inner-joins">Inner</a></td>
+<td align="left">All key-values with matched keys across the left and right stream</td>
+<td align="left">Yes</td>
+</tr>
+
+<tr>
+<td align="left"><a href="#outer-left-joins">Outer left</a></td>
+<td align="left">All key-values with matched keys across both streams plus unmatched keys in the left stream</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><a href="#outer-right-joins">Outer right</a></td>
+<td align="left">All key-values with matched keys across both streams plus unmatched keys in the left stream</td>
+<td align="left"></td>
+</tr>
+
+<tr>
+<td align="left"><a href="#outer-joins">Outer</a></td>
+<td align="left">All key-values across both the left and right stream, regardless of whether or not any given element has a matching key in the other stream</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="inner-joins">Inner joins</h4>
+
+<p>Inner joins operate over the <a href="https://en.wikipedia.org/wiki/Cartesian_product">Cartesian product</a> of the left stream and the right stream, i.e. over all the whole set of all ordered pairs between the two streams. Imagine this set of key-value pairs accumulated within a time window:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Left streamlet</th>
+<th align="left">Right streamlet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 5)</td>
+<td align="left">(&ldquo;player1&rdquo;, 12)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 17)</td>
+<td align="left">(&ldquo;player2&rdquo;, 27)</td>
+</tr>
+</tbody>
+</table>
+
+<p>An inner join operation would thus apply the join function to all key-values with matching keys, thus <strong>3 &times; 2 = 6</strong> in total, producing this set of key-values:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Included key-values</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 5)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 12)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 17)</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Note that the <code>(&quot;player2&quot;, 27)</code> key-value pair was <em>not</em> included in the stream because there&rsquo;s no matching key-value in the left streamlet.</p>
+</blockquote>
+
+<p>If the supplied join function, say, added the values together, then the resulting joined stream would look like this:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Operation</th>
+<th align="left">Joined Streamlet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">4 + 10</td>
+<td align="left">(&ldquo;player1&rdquo;, 14)</td>
+</tr>
+
+<tr>
+<td align="left">4 + 12</td>
+<td align="left">(&ldquo;player1&rdquo;, 16)</td>
+</tr>
+
+<tr>
+<td align="left">5 + 10</td>
+<td align="left">(&ldquo;player1&rdquo;, 15)</td>
+</tr>
+
+<tr>
+<td align="left">5 + 12</td>
+<td align="left">(&ldquo;player1&rdquo;, 17)</td>
+</tr>
+
+<tr>
+<td align="left">17 + 10</td>
+<td align="left">(&ldquo;player1&rdquo;, 27)</td>
+</tr>
+
+<tr>
+<td align="left">17 + 12</td>
+<td align="left">(&ldquo;player1&rdquo;, 29)</td>
+</tr>
+</tbody>
+</table>
+
+<blockquote>
+<p>Inner joins are the &ldquo;default&rdquo; join type in the Heron Streamlet API. If you call the <code>join</code> method without specifying a join type, an inner join will be applied.</p>
+</blockquote>
+
+<h5 id="java-example-6">Java example</h5>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">class</span> <span class="nc">Score</span> <span class="o">{</span>
+    <span class="n">String</span> <span class="n">playerUsername</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">playerScore</span><span class="o">;</span>
+
+    <span class="c1">// Setters and getters</span>
+<span class="o">}</span>
+
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Score</span><span class="o">&gt;</span> <span class="n">scores1</span> <span class="o">=</span> <span class="cm">/* A stream of player scores */</span><span class="o">;</span>
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Score</span><span class="o">&gt;</span> <span class="n">scores2</span> <span class="o">=</span> <span class="cm">/* A second stream of player scores */</span><span class="o">;</span>
+
+<span class="n">scores1</span>
+    <span class="o">.</span><span class="na">join</span><span class="o">(</span>
+        <span class="n">scores2</span><span class="o">,</span>
+        <span class="c1">// Key extractor for the left stream (scores1)</span>
+        <span class="n">score</span> <span class="o">-&gt;</span> <span class="n">score</span><span class="o">.</span><span class="na">getPlayerUsername</span><span class="o">(),</span>
+        <span class="c1">// Key extractor for the right stream (scores2)</span>
+        <span class="n">score</span> <span class="o">-&gt;</span> <span class="n">score</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">(),</span>
+        <span class="c1">// Window configuration</span>
+        <span class="n">WindowConfig</span><span class="o">.</span><span class="na">TumblingCountWindow</span><span class="o">(</span><span class="mi">50</span><span class="o">),</span>
+        <span class="c1">// Join function (selects the larger score as the value using</span>
+        <span class="c1">// using a ternary operator)</span>
+        <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span>
+            <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">y</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">())</span> <span class="o">?</span>
+                <span class="n">x</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span> <span class="o">:</span>
+                <span class="n">y</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span>
+    <span class="o">)</span>
+    <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+</code></pre></div>
+
+<p>In this example, two streamlets consisting of <code>Score</code> objects are joined. In the <code>join</code> function, a key and value extractor are supplied along with a window configuration and a join function. The resulting, joined streamlet will consist of key-value pairs in which each player&rsquo;s username will be the key and the joined&mdash;in this case highest&mdash;score will be the value.</p>
+
+<p>By default, an <a href="#inner-joins">inner join</a> is applied in join operations but you can also specify a different join type. Here&rsquo;s a Java example for an <a href="#outer-right-joins">outer right</a> join:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.JoinType</span><span class="o">;</span>
+
+<span class="n">scores1</span>
+    <span class="o">.</span><span class="na">join</span><span class="o">(</span>
+        <span class="n">scores2</span><span class="o">,</span>
+        <span class="c1">// Key extractor for the left stream (scores1)</span>
+        <span class="n">score</span> <span class="o">-&gt;</span> <span class="n">score</span><span class="o">.</span><span class="na">getPlayerUsername</span><span class="o">(),</span>
+        <span class="c1">// Key extractor for the right stream (scores2)</span>
+        <span class="n">score</span> <span class="o">-&gt;</span> <span class="n">score</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">(),</span>
+        <span class="c1">// Window configuration</span>
+        <span class="n">WindowConfig</span><span class="o">.</span><span class="na">TumblingCountWindow</span><span class="o">(</span><span class="mi">50</span><span class="o">),</span>
+        <span class="c1">// Join type</span>
+        <span class="n">JoinType</span><span class="o">.</span><span class="na">OUTER_RIGHT</span><span class="o">,</span>
+        <span class="c1">// Join function (selects the larger score as the value using</span>
+        <span class="c1">// using a ternary operator)</span>
+        <span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span> <span class="o">-&gt;</span>
+            <span class="o">(</span><span class="n">x</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">y</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">())</span> <span class="o">?</span>
+                <span class="n">x</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span> <span class="o">:</span>
+                <span class="n">y</span><span class="o">.</span><span class="na">getPlayerScore</span><span class="o">()</span>
+    <span class="o">)</span>
+    <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+</code></pre></div>
+
+<h4 id="outer-left-joins">Outer left joins</h4>
+
+<p>An outer left join includes the results of an <a href="#inner-joins">inner join</a> <em>plus</em> all of the unmatched keys in the left stream. Take this example left and right streamlet:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Left streamlet</th>
+<th align="left">Right streamlet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player2&rdquo;, 5)</td>
+<td align="left">(&ldquo;player4&rdquo;, 12)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player3&rdquo;, 17)</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<p>The resulting set of key-values within the time window:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Included key-values</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player2&rdquo;, 5)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player3&rdquo;, 17)</td>
+</tr>
+</tbody>
+</table>
+
+<p>In this case, key-values with a key of <code>player4</code> are excluded because they are in the right stream but have no matching key with any element in the left stream.</p>
+
+<h4 id="outer-right-joins">Outer right joins</h4>
+
+<p>An outer right join includes the results of an <a href="#inner-joins">inner join</a> <em>plus</em> all of the unmatched keys in the right stream. Take this example left and right streamlet (from <a href="#outer-left-joins">above</a>):</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Left streamlet</th>
+<th align="left">Right streamlet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player2&rdquo;, 5)</td>
+<td align="left">(&ldquo;player4&rdquo;, 12)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player3&rdquo;, 17)</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<p>The resulting set of key-values within the time window:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Included key-values</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player2&rdquo;, 5)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player4&rdquo;, 17)</td>
+</tr>
+</tbody>
+</table>
+
+<p>In this case, key-values with a key of <code>player3</code> are excluded because they are in the left stream but have no matching key with any element in the right stream.</p>
+
+<h4 id="outer-joins">Outer joins</h4>
+
+<p>Outer joins include <em>all</em> key-values across both the left and right stream, regardless of whether or not any given element has a matching key in the other stream. If you want to ensure that no element is left out of a resulting joined streamlet, use an outer join. Take this example left and right streamlet (from <a href="#outer-left-joins">above</a>):</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Left streamlet</th>
+<th align="left">Right streamlet</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">(&ldquo;player1&rdquo;, 4)</td>
+<td align="left">(&ldquo;player1&rdquo;, 10)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player2&rdquo;, 5)</td>
+<td align="left">(&ldquo;player4&rdquo;, 12)</td>
+</tr>
+
+<tr>
+<td align="left">(&ldquo;player3&rdquo;, 17)</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+
+<p>The resulting set of key-values within the time window:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Included key-values</th>
+</tr>
+</thead>
+
+<tbody>
+</tbody>
+</table>
+
+<p>(&ldquo;player1&rdquo;, 4)
+(&ldquo;player1&rdquo;, 10)
+(&ldquo;player2&rdquo;, 5)
+(&ldquo;player4&rdquo;, 12)
+(&ldquo;player3&rdquo;, 17)</p>
+
+<blockquote>
+<p>Note that <em>all</em> key-values were indiscriminately included in the joined set.</p>
+</blockquote>
+
+<h3 id="sink-operations">Sink operations</h3>
+
+<p>In processing graphs like the ones you build using the Heron Streamlet API, <strong>sinks</strong> are essentially the terminal points in your graph, where your processing logic comes to an end. A processing graph can end with writing to a database, publishing to a topic in a pub-sub messaging system, and so on. With the Streamlet API, you can implement your own custom sinks. Here&rsquo;s an example:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.twitter.heron.streamlet.Sink</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormattedLogSink</span> <span class="kd">implements</span> <span class="n">Sink</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">streamletName</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setup</span><span class="o">(</span><span class="n">Context</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">streamletName</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getStreamletName</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">put</span><span class="o">(</span><span class="n">T</span> <span class="n">element</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">message</span> <span class="o">=</span> <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;Streamlet %s has produced an element with a value of: &#39;%s&#39;&quot;</span><span class="o">,</span>
+                <span class="n">streamletName</span><span class="o">,</span>
+                <span class="n">element</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">cleanup</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In this example, the sink fetches the name of the enclosing streamlet from the context passed in the <code>setup</code> method. The <code>put</code> method specifies how the sink handles each element that is received (in this case, a formatted message is logged to stdout). The <code>cleanup</code> method enables you to specify what happens after the element has been processed by the sink.</p>
+
+<p>Here is the <code>FormattedLogSink</code> at work in an example processing graph:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">createBuilder</span><span class="o">();</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="s">&quot;Here is a string to be passed to the sink&quot;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">toSink</span><span class="o">(</span><span class="k">new</span> <span class="n">FormattedLogSink</span><span class="o">());</span>
+</code></pre></div>
+
+<blockquote>
+<p><a href="#log-operations">Log operations</a> rely on a log sink that is provided out of the box. You&rsquo;ll need to implement other sinks yourself.</p>
+</blockquote>
+
+<h2 id="partitioning">Partitioning</h2>
+
+<p>In the topology API, processing parallelism can be managed via adjusting the number of spouts and bolts performing different operations, enabling you to, for example, increase the relative parallelism of a bolt by using three of that bolt instead of two.</p>
+
+<p>The Heron Streamlet API provides a different mechanism for controlling parallelism: <strong>partitioning</strong>. To understand partitioning, keep in mind that rather than physical spouts and bolts, the core processing construct in the Heron Streamlet API is the processing step. With the Heron Streamlet API, you can explicitly assign a number of partitions to each processing step in your graph (the default is one partition).</p>
+
+<p>The example topology <a href="#streamlets">above</a>, for example, has five steps:</p>
+
+<ul>
+<li>the random integer source</li>
+<li>the &ldquo;add one&rdquo; map operation</li>
+<li>the union operation</li>
+<li>the filtering operation</li>
+<li>the logging operation.</li>
+</ul>
+
+<p>You could apply varying numbers of partitions to each step in that topology like this:</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">CreateBuilder</span><span class="o">();</span>
+
+<span class="n">Streamlet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">zeroes</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;zeroes&quot;</span><span class="o">);</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">11</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;random-ints&quot;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setNumPartitions</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;add-one&quot;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">repartition</span><span class="o">(</span><span class="mi">3</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">union</span><span class="o">(</span><span class="n">zeroes</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;unify-streams&quot;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">repartition</span><span class="o">(</span><span class="mi">2</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">i</span> <span class="o">-&gt;</span> <span class="n">i</span> <span class="o">!=</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;remove-all-twos&quot;</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">repartition</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">log</span><span class="o">();</span>
+</code></pre></div>
+
+<h3 id="repartition-operations">Repartition operations</h3>
+
+<p>As explained <a href="#partitioning">above</a>, when you set a number of partitions for a specific operation (included for source streamlets), the same number of partitions is applied to all downstream operations <em>until</em> a different number is explicitly set.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="n">Builder</span> <span class="n">builder</span> <span class="o">=</span> <span class="n">Builder</span><span class="o">.</span><span class="na">CreateBuilder</span><span class="o">();</span>
+
+<span class="n">builder</span><span class="o">.</span><span class="na">newSource</span><span class="o">(()</span> <span class="o">-&gt;</span> <span class="n">ThreadLocalRandom</span><span class="o">.</span><span class="na">current</span><span class="o">().</span><span class="na">nextInt</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">11</span><span class="o">))</span>
+    <span class="o">.</span><span class="na">repartition</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="o">(</span><span class="n">element</span><span class="o">,</span> <span class="n">numPartitions</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">element</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">});</span>
+</code></pre></div>
+</article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
+$('pre code').each(function() {
+  console.log(this);
+  this.innerHTML = this.innerHTML.replace(/\$\s/g, function(matched) {
+    return `<span class=\"clp\">${matched}</span>`;
+  });
+});
+</script></body></html>

@@ -26,8 +26,9 @@ Zookeeper To run Heron on k8s, you will need a Zookeeper cluster. You can choose
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/snippets/heron-streamlet-api/</guid>
-      <description>Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
- Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
+      <description>Heron processing topologies can be written using an API called the Heron Streamlet API. The Heron Streamlet API is currently available for the following languages:
+ Java    Although this document covers the new Heron Streamlet API, topologies created using the original topology API can still be used with Heron (which means that all of your older topologies will still run).
+ The Heron Streamlet API vs. the topology API When Heron was first released, all Heron topologies needed to be written using an API based on the Storm topology API.</description>
     </item>
     
   </channel>

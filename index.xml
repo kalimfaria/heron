@@ -26,8 +26,9 @@ Zookeeper To run Heron on k8s, you will need a Zookeeper cluster. You can choose
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/snippets/heron-streamlet-api/</guid>
-      <description>Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
- Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
+      <description>Heron processing topologies can be written using an API called the Heron Streamlet API. The Heron Streamlet API is currently available for the following languages:
+ Java    Although this document covers the new Heron Streamlet API, topologies created using the original topology API can still be used with Heron (which means that all of your older topologies will still run).
+ The Heron Streamlet API vs. the topology API When Heron was first released, all Heron topologies needed to be written using an API based on the Storm topology API.</description>
     </item>
     
     <item>
@@ -254,7 +255,7 @@ The port to connect to heron shell for each container is stored in the physical 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/concepts/topologies/</guid>
-      <description>New Streamlet API for Heron As of version 0.16.0, Heron offers a new Streamlet API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Streamlet API is currently in beta and available for Java. The Streamlet API for Python will be available soon.
+      <description>&amp;times; New Streamlet API for HeronAs of version 0.16.0, Heron offers a new Streamlet API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Streamlet API is currently in beta and available for Java. The Streamlet API for Python will be available soon.
 More information on the Streamlet API can be found below.
  A Heron topology is a directed acyclic graph (DAG) used to process streams of data.</description>
     </item>
@@ -725,13 +726,22 @@ Running the Heron API server You can start up the Heron API server using the her
     </item>
     
     <item>
+      <title>The Heron Streamlet API</title>
+      <link>https://twitter.github.io/heron/docs/concepts/streamlet-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/concepts/streamlet-api/</guid>
+      <description>&amp;times; The Heron Streamlet API is in betaThe Heron Streamlet API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  When it was first released, Heron offered a Topology API&amp;mdash;heavily indebted to the Storm API&amp;mdash;for developing topology logic. In the original Topology API, developers creating topologies were required to explicitly:</description>
+    </item>
+    
+    <item>
       <title>The Heron Streamlet API for Java</title>
       <link>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</guid>
-      <description>&amp;times; The Heron Streamlet API is in betaThe Heron Streamlet API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  Heron processing topologies can be written using an API called the Heron Functional API. The Heron Functional API is currently available for the following languages:
- Java    Although the original topology API can still be used with Heron (which means that all of your older topologies will still run) we strongly recommend creating all new topologies using the Heron Functional API, for reasons outlined in the section below.</description>
+      <description>&amp;times; The Heron Streamlet API is in betaThe Heron Streamlet API is well tested and can be used to build and test topologies locally. The API is not yet fully stable, however, and breaking changes are likely in the coming weeks.  Heron processing topologies can be written using an API called the Heron Streamlet API. The Heron Streamlet API is currently available for the following languages:
+ Java    Although this document covers the new Heron Streamlet API, topologies created using the original topology API can still be used with Heron (which means that all of your older topologies will still run).</description>
     </item>
     
     <item>

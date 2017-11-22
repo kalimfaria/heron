@@ -287,6 +287,10 @@
   </url>
   
   <url>
+    <loc>https://twitter.github.io/heron/docs/concepts/streamlet-api/</loc>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/developers/java/streamlet-api/</loc>
   </url>
   
