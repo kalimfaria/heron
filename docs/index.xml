@@ -235,8 +235,7 @@ The port to connect to heron shell for each container is stored in the physical 
       
       <guid>https://twitter.github.io/heron/docs/concepts/topologies/</guid>
       <description>&amp;times; New Streamlet API for HeronAs of version 0.16.0, Heron offers a new Streamlet API that you can use to write topologies in a more declarative, functional manner, without needing to specify spout and bolt logic directly. The Streamlet API is currently in beta and available for Java. The Streamlet API for Python will be available soon.
-More information on the Streamlet API can be found below.
- A Heron topology is a directed acyclic graph (DAG) used to process streams of data.</description>
+More information on the Streamlet API can be found below.  A Heron topology is a directed acyclic graph (DAG) used to process streams of data.</description>
     </item>
     
     <item>

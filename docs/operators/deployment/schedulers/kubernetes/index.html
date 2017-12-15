@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Kubernetes"><meta property="og:url" content="/docs/operators/deployment/schedulers/kubernetes/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Kubernetes</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.25-DEV" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Kubernetes"><meta property="og:url" content="/docs/operators/deployment/schedulers/kubernetes/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Kubernetes</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
 var shiftWindow = function() { scrollBy(0, -100) };
 window.addEventListener("hashchange", shiftWindow);
 function load() { if (window.location.hash) shiftWindow(); }
@@ -359,6 +359,1072 @@ kubeconfig entry generated <span class="k">for</span> heron-gke-cluster.
 <p>The <a href="../../../heron-ui">Heron UI</a> is an in-browser dashboard that you can use to monitor your Heron <a href="../../../../concepts/topologies">topologies</a>. It should already be running in your GKE cluster.</p>
 
 <p>You can access <a href="../../../heron-ui">Heron UI</a> in your browser by navigating to <a href="http://localhost:8001/api/v1/proxy/namespaces/default/services/heron-ui:8889">http://localhost:8001/api/v1/proxy/namespaces/default/services/heron-ui:8889</a>.</p>
+
+<h2 id="heron-on-kubernetes-configuration">Heron on Kubernetes configuration</h2>
+
+<p>You can configure Heron on Kubernetes using a variety of YAML config files, listed in the sections below.</p>
+
+<h3 id="client-yaml">client.yaml</h3>
+
+
+
+
+
+
+
+
+
+
+<p>Configuration for the <code>heron</code> CLI tool.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.package.core.uri</code></td>
+      <td>Location of the core Heron package</td>
+      <td><code>file:///vagrant/.herondata/dist/heron-core-release.tar.gz</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.config.is.role.required</code></td>
+      <td>Whether a role is required to submit a topology</td>
+      <td><code>False</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.config.is.env.required</code></td>
+      <td>Whether an environment is required to submit a topology</td>
+      <td><code>False</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+<h3 id="heron-internals-yaml">heron_internals.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+
+
+<p>Configuration for a wide variety of Heron components, including logging, each topology&rsquo;s stream manager and topology master, and more.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.logging.directory</code></td>
+      <td>The relative path to the logging directory</td>
+      <td><code>log-files</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.logging.maximum.size.mb</code></td>
+      <td>The maximum log file size (in MB)</td>
+      <td><code>100</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.logging.maximum.files</code></td>
+      <td>The maximum number of log files</td>
+      <td><code>5</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.check.tmaster.location.interval.sec</code></td>
+      <td>The interval, in seconds, after which to check if the topology master location has been fetched or not</td>
+      <td><code>120</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.logging.prune.interval.sec</code></td>
+      <td>The interval, in seconds, at which to prune C++ log files</td>
+      <td><code>300</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.logging.flush.interval.sec</code></td>
+      <td>The interval, in seconds, at which to flush C++ log files</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.logging.err.threshold</code></td>
+      <td>The threshold level at which to log errors</td>
+      <td><code>3</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metrics.export.interval.sec</code></td>
+      <td>The interval, in seconds, at which different components export metrics to the metrics manager</td>
+      <td><code>60</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metrics.max.exceptions.per.message.count</code></td>
+      <td>The maximum count of exceptions in one <code>MetricPublisherPublishMessage</code> protobuf message</td>
+      <td><code>1024</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.cache.drain.frequency.ms</code></td>
+      <td>The frequency, in milliseconds, at which to drain the tuple cache in the stream manager</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.stateful.buffer.size.mb</code></td>
+      <td>The sized-based threshold (in MB) for buffering data tuples waiting for checkpoint markers before giving up</td>
+      <td><code>100</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.cache.drain.size.mb</code></td>
+      <td>The sized-based threshold (in MB) for draining the tuple cache</td>
+      <td><code>100</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.xormgr.rotatingmap.nbuckets</code></td>
+      <td>For efficient acknowledgements</td>
+      <td><code>3</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.mempool.max.message.number</code></td>
+      <td>The max number of messages in the memory pool for each message type</td>
+      <td><code>512</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.client.reconnect.interval.sec</code></td>
+      <td>The reconnect interval to other stream managers (in seconds) for the stream manager client</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.client.reconnect.max.attempts</code></td>
+      <td>The max reconnect attempts to other stream managers for the stream manager client</td>
+      <td><code>300</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.client.reconnect.tmaster.interval.sec</code></td>
+      <td>The reconnect interval to the topology master (in seconds) for the stream manager client</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.network.options.maximum.packet.mb</code></td>
+      <td>The maximum packet size (in MB) of the stream manager&rsquo;s network options</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.tmaster.heartbeat.interval.sec</code></td>
+      <td>The interval (in seconds) at which to send heartbeats</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.connection.read.batch.size.mb</code></td>
+      <td>The maximum batch size (in MB) for the stream manager to read from socket</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.connection.write.batch.size.mb</code></td>
+      <td>Maximum batch size (in MB) for the stream manager to write to socket</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.network.backpressure.threshold</code></td>
+      <td>The number of times Heron should wait to see a buffer full while enqueueing data before declaring the start of backpressure</td>
+      <td><code>3</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.network.backpressure.highwatermark.mb</code></td>
+      <td>The high-water mark on the number (in MB) that can be left outstanding on a connection</td>
+      <td><code>100</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.streammgr.network.backpressure.lowwatermark.mb</code></td>
+      <td>The low-water mark on the number (in MB) that can be left outstanding on a connection</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.metrics.collector.maximum.interval.min</code></td>
+      <td>The maximum interval (in minutes) for metrics to be kept in the topology master</td>
+      <td><code>180</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.establish.retry.times</code></td>
+      <td>The maximum number of times to retry establishing connection with the topology master</td>
+      <td><code>30</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.establish.retry.interval.sec</code></td>
+      <td>The interval at which to retry establishing connection with the topology master</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.network.master.options.maximum.packet.mb</code></td>
+      <td>Maximum packet size (in MB) of topology master&rsquo;s network options to connect to stream managers</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.network.controller.options.maximum.packet.mb</code></td>
+      <td>Maximum packet size (in MB) of the topology master&rsquo;s network options to connect to scheduler</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.network.stats.options.maximum.packet.mb</code></td>
+      <td>Maximum packet size (in MB) of the topology master&rsquo;s network options for stat queries</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.metrics.collector.purge.interval.sec</code></td>
+      <td>The interval (in seconds) at which the topology master purges metrics from socket</td>
+      <td><code>60</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.metrics.collector.maximum.exception</code></td>
+      <td>The maximum number of exceptions to be stored in the topology metrics collector, to prevent out-of-memory errors</td>
+      <td><code>256</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.metrics.network.bindallinterfaces</code></td>
+      <td>Whether the metrics reporter should bind on all interfaces</td>
+      <td><code>False</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.tmaster.stmgr.state.timeout.sec</code></td>
+      <td>The timeout (in seconds) for the stream manager, compared with (current time - last heartbeat time)</td>
+      <td><code>60</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.read.batch.time.ms</code></td>
+      <td>The maximum batch time (in milliseconds) for the metrics manager to read from socket</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.read.batch.size.bytes</code></td>
+      <td>The maximum batch size (in bytes) to read from socket</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.write.batch.time.ms</code></td>
+      <td>The maximum batch time (in milliseconds) for the metrics manager to write to socket</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.options.socket.send.buffer.size.bytes</code></td>
+      <td>The maximum socket send buffer size (in bytes)</td>
+      <td><code>6553600</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.options.socket.received.buffer.size.bytes</code></td>
+      <td>The maximum socket received buffer size (in bytes) for the metrics manager&rsquo;s network options</td>
+      <td><code>8738000</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.metricsmgr.network.options.maximum.packetsize.bytes</code></td>
+      <td>The maximum packet size that the metrics manager can read</td>
+      <td><code>1048576</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.options.maximum.packetsize.bytes</code></td>
+      <td>The maximum size of packets that Heron instances can read</td>
+      <td><code>10485760</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.internal.bolt.read.queue.capacity</code></td>
+      <td>The queue capacity (num of items) in bolt for buffer packets to read from stream manager</td>
+      <td><code>128</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.internal.bolt.write.queue.capacity</code></td>
+      <td>The queue capacity (num of items) in bolt for buffer packets to write to stream manager</td>
+      <td><code>128</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.internal.spout.read.queue.capacity</code></td>
+      <td>The queue capacity (num of items) in spout for buffer packets to read from stream manager</td>
+      <td><code>1024</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.internal.spout.write.queue.capacity</code></td>
+      <td>The queue capacity (num of items) in spout for buffer packets to write to stream manager</td>
+      <td><code>128</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.internal.metrics.write.queue.capacity</code></td>
+      <td>The queue capacity (num of items) for metrics packets to write to metrics manager</td>
+      <td><code>128</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.read.batch.time.ms</code></td>
+      <td>Time based, the maximum batch time in ms for instance to read from stream manager per attempt</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.read.batch.size.bytes</code></td>
+      <td>Size based, the maximum batch size in bytes to read from stream manager</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.write.batch.time.ms</code></td>
+      <td>Time based, the maximum batch time (in milliseconds) for the instance to write to the stream manager per attempt</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.write.batch.size.bytes</code></td>
+      <td>Size based, the maximum batch size in bytes to write to stream manager</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.options.socket.send.buffer.size.bytes</code></td>
+      <td>The maximum socket&rsquo;s send buffer size in bytes</td>
+      <td><code>6553600</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.network.options.socket.received.buffer.size.bytes</code></td>
+      <td>The maximum socket&rsquo;s received buffer size in bytes of instance&rsquo;s network options</td>
+      <td><code>8738000</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.set.data.tuple.capacity</code></td>
+      <td>The maximum number of data tuple to batch in a HeronDataTupleSet protobuf</td>
+      <td><code>1024</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.set.data.tuple.size.bytes</code></td>
+      <td>The maximum size in bytes of data tuple to batch in a HeronDataTupleSet protobuf</td>
+      <td><code>8388608</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.set.control.tuple.capacity</code></td>
+      <td>The maximum number of control tuple to batch in a HeronControlTupleSet protobuf</td>
+      <td><code>1024</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.ack.batch.time.ms</code></td>
+      <td>The maximum time in ms for a spout to do acknowledgement per attempt, the ack batch could also break if there are no more ack tuples to process</td>
+      <td><code>128</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.emit.batch.time.ms</code></td>
+      <td>The maximum time in ms for an spout instance to emit tuples per attempt</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.emit.batch.size.bytes</code></td>
+      <td>The maximum batch size in bytes for an spout to emit tuples per attempt</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.execute.batch.time.ms</code></td>
+      <td>The maximum time in ms for an bolt instance to execute tuples per attempt</td>
+      <td><code>16</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.execute.batch.size.bytes</code></td>
+      <td>The maximum batch size in bytes for an bolt instance to execute tuples per attempt</td>
+      <td><code>32768</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.state.check.interval.sec</code></td>
+      <td>The time interval for an instance to check the state change, for example, the interval a spout uses to check whether activate/deactivate is invoked</td>
+      <td><code>5</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.force.exit.timeout.ms</code></td>
+      <td>The time to wait before the instance exits forcibly when uncaught exception happens</td>
+      <td><code>2000</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.reconnect.streammgr.interval.sec</code></td>
+      <td>Interval in seconds to reconnect to the stream manager, including the request timeout in connecting</td>
+      <td><code>5</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.reconnect.streammgr.interval.sec</code></td>
+      <td>Interval in seconds to reconnect to the stream manager, including the request timeout in connecting</td>
+      <td><code>60</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.reconnect.metricsmgr.interval.sec</code></td>
+      <td>Interval in seconds to reconnect to the metrics manager, including the request timeout in connecting</td>
+      <td><code>5</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.reconnect.metricsmgr.times</code></td>
+      <td>Interval in seconds to reconnect to the metrics manager, including the request timeout in connecting</td>
+      <td><code>60</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.metrics.system.sample.interval.sec</code></td>
+      <td>The interval in second for an instance to sample its system metrics, for instance, cpu load.</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.slave.fetch.pplan.interval.sec</code></td>
+      <td>The time interval (in seconds) at which Heron instances fetch the physical plan from slaves</td>
+      <td><code>1</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.acknowledgement.nbuckets</code></td>
+      <td>For efficient acknowledgement</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.expected.bolt.read.queue.size</code></td>
+      <td>The expected size on read queue in bolt</td>
+      <td><code>8</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.expected.bolt.write.queue.size</code></td>
+      <td>The expected size on write queue in bolt</td>
+      <td><code>8</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.expected.spout.read.queue.size</code></td>
+      <td>The expected size on read queue in spout</td>
+      <td><code>512</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.expected.spout.write.queue.size</code></td>
+      <td>The exepected size on write queue in spout</td>
+      <td><code>8</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.expected.metrics.write.queue.size</code></td>
+      <td>The expected size on metrics write queue</td>
+      <td><code>8</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.current.sample.weight</code></td>
+      <td></td>
+      <td><code>0.8</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.instance.tuning.interval.ms</code></td>
+      <td>Interval in ms to tune the size of in &amp; out data queue in instance</td>
+      <td><code>100</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+<h3 id="packing-yaml">packing.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.class.packing.algorithm</code></td>
+      <td>Packing algorithm for packing instances into containers</td>
+      <td><code>com.twitter.heron.packing.roundrobin.RoundRobinPacking</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+<h3 id="scheduler-yaml">scheduler.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.class.scheduler</code></td>
+      <td>scheduler class for distributing the topology for execution</td>
+      <td><code>com.twitter.heron.scheduler.kubernetes.KubernetesScheduler</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.class.launcher</code></td>
+      <td>launcher class for submitting and launching the topology</td>
+      <td><code>com.twitter.heron.scheduler.kubernetes.KubernetesLauncher</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.directory.sandbox.java.home</code></td>
+      <td>location of java - pick it up from shell environment</td>
+      <td><code>$JAVA_HOME</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.kubernetes.scheduler.uri</code></td>
+      <td>The URI of the Kubernetes API</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.scheduler.is.service</code></td>
+      <td>Invoke the IScheduler as a library directly</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.executor.docker.image</code></td>
+      <td>docker repo for executor</td>
+      <td><code>heron/heron:latest</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+<h3 id="stateful-yaml">stateful.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.statefulstorage.classname</code></td>
+      <td>The type of storage to be used for state checkpointing</td>
+      <td><code>com.twitter.heron.statefulstorage.localfs.LocalFileSystemStorage</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+
+ 
+ 
+
+<h3 id="statemgr-yaml">statemgr.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.class.state.manager</code></td>
+      <td>local state manager class for managing state in a persistent fashion</td>
+      <td><code>com.twitter.heron.statemgr.zookeeper.curator.CuratorStateManager</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.connection.string</code></td>
+      <td>local state manager connection string</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.root.path</code></td>
+      <td>path of the root address to store the state in a local file system</td>
+      <td><code>/heron</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.zookeeper.is.initialize.tree</code></td>
+      <td>create the zookeeper nodes, if they do not exist</td>
+      <td><code>True</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.zookeeper.session.timeout.ms</code></td>
+      <td>timeout in ms to wait before considering zookeeper session is dead</td>
+      <td><code>30000</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.zookeeper.connection.timeout.ms</code></td>
+      <td>timeout in ms to wait before considering zookeeper connection is dead</td>
+      <td><code>30000</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.zookeeper.retry.count</code></td>
+      <td>timeout in ms to wait before considering zookeeper connection is dead</td>
+      <td><code>10</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.statemgr.zookeeper.retry.interval.ms</code></td>
+      <td>duration of time to wait until the next retry</td>
+      <td><code>10000</code></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+
+ 
+ 
+
+<h3 id="uploader-yaml">uploader.yaml</h3>
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+    <tr>
+      <td><code>heron.class.uploader</code></td>
+      <td>uploader class for transferring the topology files (jars, tars, PEXes, etc.) to storage</td>
+      <td><code>com.twitter.heron.uploader.s3.S3Uploader</code></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.uploader.s3.bucket</code></td>
+      <td>S3 bucket in which topology assets will be stored (if AWS S3 is being used)</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.uploader.s3.access_key</code></td>
+      <td>AWS access key (if AWS S3 is being used)</td>
+      <td></td>
+    </tr>
+    
+    
+    
+    <tr>
+      <td><code>heron.uploader.s3.secret_key</code></td>
+      <td>AWS secret access key (if AWS S3 is being used)</td>
+      <td></td>
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+ 
 </article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
 $('pre code').each(function() {
   console.log(this);

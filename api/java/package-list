@@ -115,6 +115,7 @@ com.twitter.heron.scheduler.local
 com.twitter.heron.scheduler.marathon
 com.twitter.heron.scheduler.mesos
 com.twitter.heron.scheduler.mesos.framework
+com.twitter.heron.scheduler.nomad
 com.twitter.heron.scheduler.server
 com.twitter.heron.scheduler.slurm
 com.twitter.heron.scheduler.utils
