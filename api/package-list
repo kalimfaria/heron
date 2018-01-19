@@ -49,9 +49,15 @@ com.twitter.heron.common.utils.topology
 com.twitter.heron.common.utils.tuple
 com.twitter.heron.dlog
 com.twitter.heron.downloader
+com.twitter.heron.eco
+com.twitter.heron.eco.builder
+com.twitter.heron.eco.definition
+com.twitter.heron.eco.parser
+com.twitter.heron.eco.submit
 com.twitter.heron.examples.api
 com.twitter.heron.examples.api.bolt
 com.twitter.heron.examples.api.spout
+com.twitter.heron.examples.eco
 com.twitter.heron.examples.streamlet
 com.twitter.heron.examples.streamlet.utils
 com.twitter.heron.grouping
@@ -153,6 +159,7 @@ com.twitter.heron.uploader
 com.twitter.heron.uploader.dlog
 com.twitter.heron.uploader.gcs
 com.twitter.heron.uploader.hdfs
+com.twitter.heron.uploader.http
 com.twitter.heron.uploader.localfs
 com.twitter.heron.uploader.s3
 com.twitter.heron.uploader.scp

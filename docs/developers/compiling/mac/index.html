@@ -14,8 +14,9 @@ install it using this one-liner:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ /usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 
-<h3 id="step-2-install-other-required-libraries">Step 2 &mdash; Install other required libraries</h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>brew install automake
+<h3 id="step-2-install-bazel-and-other-required-libraries">Step 2 &mdash; Install bazel and other required libraries</h3>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>brew install bazel
+brew install automake
 brew install cmake
 brew install libtool
 </code></pre></div>
@@ -26,32 +27,22 @@ $ <span class="nb">export</span> <span class="nv">CXX</span><span class="o">=</s
 $ <span class="nb">echo</span> <span class="nv">$CC</span> <span class="nv">$CXX</span>
 </code></pre></div>
 
-<h4 id="step-4-install-bazel-hahahugoshortcode-1hbhb">Step 4 - Install Bazel 0.5.4</h4>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>wget -O /tmp/bazel.sh  https://github.com/bazelbuild/bazel/releases/download/0.5.4/bazel-0.5.4-installer-darwin-x86_64.sh
-chmod +x /tmp/bazel.sh
-/tmp/bazel.sh --user
-</code></pre></div>
-
-<h3 id="step-5-make-sure-the-bazel-executable-is-on-your-path">Step 5 &mdash; Make sure the Bazel executable is on your <code>PATH</code></h3>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">:</span><span class="nv">$HOME</span><span class="s2">/bin&quot;</span>
-</code></pre></div>
-
-<h3 id="step-6-fetch-the-latest-version-of-heron-s-source-code">Step 6 &mdash; Fetch the latest version of Heron&rsquo;s source code</h3>
+<h3 id="step-4-fetch-the-latest-version-of-heron-s-source-code">Step 4 &mdash; Fetch the latest version of Heron&rsquo;s source code</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ git clone https://github.com/twitter/heron.git <span class="o">&amp;&amp;</span> <span class="nb">cd</span> heron
 </code></pre></div>
 
-<h3 id="step-7-configure-heron-for-building-with-bazel">Step 7 &mdash; Configure Heron for building with Bazel</h3>
+<h3 id="step-5-configure-heron-for-building-with-bazel">Step 5 &mdash; Configure Heron for building with Bazel</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./bazel_configure.py
 </code></pre></div>
 
 <p>If this configure script fails with missing dependencies, Homebrew can be used
 to install those dependencies.</p>
 
-<h3 id="step-8-build-the-project">Step 8 &mdash; Build the project</h3>
+<h3 id="step-6-build-the-project">Step 6 &mdash; Build the project</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ bazel build --config<span class="o">=</span>darwin heron/...
 </code></pre></div>
 
-<h3 id="step-9-build-the-packages">Step 9 &mdash; Build the packages</h3>
+<h3 id="step-7-build-the-packages">Step 7 &mdash; Build the packages</h3>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ bazel build --config<span class="o">=</span>darwin scripts/packages:binpkgs
 $ bazel build --config<span class="o">=</span>darwin scripts/packages:tarpkgs
 </code></pre></div>

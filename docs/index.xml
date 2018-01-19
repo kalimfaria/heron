@@ -51,7 +51,7 @@ Step 1 &amp;mdash; Update Ubuntu $ sudo apt-get update -y $ sudo apt-get upgrade
       <guid>https://twitter.github.io/heron/docs/developers/compiling/mac/</guid>
       <description>This is a step-by-step guide to building Heron on Mac OS X (versions 10.10 and 10.11).
 Step 1 &amp;mdash; Install Homebrew If Homebrew isn&amp;rsquo;t yet installed on your system, you can install it using this one-liner:
-$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  Step 2 &amp;mdash; Install other required libraries brew install automake brew install cmake brew install libtool  Step 3 &amp;mdash; Set the following environment variables $ export CC=/usr/bin/clang $ export CXX=/usr/bin/clang++ $ echo $CC $CXX  Step 4 - Install Bazel 0.</description>
+$ /usr/bin/ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;  Step 2 &amp;mdash; Install bazel and other required libraries brew install bazel brew install automake brew install cmake brew install libtool  Step 3 &amp;mdash; Set the following environment variables $ export CC=/usr/bin/clang $ export CXX=/usr/bin/clang++ $ echo $CC $CXX  Step 4 &amp;mdash; Fetch the latest version of Heron&amp;rsquo;s source code $ git clone https://github.</description>
     </item>
     
     <item>
