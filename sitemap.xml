@@ -133,6 +133,14 @@
   </url>
   
   <url>
+    <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm/</loc>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</loc>
   </url>
   
@@ -170,10 +178,6 @@
   
   <url>
     <loc>https://twitter.github.io/heron/docs/operators/configuration/config-intro/</loc>
-  </url>
-  
-  <url>
-    <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</loc>
   </url>
   
   <url>

@@ -314,6 +314,26 @@ To set up your Heron cluster to export to Scribe, you need to make two changes t
     </item>
     
     <item>
+      <title>Heron on Kubernetes by hand</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</guid>
+      <description>This document shows you how to install Heron on Kubernetes in a step-by-step, &amp;ldquo;by hand&amp;rdquo; fashion. An easier way to install Heron on Kubernetes is to use the Helm package manager. For instructions on doing so, see Heron on Kubernetes with Helm).
+ Heron supports deployment on Kubernetes (sometimes called k8s). Heron deployments on Kubernetes use Docker as the containerization format for Heron topologies and use the Kubernetes API for scheduling.</description>
+    </item>
+    
+    <item>
+      <title>Heron on Kubernetes with Helm</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm/</guid>
+      <description>If you&amp;rsquo;d prefer to install Heron on Kubernetes without using the Helm package manager, see the Heron on Kubernetes by hand document.
+ Helm is an open source package manager for Kubernetes that enables you to quickly and easily install even the most complex software systems on Kubernetes. Heron has a Helm chart that you can use to install Heron on Kubernetes using just a few commands. The chart can be used to install Heron on the following platforms:</description>
+    </item>
+    
+    <item>
       <title>Heron uploaders</title>
       <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -416,18 +436,6 @@ public interface ISpout extends Serializable { void open(Map&amp;lt;String, Obje
       <guid>https://twitter.github.io/heron/docs/operators/configuration/config-intro/</guid>
       <description>Heron clusters can be configured at two levels:
  The system level &amp;mdash; System-level configurations apply to the whole Heron cluster rather than to any specific component (e.g. logging configurations). The component level &amp;mdash; Component-level configurations enable you to establish default configurations for different components. These configurations are fixed at any stage of the topology&amp;rsquo;s lifecycle, once the topology is deployed.  Neither system- nor component-level configurations can be overridden by topology developers.</description>
-    </item>
-    
-    <item>
-      <title>Kubernetes</title>
-      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</guid>
-      <description>Heron supports deployment on Kubernetes (sometimes called k8s). Heron deployments on Kubernetes use Docker as the containerization format for Heron topologies and use the Kubernetes API for scheduling.
-You can use Heron on Kubernetes in multiple environments:
- Locally using Minikube In the cloud on Google Container Engine (GKE) In any other Kubernetes cluster  Requirements In order to run Heron on Kubernetes, you will need:
- A Kubernetes cluster with at least 3 nodes (unless you&amp;rsquo;re running locally on Minikube) The kubectl CLI tool installed and set up to communicate with your cluster The heron CLI tool  Any additional requirements will depend on where you&amp;rsquo;re running Heron on Kubernetes.</description>
     </item>
     
     <item>
