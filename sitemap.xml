@@ -141,6 +141,10 @@
   </url>
   
   <url>
+    <loc>https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone/</loc>
+  </url>
+  
+  <url>
     <loc>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</loc>
   </url>
   

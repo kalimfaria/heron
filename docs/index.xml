@@ -334,6 +334,17 @@ To set up your Heron cluster to export to Scribe, you need to make two changes t
     </item>
     
     <item>
+      <title>Heron standalone</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone/</guid>
+      <description>Heron enables you to easily run a multi-node cluster in standalone mode. The difference between standalone mode and local mode for Heron is that standalone mode involves running multiple compute nodes&amp;mdash;using Hashicorp&amp;rsquo;s Nomad as a scheduler&amp;mdash;rather than just one.
+Installation You can use Heron in standalone mode using the heron-admin CLI tool, which can be installed using the instructions here.
+Requirements In order to run Heron in standalone mode, you&amp;rsquo;ll need to run a ZooKeeper cluster.</description>
+    </item>
+    
+    <item>
       <title>Heron uploaders</title>
       <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
