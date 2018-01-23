@@ -22,16 +22,14 @@ function load() { if (window.location.hash) shiftWindow(); }
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron-admin standalone <span class="nb">set</span>
 </code></pre></div>
 
-<p>That will open up an <code>inventory.yaml</code> file in Vim that initially looks like this:</p>
+<p>That will open up an <code>inventory.yaml</code> file in whichever editor is specified in your <code>EDITOR</code> environment variable. The default is <a href="http://www.vim.org/">Vim</a>. That YAML file looks like this:</p>
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">cluster</span><span class="p p-Indicator">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
 <span class="l l-Scalar l-Scalar-Plain">zookeepers</span><span class="p p-Indicator">:</span>
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
 </code></pre></div>
 
-<p>You can modify the file to include all hosts for your standalone cluster and for ZooKeeper. To set the editor to edit mode, hit the <strong>A</strong> key; when you&rsquo;re finished editing, hit the <strong>Esc</strong> key to exit edit mode; to save changes, type <strong>:wq</strong> and hit <strong>Enter</strong>.</p>
-
-<p>Once you&rsquo;ve added the lists of hosts for the Heron standalone cluster and ZooKeeper, you can move on to <a href="#starting-and-stopping-the-cluster">starting the cluster</a>.</p>
+<p>You can modify the file to include all hosts for your standalone cluster and for ZooKeeper. Once you&rsquo;ve added the lists of hosts for the Heron standalone cluster and ZooKeeper and saved the file, you can move on to <a href="#starting-and-stopping-the-cluster">starting the cluster</a>.</p>
 
 <blockquote>
 <p>To run Heron in standalone mode locally on your laptop, use the defaults that are already provided in the <code>inventory.yaml</code> file.</p>
@@ -66,6 +64,12 @@ function load() { if (window.location.hash) shiftWindow(); }
 
 <p>If you see the <code>Heron standalone cluster complete!</code> message, that means that the cluster is ready for you to <a href="#submitting-a-topology">submit</a> and manage topologies.</p>
 
+<p>You can stop the cluster at any time using the <code>stop</code> command:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron-admin standalone cluster stop
+</code></pre></div>
+
+<p>You will be prompted to confirm that you want to stop the cluster by typing <strong>yes</strong> or <strong>y</strong> (or <strong>no</strong> or <strong>n</strong> if you don&rsquo;t want to). If you enter <strong>yes</strong> or <strong>y</strong> and press <strong>Enter</strong>, all Heron-related jobs will be de-scheduled on Nomad.</p>
+
 <h2 id="submitting-a-topology">Submitting a topology</h2>
 
 <p>Once your standalone cluster is up and running, you can submit and manage topologies using the <a href="../../../heron-cli">Heron CLI tool</a> and specifying the <code>standalone</code> cluster. Here&rsquo;s an example topology submission command:</p>
@@ -83,7 +87,41 @@ function load() { if (window.location.hash) shiftWindow(); }
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron-admin standalone info
 </code></pre></div>
 
-<p>This will return a list of hosts for Heron and ZooKeeper as well as URLs for the <a href="../../../heron-api-server">Heron API server</a>, <a href="../../../heron-ui">Heron UI</a>, and <a href="../../../heron-tracker">Heron Tracker</a>.</p>
+<p>This will return a JSON string containing a list of hosts for Heron and ZooKeeper as well as URLs for the <a href="../../../heron-api-server">Heron API server</a>, <a href="../../../heron-ui">Heron UI</a>, and <a href="../../../heron-tracker">Heron Tracker</a>. Here is a cluster info JSON string if all defaults are retained:</p>
+<div class="highlight"><pre><code class="language-json" data-lang="json"><span></span><span class="p">{</span>
+  <span class="nt">&quot;numNodes&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;nodes&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;127.0.0.1&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;roles&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;masters&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;127.0.0.1&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;slaves&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;127.0.0.1&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;zookeepers&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;127.0.0.1&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;urls&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;serviceUrl&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:9000&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;heronUi&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8889&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;heronTracker&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8888&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>You can also get more specific bits of info using the <code>get</code> command:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span><span class="c1"># Heron Tracker URL</span>
+$ heron-admin standalone get heron-tracker-url
+
+<span class="c1"># Heron UI URL</span>
+$ heron-admin standalone get heron-ui-url
+
+<span class="c1"># Heron cluster service URL</span>
+$ heron-admin standalone get service-url
+</code></pre></div>
 
 <h2 id="managing-nomad">Managing Nomad</h2>
 
