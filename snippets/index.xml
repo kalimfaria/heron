@@ -12,6 +12,17 @@
     
     <item>
       <title></title>
+      <link>https://twitter.github.io/heron/snippets/heron-eco-api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/snippets/heron-eco-api/</guid>
+      <description>Heron processing topologies can be written using an API called the Heron ECO API. The ECO API is currently available to work with spouts and bolts from the following packages:
+ org.apache.storm  We will expand compatibility based on feedback we get from the community.
+ Although this document focuses on the ECO API, both the Streamlet API and Topology API topologies you have built can still be used with Heron</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://twitter.github.io/heron/snippets/heron-on-kubernetes-config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
