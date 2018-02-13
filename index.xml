@@ -403,7 +403,7 @@ Network Configuration You can configure how the MM collects and transmits data i
       <guid>https://twitter.github.io/heron/docs/migrate-storm-to-heron/</guid>
       <description>Heron is designed to be fully backwards compatible with existing Apache Storm projects, which means that you can migrate an existing Storm topology to Heron by making just a few adjustments to the topology&amp;rsquo;s pom.xml Maven configuration file.
 Step 1. Add Heron dependencies to pom.xml Copy the pom.xml segments below and paste them into your existing Storm pom.xml file in the dependencies block.
-&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.17.1&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.17.5&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
     </item>
     
     <item>
@@ -412,7 +412,7 @@ Step 1. Add Heron dependencies to pom.xml Copy the pom.xml segments below and pa
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/developers/python/topologies/</guid>
-      <description>The current version of py_heron is 0.17.1.
+      <description>The current version of py_heron is 0.17.5.
  Support for developing Heron topologies in Python is provided by a Python library called heronpy.
  Python API docs You can find API docs for the heronpy library here.
  Setup First, you need to install the heronpy library using pip, EasyInstall, or an analogous tool:
@@ -425,7 +425,7 @@ $ pip install heronpy $ easy_install heronpy  Then you can include heronpy in yo
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://twitter.github.io/heron/docs/getting-started/</guid>
-      <description>The current version of Heron is 0.17.1
+      <description>The current version of Heron is 0.17.5
  The easiest way to get started learning Heron is to install the Heron client tools, which are currently available for:
  MacOS Ubuntu &amp;gt;= 14.04 CentOS  For other platforms, you need to build from source. Please refer to the guide to compiling Heron.
 Step 1 &amp;mdash; Download the Heron tools Heron tools can be installed on MacOS using Homebrew and on Linux using installation scripts.</description>
