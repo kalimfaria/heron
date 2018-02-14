@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.36" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="The Heron ECO API for Java"><meta property="og:url" content="/docs/developers/java/eco-api/"><meta property="og:description" content="Create Heron topologies in Java from reusable spouts and bolts"><meta name="twitter:description" content="Create Heron topologies in Java from reusable spouts and bolts"><title>Heron Documentation - The Heron ECO API for Java</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-eco-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-eco-api" aria-labelledby="the-heron-eco-api"><i class="fa fa-caret-right"></i>The Heron ECO API</a></h4></section><div id="collapse-the-heron-eco-api" class="panel-collapse collapse" aria-labelledby="the-heron-eco-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/eco-api">The Heron ECO API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/streamlet-api">Heron Streamlet API</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes">Kubernetes by Hand</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm">Kubernetes with Helm</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone">Multi-node standalone cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">The Heron ECO API for Java</h1><div class="hn-docs-description">Create Heron topologies in Java from reusable spouts and bolts</div></header><article class="hn-docs-content">
+<div class="alert alert-success alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button><h4 class="alert-heading">The Heron ECO API is in beta</h4>The Heron ECO API can be used to build and test topologies on your local or on a cluster.  The API still needs some testing and feedback from the community to understand how we  should continue to develop ECO.
+</div>
+
+<p>Heron processing topologies can be written using an API called the <strong>Heron ECO API</strong>. The ECO API is currently available to work with spouts and bolts from the following packages:</p>
+
+<ul>
+<li><code>org.apache.storm</code></li>
+</ul>
+
+<p>We will expand compatibility based on feedback we get from the community.</p>
+
+<blockquote>
+<p>Although this document focuses on the ECO API, both the <a href="../../../concepts/streamlet-api">Streamlet API</a> and <a href="../../../concepts/topologies">Topology API</a> topologies you have built can still be used with Heron</p>
+</blockquote>
+
+<h2 id="the-heron-eco-api-vs-the-streamlet-and-topology-apis">The Heron ECO API vs. The Streamlet and Topology APIs</h2>
+
+<p>Heron's ECO offers one major difference over the Streamlet and Topology APIs and that is extensibility without recompilation.
+With Heron's ECO developers now have a way to alter the way data flows through spouts and bolts without needing to get into their code and make changes.
+Topologies can now be defined through a YAML based format.</p>
+
+<h2 id="why-the-name-eco">Why the name ECO?</h2>
+
+<p>/ˈekoʊ/ (Because all software should come with a pronunciation guide these days)
+ECO is an acronym that stands for:</p>
+
+<ul>
+<li>Extensible</li>
+<li>Component</li>
+<li>Orchestrator</li>
+</ul>
+
+<h2 id="what-about-storm-flux--is-it-compatible-with-eco">What about Storm Flux?  Is it compatible with Eco?</h2>
+
+<p>ECO is an extension Flux.  Most Storm Flux topologies should be able to deployed in Heron with minimal changes.
+Start reading <a href="../../../migrate-storm-to-heron">Migrate Storm Topologies To Heron</a> to learn how to migrate your Storm Flux topology then come back.</p>
+
+<h2 id="getting-started">Getting started</h2>
+
+<p>In order to use the Heron ECO API for Java, you'll need to install the <code>heron-api</code> and the <code>heron-storm</code> library, which is available
+via <a href="http://search.maven.org/">Maven Central</a>.</p>
+
+<h3 id="maven-setup">Maven setup</h3>
+
+<p>To install the <code>heron-api</code> library using Maven, add this to the <code>dependencies</code> block of your <code>pom.xml</code>
+configuration file:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.twitter.heron<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>heron-api<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.17.5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.twitter.heron<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>heron-storm<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.17.5<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;scope&gt;</span>compile<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+
+<h4 id="compiling-a-jar-with-dependencies">Compiling a JAR with dependencies</h4>
+
+<p>In order to run a Java topology in a Heron cluster, you'll need to package your topology as a &quot;fat&quot; JAR with dependencies included. You can use the <a href="https://maven.apache.org/plugins/maven-assembly-plugin/usage.html">Maven Assembly Plugin</a> to generate JARs with dependencies. To install the plugin and add a Maven goal for a single JAR, add this to the <code>plugins</code> block in your <code>pom.xml</code>:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span></span><span class="nt">&lt;plugin&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>maven-assembly-plugin<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;configuration&gt;</span>
+        <span class="nt">&lt;descriptorRefs&gt;</span>
+            <span class="nt">&lt;descriptorRef&gt;</span>jar-with-dependencies<span class="nt">&lt;/descriptorRef&gt;</span>
+        <span class="nt">&lt;/descriptorRefs&gt;</span>
+        <span class="nt">&lt;archive&gt;</span>
+            <span class="nt">&lt;manifest&gt;</span>
+                <span class="nt">&lt;mainClass&gt;&lt;/mainClass&gt;</span>
+            <span class="nt">&lt;/manifest&gt;</span>
+        <span class="nt">&lt;/archive&gt;</span>
+    <span class="nt">&lt;/configuration&gt;</span>
+    <span class="nt">&lt;executions&gt;</span>
+        <span class="nt">&lt;execution&gt;</span>
+            <span class="nt">&lt;id&gt;</span>make-assembly<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;phase&gt;</span>package<span class="nt">&lt;/phase&gt;</span>
+            <span class="nt">&lt;goals&gt;</span>
+                <span class="nt">&lt;goal&gt;</span>single<span class="nt">&lt;/goal&gt;</span>
+            <span class="nt">&lt;/goals&gt;</span>
+        <span class="nt">&lt;/execution&gt;</span>
+    <span class="nt">&lt;/executions&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div>
+
+<p>Once your <code>pom.xml</code> is properly set up, you can compile the JAR with dependencies using this command:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ mvn assembly:assembly
+</code></pre></div>
+
+<p>By default, this will add a JAR in your project's <code>target</code> folder with the name <code>PROJECT-NAME-VERSION-jar-with-dependencies.jar</code>. Here's an example ECO topology submission command using a compiled JAR:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  target/my-project-1.2.3-jar-with-dependencies.jar <span class="se">\</span>
+  com.twitter.heron.eco.Eco <span class="se">\</span>
+  --eco-config-file path/to/your/topology-definition.yaml
+</code></pre></div>
+
+<h3 id="reference-links">Reference Links</h3>
+
+<p><a href="#topology-name">Topology Name</a></p>
+
+<p><a href="#configuration">Configuration</a></p>
+
+<p><a href="#components">Components</a></p>
+
+<p><a href="#property-injection">Property Injection</a></p>
+
+<p><a href="#the-topology-definition">The Topology Definition</a></p>
+
+<p><a href="#streams-and-groupings">Streams and Groupings</a></p>
+
+<p><a href="#handling-enums">Handling Enums</a></p>
+
+<p><a href="#property-substitution">Property Substitution</a></p>
+
+<p><a href="#environment-variable-substitution">Environment Variable Substitution</a></p>
+
+<p><a href="#other-eco-examples">Other ECO Examples</a></p>
+
+<p>Notice how the above example submission command is referencing the main class <code>com.twitter.heron.eco.Eco</code>.  This part of the command
+needs to stay the same.  Eco is the main class that will assemble your topology from the <code>--eco-config-file</code> you specify.</p>
+
+<h2 id="defining-your-eco-topology-file">Defining Your ECO Topology File</h2>
+
+<p>An ECO topology definition consists of the following:</p>
+
+<ul>
+<li>A topology name</li>
+<li>An optional list of topology &quot;components&quot; (named Java objects that will be made available for configuration in the topology)</li>
+<li>A DSL topology definition that contains:
+
+<ul>
+<li>A list of spouts, each identified by a unique ID</li>
+<li>A list of bolts, each identified by a unique ID</li>
+<li>A list of &quot;stream&quot; objects representing a flow of tuples between spouts and bolts</li>
+</ul></li>
+</ul>
+
+<p>An example of a simple YAML DSL definition is below:</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;fibonacci-topology&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">config</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">topology.workers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="l l-Scalar l-Scalar-Plain">components</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;property-holder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestPropertyHolder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;some</span><span class="nv"> </span><span class="s">argument&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;numberProperty&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">11</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;publicProperty&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">public</span><span class="nv"> </span><span class="s">property&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">spouts</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestFibonacciSpout&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;property-holder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="l l-Scalar l-Scalar-Plain">bolts</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.EvenAndOddBolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;ibasic-print-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestIBasicPrintBolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="l l-Scalar l-Scalar-Plain">configMethods</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sampleConfigurationMethod&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">args</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="s">&quot;${ecoPropertyOne}&quot;</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MB</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;sys-out-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestPrintBolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+
+<span class="l l-Scalar l-Scalar-Plain">streams</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;ibasic-print-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+      <span class="l l-Scalar l-Scalar-Plain">streamId</span><span class="p p-Indicator">:</span> <span class="s">&quot;odds&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;sys-out-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+      <span class="l l-Scalar l-Scalar-Plain">streamId</span><span class="p p-Indicator">:</span> <span class="s">&quot;evens&quot;</span>
+</code></pre></div>
+
+<p>If you want to stop here and try to deploy the above topology you can execute:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  ~/.heron/examples/heron-eco-examples.jar <span class="se">\</span>
+  com.twitter.heron.eco.Eco <span class="se">\</span>
+  --eco-config-file ~/.heron/examples/fibonacci.yaml
+</code></pre></div>
+
+<p>This ECO topology does not do anything spectacular, but it's a good starting point to go through some of ECO's concepts.</p>
+
+<h2 id="taking-a-closer-look-at-the-yaml-definition-specs">Taking a closer look at the YAML definition specs</h2>
+
+<h3 id="topology-name">Topology Name</h3>
+
+<p>Each ECO definition file will be required to have a <code>name</code> defined.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;simple-wordcount-topology&quot;</span>
+</code></pre></div>
+
+<h3 id="configuration">Configuration</h3>
+
+<p><code>config</code> is the section where you will list your properties to be inserted into a <code>com.twitter.heron.api.Config</code> class. This section is optional.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">config</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">topology.workers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+
+<h4 id="specifying-component-level-resources">Specifying Component Level Resources</h4>
+
+<p>You can specify component level JVM resources by referencing the <code>id</code> of the component and its <code>ram</code>.
+You can choose between Bytes <code>B</code>, Megabytes <code>MB</code>, or Gigabytes <code>GB</code>.  Examples would be <code>256MB</code> or <code>2GB</code>.
+The unit of measurement must be appended at the end of the numerical value with no spaces.  There is plan to support
+component level <code>cpu</code> and <code>disk</code> configs in the future.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span> <span class="l l-Scalar l-Scalar-Plain">topology.component.resourcemap</span><span class="p p-Indicator">:</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ram</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">256MB</span> <span class="c1"># The minimum value for a component&#39;s specified ram is 256MB</span>
+      
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;bolt-1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ram</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">256MB</span> <span class="c1"># The minimum value for a component&#39;s specified ram is 256MB</span>
+      
+</code></pre></div>
+
+<h4 id="specifying-jvm-options">Specifying JVM Options</h4>
+
+<p>You can specify component level JVM resources by referencing the <code>id</code> of the component and a list
+ of the JVM options</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">topology.component.jvmoptions</span><span class="p p-Indicator">:</span>
+
+   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+     <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;-XX:NewSize=300m&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;-Xms2g&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+
+<h4 id="other-supported-configuration-parameters">Other Supported Configuration Parameters</h4>
+
+<ul>
+<li><code>&quot;topology.worker.childopts&quot;</code> : Topology-specific options for the worker child process. This is used in addition to WORKER_CHILDOPTS</li>
+<li><code>&quot;topology.tick.tuple.freq.ms&quot;</code> :  How often (in milliseconds) a tick tuple from the &quot;<strong>system&quot; component and &quot;</strong>tick&quot; stream should be sent to tasks. Meant to be used as a component-specific configuration.</li>
+<li><code>&quot;topology.enable.message.timeouts&quot;</code> : True if Heron should timeout messages or not. Defaults to true. This is meant to be used in unit tests to prevent tuples from being accidentally timed out during the test.</li>
+<li><code>&quot;topology.debug&quot;</code> : When set to true, Heron will log every message that's emitted.</li>
+<li><code>&quot;topology.stmgrs&quot;</code> : The number of stmgr instances that should spin up to service this topology. All the executors will be evenly shared by these stmgrs.</li>
+<li><code>&quot;topology.message.timeout.secs&quot;</code> : The maximum amount of time given to the topology to fully process a message
+emitted by a spout. If the message is not acked within this time frame, Heron
+will fail the message on the spout. Some spouts implementations will then replay
+the message at a later time.</li>
+<li><code>&quot;topology.component.parallelism&quot;</code> : The per component parallelism for a component in this topology.</li>
+<li><code>&quot;topology.max.spout.pending&quot;</code> : This config applies to individual tasks, not to spouts or topologies as a whole.
+A pending tuple is one that has been emitted from a spout but has not been acked or failed yet.
+Note that this config parameter has no effect for unreliable spouts that don't tag
+their tuples with a message id.</li>
+<li><code>&quot;topology.auto.task.hooks&quot;</code> :  A list of task hooks that are automatically added to every spout and bolt in the topology. An example
+of when you'd do this is to add a hook that integrates with your internal
+monitoring system. These hooks are instantiated using the zero-arg constructor.</li>
+<li><code>&quot;topology.serializer.classname&quot;</code> : The serialization class that is used to serialize/deserialize tuples</li>
+<li><code>&quot;topology.reliability.mode&quot;</code> : A Heron topology can be run in any one of the TopologyReliabilityMode
+mode. The format of this flag is the string encoded values of the
+underlying TopologyReliabilityMode value.  Values are <code>ATMOST_ONCE</code>, <code>ATLEAST_ONCE</code>, and <code>EFFECTIVELY_ONCE</code>.</li>
+<li><code>&quot;topology.reliability.mode&quot;</code> :  A Heron topology can be run in any one of the TopologyReliabilityMode
+mode. The format of this flag is the string encoded values of the
+underlying TopologyReliabilityMode value.</li>
+<li><code>&quot;topology.container.cpu&quot;</code> : Number of cpu cores per container to be reserved for this topology.</li>
+<li><code>&quot;topology.container.ram&quot;</code> : Amount of ram per container to be reserved for this topology. In bytes.</li>
+<li><code>&quot;topology.container.disk&quot;</code> : Amount of disk per container to be reserved for this topology. In bytes.</li>
+<li><code>&quot;topology.container.max.cpu.hint&quot;</code> : Hint for max number of cpu cores per container to be reserved for this topology.</li>
+<li><code>&quot;topology.container.max.ram.hint&quot;</code> : Hint for max amount of ram per container to be reserved for this topology.  In bytes.</li>
+<li><code>&quot;topology.container.max.disk.hint&quot;</code> : Hint for max amount of disk per container to be reserved for this topology. In bytes.</li>
+<li><code>&quot;topology.container.padding.percentage&quot;</code> : Hint for max amount of disk per container to be reserved for this topology. In bytes.</li>
+<li><code>&quot;topology.container.ram.padding&quot;</code> : Amount of ram to pad each container. In bytes.</li>
+<li><code>&quot;topology.stateful.checkpoint.interval.seconds&quot;</code> : What's the checkpoint interval for stateful topologies in seconds.</li>
+<li><code>&quot;topology.stateful.start.clean&quot;</code> :  Boolean flag that says that the stateful topology should start from clean state, i.e. ignore any checkpoint state.</li>
+<li><code>&quot;topology.name&quot;</code> :  Name of the topology. This config is automatically set by Heron when the topology is submitted.</li>
+<li><code>&quot;topology.team.name&quot;</code> : Name of the team which owns this topology.</li>
+<li><code>&quot;topology.team.email&quot;</code> : Email of the team which owns this topology.</li>
+<li><code>&quot;topology.cap.ticket&quot;</code> :  Cap ticket (if filed) for the topology. If the topology is in prod this has to be set or it cannot be deployed.</li>
+<li><code>&quot;topology.project.name&quot;</code> : Project name of the topology, to help us with tagging which topologies are part of which project. For example, if topology A and Topology B are part of the same project, we will like to aggregate them as part of the same project. This is required by Cap team.</li>
+<li><code>&quot;topology.additional.classpath&quot;</code> :  Any user defined classpath that needs to be passed to instances should be set in to config through this key. The value will be of the format &quot;cp1:cp2:cp3...&quot;</li>
+<li><code>&quot;topology.update.deactivate.wait.secs&quot;</code> : Amount of time to wait after deactivating a topology before updating it</li>
+<li><code>&quot;topology.update.reactivate.wait.secs&quot;</code> : fter updating a topology, amount of time to wait for it to come back up before reactivating it</li>
+<li><code>&quot;topology.environment&quot;</code> : Topology-specific environment properties to be added to an Heron instance. This is added to the existing environment (that of the Heron instance).  This variable contains Map<String, String></li>
+<li><code>&quot;topology.timer.events&quot;</code> : Timer events registered for a topology.  This is a Map<String, Pair<Duration, Runnable>&gt;.  Where the key is the name and the value contains the frequency of the event and the task to run.</li>
+<li><code>&quot;topology.remote.debugging.enable&quot;</code> : Enable Remote debugging for java heron instances</li>
+<li><code>&quot;topology.droptuples.upon.backpressure&quot;</code> : Do we want to drop tuples instead of initiating Spout BackPressure</li>
+</ul>
+
+<h3 id="components">Components</h3>
+
+<p><code>components</code> are a list of instances that would be used as configuration objects for other components in your ECO file defined in the YAML DSL.
+The properties that are required for each <code>component</code> instance are <code>id</code> and <code>className</code>.  <code>id</code> can be any name you choose, <code>className</code>  is the fully qualified className of the Java class. The <code>id</code> field is used to identify
+the component for injection in the coming spouts and bolts defined in the topology.  <code>constructorArgs</code> is only needed
+if a component has constructor that requires arguments.  We will get into constructor args the in the next section.  <code>components</code> are optional.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">components</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;property-holder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestPropertyHolder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;some</span><span class="nv"> </span><span class="s">argument&quot;</span>
+</code></pre></div>
+
+<h3 id="property-injection">Property Injection</h3>
+
+<h4 id="constructor-injection">Constructor Injection</h4>
+
+<p><code>constructorArgs</code> can specify any object type.  Above you can see that the only constructor argument specified is a string
+that contained &quot;some argument&quot;.  If declaring a number, you may omit the parenthesis.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span> <span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;some</span><span class="nv"> </span><span class="s">argument&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">123.45</span>
+</code></pre></div>
+
+<p>The is also a way to reference other components as arguments by using <code>ref</code>.  In the example
+below we are specifying an already defined component to be a constructor argument.  Any instance that is referenced by
+<code>ref</code> must have already been defined in the ECO definition file before it is to be used.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;property-holder&quot;</span>
+</code></pre></div>
+
+<h4 id="setter-and-public-field-injection">Setter and Public Field Injection</h4>
+
+<p>Besides constructor injection, you may also use setter methods. In the below example, ECO will take inspect the component
+for setters that match the names and values provided.  If no setter is defined, it will then look for a public field to set the property.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">properties</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;numberProperty&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">11</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;publicProperty&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="s">&quot;This</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">public</span><span class="nv"> </span><span class="s">property&quot;</span>
+</code></pre></div>
+
+<h2 id="the-topology-definition">The Topology Definition</h2>
+
+<p>Spouts and Bolts each have their own sections for defining in the ECO file.  They are extensions of <code>components</code> so they will
+be allowed the same property injection methods above.  One difference is the <code>parallelism</code> property they contain, it sets the <code>parallelism</code>
+property for each bolt or spout once the topology has been deployed into Heron.</p>
+
+<h3 id="spouts">Spouts</h3>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">spouts</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestFibonacciSpout&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">constructorArgs</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ref</span><span class="p p-Indicator">:</span> <span class="s">&quot;property-holder&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+
+<h3 id="bolts">Bolts</h3>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">bolts</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.EvenAndOddBolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</code></pre></div>
+
+<h3 id="streams-and-groupings">Streams and Groupings</h3>
+
+<p>Streams are what connect your bolts and spouts together.  Stream Groupings are the specific way you are to connect those streams to the spouts and bolts.</p>
+
+<h5 id="a-stream-can-contain-the-following-fields">A Stream can contain the following fields.</h5>
+
+<ul>
+<li><code>from</code> - references the <code>id</code> of the component where data is coming from</li>
+<li><code>to</code> - references the <code>id</code> of the component where the data is going</li>
+<li><code>grouping</code> - This is grouping definition of how this stream will connect the two afore mentioned components together</li>
+</ul>
+
+<h5 id="a-grouping-can-contain-the-following-fields">A grouping can contain the following fields</h5>
+
+<ul>
+<li><code>type</code> - The type of grouping.
+
+<ul>
+<li><code>SHUFFLE</code></li>
+<li><code>FIELDS</code></li>
+<li><code>ALL</code></li>
+<li><code>GLOBAL</code></li>
+<li><code>NONE</code></li>
+<li><code>CUSTOM</code></li>
+</ul></li>
+<li><code>args</code> is specific to the <code>FIELDS</code> grouping type. You would specify this as a list like so <code>[&quot;arg1&quot;, &quot;arg2&quot;]</code></li>
+<li><code>customClass</code> if you wanted to create a custom grouping, you could specify the fully qualified class name here</li>
+</ul>
+
+<p>In the below example, you can see the first Stream Definition declares that data will flow from <code>spout-1</code> to <code>even-and-odd-bolt</code> with a grouping type of <code>SHUFFLE</code></p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">streams</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;spout-1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;ibasic-print-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+      <span class="l l-Scalar l-Scalar-Plain">streamId</span><span class="p p-Indicator">:</span> <span class="s">&quot;odds&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">from</span><span class="p p-Indicator">:</span> <span class="s">&quot;even-and-odd-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">to</span><span class="p p-Indicator">:</span> <span class="s">&quot;sys-out-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">grouping</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SHUFFLE</span>
+      <span class="l l-Scalar l-Scalar-Plain">streamId</span><span class="p p-Indicator">:</span> <span class="s">&quot;evens&quot;</span>
+</code></pre></div>
+
+<h3 id="handling-enums">Handling Enums</h3>
+
+<p>The usage of Enums is supported in ECO.  You can use enums in constructor arguments, references,
+configuration methods, and properties  In the <code>fibonacci-topology</code> referenced above.  In the examples we reference the
+enum <code>TestUnits</code>.  The enum is shown below.</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kd">enum</span> <span class="n">TestUnits</span> <span class="o">{</span>
+  <span class="n">MB</span><span class="o">(</span><span class="s">&quot;MB&quot;</span><span class="o">),</span>
+  <span class="n">GB</span><span class="o">(</span><span class="s">&quot;GB&quot;</span><span class="o">),</span>
+  <span class="n">B</span><span class="o">(</span><span class="s">&quot;B&quot;</span><span class="o">);</span>
+
+  <span class="n">String</span> <span class="n">value</span><span class="o">;</span>
+
+  <span class="n">TestUnits</span><span class="o">(</span><span class="n">String</span> <span class="n">value</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="n">String</span> <span class="nf">getValue</span><span class="o">()</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+
+<p>In the <code>ibasic-print-bolt</code> a <code>configMethod</code> is specified with the name <code>sampleConfigurationMethod</code>.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span>  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;ibasic-print-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">... excluded for simplicity</span>
+        <span class="l l-Scalar l-Scalar-Plain">args</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="s">&quot;someStringArgument&quot;</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MB</span>
+</code></pre></div>
+
+<p>This is the same as calling the following java method</p>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span></span><span class="kd">public</span> <span class="kt">void</span> <span class="nf">sampleConfigurationMethod</span><span class="o">(</span><span class="n">String</span> <span class="n">someProperty</span><span class="o">,</span> <span class="n">TestUnits</span> <span class="n">TestUnits</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">someProperty</span> <span class="o">+=</span> <span class="n">someProperty</span><span class="o">;</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">TestUnits</span> <span class="o">=</span> <span class="n">TestUnits</span><span class="o">;</span>
+  <span class="o">}</span>
+  
+</code></pre></div>
+
+<h3 id="property-substitution">Property Substitution</h3>
+
+<p>It's always nice to be able to define properties based on the environments you are in.  We haven't forgotten this with ECO.
+You are able to substitute values into your ECO files by either environment variables or a properties file.<br>
+To turn on property substitution add the flag <code>--props</code> and specify a path to a <code>.properties</code> file.</p>
+
+<p>To start over run</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron <span class="nb">kill</span> <span class="nb">local</span> fibonacci-topology
+</code></pre></div>
+
+<p>After the topology has been killed, execute:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  ~/.heron/examples/heron-eco-examples.jar <span class="se">\</span>
+  com.twitter.heron.eco.Eco <span class="se">\</span>
+  --eco-config-file ~/.heron/examples/fibonacci.yaml --props ~/.heron/examples/sample.properties
+</code></pre></div>
+
+<p>If you look above at the yaml file snippet at the beginning of the page you will see</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">id</span><span class="p p-Indicator">:</span> <span class="s">&quot;ibasic-print-bolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">className</span><span class="p p-Indicator">:</span> <span class="s">&quot;com.twitter.heron.examples.eco.TestIBasicPrintBolt&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">parallelism</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="l l-Scalar l-Scalar-Plain">configMethods</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;sampleConfigurationMethod&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">args</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="s">&quot;${ecoPropertyOne}&quot;</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">MB</span>
+</code></pre></div>
+
+<p>In the  <code>sample.properties</code> we have a key value set at <code>ecoPropertyOne=thisValueWasSetFromAPropertiesFile</code>.  You can check the logs
+for the <code>ibasic-print-bolt</code> and see the values are printing out.</p>
+
+<h3 id="environment-variable-substitution">Environment Variable Substitution</h3>
+
+<p>ECO also allows you to do environment variable substitution.  To activate environment variable substitution pass the flag <code>--env-props</code> upon submitting a topology. If you have <code>SOME_VARIABLE</code> defined
+you can reference in your yaml file like below.</p>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="l l-Scalar l-Scalar-Plain">${ENV-SOME_VARIABLE}</span>
+</code></pre></div>
+
+<h3 id="other-eco-examples">Other ECO examples</h3>
+
+<p>Run the simple wordcount example</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+  ~/.heron/examples/heron-eco-examples.jar <span class="se">\</span>
+   com.twitter.heron.eco.Eco <span class="se">\</span>
+   --eco-config-file ~/.heron/examples/simple_wordcount.yaml 
+</code></pre></div>
+
+<p>Run the simple windowing example</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron submit <span class="nb">local</span> <span class="se">\</span>
+   ~/.heron/examples/heron-eco-examples.jar <span class="se">\</span>
+   com.twitter.heron.eco.Eco <span class="se">\</span>
+   --eco-config-file ~/.heron/examples/simple_windowing.yaml 
+</code></pre></div>
+</article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
+$('pre code').each(function() {
+  console.log(this);
+  this.innerHTML = this.innerHTML.replace(/\$\s/g, function(matched) {
+    return `<span class=\"clp\">${matched}</span>`;
+  });
+});
+</script></body></html>
