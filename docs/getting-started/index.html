@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.36" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Quick Start Guide"><meta property="og:url" content="/docs/getting-started/"><meta property="og:description" content="Run a single-node Heron cluster on your laptop"><meta name="twitter:description" content="Run a single-node Heron cluster on your laptop"><title>Heron Documentation - Quick Start Guide</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Quick Start Guide"><meta property="og:url" content="/docs/getting-started/"><meta property="og:description" content="Run a single-node Heron cluster on your laptop"><meta name="twitter:description" content="Run a single-node Heron cluster on your laptop"><title>Heron Documentation - Quick Start Guide</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
 var shiftWindow = function() { scrollBy(0, -100) };
 window.addEventListener("hashchange", shiftWindow);
 function load() { if (window.location.hash) shiftWindow(); }
@@ -20,91 +20,69 @@ function load() { if (window.location.hash) shiftWindow(); }
 
 <h2 id="step-1-download-the-heron-tools">Step 1 &mdash; Download the Heron tools</h2>
 
-<p>Heron tools can be installed on <a href="#macos-homebrew">MacOS</a> using <a href="https://brew.sh">Homebrew</a> and on Linux using <a href="#using-installation-scripts">installation scripts</a>.</p>
+<p>Heron tools can be installed on <a href="#macos-homebrew">macOS</a> using <a href="https://brew.sh">Homebrew</a> and on Linux using <a href="#using-installation-scripts">installation scripts</a>.</p>
 
 <blockquote>
-<p>You can install using <a href="#using-installation-scripts">installation scripts</a> on MacOS as well.</p>
+<p>You can install using <a href="#using-installation-scripts">installation scripts</a> on macOS as well.</p>
 </blockquote>
 
-<h2 id="macos-homebrew">MacOS/Homebrew</h2>
+<h2 id="macos-homebrew">macOS/Homebrew</h2>
 
-<p>The easiest way to get started with Heron on MacOS is using <a href="https://brew.sh">Homebrew</a>. There are three tools currently available:</p>
-
-<ul>
-<li><p>The Heron command-line client tools:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew install heron-client
+<p>The easiest way to get started with Heron on macOS is using <a href="https://brew.sh">Homebrew</a>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ brew install heron
 </code></pre></div>
 
-<p>This will install both the <a href="../operators/heron-cli"><code>heron</code></a> and <a href="../operators/heron-explorer"><code>heron-explorer</code></a> tools.</p></li>
+<p>This will install a variety of executables and other resources by default in <code>/usr/local/opt/heron</code>.</p>
 
-<li><p>The <a href="../operators/heron-ui">Heron UI</a> dashboard:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew install heron-ui
-</code></pre></div></li>
-
-<li><p>The <a href="../operators/heron-tracker">Heron Tracker</a>, which powers Heron UI:</p>
-<div class="highlight"><pre><code class="language-shell" data-lang="shell"><span></span>$ brew install heron-tracker
-</code></pre></div></li>
-</ul>
-
-<p>For this getting started tutorial we recommend installing all three tools.</p>
+<blockquote>
+<p>Homebrew may use a different folder than <code>/usr/local/opt/heron</code>. To check which folder is being used, run <code>brew --prefix heron</code>.</p>
+</blockquote>
 
 <h2 id="using-installation-scripts">Using installation scripts</h2>
 
 <p>To install Heron binaries directly, using installation scripts, go to Heron&rsquo;s <a href="https://github.com/twitter/heron/releases">releases page</a> on GitHub
-and see a full listing of Heron releases for each available platform. The installation scripts for Mac OS X (<code>darwin</code>), for example, are named
-<code>heron-client-install-0.17.5-darwin.sh</code> and
-<code>heron-tools-install-0.17.5-darwin.sh</code>.</p>
+and see a full listing of Heron releases for each available platform. The installation script for macOS (<code>darwin</code>), for example, is named
+<code>heron-install-0.17.5-darwin.sh</code>.</p>
 
-<p>Download both the <code>client</code> and <code>tools</code> installation scripts for your platform either from the releases page or using <a href="https://www.gnu.org/software/wget/">wget</a>.</p>
-
-<p>Here&rsquo;s an example for Ubuntu:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ wget https://github.com/twitter/heron/releases/download/0.17.5/heron-client-install-0.17.5-ubuntu.sh
-$ wget https://github.com/twitter/heron/releases/download/0.17.5/heron-tools-install-0.17.5-ubuntu.sh
+<p>Download the for your platform either from the releases page or using <a href="https://www.gnu.org/software/wget/"><code>wget</code></a>. Here&rsquo;s a <code>wget</code> example for Ubuntu:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ wget https://github.com/twitter/heron/releases/download/0.17.5/heron-install-0.17.5-ubuntu.sh
 </code></pre></div>
 
-<p>Once you&rsquo;ve downloaded the scripts, make the scripts executable using <a href="https://en.wikipedia.org/wiki/Chmod">chmod</a>:</p>
+<p>Once you&rsquo;ve downloaded the script, make it executable using <a href="https://en.wikipedia.org/wiki/Chmod">chmod</a>:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ chmod +x heron-*.sh
 </code></pre></div>
 
 <blockquote>
-<p>Both installation scripts will install executables in the <code>~/bin</code> folder. You should add that folder to your <code>PATH</code> using <code>export PATH=~/bin:$PATH</code>.</p>
+<p>The script will install executables in the <code>~/bin</code> folder. You should add that folder to your <code>PATH</code> using <code>export PATH=~/bin:$PATH</code>.</p>
 </blockquote>
 
-<p>Now run the <a href="../operators/heron-cli">Heron client</a> installation script with the <code>--user</code> flag set:</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./heron-client-install-0.17.5--PLATFORM.sh --user
-Heron client installer
-----------------------
+<p>Now run the <a href="../operators/heron-cli">Heron client</a> installation script with the <code>--user</code> flag set. Here&rsquo;s an example for Ubuntu:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./heron-install-0.17.5-ubuntu.sh --user
+Heron installer
+---------------
 
-Uncompressing......
+Uncompressing...done
+...
 Heron is now installed!
-</code></pre></div>
-
-<p>Now run the script for Heron tools (again setting the <code>--user</code> flag):</p>
-<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./heron-tools-install-0.17.5-PLATFORM.sh --user
-Heron tools installer
----------------------
-
-Uncompressing......
-Heron Tools is now installed!
 </code></pre></div>
 
 <p>To check that Heron is successfully installed, run <code>heron version</code>:</p>
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ heron version
-heron.build.version : 0.17.5
-heron.build.time : Sat Aug  <span class="m">6</span> 12:35:47 PDT 2018
-heron.build.timestamp : 1470512147000
-heron.build.host : <span class="si">${</span><span class="nv">HOSTNAME</span><span class="si">}</span>
-heron.build.user : <span class="si">${</span><span class="nv">USERNAME</span><span class="si">}</span>
 heron.build.git.revision : 26bb4096130a05f9799510bbce6c37a69a7342ef
 heron.build.git.status : Clean
+heron.build.host : ...
+heron.build.time : Sat Aug  <span class="m">6</span> 12:35:47 PDT 2018
+heron.build.timestamp : 1470512147000
+heron.build.user : ...
+heron.build.version : 0.17.5
 </code></pre></div>
 
 <h2 id="step-2-launch-an-example-topology">Step 2 &mdash; Launch an example topology</h2>
 
 <blockquote>
-<h4 id="note-for-macos-users">Note for MacOS users</h4>
+<h4 id="note-for-macos-users">Note for macOS users</h4>
 
-<p>If you want to run topologies locally on MacOS, you may need to add your
+<p>If you want to run topologies locally on macOS, you may need to add your
 hostname to your <code>/etc/hosts</code> file under <code>localhost</code>. Here&rsquo;s an example line:
 <code>127.0.0.1 localhost My-Mac-Laptop.local</code>. You can fetch your hostname by simply
 running <code>hostname</code> in your shell.</p>

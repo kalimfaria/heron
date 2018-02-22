@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="DC/OS Deployments"><meta property="og:url" content="/docs/operators/deployment/schedulers/dcos/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - DC/OS Deployments</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-eco-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-eco-api" aria-labelledby="the-heron-eco-api"><i class="fa fa-caret-right"></i>The Heron ECO API</a></h4></section><div id="collapse-the-heron-eco-api" class="panel-collapse collapse" aria-labelledby="the-heron-eco-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/eco-api">The Heron ECO API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/streamlet-api">Heron Streamlet API</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes">Kubernetes by Hand</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm">Kubernetes with Helm</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone">Multi-node standalone cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">DC/OS Deployments</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
+
+<p>Heron supports deployment on <a href="http://dcos.io/">DC/OS</a>. Deployments on DC/OS are done via Marathon
+and Docker. Further command-line support for DC/OS is forthcoming.</p>
+
+<h2 id="how-heron-on-dc-os-works">How Heron on DC/OS Works</h2>
+
+<p>Heron with DC/OS works by creating its topology deployments in Marathon under a single group. Note
+that only the <code>submit</code> and <code>kill</code> Heron CLI commands are currently supported with DC/OS and Marathon.</p>
+
+<h2 id="zookeeper">ZooKeeper</h2>
+
+<p>To run Heron on DC/OS, you&rsquo;ll need a Zookeeper cluster. In non-production environments you can use
+the same ZK cluster as the Mesos masters, but this is not recommended for production environments.
+Within a Mesos cluster, the zookeeper nodes can be addressed via the <code>leader.mesos</code> hostname.</p>
+
+<h2 id="hosting-binaries">Hosting Binaries</h2>
+
+<p>To deploy Heron, the Mesos cluster needs access to the
+Heron core binary, which can be hosted wherever you&rsquo;d like, so long as
+it&rsquo;s accessible to all agents (for example in <a href="https://aws.amazon.com/s3/">Amazon
+S3</a> or using a local blob storage solution). You
+can download the core binary from Github or build it using the instructions
+in <a href="../../../../developers/compiling#building-a-full-release-package">Creating a New Heron Release</a>.</p>
+
+<p>The only method for fetching the binaries currently is via fetching them from a URI. Fetching them
+via an S3 bucket or any other URI is supported, as long as it is accessible from every agent in the
+cluster.</p>
+
+<h2 id="uploading-the-topologies">Uploading the Topologies</h2>
+
+<p>Heron uses an uploader to upload the topology to a shared location so that a worker can fetch
+the topology to its sandbox. The configuration for an uploader is in the <code>uploader.yaml</code>
+config file. For DC/OS deployments, Heron can use the <code>S3Uploader</code>.
+Details on configuring the S3 Uploader can be found in the documentation <a href="../../uploaders/s3">here</a>.</p>
+
+<h2 id="marathon-scheduler-configuration">Marathon Scheduler Configuration</h2>
+
+<p>To configure Heron to use the Marathon scheduler, modify the <code>scheduler.yaml</code>
+config file specific for the Heron cluster. The following must be specified
+for each cluster:</p>
+
+<ul>
+<li><p><code>heron.class.scheduler</code> &mdash; Indicates the class to be loaded for Aurora scheduler.
+You should set this to <code>com.twitter.heron.scheduler.marathon.MarathonScheduler</code></p></li>
+
+<li><p><code>heron.class.launcher</code> &mdash; Specifies the class to be loaded for launching and
+submitting topologies. To configure the Aurora launcher, set this to
+`com.twitter.heron.scheduler.marathon.MarathonLauncher</p></li>
+
+<li><p><code>heron.directory.sandbox.java.home</code> &mdash; Specifies the location of the Java 8 JRE. Depending on
+the Docker container you&rsquo;re using for executor image, this may be different. Most often, this
+will already be available within the environment as <code>$JAVA_HOME</code></p></li>
+
+<li><p><code>heron.directory.home</code> &mdash; Specifies the directory for the core binaries</p></li>
+
+<li><p><code>heron.director.conf</code> &mdash; Specifies the directory where the Heron configuration files are located.</p></li>
+
+<li><p><code>heron.marathon.scheduler.uri</code> &mdash; Specifies the URI for the Marathon service. Within DC/OS
+environments on AWS, this will be available at <code>&lt;core.dcos_url&gt;/service/marathon</code>. You can find your
+<code>core.dcos_url</code> by executing <code>dcos config show</code> from your terminal if you have the DC/OS CLI
+installed.</p></li>
+
+<li><p><code>heron.marathon.scheduler.auth.token</code> &mdash; Provides an auth token to use when submitting a topology
+to a marathon instance that requires authentication. One can retrieve an auth token by logging in
+to the cluster via the DC/OS CLI (<code>dcos auth login</code>) and then copying the token (<code>dcos_acs_token</code>)
+that is stored in <code>~/.dcos/dcos.toml</code></p></li>
+
+<li><p><code>heron.scheduler.is.service</code> &mdash; This config indicates whether the scheduler
+is a service. In the case of Marathon, it should be set to <code>False</code>.</p></li>
+
+<li><p><code>heron.package.core.uri</code> &mdash; URI of where the core heron binaries can be found. This should be
+available via Github in the latest release version. You could also build this project yourself and
+make them available somewhere that is accessible by every agent in the Mesos cluster (like an S3
+bucket).</p></li>
+
+<li><p><code>heron.executor.docker.image</code> &mdash; Specified the Docker image to be used for running the executor.
+For the time being, a public image has been made available at <code>ndustrialio/heron-executor:jre8</code>.
+However, you can create your own version of this Docker image by creating a Docker image with
+the Dockerfile provided at <code>heron/docker/Dockerfile.dist.ubuntu14.04</code> and pushing it to your own
+publicly-available Docker repository.</p></li>
+</ul>
+
+<h3 id="example-marathon-scheduler-configuration">Example Marathon Scheduler Configuration</h3>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="c1"># scheduler class for distributing the topology for execution</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.class.scheduler</span><span class="p p-Indicator">:</span>                       <span class="l l-Scalar l-Scalar-Plain">com.twitter.heron.scheduler.marathon.MarathonScheduler</span>
+
+<span class="c1"># launcher class for submitting and launching the topology</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.class.launcher</span><span class="p p-Indicator">:</span>                        <span class="l l-Scalar l-Scalar-Plain">com.twitter.heron.scheduler.marathon.MarathonLauncher</span>
+
+<span class="c1"># location of java - pick it up from shell environment</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.directory.sandbox.java.home</span><span class="p p-Indicator">:</span>          <span class="l l-Scalar l-Scalar-Plain">$JAVA_HOME</span>
+
+<span class="c1"># location of heron - pick it up from shell environment</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.directory.home</span><span class="p p-Indicator">:</span>                       <span class="l l-Scalar l-Scalar-Plain">$HERON_HOME</span>
+
+<span class="l l-Scalar l-Scalar-Plain">heron.directory.conf</span><span class="p p-Indicator">:</span>                       <span class="s">&quot;./heron-conf/&quot;</span>
+
+<span class="c1"># The URI of marathon scheduler</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.marathon.scheduler.uri</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;core.dcos_url&gt;/service/marathon&quot;</span>
+
+<span class="c1"># The token of the marathon scheduler</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.marathon.scheduler.auth.token</span><span class="p p-Indicator">:</span> <span class="s">&quot;&lt;auth_token&gt;&quot;</span>
+
+<span class="c1"># Invoke the IScheduler as a library directly</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.scheduler.is.service</span><span class="p p-Indicator">:</span>                  <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+<span class="c1"># docker repo for heron with core packages installed</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.executor.docker.image</span><span class="p p-Indicator">:</span> <span class="s">&#39;streamlio/heron:latest-ubuntu14.04&#39;</span>
+</code></pre></div>
+
+<h2 id="state-manager-configuration">State Manager Configuration</h2>
+
+<p>To configure Heron to use the correct State Manager configuration, modify the <code>statemgr.yaml</code>
+configuration file for your Marathon cluster.</p>
+
+<ul>
+<li><p><code>heron.class.state.manager</code> &mdash; Specifies the class of the state manager you want to use. In a
+Marathon cluster, you&rsquo;ll want to use Zookeeper so set this to
+<code>com.twitter.heron.statemgr.zookeeper.curator.CuratorStateManager</code></p></li>
+
+<li><p><code>heron.statemgr.connection.string</code> &mdash; Specifies the connection string to the zookeeper cluster.
+This can be <code>leader.mesos:2181</code> within DC/OS-based Mesos clusters if you&rsquo;re in the non-production
+environment</p></li>
+
+<li><p><code>heron.statemgr.root.path</code> &mdash; Specifies the node within Zookeeper where information should be
+stored.</p></li>
+
+<li><p><code>heron.statemgr.zookeeper.is.initialize.tree</code> &mdash; Specifies whether or not the State Manager can
+initialize the tree in Zookeeper. This should most often be set to true</p></li>
+</ul>
+
+<p>Most often with Mesos clusters living in a cloud environment, you are going to need to create a
+tunneled connection to the cluster to submit and kill topology jars since communication with TMaster
+instances is needed. It does not particularly matter which node you use for your tunnel, but you
+will need to have a private key in your list of authorized keys on the Mesos node you&rsquo;re going to
+use. If you need a quick refresher on this, here&rsquo;s a CLI command you can use (assuming you&rsquo;ve
+already generated a key already in your <code>~/.ssh/</code> directory:
+<code>cat ~/.ssh/id_rsa.pub | ssh &lt;user&gt;@&lt;server_ip&gt; &quot;mkdir -p ~/.ssh &amp;&amp; cat &gt;&gt;  ~/.ssh/authorized_keys&quot;</code></p>
+
+<p>To tunnel, you will need to add these extra configurations within your <code>statemgr.yaml</code> file.</p>
+
+<ul>
+<li><p><code>heron.statemgr.is.tunnel.needed</code> &mdash; Flag for enabling the tunnel to a server within your
+cluster. If you need the tunnel, which you most likely will, set this flag to <code>true</code></p></li>
+
+<li><p><code>heron.statemgr.tunnel.connection.timeout.ms</code> &mdash; The connection timeout in ms when trying to
+connect to zk server</p></li>
+
+<li><p><code>heron.statemgr.tunnel.connection.retry.count</code> &mdash; The count of retry to check whether has direct
+access on zk server</p></li>
+
+<li><p><code>heron.statemgr.tunnel.retry.interval.ms</code> &mdash; The interval in ms between two retry checking
+whether has direct access on zk server</p></li>
+
+<li><p><code>heron.statemgr.tunnel.verify.count</code> &mdash; The count of retry to verify whether seting up a tunnel
+process</p></li>
+
+<li><p><code>heron.statemgr.tunnel.host</code> &mdash; The host to SSH tunnel through in <user>@<host> format</p></li>
+</ul>
+
+<h3 id="example-state-manager-configuration">Example State Manager Configuration</h3>
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span></span><span class="c1"># local state manager class for managing state in a persistent fashion</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.class.state.manager</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">com.twitter.heron.statemgr.zookeeper.curator.CuratorStateManager</span>
+
+<span class="c1"># local state manager connection string</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.connection.string</span><span class="p p-Indicator">:</span>  <span class="s">&quot;leader.mesos:2181&quot;</span>
+
+<span class="c1"># path of the root address to store the state in a local file system</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.root.path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/heron&quot;</span>
+
+<span class="c1"># create the zookeeper nodes, if they do not exist</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.zookeeper.is.initialize.tree</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="c1"># timeout in ms to wait before considering zookeeper session is dead</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.zookeeper.session.timeout.ms</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">30000</span>
+
+<span class="c1"># timeout in ms to wait before considering zookeeper connection is dead</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.zookeeper.connection.timeout.ms</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">30000</span>
+
+<span class="c1"># timeout in ms to wait before considering zookeeper connection is dead</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.zookeeper.retry.count</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+<span class="c1"># duration of time to wait until the next retry</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.zookeeper.retry.interval.ms</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10000</span>
+
+
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.is.tunnel.needed</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="c1"># The connection timeout in ms when trying to connect to zk server</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.tunnel.connection.timeout.ms</span><span class="p p-Indicator">:</span>    <span class="l l-Scalar l-Scalar-Plain">1000</span>
+
+<span class="c1"># The count of retry to check whether has direct access on zk server</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.tunnel.connection.retry.count</span><span class="p p-Indicator">:</span>   <span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="c1"># The interval in ms between two retry checking whether has direct access on zk server</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.tunnel.retry.interval.ms</span><span class="p p-Indicator">:</span>        <span class="l l-Scalar l-Scalar-Plain">1000</span>
+
+<span class="c1"># The count of retry to verify whether seting up a tunnel process</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.tunnel.verify.count</span><span class="p p-Indicator">:</span>             <span class="l l-Scalar l-Scalar-Plain">10</span>
+
+<span class="c1"># SSH tunnel host</span>
+<span class="l l-Scalar l-Scalar-Plain">heron.statemgr.tunnel.host</span><span class="p p-Indicator">:</span>              <span class="s">&quot;centos@&lt;host&gt;&quot;</span>
+</code></pre></div>
+
+<h2 id="working-with-topologies">Working with Topologies</h2>
+
+<p>After setting up ZooKeeper and generating a DCOS-accessible Heron core binary
+release, you can run topologies on any machine in the cluster. Since every deployment
+is done via Docker, there&rsquo;s no need to worry about individual agent configurations. When launching
+topologies using the <code>heron submit</code> command, you can look in your DC/OS Services UI to see the
+launched topology being launched under a group.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="stuck-in-waiting-state">Stuck in Waiting State</h3>
+
+<p>Once a topology is launched, depending on how many resources are available in you DC/OS cluster,
+the topology may get stuck in the &ldquo;Waiting&rdquo; phase of deployment within Marathon. What this most
+likely means is that you don&rsquo;t have enough resources in your cluster. When clicking into the
+topology group within the UI, you can see how many resources each Heron container is requesting. If
+the CPUs and Memory are larger than what a single node can handle (depending on what size your
+agent nodes are), Marathon won&rsquo;t be able to accept any of the offers for resources. In this case,
+either increase the number of State Managers your topology is trying to use, or use different agent
+nodes with more resources.</p>
+
+<p>Another reason for this could be that you don&rsquo;t have enough nodes. In this case, either tune your
+topology to use less resources, or increase the number of nodes in your cluster.</p>
+
+<p><strong>NOTE:</strong> In order to kill a topology that is stuck in the &ldquo;Waiting&rdquo; state, you MUST &ldquo;Suspend&rdquo; that
+group within Marathon. If you fail to do this and try to kill the topology using the <code>heron kill</code>
+command, it won&rsquo;t work. You must suspend the topology first! Also, do not ever &ldquo;Destroy&rdquo; the group
+from within Marathon. Doing this doesn&rsquo;t clear out the appropriate information in Zookeeper and
+future attempts to submit the topology using <code>heron submit</code> will be unsuccessful until ZK is
+cleaned up for that topology name.</p>
+</article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
+$('pre code').each(function() {
+  console.log(this);
+  this.innerHTML = this.innerHTML.replace(/\$\s/g, function(matched) {
+    return `<span class=\"clp\">${matched}</span>`;
+  });
+});
+</script></body></html>
