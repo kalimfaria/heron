@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Nomad"><meta property="og:url" content="/docs/operators/deployment/schedulers/nomad/"><meta property="og:description" content=""><meta name="twitter:description" content=""><title>Heron Documentation - Nomad</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-eco-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-eco-api" aria-labelledby="the-heron-eco-api"><i class="fa fa-caret-right"></i>The Heron ECO API</a></h4></section><div id="collapse-the-heron-eco-api" class="panel-collapse collapse" aria-labelledby="the-heron-eco-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/eco-api">The Heron ECO API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/streamlet-api">Heron Streamlet API</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes">Kubernetes by Hand</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm">Kubernetes with Helm</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone">Multi-node standalone cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/nomad">Nomad</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">Nomad</h1><div class="hn-docs-description"></div></header><article class="hn-docs-content">
+
+<p>Heron supports <a href="https://hashicorp.com">Hashicorp</a>&rsquo;s <a href="https://nomadproject.io">Nomad</a> as a scheduler. Nomad may be a good option for smaller deployments that don&rsquo;t require a bulkier scheduler like <a href="../mesos">Mesos</a> or <a href="../kubernetes">Kubernetes</a>.</p>
+
+<h2 id="nomad-setup">Nomad setup</h2>
+
+<p>Setting up a nomad cluster will not be covered here. See the <a href="https://www.nomadproject.io/intro/getting-started/install.html">official Nomad docs</a> for instructions.</p>
+
+<blockquote>
+<p>Heron currently only supports the <a href="https://www.nomadproject.io/docs/drivers/raw_exec.html">raw exec driver</a> for Nomad.</p>
+</blockquote>
+
+<p>When setting up your Nomad cluster, the following are required:</p>
+
+<ul>
+<li>The <a href="../../../heron-cli">Heron CLI tool</a> must be installed on each machine used to deploy Heron topologies</li>
+<li>Python 2.7, Java 7 or 8, and <a href="https://curl.haxx.se/">curl</a> must be installed on every machine in the cluster</li>
+<li>A <a href="https://zookeeper.apache.org">ZooKeeper cluster</a></li>
+</ul>
+
+<h2 id="configuring-heron-settings">Configuring Heron settings</h2>
+
+<p>Before running Heron via Nomad, you&rsquo;ll need to configure some settings. Once you&rsquo;ve <a href="../../../../getting-started">installed Heron</a>, all of the configurations you&rsquo;ll need to modify will be in the <code>~/.heron/conf/nomad</code> diredctory.</p>
+
+<p>First, you&rsquo;ll need to use a topology uploader to deploy topology packages to nodes in your cluster. You can use one of the following uploaders:</p>
+
+<ul>
+<li>The HTTP uploader in conjunction with Heron&rsquo;s <a href="../../../heron-api-server">API server</a>. The Heron API server acts like a file server to which users can upload topology packages. The API server distributes the packages, along with the Heron core package, to the relevant machines. You can also use the API server to submit your Heron topology to Nomad (described <a href="#deploying-with-the-api-server">below</a>) <!-- TODO: link to upcoming HTTP uploader documentation --></li>
+<li><a href="../../uploaders/s3">Amazon S3</a>. Please note that the S3 uploader requires an AWS account.</li>
+<li><a href="../../uploaders/scp">SCP</a>. Please note that the SCP uploader requires SSH access to nodes in the cluster.</li>
+</ul>
+
+<p>You can modify the <code>heron.class.uploader</code> parameter in <code>~/.heron/conf/nomad/uploader.yaml</code> to choose an uploader.</p>
+
+<p>In addition, you must update the <code>heron.statemgr.connection.string</code> parameter in the <code>statemgr.yaml</code> file in <code>~/.heron/conf/nomad</code> to your ZooKeeper connection string. Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">heron.statemgr.connection.string<span class="p">:</span><span class="w"> </span><span class="m">127.0</span>.<span class="m">0.1</span><span class="p">:</span><span class="m">2181</span></code></pre></div>
+<p>Then, update the <code>heron.nomad.scheduler.uri</code> parameter in <code>scheduler.yaml</code> to the URL of the Nomad server to which you&rsquo;ll be submitting jobs. Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">heron.nomad.scheduler.uri<span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//<span class="m">127.0</span>.<span class="m">0.1</span><span class="p">:</span><span class="m">4646</span></code></pre></div>
+<p>You may also want to configure where Heron will store files on your machine if you&rsquo;re running Nomad locally (in <code>scheduler.yaml</code>). Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">heron.scheduler.local.working.directory<span class="p">:</span><span class="w"> </span>${HOME}/.herondata/topologies/${CLUSTER}/${ROLE}/${TOPOLOGY_ID}</code></pre></div>
+<blockquote>
+<p>Heron uses string interpolation to fill in the missing values for <code>CLUSTER</code>, <code>ROLE</code>, etc.</p>
+</blockquote>
+
+<h2 id="distributing-heron-core">Distributing Heron core</h2>
+
+<p>The Heron core package needs to be made available for every machine in the cluster to download. You&rsquo;ll need to provide a URI for the Heron core package. Here are the currently supported protocols:</p>
+
+<ul>
+<li><code>file://</code> (local FS)</li>
+<li><code>http://</code> (HTTP)</li>
+</ul>
+
+<p>You can do this in one of several ways:</p>
+
+<ul>
+<li>Use the Heron API server to distribute <code>heron-core.tar.gz</code> (see <a href="../../heron-api-server">here</a> for more info)</li>
+<li>Copy <code>heron-core.tar.gz</code> onto every node in the cluster</li>
+<li>Mount a network drive to every machine in the cluster that contains</li>
+<li>Upload <code>heron-core.tar.gz</code> to an S3 bucket and expose an HTTP endpoint</li>
+<li>Upload <code>heron-core.tar.gz</code> to be hosted on a file server and expose an HTTP endpoint</li>
+</ul>
+
+<blockquote>
+<p>A copy of <code>heron-core.tar.gz</code> is located at <code>~/.heron/dist/heron-core.tar.gz</code> on the machine on which you installed the Heron CLI.</p>
+</blockquote>
+
+<p>You&rsquo;ll need to set the URL for <code>heron-core.tar.gz</code> in the <code>client.yaml</code> configuration file in <code>~/.heron/conf/nomad</code>. Here are some examples:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># local filesystem</span><span class="w">
+</span><span class="w"></span>heron.package.core.uri<span class="p">:</span><span class="w"> </span>file<span class="p">:</span>///path/to/heron/heron-core.tar.gz<span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># from a web server</span><span class="w">
+</span><span class="w"></span>heron.package.core.uri<span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//some.webserver.io/heron-core.tar.gz</code></pre></div>
+<h2 id="submitting-heron-topologies-to-the-nomad-cluster">Submitting Heron topologies to the Nomad cluster</h2>
+
+<p>You can submit Heron topologies to a Nomad cluster via the <a href="../../../heron-cli">Heron CLI tool</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron submit nomad <span class="se">\
+</span><span class="se"></span>  &lt;topology package path&gt; <span class="se">\
+</span><span class="se"></span>  &lt;topology classpath&gt; <span class="se">\
+</span><span class="se"></span>  &lt;topology CLI args&gt;</code></pre></div>
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron submit nomad <span class="se">\
+</span><span class="se"></span>  ~/.heron/examples/heron-streamlet-examples.jar <span class="se">\ </span>          <span class="c1"># Package path
+</span><span class="c1"></span>  com.twitter.heron.examples.api.WindowedWordCountTopology <span class="se">\ </span><span class="c1"># Topology classpath
+</span><span class="c1"></span>  windowed-word-count                                        # Args passed to topology</code></pre></div>
+<h2 id="deploying-with-the-api-server">Deploying with the API server</h2>
+
+<p>The advantage of running the <a href="../../../heron-api-server">Heron API Server</a> is that it can act as a file server to help you distribute topology package files and submit jobs to Nomad, so that you don&rsquo;t need to modify the configuration files mentioned above.  By using Heron’s API Server, you can set configurations such as the URI of ZooKeeper and the Nomad server once and not need to configure each machine from which you want to submit Heron topologies.</p>
+
+<h2 id="running-the-api-server">Running the API server</h2>
+
+<p>You can run the Heron API server on any machine that can be reached by machines in your Nomad cluster via HTTP. Here&rsquo;s a command you can use to run the API server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ~/.heron/bin/heron-apiserver <span class="se">\
+</span><span class="se"></span>  --cluster nomad <span class="se">\
+</span><span class="se"></span>  --base-template nomad <span class="se">\
+</span><span class="se"></span>  -D heron.statemgr.connection.string<span class="o">=</span>&lt;ZooKeeper URI&gt; <span class="se">\
+</span><span class="se"></span>  -D heron.nomad.scheduler.uri<span class="o">=</span>&lt;Nomad URI&gt; <span class="se">\
+</span><span class="se"></span>  -D heron.class.uploader<span class="o">=</span>com.twitter.heron.uploader.http.HttpUploader <span class="se">\
+</span><span class="se"></span>  --verbose</code></pre></div>
+<p>You can also run the API server in Nomad itself, but you will need to have a local copy of the Heron API server executable on every machine in the cluster. Here&rsquo;s an example Nomad job for the API server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-hcl" data-lang="hcl">job &#34;apiserver&#34; {
+  datacenters = [&#34;dc1&#34;]
+  type = &#34;service&#34;
+  group &#34;apiserver&#34; {
+    count = 1
+    task &#34;apiserver&#34; {
+      driver = &#34;raw_exec&#34;
+      config {
+        command = &lt;heron_apiserver_executable&gt;
+        args = [
+        &#34;--cluster&#34;, &#34;nomad&#34;,
+        &#34;--base-template&#34;, &#34;nomad&#34;,
+        &#34;-D&#34;, &#34;heron.statemgr.connection.string=&lt;zookeeper_uri&gt;&#34;,
+        &#34;-D&#34;, &#34;heron.nomad.scheduler.uri=&lt;scheduler_uri&gt;&#34;,
+        &#34;-D&#34;, &#34;heron.class.uploader=com.twitter.heron.uploader.http.HttpUploader&#34;,
+        &#34;--verbose&#34;]
+      }
+      resources {
+        cpu    = 500 # 500 MHz
+        memory = 256 # 256MB
+      }
+    }
+  }
+}</code></pre></div>
+<p>Make sure to replace the following:</p>
+
+<ul>
+<li><code>&lt;heron_apiserver_executable&gt;</code> &mdash; The local path to where the <a href="../../../heron-api-server">Heron API server</a> executable is located (usually <code>~/.heron/bin/heron-apiserver</code>)</li>
+<li><code>&lt;zookeeper_uri&gt;</code> &mdash; The URI for your ZooKeeper cluster</li>
+<li><code>&lt;scheduler_uri&gt;</code> &mdash; The URI for your Nomad server</li>
+</ul>
+
+<h2 id="using-the-heron-api-server-to-distribute-heron-topology-packages">Using the Heron API server to distribute Heron topology packages</h2>
+
+<p>Heron users can upload their Heron topology packages to the Heron API server using the HTTP uploader by modifying the <code>uploader.yaml</code> file to including the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># uploader class for transferring the topology jar/tar files to storage</span><span class="w">
+</span><span class="w"></span>heron.class.uploader<span class="p">:</span><span class="w">    </span>com.twitter.heron.uploader.http.HttpUploader<span class="w">
+</span><span class="w"></span>heron.uploader.http.uri<span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//localhost<span class="p">:</span><span class="m">9000</span>/api/v<span class="m">1</span>/file/upload</code></pre></div>
+<p>The <a href="../../../heron-cli">Heron CLI</a> will take care of the upload. When the topology is starting up, the topology package will be automatically downloaded from the API server.</p>
+
+<h2 id="using-the-api-server-to-distribute-the-heron-core-package">Using the API server to distribute the Heron core package</h2>
+
+<p>Heron users can use the Heron API server to distribute the Heron core package. When running the API server, just add this argument:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">--heron-core-package-path &lt;path to Heron core&gt;</code></pre></div>
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ~/.heron/bin/heron-apiserver <span class="se">\
+</span><span class="se"></span>  --cluster nomad <span class="se">\
+</span><span class="se"></span>  --base-template nomad <span class="se">\
+</span><span class="se"></span>  --download-hostname <span class="m">127</span>.0.0.1 <span class="se">\
+</span><span class="se"></span>  --heron-core-package-path ~/.heron/dist/heron-core.tar.gz <span class="se">\
+</span><span class="se"></span>  -D heron.statemgr.connection.string<span class="o">=</span><span class="m">127</span>.0.0.1:2181 <span class="se">\
+</span><span class="se"></span>  -D heron.nomad.scheduler.uri<span class="o">=</span><span class="m">127</span>.0.0.1:4647 <span class="se">\
+</span><span class="se"></span>  -D heron.class.uploader<span class="o">=</span>com.twitter.heron.uploader.http.HttpUploader <span class="se">\
+</span><span class="se"></span>  --verbose</code></pre></div>
+<p>Then change the <code>client.yaml</code> file in <code>~/.heron/conf/nomad</code> to the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml">heron.package.use_core_uri<span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span>heron.package.core.uri<span class="p">:</span><span class="w">     </span>http<span class="p">:</span>//localhost<span class="p">:</span><span class="m">9000</span>/api/v<span class="m">1</span>/file/download/core</code></pre></div>
+<h2 id="using-the-api-server-to-submit-heron-topologies">Using the API server to submit Heron topologies</h2>
+
+<p>Users can submit topologies using the <a href="../../../heron-cli">Heron CLI</a> by specifying a service URL to the API server. Here&rsquo;s the format of that command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron submit nomad <span class="se">\
+</span><span class="se"></span>  --service-url<span class="o">=</span>&lt;Heron API server URL&gt; <span class="se">\
+</span><span class="se"></span>  &lt;topology package path&gt; <span class="se">\
+</span><span class="se"></span>  &lt;topology classpath&gt; <span class="se">\
+</span><span class="se"></span>  &lt;topology args&gt;</code></pre></div>
+<p>Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron submit nomad <span class="se">\
+</span><span class="se"></span>  --service-url<span class="o">=</span>http://localhost:9000 <span class="se">\
+</span><span class="se"></span>  ~/.heron/examples/heron-streamlet-examples.jar <span class="se">\
+</span><span class="se"></span>  com.twitter.heron.examples.api.WindowedWordCountTopology <span class="se">\
+</span><span class="se"></span>  windowed-word-count</code></pre></div></article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
+$('pre code').each(function() {
+  console.log(this);
+  this.innerHTML = this.innerHTML.replace(/\$\s/g, function(matched) {
+    return `<span class=\"clp\">${matched}</span>`;
+  });
+});
+</script></body></html>

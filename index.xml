@@ -43,6 +43,28 @@ Zookeeper To run Heron on k8s, you will need a Zookeeper cluster. You can choose
     </item>
     
     <item>
+      <title>Apache Hadoop YARN Cluster (Experimental)</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn/</guid>
+      <description>In addition to out-of-the-box schedulers for Aurora, Heron can also be deployed on a YARN cluster with the YARN scheduler. The YARN scheduler is implemented using the Apache REEF framework.
+Key features of the YARN scheduler:
+ Heterogeneous container allocation: The YARN scheduler will request heterogeneous containers from the YARN ResourceManager RM. In other words the topology will not request more resources than what is really needed.
+ Container reuse: The REEF framework allows the YARN scheduler to retain containers across events like topology restarts.</description>
+    </item>
+    
+    <item>
+      <title>Aurora Cluster</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora/</guid>
+      <description>Heron supports deployment on Apache Aurora out of the box. A step by step guide on how to setup Heron with Apache Aurora locally can be found in Setting up Heron with Aurora Cluster Locally on Linux. You can also run Heron on a local scheduler.
+How Heron on Aurora Works Aurora doesn&amp;rsquo;t have a Heron scheduler per se. Instead, when a topology is submitted to Heron, heron cli interacts with Aurora to automatically deploy all the components necessary to manage topologies.</description>
+    </item>
+    
+    <item>
       <title>Building on Linux Platforms</title>
       <link>https://twitter.github.io/heron/docs/developers/compiling/linux/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -96,6 +118,28 @@ Instructions on running unit tests for Heron can also be found in Testing Heron.
       <description>For developing Heron, you will need to compile it for the environment that you want to use it in. If you&amp;rsquo;d like to use Docker to create that build environment, Heron provides a convenient script to make that process easier.
 Currently, only Ubuntu 14.04, Ubuntu 15.10, and CentOS 7 are supported, but if you need another platform there are instructions for adding new ones below.
 Requirements  Docker  Running Docker in a Virtual Machine If you are running Docker in a virtual machine (VM), it is recommended that you adjust your settings to help speed up the build.</description>
+    </item>
+    
+    <item>
+      <title>Configuring a Cluster</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/configuration/</guid>
+      <description>To setup a Heron cluster, you need to configure a few files. Each file configures a component of the Heron streaming framework.
+ scheduler.yaml &amp;mdash; This file specifies the required classes for launcher, scheduler, and for managing the topology at runtime. Any other specific parameters for the scheduler go into this file.
+ statemgr.yaml &amp;mdash; This file contains the classes and the configuration for state manager. The state manager maintains the running state of the topology as logical plan, physical plan, scheduler state, and execution state.</description>
+    </item>
+    
+    <item>
+      <title>DC/OS Deployments</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/dcos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/dcos/</guid>
+      <description>Heron supports deployment on DC/OS. Deployments on DC/OS are done via Marathon and Docker. Further command-line support for DC/OS is forthcoming.
+How Heron on DC/OS Works Heron with DC/OS works by creating its topology deployments in Marathon under a single group. Note that only the submit and kill Heron CLI commands are currently supported with DC/OS and Marathon.
+ZooKeeper To run Heron on DC/OS, you&amp;rsquo;ll need a Zookeeper cluster. In non-production environments you can use the same ZK cluster as the Mesos masters, but this is not recommended for production environments.</description>
     </item>
     
     <item>
@@ -280,6 +324,70 @@ The UI provides a lot of information about a topology or a part of it quickly, t
     </item>
     
     <item>
+      <title>Heron observability with Graphite</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/graphite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/graphite/</guid>
+      <description>To observe Heron&amp;rsquo;s runtime metrics, you can integrate Heron and the Heron UI with Graphite and Grafana.
+To accomplish this, you need to do the following:
+ Export topology metrics from Heron Gather Aurora and Linux metrics with Diamond Set up a scripted dashboard with Grafana Configure the Heron UI to link to Grafana  Exporting Topology Metrics From Heron Heron supports custom metric exporters from the Metrics Manager. You can either build your own Graphite metrics sink or use the provided Graphite sink.</description>
+    </item>
+    
+    <item>
+      <title>Heron observability with Scribe</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/scribe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/scribe/</guid>
+      <description>You can integrate Heron with Scribe to monitor and gather runtime metrics exported by Heron topologies.
+Exporting topology metrics from Heron to Scribe Heron supports custom metric exporters from the Metrics Manager. You can either build your own Scribe metrics sink or use the provided Scribe sink.
+To set up your Heron cluster to export to Scribe, you need to make two changes to the metrics_sinks.yaml configuration file:
+ Add scribe-sink to the sinks list Add a scribe-sink map to the file that sets values for the parameters listed below.</description>
+    </item>
+    
+    <item>
+      <title>Heron on Kubernetes by hand</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes/</guid>
+      <description>This document shows you how to install Heron on Kubernetes in a step-by-step, &amp;ldquo;by hand&amp;rdquo; fashion. An easier way to install Heron on Kubernetes is to use the Helm package manager. For instructions on doing so, see Heron on Kubernetes with Helm).
+ Heron supports deployment on Kubernetes (sometimes called k8s). Heron deployments on Kubernetes use Docker as the containerization format for Heron topologies and use the Kubernetes API for scheduling.</description>
+    </item>
+    
+    <item>
+      <title>Heron on Kubernetes with Helm</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm/</guid>
+      <description>If you&amp;rsquo;d prefer to install Heron on Kubernetes without using the Helm package manager, see the Heron on Kubernetes by hand document.
+ Helm is an open source package manager for Kubernetes that enables you to quickly and easily install even the most complex software systems on Kubernetes. Heron has a Helm chart that you can use to install Heron on Kubernetes using just a few commands. The chart can be used to install Heron on the following platforms:</description>
+    </item>
+    
+    <item>
+      <title>Heron standalone</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone/</guid>
+      <description>Heron enables you to easily run a multi-node cluster in standalone mode. The difference between standalone mode and local mode for Heron is that standalone mode involves running multiple compute nodes&amp;mdash;using Hashicorp&amp;rsquo;s Nomad as a scheduler&amp;mdash;rather than just one.
+Installation You can use Heron in standalone mode using the heron-admin CLI tool, which can be installed using the instructions here.
+Requirements In order to run Heron in standalone mode, you&amp;rsquo;ll need to run a ZooKeeper cluster.</description>
+    </item>
+    
+    <item>
+      <title>Heron uploaders</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/</guid>
+      <description>Heron currently supports a variety of storage systems via configurable uploaders:
+ Amazon S3 SCP The Hadoop Filesystem (HDFS) The local filesystem  </description>
+    </item>
+    
+    <item>
       <title>Heron&#39;s Architecture</title>
       <link>https://twitter.github.io/heron/docs/concepts/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -375,6 +483,17 @@ public interface ISpout extends Serializable { void open(Map&amp;lt;String, Obje
     </item>
     
     <item>
+      <title>Local Cluster</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/local/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/local/</guid>
+      <description>In addition to out-of-the-box schedulers for Aurora, Heron can also be deployed in a local environment, which stands up a mock Heron cluster on a single machine. This can be useful for experimenting with Heron&amp;rsquo;s features, testing a wide variety of possible cluster events, and so on.
+One of two state managers can be used for coordination when deploying locally:
+ ZooKeeper Local File System  Note: Deploying a Heron cluster locally is not to be confused with Heron&amp;rsquo;s simulator mode.</description>
+    </item>
+    
+    <item>
       <title>Managing Topologies with Heron CLI</title>
       <link>https://twitter.github.io/heron/docs/operators/heron-cli/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -383,6 +502,17 @@ public interface ISpout extends Serializable { void open(Map&amp;lt;String, Obje
       <description>The Heron CLI us used to to manage every aspect of the topology lifecycle.
 Deploying the heron CLI Executable To use heron CLI, download the heron-client-install for your platfrom from release binaries and run the installation script. For example, if you have downloaded the version 0.13.5, you invoke the installation script as follows:
 $ chmod +x heron-client-install-0.13.5-darwin.sh $ ./heron-client-install-0.13.5-darwin.sh --user Heron client installer ---------------------- Uncompressing...... Heron is now installed! Make sure you have &amp;#34;/Users/$USER/bin&amp;#34; in your path.</description>
+    </item>
+    
+    <item>
+      <title>Mesos (Work in Progress)</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos/</guid>
+      <description>Heron supports deployment on Apache Mesos. Heron can also run on Mesos using Apache Aurora as a scheduler or using a local scheduler.
+How Heron on Mesos Works Heron&amp;rsquo;s Mesos scheduler interacts with Mesos to stand up all of the components necessary to manage topologies.
+ZooKeeper To run Heron on Mesos, you&amp;rsquo;ll need to set up a ZooKeeper cluster and configure Heron to communicate with it. Instructions can be found in Setting up ZooKeeper.</description>
     </item>
     
     <item>
@@ -404,6 +534,31 @@ Network Configuration You can configure how the MM collects and transmits data i
       <description>Heron is designed to be fully backwards compatible with existing Apache Storm projects, which means that you can migrate an existing Storm topology to Heron by making just a few adjustments to the topology&amp;rsquo;s pom.xml Maven configuration file.
 Step 1. Add Heron dependencies to pom.xml Copy the pom.xml segments below and paste them into your existing Storm pom.xml file in the dependencies block.
 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.twitter.heron&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;heron-api&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.17.5&amp;lt;/version&amp;gt; &amp;lt;scope&amp;gt;compile&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
+    </item>
+    
+    <item>
+      <title>Nomad</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/nomad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/nomad/</guid>
+      <description>Heron supports Hashicorp&amp;rsquo;s Nomad as a scheduler. Nomad may be a good option for smaller deployments that don&amp;rsquo;t require a bulkier scheduler like Mesos or Kubernetes.
+Nomad setup Setting up a nomad cluster will not be covered here. See the official Nomad docs for instructions.
+ Heron currently only supports the raw exec driver for Nomad.
+ When setting up your Nomad cluster, the following are required:
+ The Heron CLI tool must be installed on each machine used to deploy Heron topologies Python 2.</description>
+    </item>
+    
+    <item>
+      <title>Observability with Prometheus</title>
+      <link>https://twitter.github.io/heron/docs/operators/observability/prometheus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/observability/prometheus/</guid>
+      <description>You can integrate Heron with Prometheus to monitor and gather runtime metrics exported by Heron topologies.
+Exporting topology metrics from Heron to Prometheus Heron supports custom metric exporters from the Metrics Manager. You can either build your own Prometheus metrics sink or use the provided Prometheus sink.
+To set up your Heron cluster to export to Prometheus, you need to make two changes to the metrics_sinks.yaml configuration file:
+ Add prometheus-sink to the sinks list Add a prometheus-sink map to the file that sets values for the parameters listed below.</description>
     </item>
     
     <item>
@@ -443,6 +598,91 @@ heron submit ... ExclamationTopology --verbose  2. Why does the topology launch 
     </item>
     
     <item>
+      <title>Setting Up Local File System State Manager</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs/</guid>
+      <description>Heron can use the local file system as a state manager for storing various book keeping information. Use of local file system is recommended mainly for single node server and laptop. This configuration is ideal for deploying in edge devices. Heron developers can use this setting for developing and debugging various heron components in their laptop or server.
+Local File System State Manager Configuration You can make Heron aware of the ZooKeeper cluster by modifying the statemgr.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up Local File System Uploader</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs/</guid>
+      <description>When you submit a topology to Heron, the topology jars will be uploaded to a stable location. The submitter will provide this location to the scheduler and it will pass it to the executor each container. Heron can use a local file system as a stable storage for topology jar distribution.
+There are a few things you should be aware of local file system uploader:
+ Local file system uploader is mainly used in conjunction with local scheduler.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up S3 Uploader</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3/</guid>
+      <description>If you are running in Amazon AWS, Heron provides out of the box uploader for S3, the object storage. S3 uploader is useful when the topologies run in a distributed cluster of Amazon EC2 compute instances. Since S3 replicates the data, it provides a scalable mechanism for distributing the user topology jars.
+S3 Uploader Configuration You can make Heron use S3 uploader by modifying the uploader.yaml config file specific for the Heron cluster.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up SCP Uploader</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp/</guid>
+      <description>For small clusters with simple setups that doesn&amp;rsquo;t have a HDFS like file system, the SCP uploader can be used to manage the package files. This uploader uses the scp linux command to upload the files to a node accessible by all the worker nodes in the cluster. Then a scheduler like Aurora can use the scp command again to download the content to each of the worker machines.</description>
+    </item>
+    
+    <item>
+      <title>Setting Up ZooKeeper State Manager</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper/</guid>
+      <description>Heron relies on ZooKeeper for a wide variety of cluster coordination tasks. You can use either a shared or dedicated ZooKeeper cluster.
+There are a few things you should be aware of regarding Heron and ZooKeeper:
+ Heron uses ZooKeeper only for coordination, not for message passing, which means that ZooKeeper load should generally be fairly low. A single-node and/or shared ZooKeeper may suffice for your Heron cluster, depending on usage.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Heron with Aurora Cluster Locally on Linux</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora-local-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora-local-setup/</guid>
+      <description>It is possible to setup Heron with a locally running Apache Aurora cluster. This is a step by step guide on how to configure and setup all the necessary components.
+Setting Up Apache Aurora Cluster locally You first need to setup Apache Aurora locally. More detailed description of the following steps can be found in A local Cluster with Vagrant
+Step 1: Install VirtualBox and Vagrant Download and install VirtualBox and Vagrant on your machine.</description>
+    </item>
+    
+    <item>
+      <title>Setting up Heron with Mesos Cluster Locally on Mac</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac/</guid>
+      <description>This is a step by step guide to run Heron on a Mesos cluster locally.
+Install Heron Follow Quick Start Guide to install Heron.
+Setting up an Apache Mesos Cluster Locally Follow Installing Mesos on your Mac with Homebrew to install and run Mesos. To confirm Mesos cluster is ready for accepting Heron topologies, access the Mesos management console http://localhost:5050 and confirm there is activated slaves.
+Configure Heron State Manager By default, Heron uses Local File System State Manager on Mesos to manage states.</description>
+    </item>
+    
+    <item>
+      <title>Setting up the HDFS uploader</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs/</guid>
+      <description>With Heron, you have the option to use HDFS as stable storage for user submitted topology jars. Since HDFS replicates the data, it provides a scalable mechanism for distributing the user topology jars. This is desirable when the job runs in a distributed cluster and requires several hundred containers to run.
+There are a few things you should be aware of HDFS uploader:
+ It requires hadoop client be installed in the machine where the topology is being submitted  HDFS Uploader Configuration You can make Heron use HDFS uploader by modifying the uploader.</description>
+    </item>
+    
+    <item>
       <title>Simulator Mode</title>
       <link>https://twitter.github.io/heron/docs/developers/simulator-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -452,6 +692,16 @@ heron submit ... ExclamationTopology --verbose  2. Why does the topology launch 
 Simulator mode simulates a heron cluster in a single JVM process, which is useful for developing and testing topologies. Running topologies under simulator mode is similar to running topologies on a cluster.
 Develop a topology using simulator mode To run in simulator mode, use the SimulatorMode class, which is in storm-compatibility-unshaded_deploy.jar (under bazel-bin/storm-compatibility/src/java).
 For example:</description>
+    </item>
+    
+    <item>
+      <title>Slurm Cluster (Experimental)</title>
+      <link>https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm/</guid>
+      <description>In addition to out-of-the-box scheduler for Aurora, Heron can also be deployed in a HPC cluster with the Slurm Scheduler. This allows a researcher to deploy Heron and execute streaming scientific work-flows.
+How Slurm Deployment Works Using the Slurm scheduler is similar to deploying Heron on other systems. The Heron (../../heron-cli) cli is used to deploy and manage topologies similar to other schedulers. The main difference is in the configuration.</description>
     </item>
     
     <item>

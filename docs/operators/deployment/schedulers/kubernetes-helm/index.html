@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="en-us"><head><link rel="shortcut icon" type="image/png" sizes="16x16" href="https://twitter.github.io/heron/img/favicon-16x16.png"><link rel="shortcut icon" type="image/png" sizes="32x32" href="https://twitter.github.io/heron/img/favicon-32x32.png"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Hugo 0.30.2" /><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Heron"><meta property="og:image" content="/img/logo54x54.png"><meta property="og:url" content="https://twitter.github.io/heron"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@heronstreaming"><meta name="twitter:title" content="Heron"><meta name="twitter:image" content="/img/HeronTextLogo.png"><meta property="og:site_name" content="Heron on Kubernetes with Helm"><meta property="og:url" content="/docs/operators/deployment/schedulers/kubernetes-helm/"><meta property="og:description" content="The fastest and easiest way to install Heron on Kubernetes"><meta name="twitter:description" content="The fastest and easiest way to install Heron on Kubernetes"><title>Heron Documentation - Heron on Kubernetes with Helm</title><link rel="stylesheet" href="https://twitter.github.io/heron/css/font-awesome.min.css"><link rel="stylesheet" href="https://twitter.github.io/heron/css/style.css"><script type="text/javascript">
+var shiftWindow = function() { scrollBy(0, -100) };
+window.addEventListener("hashchange", shiftWindow);
+function load() { if (window.location.hash) shiftWindow(); }
+</script></head><body class="body"><main class="main"><nav class="hn-top-navbar navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="hn-navbar-container container-fluid"><div class="navbar-header"><button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#hn-navbar" aria-controls="hn-navbar" aria-expanded="false"><span class="sr-only"><Toggle>navigation</Toggle></span><i class="hn-toggle-button fa fa-bars"></i></button><a class="hn-navbar-logo navbar-brand" href="https://twitter.github.io/heron/"><img class="pull-left" src="https://twitter.github.io/heron/img/HeronTextLogo-small.png"></a></div><div id="hn-navbar" class="navbar-collapse collapse"><ul class="nav navbar-nav navbar-right"><li><a href="https://twitter.github.io/heron/docs/getting-started">Docs</a></li><li><a href="https://twitter.github.io/heron/docs/resources">Resources</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://github.com/twitter/heron">GitHub</a></li><li><a href="https://groups.google.com/forum/#!forum/heron-users">Mailing List</a></li><li><a class="nav-icon" href="https://twitter.com/heronstreaming"><i class="fa fa-twitter"></i></a></li></ul></div></div></nav><div class="hn-main"><div class="container"><div class="row"><aside class="hn-sidebar hidden-xs hidden-sm col-md-4 col-lg-2"><nav class="hn-sidebar-nav"><div id="hn-accordion" class="panel-group" role="tablist" aria-multiselectable="true"><div class="panel panel-default"><section id="getting-started" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-getting-started" aria-labelledby="getting-started"><i class="fa fa-caret-right"></i>Getting Started</a></h4></section><div id="collapse-getting-started" class="panel-collapse collapse" aria-labelledby="getting-started"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/getting-started">Local (Single Node)</a></li><li><a href="https://twitter.github.io/heron/docs/migrate-storm-to-heron">Migrate Storm Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/getting-started-troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-streamlet-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-streamlet-api" aria-labelledby="the-heron-streamlet-api"><i class="fa fa-caret-right"></i>The Heron Streamlet API</a></h4></section><div id="collapse-the-heron-streamlet-api" class="panel-collapse collapse" aria-labelledby="the-heron-streamlet-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/streamlet-api">The Heron Streamlet API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-eco-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-eco-api" aria-labelledby="the-heron-eco-api"><i class="fa fa-caret-right"></i>The Heron ECO API</a></h4></section><div id="collapse-the-heron-eco-api" class="panel-collapse collapse" aria-labelledby="the-heron-eco-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/eco-api">The Heron ECO API for Java</a></li></ul></div></div></div><div class="panel panel-default"><section id="the-heron-topology-api" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-the-heron-topology-api" aria-labelledby="the-heron-topology-api"><i class="fa fa-caret-right"></i>The Heron Topology API</a></h4></section><div id="collapse-the-heron-topology-api" class="panel-collapse collapse" aria-labelledby="the-heron-topology-api"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/java/topologies">The Heron Topology API for Java</a></li><li><a href="https://twitter.github.io/heron/docs/developers/java/effectively-once">Effectively-once Java topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/python/topologies">Python Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/developers/data-model">Heron Data Model</a></li><li><a href="https://twitter.github.io/heron/docs/developers/serialization">Tuple Serialization</a></li><li><a href="https://twitter.github.io/heron/docs/developers/ui-guide">Heron UI Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/tuning">Tuning Guide</a></li><li><a href="https://twitter.github.io/heron/docs/developers/packing/ffdpacking">Packing Algorithms</a></li><li><a href="https://twitter.github.io/heron/docs/developers/simulator-mode">Simulator Mode</a></li><li><a href="https://twitter.github.io/heron/docs/developers/troubleshooting">Troubleshooting Guide</a></li></ul></div></div></div><div class="panel panel-default"><section id="client-api-docs" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-client-api-docs" aria-labelledby="client-api-docs"><i class="fa fa-caret-right"></i>Client API docs</a></h4></section><div id="collapse-client-api-docs" class="panel-collapse collapse" aria-labelledby="client-api-docs"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/api/java">Java</a></li><li><a href="https://twitter.github.io/heron/api/python">Python</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-concepts" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-concepts" aria-labelledby="heron-concepts"><i class="fa fa-caret-right"></i>Heron Concepts</a></h4></section><div id="collapse-heron-concepts" class="panel-collapse collapse" aria-labelledby="heron-concepts"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/concepts/design-goals">Heron Design Goals</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/topologies">Heron Topologies</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/streamlet-api">Heron Streamlet API</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/architecture">Heron Architecture</a></li><li><a href="https://twitter.github.io/heron/docs/concepts/delivery-semantics">Heron Delivery Semantics</a></li></ul></div></div></div><div class="panel panel-default"><section id="deployment" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-deployment" aria-labelledby="deployment"><i class="fa fa-caret-right"></i>Deployment</a></h4></section><div id="collapse-deployment" class="panel-collapse collapse" aria-labelledby="deployment"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/configuration">Configuration</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-api-server">The Heron API server</a></li></ul></div></div></div><div class="panel panel-default"><section id="state-managers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-state-managers" aria-labelledby="state-managers"><i class="fa fa-caret-right"></i>State Managers</a></h4></section><div id="collapse-state-managers" class="panel-collapse collapse" aria-labelledby="state-managers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/zookeeper">Zookeeper</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/statemanagers/localfs">Local FS</a></li></ul></div></div></div><div class="panel panel-default"><section id="uploaders" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-uploaders" aria-labelledby="uploaders"><i class="fa fa-caret-right"></i>Uploaders</a></h4></section><div id="collapse-uploaders" class="panel-collapse collapse" aria-labelledby="uploaders"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/localfs">Local FS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/hdfs">HDFS</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/s3">Amazon S3</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/uploaders/scp">Secure Copy (SCP)</a></li></ul></div></div></div><div class="panel panel-default"><section id="schedulers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-schedulers" aria-labelledby="schedulers"><i class="fa fa-caret-right"></i>Schedulers</a></h4></section><div id="collapse-schedulers" class="panel-collapse collapse" aria-labelledby="schedulers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes">Kubernetes by Hand</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/kubernetes-helm">Kubernetes with Helm</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/aurora">Aurora Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/standalone">Multi-node standalone cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/nomad">Nomad</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/local">Local Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/mesos-local-mac">Mesos Cluster Locally</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/slurm">Slurm Cluster</a></li><li><a href="https://twitter.github.io/heron/docs/operators/deployment/schedulers/yarn">YARN Cluster</a></li></ul></div></div></div><div class="panel panel-default"><section id="cluster-configuration" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-cluster-configuration" aria-labelledby="cluster-configuration"><i class="fa fa-caret-right"></i>Cluster Configuration</a></h4></section><div id="collapse-cluster-configuration" class="panel-collapse collapse" aria-labelledby="cluster-configuration"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/configuration/config-intro">Overview</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/system">System-Level</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/instance">Heron Instance</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/metrics-manager">Metrics Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/stmgr">Stream Manager</a></li><li><a href="https://twitter.github.io/heron/docs/operators/configuration/tmaster">Topology Master</a></li></ul></div></div></div><div class="panel panel-default"><section id="observability" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-observability" aria-labelledby="observability"><i class="fa fa-caret-right"></i>Observability</a></h4></section><div id="collapse-observability" class="panel-collapse collapse" aria-labelledby="observability"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/observability/prometheus">Prometheus</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/graphite">Graphite</a></li><li><a href="https://twitter.github.io/heron/docs/operators/observability/scribe">Scribe</a></li></ul></div></div></div><div class="panel panel-default"><section id="user-manuals" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-user-manuals" aria-labelledby="user-manuals"><i class="fa fa-caret-right"></i>User Manuals</a></h4></section><div id="collapse-user-manuals" class="panel-collapse collapse" aria-labelledby="user-manuals"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/operators/heron-cli">Heron Client</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-explorer">Heron Explorer</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker-api">Heron Tracker REST API</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-tracker">Heron Tracker Runbook</a></li><li><a href="https://twitter.github.io/heron/docs/operators/heron-ui">Heron UI Runbook</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-developers" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-developers" aria-labelledby="heron-developers"><i class="fa fa-caret-right"></i>Heron Developers</a></h4></section><div id="collapse-heron-developers" class="panel-collapse collapse" aria-labelledby="heron-developers"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/developers/compiling/compiling">Compiling</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/linux">Compiling on Linux</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/mac">Compiling on Mac OS X</a></li><li><a href="https://twitter.github.io/heron/docs/developers/compiling/docker">Compiling With Docker</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/testing">Running Tests</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/codebase">Code Organization</a></li></ul></div></div></div><div class="panel panel-default"><section id="extending-heron" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-extending-heron" aria-labelledby="extending-heron"><i class="fa fa-caret-right"></i>Extending Heron</a></h4></section><div id="collapse-extending-heron" class="panel-collapse collapse" aria-labelledby="extending-heron"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/custom-scheduler">Custom Scheduler</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/custom-metrics-sink">Custom Metrics Sink</a></li></ul></div></div></div><div class="panel panel-default"><section id="heron-resources" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-heron-resources" aria-labelledby="heron-resources"><i class="fa fa-caret-right"></i>Heron Resources</a></h4></section><div id="collapse-heron-resources" class="panel-collapse collapse" aria-labelledby="heron-resources"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/resources">Heron Resources</a></li></ul></div></div></div><div class="panel panel-default"><section id="contributors" class="panel-heading" role="tab"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#hn-accordion" href="#collapse-contributors" aria-labelledby="contributors"><i class="fa fa-caret-right"></i>Contributors</a></h4></section><div id="collapse-contributors" class="panel-collapse collapse" aria-labelledby="contributors"><div class="panel-body"><ul><li><a href="https://twitter.github.io/heron/docs/contributors/community">Community</a></li><li><a href="https://twitter.github.io/heron/docs/contributors/governance">Governance</a></li></ul></div></div></div></div></nav></aside><section class="hn-docs-main col-xs-12 col-sm-12 col-md-8 col-lg-10 col-md-offset-4 col-lg-offset-2"><header class="hn-docs-header page-header"><h1 class="hn-docs-title">Heron on Kubernetes with Helm</h1><div class="hn-docs-description">The fastest and easiest way to install Heron on Kubernetes</div></header><article class="hn-docs-content">
+
+<blockquote>
+<p>If you&rsquo;d prefer to install Heron on Kubernetes <em>without</em> using the <a href="https://helm.sh">Helm</a> package manager, see the <a href="../kubernetes">Heron on Kubernetes by hand</a> document.</p>
+</blockquote>
+
+<p><a href="https://helm.sh">Helm</a> is an open source package manager for <a href="https://kubernetes.io">Kubernetes</a> that enables you to quickly and easily install even the most complex software systems on Kubernetes. Heron has a Helm <a href="https://docs.helm.sh/developing_charts/#charts">chart</a> that you can use to install Heron on Kubernetes using just a few commands. The chart can be used to install Heron on the following platforms:</p>
+
+<ul>
+<li><a href="#minikube">Minikube</a> (the default)</li>
+<li><a href="#google-kubernetes-engine">Google Kubernetes Engine</a></li>
+<li><a href="#amazon-web-services">Amazon Web Services</a></li>
+<li><a href="#bare-metal">Bare metal</a></li>
+</ul>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>In order to install Heron on Kubernetes using Helm, you&rsquo;ll need to have an existing Kubernetes cluster on one of the supported <a href="#specifying-a-platform">platforms</a> (which includes <a href="#bare-metal">bare metal</a> installations).</p>
+
+<h2 id="installing-the-helm-client">Installing the Helm client</h2>
+
+<p>In order to get started, you need to install Helm on your machine. Installation instructions for <a href="#helm-for-macos">macOS</a> and <a href="#helm-for-linux">Linux</a> are below.</p>
+
+<h3 id="helm-for-macos">Helm for macOS</h3>
+
+<p>You can install Helm on macOS using <a href="https://brew.sh">Homebrew</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install kubernetes-helm</code></pre></div>
+<h3 id="helm-for-linux">Helm for Linux</h3>
+
+<p>You can install Helm on Linux using a simple installation script:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get &gt; install-helm.sh
+$ chmod <span class="m">700</span> install-helm.sh
+$ ./install-helm.sh</code></pre></div>
+<h2 id="installing-helm-in-your-kubernetes-cluster">Installing Helm in your Kubernetes cluster</h2>
+
+<p>To run Helm on Kubernetes, you need to first make sure that <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl">kubectl</a> is using the right configuration context for your cluster. To check which context is being used:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ kubectl config current-context</code></pre></div>
+<p>If the context is correct, then you can get Helm running using just one command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm init</code></pre></div>
+<p>If the output of that command includes <code>Happy Helming!</code> then Helm is ready to go.</p>
+
+<h2 id="installing-heron-on-kubernetes">Installing Heron on Kubernetes</h2>
+
+<p>Once you&rsquo;ve installed the Helm client on your machine and gotten Helm running in your Kubernetes cluster, you need to make your client aware of the <code>heron-charts</code> Helm repository, which houses the chart for Heron:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm repo add heron-charts https://storage.googleapis.com/heron-charts
+<span class="s2">&#34;heron-charts&#34;</span> has been added to your repositories</code></pre></div>
+<p>Now you can install the Heron package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron</code></pre></div>
+<p>This will install Heron and provide the installation with a random name like <code>jazzy-anaconda</code>. To provide the installation with a name, such as <code>heron-kubernetes</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --name heron-kubernetes</code></pre></div>
+<h3 id="specifying-a-platform">Specifying a platform</h3>
+
+<p>The default platform for running Heron on Kubernetes is <a href="#minikube">Minikube</a>. To specify a different platform, you can use the <code>--set platform=PLATFORM</code> flag. Here&rsquo;s an example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>gke</code></pre></div>
+<p>The available platforms are:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Platform</th>
+<th align="left">Tag</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="#minikube">Minikube</a></td>
+<td align="left"><code>minikube</code></td>
+</tr>
+
+<tr>
+<td align="left"><a href="#google-kubernetes-engine">Google Kubernetes Engine</a></td>
+<td align="left"><code>gke</code></td>
+</tr>
+
+<tr>
+<td align="left"><a href="#amazone-web-services">Amazon Web Services</a></td>
+<td align="left"><code>aws</code></td>
+</tr>
+
+<tr>
+<td align="left"><a href="#bare-metal">Bare metal</a></td>
+<td align="left"><code>baremetal</code></td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="minikube">Minikube</h4>
+
+<p>To run Heron on Minikube, you need to first <a href="https://kubernetes.io/docs/tasks/tools/install-minikube/">install Minikube</a>. Once Minikube is installed, you can start it by running <code>minikube start</code>. Please note, however, that Heron currently requires the following resources:</p>
+
+<ul>
+<li>7 GB of memory</li>
+<li>5 CPUs</li>
+<li>20 GB of disk space</li>
+</ul>
+
+<p>To start up Minikube with the minimum necessary resources:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ minikube start <span class="se">\
+</span><span class="se"></span>  --memory<span class="o">=</span><span class="m">7168</span> <span class="se">\
+</span><span class="se"></span>  --cpus<span class="o">=</span><span class="m">5</span> <span class="se">\
+</span><span class="se"></span>  --disk-size<span class="o">=</span>20g</code></pre></div>
+<p>Once Minikube is running, you can then install Heron in one of two ways:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Use the Minikube default
+</span><span class="c1"></span>$ helm install heron-charts/heron
+
+<span class="c1"># Explicitly select Minikube
+</span><span class="c1"></span>$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>minikube</code></pre></div>
+<h4 id="google-kubernetes-engine">Google Kubernetes Engine</h4>
+
+<p>The resources required to run Heron on <a href="https://cloud.google.com/kubernetes-engine/">Google Kubernetes Engine</a> vary based on your use case. To run a basic Heron cluster intended for development and experimentation, you&rsquo;ll need at least:</p>
+
+<ul>
+<li>3 nodes</li>
+<li><a href="https://cloud.google.com/compute/docs/machine-types#standard_machine_types">n1-standard-4</a> machines</li>
+</ul>
+
+<p>To create a cluster with those resources using the <a href="https://cloud.google.com/sdk/gcloud/">gcloud</a> tool:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gcloud container clusters create heron-gke-dev-cluster <span class="se">\
+</span><span class="se"></span>  --num-nodes<span class="o">=</span><span class="m">3</span> <span class="se">\
+</span><span class="se"></span>  --machine-type<span class="o">=</span>n1-standard-2</code></pre></div>
+<p>For a production-ready cluster you&rsquo;ll want a larger cluster with:</p>
+
+<ul>
+<li><em>at least</em> 8 nodes</li>
+<li><a href="https://cloud.google.com/compute/docs/machine-types#standard_machine_types">n1-standard-4 or n1-standard-8</a> machines (preferably the latter)</li>
+</ul>
+
+<p>To create such a cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gcloud container clusters create heron-gke-prod-cluster <span class="se">\
+</span><span class="se"></span>  --num-nodes<span class="o">=</span><span class="m">8</span> <span class="se">\
+</span><span class="se"></span>  --machine-type<span class="o">=</span>n1-standard-8</code></pre></div>
+<p>Once the cluster has been successfully created, you&rsquo;ll need to install that cluster&rsquo;s credentials locally so that they can be used by <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a>. You can do this in just one command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gcloud container clusters get-credentials heron-gke-dev-cluster # or heron-gke-prod-cluster</code></pre></div>
+<p>Once, the cluster is running (that could take a few minutes), you can initialize Helm on the cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm init</code></pre></div>
+<p>Then, you&rsquo;ll need to adjust some RBAC permissions for your cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ kubectl create serviceaccount tiller <span class="se">\
+</span><span class="se"></span>  --namespace kube-system <span class="se">\
+</span><span class="se"></span>$ kubectl create clusterrolebinding tiller-cluster-rule <span class="se">\
+</span><span class="se"></span>  --clusterrole cluster-admin <span class="se">\
+</span><span class="se"></span>  --serviceaccount kube-system:tiller
+$ kubectl patch deploy tiller-deploy <span class="se">\
+</span><span class="se"></span>  --namespace kube-system <span class="se">\
+</span><span class="se"></span>  --patch <span class="s1">&#39;{&#34;spec&#34;:{&#34;template&#34;:{&#34;spec&#34;:{&#34;serviceAccount&#34;:&#34;tiller&#34;}}}}&#39;</span></code></pre></div>
+<p>Finally, you can install Heron:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>gke</code></pre></div>
+<h5 id="resource-configurations">Resource configurations</h5>
+
+<p>Helm enables you to supply sets of variables via YAML files. There are currently a handful of different resource configurations that can be applied to your Heron on GKE cluster upon installation:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Configuration</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><a href="https://github.com/twitter/heron/blob/master/deploy/kubernetes/gcp/small.yaml"><code>small.yaml</code></a></td>
+<td align="left">Smaller Heron cluster intended for basic testing, development, and experimentation</td>
+</tr>
+
+<tr>
+<td align="left"><a href="https://github.com/twitter/heron/blob/master/deploy/kubernetes/gcp/large.yaml"><code>large.yaml</code></a></td>
+<td align="left">Larger Heron cluster intended for production usage</td>
+</tr>
+</tbody>
+</table>
+
+<p>To apply the <code>small</code> configuration, for example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>gke <span class="se">\
+</span><span class="se"></span>  --values https://raw.githubusercontent.com/twitter/heron/master/deploy/kubernetes/gcp/small.yaml</code></pre></div>
+<h4 id="amazon-web-services">Amazon Web Services</h4>
+
+<p>To run Heron on Kubernetes on Amazon Web Services (AWS), you&rsquo;ll need to</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>aws</code></pre></div>
+<h4 id="bare-metal">Bare metal</h4>
+
+<p>To run Heron on a bare metal Kubernetes cluster:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ helm install heron-charts/heron <span class="se">\
+</span><span class="se"></span>  --set <span class="nv">platform</span><span class="o">=</span>baremetal</code></pre></div>
+<h2 id="running-topologies-on-heron-on-kubernetes">Running topologies on Heron on Kubernetes</h2>
+
+<p>Once you have a Heron cluster up and running on Kubernetes via Helm, you can use the <a href="../../../heron-cli"><code>heron</code> CLI tool</a> like normal if you set the proper URL for the <a href="../../../heron-api-server">Heron API server</a>. When running Heron on Kubernetes, that URL is:</p>
+
+<pre><code>http://localhost:8001/api/v1/proxy/namespaces/default/services/heron-kubernetes-heron-apiserver:9000/api/v1/version
+</code></pre>
+
+<p>To set that URL:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron config heron-kubernetes <span class="nb">set</span> service_url <span class="se">\
+</span><span class="se"></span>  http://localhost:8001/api/v1/proxy/namespaces/default/services/heron-kubernetes-heron-apiserver:9000/api/v1/version</code></pre></div>
+<blockquote>
+<p>When setting the <code>heron</code> CLI configuration, make sure that the cluster name matches the name of the Helm installation. This can be either the name auto-generated by Helm or the name you supplied via the <code>--name</code> flag upon installation (in some of the examples above, the <code>heron-kubernetes</code> name was used). Make sure to adjust the name accordingly if necessary.</p>
+</blockquote>
+
+<p>To test your cluster, you can submit an example topology:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ heron submit heron-kubernetes <span class="se">\
+</span><span class="se"></span>  ~/.heron/examples/heron-streamlet-examples.jar <span class="se">\
+</span><span class="se"></span>  com.twitter.heron.examples.streamlet.WindowedWordCountTopology <span class="se">\
+</span><span class="se"></span>  WindowedWordCount</code></pre></div></article></section></div></div></div></main><script src="https://code.jquery.com/jquery-2.2.1.min.js"></script><script src="https://twitter.github.io/heron/js/bootstrap.js"></script><script src="https://twitter.github.io/heron/js/jquery.scrollTo.js"></script><script src="https://twitter.github.io/heron/js/app.min.js"></script><script type="text/javascript">
+$('pre code').each(function() {
+  console.log(this);
+  this.innerHTML = this.innerHTML.replace(/\$\s/g, function(matched) {
+    return `<span class=\"clp\">${matched}</span>`;
+  });
+});
+</script></body></html>
