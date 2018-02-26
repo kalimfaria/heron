@@ -851,73 +851,6 @@ table {
 
   </style>
 
-  <style type="text/css">
-  .codehilite .hll { background-color: #ffffcc }
-.codehilite  { background: #f8f8f8; }
-.codehilite .c { color: #408080; font-style: italic } /* Comment */
-.codehilite .err { border: 1px solid #FF0000 } /* Error */
-.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
-.codehilite .o { color: #666666 } /* Operator */
-.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
-.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
-.codehilite .gd { color: #A00000 } /* Generic.Deleted */
-.codehilite .ge { font-style: italic } /* Generic.Emph */
-.codehilite .gr { color: #FF0000 } /* Generic.Error */
-.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.codehilite .gi { color: #00A000 } /* Generic.Inserted */
-.codehilite .go { color: #888888 } /* Generic.Output */
-.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.codehilite .gs { font-weight: bold } /* Generic.Strong */
-.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.codehilite .gt { color: #0044DD } /* Generic.Traceback */
-.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
-.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.codehilite .kt { color: #B00040 } /* Keyword.Type */
-.codehilite .m { color: #666666 } /* Literal.Number */
-.codehilite .s { color: #BA2121 } /* Literal.String */
-.codehilite .na { color: #7D9029 } /* Name.Attribute */
-.codehilite .nb { color: #008000 } /* Name.Builtin */
-.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.codehilite .no { color: #880000 } /* Name.Constant */
-.codehilite .nd { color: #AA22FF } /* Name.Decorator */
-.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.codehilite .nf { color: #0000FF } /* Name.Function */
-.codehilite .nl { color: #A0A000 } /* Name.Label */
-.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.codehilite .nv { color: #19177C } /* Name.Variable */
-.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
-.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
-.codehilite .mf { color: #666666 } /* Literal.Number.Float */
-.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
-.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
-.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
-.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
-.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
-.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
-.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.codehilite .sx { color: #008000 } /* Literal.String.Other */
-.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
-.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
-.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
-.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.codehilite .vc { color: #19177C } /* Name.Variable.Class */
-.codehilite .vg { color: #19177C } /* Name.Variable.Global */
-.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
-.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
-  </style>
 
   <style type="text/css">
   
@@ -1081,166 +1014,165 @@ table {
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream" class="source">
-    <div class="codehilite"><pre><span></span><span class="c1"># Copyright 2016 - Parsely, Inc. (d/b/a Parse.ly)</span>
-<span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="c1"># you may not use this file except in compliance with the License.</span>
-<span class="c1"># You may obtain a copy of the License at</span>
-<span class="c1">#</span>
-<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="c1">#</span>
-<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="c1"># See the License for the specific language governing permissions and</span>
-<span class="c1"># limitations under the License.</span>
-<span class="sd">&#39;&#39;&#39;stream.py: module for defining Stream and Grouping for python topology&#39;&#39;&#39;</span>
+    <pre><code># Copyright 2016 - Parsely, Inc. (d/b/a Parse.ly)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+'''stream.py: module for defining Stream and Grouping for python topology'''
 
-<span class="kn">import</span> <span class="nn">collections</span>
+import collections
 
-<span class="kn">from</span> <span class="nn">heronpy.api.serializer</span> <span class="kn">import</span> <span class="n">default_serializer</span>
-<span class="kn">from</span> <span class="nn">heronpy.api.custom_grouping</span> <span class="kn">import</span> <span class="n">ICustomGrouping</span>
-<span class="kn">from</span> <span class="nn">heronpy.proto</span> <span class="kn">import</span> <span class="n">topology_pb2</span>
+from heronpy.api.serializer import default_serializer
+from heronpy.api.custom_grouping import ICustomGrouping
+from heronpy.proto import topology_pb2
 
-<span class="k">class</span> <span class="nc">Stream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Heron output stream</span>
+class Stream(object):
+  """Heron output stream
 
-<span class="sd">  It is compatible with StreamParse API.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">DEFAULT_STREAM_ID</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+  It is compatible with StreamParse API.
+  """
+  DEFAULT_STREAM_ID = "default"
 
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">DEFAULT_STREAM_ID</span><span class="p">,</span> <span class="n">direct</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    :type fields: `list` or `tuple` of `str`</span>
-<span class="sd">    :param fields: field names for this stream</span>
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param name: name of stream. Defaults to ``default``</span>
-<span class="sd">    :type direct: bool</span>
-<span class="sd">    :param direct: whether or not this stream is direct. Default is ``False``</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">fields</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;All field names must be strings, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream fields must be a list, tuple or None, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">fields</span><span class="p">))</span>
+  def __init__(self, fields=None, name=DEFAULT_STREAM_ID, direct=False):
+    """
+    :type fields: `list` or `tuple` of `str`
+    :param fields: field names for this stream
+    :type name: str
+    :param name: name of stream. Defaults to ``default``
+    :type direct: bool
+    :param direct: whether or not this stream is direct. Default is ``False``
+    """
+    if fields is None:
+      fields = []
+    elif isinstance(fields, (list, tuple)):
+      fields = list(fields)
+      for field in fields:
+        if not isinstance(field, str):
+          raise TypeError("All field names must be strings, given: %s" % str(field))
+    else:
+      raise TypeError("Stream fields must be a list, tuple or None, given: %s" % str(fields))
 
-    <span class="c1"># self.fields is always list</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span>
+    # self.fields is always list
+    self.fields = fields
 
-    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream&#39;s name cannot be None&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">stream_id</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream name must be a string, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    if name is None:
+      raise TypeError("Stream's name cannot be None")
+    elif isinstance(name, str):
+      self.stream_id = name
+    else:
+      raise TypeError("Stream name must be a string, given: %s" % str(name))
 
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">direct</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">direct</span> <span class="o">=</span> <span class="n">direct</span>
-      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Direct stream is not supported yet.&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&#39;direct&#39; must be either True or False, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">direct</span><span class="p">))</span>
+    if isinstance(direct, bool):
+      self.direct = direct
+      if self.direct:
+        raise NotImplementedError("Direct stream is not supported yet.")
+    else:
+      raise TypeError("'direct' must be either True or False, given: %s" % str(direct))
 
-<span class="k">class</span> <span class="nc">Grouping</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Helper class for defining Grouping for Python topology&quot;&quot;&quot;</span>
-  <span class="n">SHUFFLE</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;SHUFFLE&quot;</span><span class="p">)</span>
-  <span class="n">ALL</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
-  <span class="n">LOWEST</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;LOWEST&quot;</span><span class="p">)</span>
-  <span class="n">NONE</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;NONE&quot;</span><span class="p">)</span>
-  <span class="n">DIRECT</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;DIRECT&quot;</span><span class="p">)</span>
+class Grouping(object):
+  """Helper class for defining Grouping for Python topology"""
+  SHUFFLE = topology_pb2.Grouping.Value("SHUFFLE")
+  ALL = topology_pb2.Grouping.Value("ALL")
+  LOWEST = topology_pb2.Grouping.Value("LOWEST")
+  NONE = topology_pb2.Grouping.Value("NONE")
+  DIRECT = topology_pb2.Grouping.Value("DIRECT")
 
-  <span class="c1"># gtype should contain topology_pb2.Grouping.Value(&quot;FIELDS&quot;)</span>
-  <span class="n">FIELDS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;FieldGrouping&#39;</span><span class="p">,</span> <span class="s1">&#39;gtype, fields&#39;</span><span class="p">)</span>
+  # gtype should contain topology_pb2.Grouping.Value("FIELDS")
+  FIELDS = collections.namedtuple('FieldGrouping', 'gtype, fields')
 
-  <span class="c1"># gtype should contain topology_pb2.Grouping.Value(&quot;CUSTOM&quot;)</span>
-  <span class="n">CUSTOM</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;CustomGrouping&#39;</span><span class="p">,</span> <span class="s1">&#39;gtype, python_serialized&#39;</span><span class="p">)</span>
+  # gtype should contain topology_pb2.Grouping.Value("CUSTOM")
+  CUSTOM = collections.namedtuple('CustomGrouping', 'gtype, python_serialized')
 
-  <span class="c1"># StreamParse compatibility</span>
-  <span class="n">GLOBAL</span> <span class="o">=</span> <span class="n">LOWEST</span>
-  <span class="n">LOCAL_OR_SHUFFLE</span> <span class="o">=</span> <span class="n">SHUFFLE</span>
+  # StreamParse compatibility
+  GLOBAL = LOWEST
+  LOCAL_OR_SHUFFLE = SHUFFLE
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">is_grouping_sane</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">gtype</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks if a given gtype is sane&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">SHUFFLE</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">ALL</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">LOWEST</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
-      <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">):</span>
-      <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-             <span class="n">gtype</span><span class="o">.</span><span class="n">fields</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">):</span>
-      <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-             <span class="n">gtype</span><span class="o">.</span><span class="n">python_serialized</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="c1">#pylint: disable=fixme</span>
-      <span class="c1">#TODO: DIRECT are not supported yet</span>
-      <span class="k">return</span> <span class="bp">False</span>
+  @classmethod
+  def is_grouping_sane(cls, gtype):
+    """Checks if a given gtype is sane"""
+    if gtype == cls.SHUFFLE or gtype == cls.ALL or gtype == cls.LOWEST or gtype == cls.NONE:
+      return True
+    elif isinstance(gtype, cls.FIELDS):
+      return gtype.gtype == topology_pb2.Grouping.Value("FIELDS") and \
+             gtype.fields is not None
+    elif isinstance(gtype, cls.CUSTOM):
+      return gtype.gtype == topology_pb2.Grouping.Value("CUSTOM") and \
+             gtype.python_serialized is not None
+    else:
+      #pylint: disable=fixme
+      #TODO: DIRECT are not supported yet
+      return False
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Field grouping&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+  @classmethod
+  def fields(cls, *fields):
+    """Field grouping"""
+    if len(fields) == 1 and isinstance(fields[0], list):
+      fields = fields[0]
+    else:
+      fields = list(fields)
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Non-string cannot be specified in fields&quot;</span><span class="p">)</span>
+    for i in fields:
+      if not isinstance(i, str):
+        raise TypeError("Non-string cannot be specified in fields")
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fields</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;List cannot be empty for fields grouping&quot;</span><span class="p">)</span>
+    if not fields:
+      raise ValueError("List cannot be empty for fields grouping")
 
-    <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">),</span>
-                      <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+    return cls.FIELDS(gtype=topology_pb2.Grouping.Value("FIELDS"),
+                      fields=fields)
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">customgrouper</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Custom grouping from a given implementation of ICustomGrouping</span>
+  @classmethod
+  def custom(cls, customgrouper):
+    """Custom grouping from a given implementation of ICustomGrouping
 
-<span class="sd">    :param customgrouper: The ICustomGrouping implemention to use</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">customgrouper</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="n">ICustomGrouping</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-    <span class="n">serialized</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">custom_serialized</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    :param customgrouper: The ICustomGrouping implemention to use
+    """
+    if customgrouper is None:
+      raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+    if not isinstance(customgrouper, ICustomGrouping) and not isinstance(customgrouper, str):
+      raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+    serialized = default_serializer.serialize(customgrouper)
+    return cls.custom_serialized(serialized, is_java=False)
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom_serialized</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Custom grouping from a given serialized string</span>
+  @classmethod
+  def custom_serialized(cls, serialized, is_java=True):
+    """Custom grouping from a given serialized string
 
-<span class="sd">    This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method</span>
-<span class="sd">    of StreamParse API, although its functionality is not yet implemented (Java-serialized).</span>
-<span class="sd">    Currently only custom grouping implemented in Python is supported, and ``custom()`` method</span>
-<span class="sd">    should be used to indicate its classpath, rather than directly to use this method.</span>
+    This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method
+    of StreamParse API, although its functionality is not yet implemented (Java-serialized).
+    Currently only custom grouping implemented in Python is supported, and ``custom()`` method
+    should be used to indicate its classpath, rather than directly to use this method.
 
-<span class="sd">    In the future, users can directly specify Java-serialized object with ``is_java=True`` in order</span>
-<span class="sd">    to use a custom grouping implemented in Java for python topology.</span>
+    In the future, users can directly specify Java-serialized object with ``is_java=True`` in order
+    to use a custom grouping implemented in Java for python topology.
 
-<span class="sd">    :param serialized: serialized classpath to custom grouping class to use (if python)</span>
-<span class="sd">    :param is_java: indicate whether this is Java serialized, or python serialized</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom_serialized() must be &quot;</span>
-                      <span class="s2">&quot;a serialized Python class as bytes, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">serialized</span><span class="p">))</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_java</span><span class="p">:</span>
-      <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">),</span>
-                        <span class="n">python_serialized</span><span class="o">=</span><span class="n">serialized</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Custom grouping implemented in Java for Python topology&quot;</span>
-                                <span class="s2">&quot;is not yet supported.&quot;</span><span class="p">)</span>
+    :param serialized: serialized classpath to custom grouping class to use (if python)
+    :param is_java: indicate whether this is Java serialized, or python serialized
+    """
+    if not isinstance(serialized, bytes):
+      raise TypeError("Argument to custom_serialized() must be "
+                      "a serialized Python class as bytes, given: %s" % str(serialized))
+    if not is_java:
+      return cls.CUSTOM(gtype=topology_pb2.Grouping.Value("CUSTOM"),
+                        python_serialized=serialized)
+    else:
+      raise NotImplementedError("Custom grouping implemented in Java for Python topology"
+                                "is not yet supported.")
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom_object</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">java_class_name</span><span class="p">,</span> <span class="n">arg_list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tuples will be assigned to tasks by the given Java class.&quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;custom_object() method is not yet implemented&quot;</span><span class="p">)</span>
-</pre></div>
-
+  @classmethod
+  def custom_object(cls, java_class_name, arg_list):
+    """Tuples will be assigned to tasks by the given Java class."""
+    raise NotImplementedError("custom_object() method is not yet implemented")
+</code></pre>
   </div>
 
   </header>
@@ -1258,102 +1190,101 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Grouping</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Helper class for defining Grouping for Python topology&quot;&quot;&quot;</span>
-  <span class="n">SHUFFLE</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;SHUFFLE&quot;</span><span class="p">)</span>
-  <span class="n">ALL</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;ALL&quot;</span><span class="p">)</span>
-  <span class="n">LOWEST</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;LOWEST&quot;</span><span class="p">)</span>
-  <span class="n">NONE</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;NONE&quot;</span><span class="p">)</span>
-  <span class="n">DIRECT</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;DIRECT&quot;</span><span class="p">)</span>
+    <pre><code>class Grouping(object):
+  """Helper class for defining Grouping for Python topology"""
+  SHUFFLE = topology_pb2.Grouping.Value("SHUFFLE")
+  ALL = topology_pb2.Grouping.Value("ALL")
+  LOWEST = topology_pb2.Grouping.Value("LOWEST")
+  NONE = topology_pb2.Grouping.Value("NONE")
+  DIRECT = topology_pb2.Grouping.Value("DIRECT")
 
-  <span class="c1"># gtype should contain topology_pb2.Grouping.Value(&quot;FIELDS&quot;)</span>
-  <span class="n">FIELDS</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;FieldGrouping&#39;</span><span class="p">,</span> <span class="s1">&#39;gtype, fields&#39;</span><span class="p">)</span>
+  # gtype should contain topology_pb2.Grouping.Value("FIELDS")
+  FIELDS = collections.namedtuple('FieldGrouping', 'gtype, fields')
 
-  <span class="c1"># gtype should contain topology_pb2.Grouping.Value(&quot;CUSTOM&quot;)</span>
-  <span class="n">CUSTOM</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;CustomGrouping&#39;</span><span class="p">,</span> <span class="s1">&#39;gtype, python_serialized&#39;</span><span class="p">)</span>
+  # gtype should contain topology_pb2.Grouping.Value("CUSTOM")
+  CUSTOM = collections.namedtuple('CustomGrouping', 'gtype, python_serialized')
 
-  <span class="c1"># StreamParse compatibility</span>
-  <span class="n">GLOBAL</span> <span class="o">=</span> <span class="n">LOWEST</span>
-  <span class="n">LOCAL_OR_SHUFFLE</span> <span class="o">=</span> <span class="n">SHUFFLE</span>
+  # StreamParse compatibility
+  GLOBAL = LOWEST
+  LOCAL_OR_SHUFFLE = SHUFFLE
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">is_grouping_sane</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">gtype</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks if a given gtype is sane&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">SHUFFLE</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">ALL</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">LOWEST</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
-      <span class="k">return</span> <span class="bp">True</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">):</span>
-      <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-             <span class="n">gtype</span><span class="o">.</span><span class="n">fields</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">):</span>
-      <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-             <span class="n">gtype</span><span class="o">.</span><span class="n">python_serialized</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="c1">#pylint: disable=fixme</span>
-      <span class="c1">#TODO: DIRECT are not supported yet</span>
-      <span class="k">return</span> <span class="bp">False</span>
+  @classmethod
+  def is_grouping_sane(cls, gtype):
+    """Checks if a given gtype is sane"""
+    if gtype == cls.SHUFFLE or gtype == cls.ALL or gtype == cls.LOWEST or gtype == cls.NONE:
+      return True
+    elif isinstance(gtype, cls.FIELDS):
+      return gtype.gtype == topology_pb2.Grouping.Value("FIELDS") and \
+             gtype.fields is not None
+    elif isinstance(gtype, cls.CUSTOM):
+      return gtype.gtype == topology_pb2.Grouping.Value("CUSTOM") and \
+             gtype.python_serialized is not None
+    else:
+      #pylint: disable=fixme
+      #TODO: DIRECT are not supported yet
+      return False
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Field grouping&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
+  @classmethod
+  def fields(cls, *fields):
+    """Field grouping"""
+    if len(fields) == 1 and isinstance(fields[0], list):
+      fields = fields[0]
+    else:
+      fields = list(fields)
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Non-string cannot be specified in fields&quot;</span><span class="p">)</span>
+    for i in fields:
+      if not isinstance(i, str):
+        raise TypeError("Non-string cannot be specified in fields")
 
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">fields</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;List cannot be empty for fields grouping&quot;</span><span class="p">)</span>
+    if not fields:
+      raise ValueError("List cannot be empty for fields grouping")
 
-    <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">),</span>
-                      <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
+    return cls.FIELDS(gtype=topology_pb2.Grouping.Value("FIELDS"),
+                      fields=fields)
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">customgrouper</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Custom grouping from a given implementation of ICustomGrouping</span>
+  @classmethod
+  def custom(cls, customgrouper):
+    """Custom grouping from a given implementation of ICustomGrouping
 
-<span class="sd">    :param customgrouper: The ICustomGrouping implemention to use</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">customgrouper</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="n">ICustomGrouping</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-    <span class="n">serialized</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">custom_serialized</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    :param customgrouper: The ICustomGrouping implemention to use
+    """
+    if customgrouper is None:
+      raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+    if not isinstance(customgrouper, ICustomGrouping) and not isinstance(customgrouper, str):
+      raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+    serialized = default_serializer.serialize(customgrouper)
+    return cls.custom_serialized(serialized, is_java=False)
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom_serialized</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Custom grouping from a given serialized string</span>
+  @classmethod
+  def custom_serialized(cls, serialized, is_java=True):
+    """Custom grouping from a given serialized string
 
-<span class="sd">    This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method</span>
-<span class="sd">    of StreamParse API, although its functionality is not yet implemented (Java-serialized).</span>
-<span class="sd">    Currently only custom grouping implemented in Python is supported, and ``custom()`` method</span>
-<span class="sd">    should be used to indicate its classpath, rather than directly to use this method.</span>
+    This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method
+    of StreamParse API, although its functionality is not yet implemented (Java-serialized).
+    Currently only custom grouping implemented in Python is supported, and ``custom()`` method
+    should be used to indicate its classpath, rather than directly to use this method.
 
-<span class="sd">    In the future, users can directly specify Java-serialized object with ``is_java=True`` in order</span>
-<span class="sd">    to use a custom grouping implemented in Java for python topology.</span>
+    In the future, users can directly specify Java-serialized object with ``is_java=True`` in order
+    to use a custom grouping implemented in Java for python topology.
 
-<span class="sd">    :param serialized: serialized classpath to custom grouping class to use (if python)</span>
-<span class="sd">    :param is_java: indicate whether this is Java serialized, or python serialized</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom_serialized() must be &quot;</span>
-                      <span class="s2">&quot;a serialized Python class as bytes, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">serialized</span><span class="p">))</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_java</span><span class="p">:</span>
-      <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">),</span>
-                        <span class="n">python_serialized</span><span class="o">=</span><span class="n">serialized</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Custom grouping implemented in Java for Python topology&quot;</span>
-                                <span class="s2">&quot;is not yet supported.&quot;</span><span class="p">)</span>
+    :param serialized: serialized classpath to custom grouping class to use (if python)
+    :param is_java: indicate whether this is Java serialized, or python serialized
+    """
+    if not isinstance(serialized, bytes):
+      raise TypeError("Argument to custom_serialized() must be "
+                      "a serialized Python class as bytes, given: %s" % str(serialized))
+    if not is_java:
+      return cls.CUSTOM(gtype=topology_pb2.Grouping.Value("CUSTOM"),
+                        python_serialized=serialized)
+    else:
+      raise NotImplementedError("Custom grouping implemented in Java for Python topology"
+                                "is not yet supported.")
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">custom_object</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">java_class_name</span><span class="p">,</span> <span class="n">arg_list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Tuples will be assigned to tasks by the given Java class.&quot;&quot;&quot;</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;custom_object() method is not yet implemented&quot;</span><span class="p">)</span>
-</pre></div>
-
+  @classmethod
+  def custom_object(cls, java_class_name, arg_list):
+    """Tuples will be assigned to tasks by the given Java class."""
+    raise NotImplementedError("custom_object() method is not yet implemented")
+</code></pre>
   </div>
 </div>
 
@@ -1470,19 +1401,18 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping.custom', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping.custom" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">custom</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">customgrouper</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Custom grouping from a given implementation of ICustomGrouping</span>
-<span class="sd">  :param customgrouper: The ICustomGrouping implemention to use</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">customgrouper</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="n">ICustomGrouping</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom() must be ICustomGrouping instance or classpath&quot;</span><span class="p">)</span>
-  <span class="n">serialized</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">customgrouper</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">custom_serialized</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def custom(cls, customgrouper):
+  """Custom grouping from a given implementation of ICustomGrouping
+  :param customgrouper: The ICustomGrouping implemention to use
+  """
+  if customgrouper is None:
+    raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+  if not isinstance(customgrouper, ICustomGrouping) and not isinstance(customgrouper, str):
+    raise TypeError("Argument to custom() must be ICustomGrouping instance or classpath")
+  serialized = default_serializer.serialize(customgrouper)
+  return cls.custom_serialized(serialized, is_java=False)
+</code></pre>
   </div>
 </div>
 
@@ -1501,12 +1431,11 @@ table {
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping.custom_object', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping.custom_object" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">custom_object</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">java_class_name</span><span class="p">,</span> <span class="n">arg_list</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Tuples will be assigned to tasks by the given Java class.&quot;&quot;&quot;</span>
-  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;custom_object() method is not yet implemented&quot;</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def custom_object(cls, java_class_name, arg_list):
+  """Tuples will be assigned to tasks by the given Java class."""
+  raise NotImplementedError("custom_object() method is not yet implemented")
+</code></pre>
   </div>
 </div>
 
@@ -1533,29 +1462,28 @@ to use a custom grouping implemented in Java for python topology.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping.custom_serialized', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping.custom_serialized" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">custom_serialized</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">serialized</span><span class="p">,</span> <span class="n">is_java</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Custom grouping from a given serialized string</span>
-<span class="sd">  This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method</span>
-<span class="sd">  of StreamParse API, although its functionality is not yet implemented (Java-serialized).</span>
-<span class="sd">  Currently only custom grouping implemented in Python is supported, and ``custom()`` method</span>
-<span class="sd">  should be used to indicate its classpath, rather than directly to use this method.</span>
-<span class="sd">  In the future, users can directly specify Java-serialized object with ``is_java=True`` in order</span>
-<span class="sd">  to use a custom grouping implemented in Java for python topology.</span>
-<span class="sd">  :param serialized: serialized classpath to custom grouping class to use (if python)</span>
-<span class="sd">  :param is_java: indicate whether this is Java serialized, or python serialized</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">serialized</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to custom_serialized() must be &quot;</span>
-                    <span class="s2">&quot;a serialized Python class as bytes, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">serialized</span><span class="p">))</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_java</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">),</span>
-                      <span class="n">python_serialized</span><span class="o">=</span><span class="n">serialized</span><span class="p">)</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Custom grouping implemented in Java for Python topology&quot;</span>
-                              <span class="s2">&quot;is not yet supported.&quot;</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def custom_serialized(cls, serialized, is_java=True):
+  """Custom grouping from a given serialized string
+  This class is created for compatibility with ``custom_serialized(cls, java_serialized)`` method
+  of StreamParse API, although its functionality is not yet implemented (Java-serialized).
+  Currently only custom grouping implemented in Python is supported, and ``custom()`` method
+  should be used to indicate its classpath, rather than directly to use this method.
+  In the future, users can directly specify Java-serialized object with ``is_java=True`` in order
+  to use a custom grouping implemented in Java for python topology.
+  :param serialized: serialized classpath to custom grouping class to use (if python)
+  :param is_java: indicate whether this is Java serialized, or python serialized
+  """
+  if not isinstance(serialized, bytes):
+    raise TypeError("Argument to custom_serialized() must be "
+                    "a serialized Python class as bytes, given: %s" % str(serialized))
+  if not is_java:
+    return cls.CUSTOM(gtype=topology_pb2.Grouping.Value("CUSTOM"),
+                      python_serialized=serialized)
+  else:
+    raise NotImplementedError("Custom grouping implemented in Java for Python topology"
+                              "is not yet supported.")
+</code></pre>
   </div>
 </div>
 
@@ -1574,22 +1502,21 @@ to use a custom grouping implemented in Java for python topology.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping.fields', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping.fields" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">fields</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">fields</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Field grouping&quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Non-string cannot be specified in fields&quot;</span><span class="p">)</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">fields</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;List cannot be empty for fields grouping&quot;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">(</span><span class="n">gtype</span><span class="o">=</span><span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">),</span>
-                    <span class="n">fields</span><span class="o">=</span><span class="n">fields</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def fields(cls, *fields):
+  """Field grouping"""
+  if len(fields) == 1 and isinstance(fields[0], list):
+    fields = fields[0]
+  else:
+    fields = list(fields)
+  for i in fields:
+    if not isinstance(i, str):
+      raise TypeError("Non-string cannot be specified in fields")
+  if not fields:
+    raise ValueError("List cannot be empty for fields grouping")
+  return cls.FIELDS(gtype=topology_pb2.Grouping.Value("FIELDS"),
+                    fields=fields)
+</code></pre>
   </div>
 </div>
 
@@ -1608,23 +1535,22 @@ to use a custom grouping implemented in Java for python topology.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Grouping.is_grouping_sane', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Grouping.is_grouping_sane" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">is_grouping_sane</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">gtype</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Checks if a given gtype is sane&quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">SHUFFLE</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">ALL</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">LOWEST</span> <span class="ow">or</span> <span class="n">gtype</span> <span class="o">==</span> <span class="n">cls</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
-    <span class="k">return</span> <span class="bp">True</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">FIELDS</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;FIELDS&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-           <span class="n">gtype</span><span class="o">.</span><span class="n">fields</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">gtype</span><span class="p">,</span> <span class="n">cls</span><span class="o">.</span><span class="n">CUSTOM</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">gtype</span><span class="o">.</span><span class="n">gtype</span> <span class="o">==</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Grouping</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;CUSTOM&quot;</span><span class="p">)</span> <span class="ow">and</span> \
-           <span class="n">gtype</span><span class="o">.</span><span class="n">python_serialized</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="c1">#pylint: disable=fixme</span>
-    <span class="c1">#TODO: DIRECT are not supported yet</span>
-    <span class="k">return</span> <span class="bp">False</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def is_grouping_sane(cls, gtype):
+  """Checks if a given gtype is sane"""
+  if gtype == cls.SHUFFLE or gtype == cls.ALL or gtype == cls.LOWEST or gtype == cls.NONE:
+    return True
+  elif isinstance(gtype, cls.FIELDS):
+    return gtype.gtype == topology_pb2.Grouping.Value("FIELDS") and \
+           gtype.fields is not None
+  elif isinstance(gtype, cls.CUSTOM):
+    return gtype.gtype == topology_pb2.Grouping.Value("CUSTOM") and \
+           gtype.python_serialized is not None
+  else:
+    #pylint: disable=fixme
+    #TODO: DIRECT are not supported yet
+    return False
+</code></pre>
   </div>
 </div>
 
@@ -1642,50 +1568,49 @@ to use a custom grouping implemented in Java for python topology.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Stream', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Stream" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Stream</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Heron output stream</span>
+    <pre><code>class Stream(object):
+  """Heron output stream
 
-<span class="sd">  It is compatible with StreamParse API.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">DEFAULT_STREAM_ID</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+  It is compatible with StreamParse API.
+  """
+  DEFAULT_STREAM_ID = "default"
 
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">DEFAULT_STREAM_ID</span><span class="p">,</span> <span class="n">direct</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    :type fields: `list` or `tuple` of `str`</span>
-<span class="sd">    :param fields: field names for this stream</span>
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param name: name of stream. Defaults to ``default``</span>
-<span class="sd">    :type direct: bool</span>
-<span class="sd">    :param direct: whether or not this stream is direct. Default is ``False``</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">fields</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-      <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
-      <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;All field names must be strings, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream fields must be a list, tuple or None, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">fields</span><span class="p">))</span>
+  def __init__(self, fields=None, name=DEFAULT_STREAM_ID, direct=False):
+    """
+    :type fields: `list` or `tuple` of `str`
+    :param fields: field names for this stream
+    :type name: str
+    :param name: name of stream. Defaults to ``default``
+    :type direct: bool
+    :param direct: whether or not this stream is direct. Default is ``False``
+    """
+    if fields is None:
+      fields = []
+    elif isinstance(fields, (list, tuple)):
+      fields = list(fields)
+      for field in fields:
+        if not isinstance(field, str):
+          raise TypeError("All field names must be strings, given: %s" % str(field))
+    else:
+      raise TypeError("Stream fields must be a list, tuple or None, given: %s" % str(fields))
 
-    <span class="c1"># self.fields is always list</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span>
+    # self.fields is always list
+    self.fields = fields
 
-    <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream&#39;s name cannot be None&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">stream_id</span> <span class="o">=</span> <span class="n">name</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream name must be a string, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    if name is None:
+      raise TypeError("Stream's name cannot be None")
+    elif isinstance(name, str):
+      self.stream_id = name
+    else:
+      raise TypeError("Stream name must be a string, given: %s" % str(name))
 
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">direct</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">direct</span> <span class="o">=</span> <span class="n">direct</span>
-      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Direct stream is not supported yet.&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&#39;direct&#39; must be either True or False, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">direct</span><span class="p">))</span>
-</pre></div>
-
+    if isinstance(direct, bool):
+      self.direct = direct
+      if self.direct:
+        raise NotImplementedError("Direct stream is not supported yet.")
+    else:
+      raise TypeError("'direct' must be either True or False, given: %s" % str(direct))
+</code></pre>
   </div>
 </div>
 
@@ -1737,40 +1662,39 @@ to use a custom grouping implemented in Java for python topology.</p>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.stream.Stream.__init__', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.stream.Stream.__init__" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">DEFAULT_STREAM_ID</span><span class="p">,</span> <span class="n">direct</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  :type fields: `list` or `tuple` of `str`</span>
-<span class="sd">  :param fields: field names for this stream</span>
-<span class="sd">  :type name: str</span>
-<span class="sd">  :param name: name of stream. Defaults to ``default``</span>
-<span class="sd">  :type direct: bool</span>
-<span class="sd">  :param direct: whether or not this stream is direct. Default is ``False``</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">fields</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fields</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">fields</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;All field names must be strings, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">field</span><span class="p">))</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream fields must be a list, tuple or None, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">fields</span><span class="p">))</span>
-  <span class="c1"># self.fields is always list</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">fields</span> <span class="o">=</span> <span class="n">fields</span>
-  <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream&#39;s name cannot be None&quot;</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">stream_id</span> <span class="o">=</span> <span class="n">name</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Stream name must be a string, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
-  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">direct</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">direct</span> <span class="o">=</span> <span class="n">direct</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">direct</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Direct stream is not supported yet.&quot;</span><span class="p">)</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;&#39;direct&#39; must be either True or False, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">direct</span><span class="p">))</span>
-</pre></div>
-
+    <pre><code>def __init__(self, fields=None, name=DEFAULT_STREAM_ID, direct=False):
+  """
+  :type fields: `list` or `tuple` of `str`
+  :param fields: field names for this stream
+  :type name: str
+  :param name: name of stream. Defaults to ``default``
+  :type direct: bool
+  :param direct: whether or not this stream is direct. Default is ``False``
+  """
+  if fields is None:
+    fields = []
+  elif isinstance(fields, (list, tuple)):
+    fields = list(fields)
+    for field in fields:
+      if not isinstance(field, str):
+        raise TypeError("All field names must be strings, given: %s" % str(field))
+  else:
+    raise TypeError("Stream fields must be a list, tuple or None, given: %s" % str(fields))
+  # self.fields is always list
+  self.fields = fields
+  if name is None:
+    raise TypeError("Stream's name cannot be None")
+  elif isinstance(name, str):
+    self.stream_id = name
+  else:
+    raise TypeError("Stream name must be a string, given: %s" % str(name))
+  if isinstance(direct, bool):
+    self.direct = direct
+    if self.direct:
+      raise NotImplementedError("Direct stream is not supported yet.")
+  else:
+    raise TypeError("'direct' must be either True or False, given: %s" % str(direct))
+</code></pre>
   </div>
 </div>
 

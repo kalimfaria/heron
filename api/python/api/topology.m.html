@@ -851,73 +851,6 @@ table {
 
   </style>
 
-  <style type="text/css">
-  .codehilite .hll { background-color: #ffffcc }
-.codehilite  { background: #f8f8f8; }
-.codehilite .c { color: #408080; font-style: italic } /* Comment */
-.codehilite .err { border: 1px solid #FF0000 } /* Error */
-.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
-.codehilite .o { color: #666666 } /* Operator */
-.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
-.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
-.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
-.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
-.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
-.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
-.codehilite .gd { color: #A00000 } /* Generic.Deleted */
-.codehilite .ge { font-style: italic } /* Generic.Emph */
-.codehilite .gr { color: #FF0000 } /* Generic.Error */
-.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
-.codehilite .gi { color: #00A000 } /* Generic.Inserted */
-.codehilite .go { color: #888888 } /* Generic.Output */
-.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
-.codehilite .gs { font-weight: bold } /* Generic.Strong */
-.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
-.codehilite .gt { color: #0044DD } /* Generic.Traceback */
-.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
-.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
-.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
-.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
-.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
-.codehilite .kt { color: #B00040 } /* Keyword.Type */
-.codehilite .m { color: #666666 } /* Literal.Number */
-.codehilite .s { color: #BA2121 } /* Literal.String */
-.codehilite .na { color: #7D9029 } /* Name.Attribute */
-.codehilite .nb { color: #008000 } /* Name.Builtin */
-.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
-.codehilite .no { color: #880000 } /* Name.Constant */
-.codehilite .nd { color: #AA22FF } /* Name.Decorator */
-.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
-.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
-.codehilite .nf { color: #0000FF } /* Name.Function */
-.codehilite .nl { color: #A0A000 } /* Name.Label */
-.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
-.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
-.codehilite .nv { color: #19177C } /* Name.Variable */
-.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
-.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
-.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
-.codehilite .mf { color: #666666 } /* Literal.Number.Float */
-.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
-.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
-.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
-.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
-.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
-.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
-.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
-.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
-.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
-.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
-.codehilite .sx { color: #008000 } /* Literal.String.Other */
-.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
-.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
-.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
-.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
-.codehilite .vc { color: #19177C } /* Name.Variable.Class */
-.codehilite .vg { color: #19177C } /* Name.Variable.Global */
-.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
-.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
-  </style>
 
   <style type="text/css">
   
@@ -1098,402 +1031,401 @@ table {
   
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology" class="source">
-    <div class="codehilite"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
-<span class="c1"># -*- encoding: utf-8 -*-</span>
-
-<span class="c1"># Copyright 2016 Twitter. All rights reserved.</span>
-<span class="c1">#</span>
-<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="c1"># you may not use this file except in compliance with the License.</span>
-<span class="c1"># You may obtain a copy of the License at</span>
-<span class="c1">#</span>
-<span class="c1">#    http://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="c1">#</span>
-<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
-<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="c1"># See the License for the specific language governing permissions and</span>
-<span class="c1"># limitations under the License.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">topology.py: module for defining Heron topologies in Python</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">uuid</span>
-
-<span class="kn">import</span> <span class="nn">heronpy.api.api_constants</span> <span class="kn">as</span> <span class="nn">api_constants</span>
-<span class="kn">from</span> <span class="nn">heronpy.api.serializer</span> <span class="kn">import</span> <span class="n">default_serializer</span>
-<span class="kn">from</span> <span class="nn">heronpy.proto</span> <span class="kn">import</span> <span class="n">topology_pb2</span>
-
-<span class="kn">from</span> <span class="nn">heronpy.api.component.component_spec</span> <span class="kn">import</span> <span class="n">HeronComponentSpec</span>
-
-<span class="k">class</span> <span class="nc">TopologyType</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Metaclass to define a Heron topology in Python&quot;&quot;&quot;</span>
-  <span class="n">DEFAULT_TOPOLOGY_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_DEBUG</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_STMGRS</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_MESSAGE_TIMEOUT_SECS</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_COMPONENT_PARALLELISM</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_MAX_SPOUT_PENDING</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_RELIABILITY_MODE</span><span class="p">:</span> <span class="n">api_constants</span><span class="o">.</span><span class="n">TopologyReliabilityMode</span><span class="o">.</span><span class="n">ATMOST_ONCE</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
-  <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">bolt_specs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">spout_specs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1"># Copy HeronComponentSpec items out of class_dict</span>
-    <span class="n">specs</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">class_dict_to_specs</span><span class="p">(</span><span class="n">class_dict</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">is_spout</span><span class="p">:</span>
-        <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_spout_specs</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">spout_specs</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_bolt_specs</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">bolt_specs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">!=</span> <span class="s1">&#39;Topology&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">spout_specs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A Topology requires at least one Spout&quot;</span><span class="p">)</span>
-
-    <span class="n">topology_config</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">class_dict_to_topo_config</span><span class="p">(</span><span class="n">class_dict</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">!=</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_topo_config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_config</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_protobuf_bolts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bolt_specs</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_protobuf_spouts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spout_specs</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_heron_specs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
-      <span class="c1"># create topology protobuf here</span>
-      <span class="n">TopologyType</span><span class="o">.</span><span class="n">init_topology</span><span class="p">(</span><span class="n">classname</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">class_dict_to_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Takes a class `__dict__` and returns `HeronComponentSpec` entries&quot;&quot;&quot;</span>
-    <span class="n">specs</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-        <span class="c1"># Use the variable name as the specification name.</span>
-        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-          <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate component name: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-          <span class="n">specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
-    <span class="k">return</span> <span class="n">specs</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">class_dict_to_topo_config</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Takes a class `__dict__` and returns a map containing topology-wide</span>
-<span class="sd">    configuration.</span>
-
-<span class="sd">    The returned dictionary is a sanitized `dict` of type `&lt;str -&gt;</span>
-<span class="sd">    (str|object)&gt;`.</span>
-
-<span class="sd">    This classmethod firsts insert default topology configuration and then</span>
-<span class="sd">    overrides it with a given topology-wide configuration. Note that this</span>
-<span class="sd">    configuration will be overriden by a component-specific configuration at</span>
-<span class="sd">    runtime.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">topo_config</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="c1"># add defaults</span>
-    <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mcs</span><span class="o">.</span><span class="n">DEFAULT_TOPOLOGY_CONFIG</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">custom_config</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;config&#39;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">custom_config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">sanitized_dict</span> <span class="o">=</span> <span class="n">mcs</span><span class="o">.</span><span class="n">_sanitize_config</span><span class="p">(</span><span class="n">custom_config</span><span class="p">)</span>
-        <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sanitized_dict</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">topo_config</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_spout_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">spout_specs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-          <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one output, because it is a spout&quot;</span> <span class="o">%</span>
-          <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-    <span class="n">spout_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_bolt_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">bolt_specs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-          <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one input, because it is a bolt&quot;</span> <span class="o">%</span>
-          <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-    <span class="n">bolt_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">get_topology_config_protobuf</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
-    <span class="n">conf_dict</span> <span class="o">=</span> <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_topo_config&#39;</span><span class="p">]</span>
-
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">conf_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;STRING_VALUE&quot;</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># need to serialize</span>
-        <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">serialized_value</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;PYTHON_SERIALIZED_VALUE&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">config</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">init_topology</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initializes a topology protobuf&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="c1"># Base class can&#39;t initialize protobuf</span>
-      <span class="k">return</span>
-    <span class="n">heron_options</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">get_heron_options_from_env</span><span class="p">()</span>
-    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.initial.state&quot;</span><span class="p">,</span> <span class="s2">&quot;RUNNING&quot;</span><span class="p">)</span>
-    <span class="n">tmp_directory</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topologydefn.tmpdirectory&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">tmp_directory</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Topology definition temp directory not specified&quot;</span><span class="p">)</span>
-
-    <span class="n">topology_name</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.name&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
-    <span class="n">topology_id</span> <span class="o">=</span> <span class="n">topology_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
-
-    <span class="c1"># create protobuf</span>
-    <span class="n">topology</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Topology</span><span class="p">()</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">topology_id</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">topology_name</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">TopologyState</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">topology_config</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">TopologyType</span><span class="o">.</span><span class="n">get_topology_config_protobuf</span><span class="p">(</span><span class="n">class_dict</span><span class="p">))</span>
-
-    <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_bolts_and_spouts</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
-
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_name</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_id</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;protobuf_topology&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topologydefn_tmpdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_directory</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;heron_runtime_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heron_options</span>
-
-  <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">get_heron_options_from_env</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Retrieves heron options from the `HERON_OPTIONS` environment variable.</span>
-
-<span class="sd">    Heron options have the following format:</span>
-
-<span class="sd">        cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir</span>
-<span class="sd">        cmdline.topology.initial.state=PAUSED</span>
-
-<span class="sd">    In this case, the returned map will contain:</span>
-
-<span class="sd">        #!json</span>
-<span class="sd">        {</span>
-<span class="sd">          &quot;cmdline.topologydefn.tmpdirectory&quot;: &quot;/var/folders/tmpdir&quot;,</span>
-<span class="sd">          &quot;cmdline.topology.initial.state&quot;: &quot;PAUSED&quot;</span>
-<span class="sd">        }</span>
-
-<span class="sd">    Currently supports the following options natively:</span>
-
-<span class="sd">    - `cmdline.topologydefn.tmpdirectory`: the directory to which this</span>
-<span class="sd">    topology&#39;s defn file is written</span>
-<span class="sd">    - `cmdline.topology.initial.state`: the initial state of the topology</span>
-<span class="sd">    - `cmdline.topology.name`: topology name on deployment</span>
-
-<span class="sd">    Returns: map mapping from key to value</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">heron_options_raw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">heron_options_raw</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS environment variable not found&quot;</span><span class="p">)</span>
-
-    <span class="n">ret</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">heron_opt_list</span> <span class="o">=</span> <span class="n">heron_options_raw</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">opt_raw</span> <span class="ow">in</span> <span class="n">heron_opt_list</span><span class="p">:</span>
-      <span class="n">opt</span> <span class="o">=</span> <span class="n">opt_raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ret</span><span class="p">[</span><span class="n">opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">ret</span>
-
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_bolts_and_spouts</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">spouts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_spouts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="n">bolts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_bolts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
-    <span class="k">for</span> <span class="n">spout</span> <span class="ow">in</span> <span class="n">spouts</span><span class="p">:</span>
-      <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">spouts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">spout</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">bolt</span> <span class="ow">in</span> <span class="n">bolts</span><span class="p">:</span>
-      <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">bolts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">bolt</span><span class="p">)</span>
-
-  <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">_sanitize_config</span><span class="p">(</span><span class="n">custom_config</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks whether a given custom_config and returns a sanitized dict &lt;str -&gt; (str|object)&gt;</span>
-
-<span class="sd">    It checks if keys are all strings and sanitizes values of a given dictionary as follows:</span>
-
-<span class="sd">    - If string, number or boolean is given as a value, it is converted to string.</span>
-<span class="sd">      For string and number (int, float), it is converted to string by a built-in ``str()`` method.</span>
-<span class="sd">      For a boolean value, ``True`` is converted to &quot;true&quot; instead of &quot;True&quot;, and ``False`` is</span>
-<span class="sd">      converted to &quot;false&quot; instead of &quot;False&quot;, in order to keep the consistency with</span>
-<span class="sd">      Java configuration.</span>
-
-<span class="sd">    - If neither of the above is given as a value, it is inserted into the sanitized dict as it is.</span>
-<span class="sd">      These values will need to be serialized before adding to a protobuf message.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sanitized</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Key for topology-wide configuration must be string, given: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span>
-                        <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
-
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="s2">&quot;false&quot;</span>
-      <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-
-    <span class="k">return</span> <span class="n">sanitized</span>
-
-<span class="k">class</span> <span class="nc">Topology</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Topology is an abstract class for defining a topology</span>
-
-<span class="sd">  Topology writers can define their custom topology by inheriting this class.</span>
-<span class="sd">  The usage of this class is compatible with StreamParse API.</span>
-
-<span class="sd">  Defining a topology is simple. Topology writers need to create a subclass, in which information</span>
-<span class="sd">  about the components in their topology and how they connect to each other are specified</span>
-<span class="sd">  by placing `HeronComponentSpec` as class instances.</span>
-<span class="sd">  For more information, refer to `spec()` method of both the `Bolt` and `Spout` classes.</span>
-
-<span class="sd">  In addition, you can also set a topology-wide configuration, by adding a ``config`` class</span>
-<span class="sd">  attribute to your topology class, that is dict mapping from option names to their values.</span>
-<span class="sd">  Note that topology-wide configurations are overridden by component-specific configurations</span>
-<span class="sd">  that might be specified from ``spec()`` method of ``Bolt`` or ``Spout`` class.</span>
-
-<span class="sd">  **Example**: A sample `WordCountTopology` can be defined as follows:</span>
-
-<span class="sd">    #!python</span>
-<span class="sd">    from heronpy.api.src.python import Topology</span>
-<span class="sd">    from heronpy.examples.src.python import WordSpout, CountBolt</span>
-
-<span class="sd">    class WordCount(Topology):</span>
-<span class="sd">        config = {&quot;topology.wide.config&quot;: &quot;some value&quot;}</span>
-
-<span class="sd">        word_spout = WordSpout.spec(par=1)</span>
-<span class="sd">        count_bolt = CountBolt.spec(par=1,</span>
-<span class="sd">                                    inputs={word_spout: Grouping.fields(&#39;word&#39;)},</span>
-<span class="sd">                                    config={&quot;count_bolt.specific.config&quot;: &quot;another value&quot;})</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">TopologyType</span>
-
-  <span class="c1"># pylint: disable=no-member</span>
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Writes the Topology .defn file to ``dest``</span>
-
-<span class="sd">    This classmethod is meant be used by heron-cli when submitting a topology.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">cls</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The base Topology class cannot be writable&quot;</span><span class="p">)</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.defn&quot;</span> <span class="o">%</span> <span class="n">cls</span><span class="o">.</span><span class="n">topology_name</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">topologydefn_tmpdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">protobuf_topology</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span>
-
-<span class="k">class</span> <span class="nc">TopologyBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Builder for heronpy.api.src.python topology</span>
-
-<span class="sd">  This class dynamically creates a subclass of `Topology` with given spouts and</span>
-<span class="sd">  bolts and writes its definition files when `build_and_submit()` is called.</span>
-
-<span class="sd">  **Example**: A sample `WordCountTopology` can be defined as follows:</span>
-
-<span class="sd">    #!python</span>
-<span class="sd">    import sys</span>
-<span class="sd">    from heronpy.api.src.python import TopologyBuilder</span>
-<span class="sd">    from heronpy.examples.spout import WordSpout</span>
-<span class="sd">    from heronpy.examples.bolt import CountBolt</span>
-
-<span class="sd">    if __name__ == &#39;__main__&#39;:</span>
-<span class="sd">        builder = TopologyBuilder(name=sys.argv[1])</span>
-<span class="sd">        word_spout = builder.add_spout(&quot;word-spout&quot;, WordSpout, 2)</span>
-
-<span class="sd">        builder.add_bolt(&quot;count-bolt&quot;, CountBolt, 2,</span>
-<span class="sd">                         inputs={word_spout: Grouping.fields(&#39;word&#39;)},</span>
-<span class="sd">                         config={&quot;count_bolt.specific.config&quot;: &quot;some value&quot;})</span>
-
-<span class="sd">        builder.build_and_submit()</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initialize this TopologyBuilder</span>
-
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param name: topology name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;Topology&quot;</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span> <span class="o">=</span> <span class="n">name</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="p">{}</span>
-
-  <span class="k">def</span> <span class="nf">add_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">specs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add specs to the topology</span>
-
-<span class="sd">    :type specs: HeronComponentSpec</span>
-<span class="sd">    :param specs: specs to add to the topology</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to add_spec needs to be HeronComponentSpec, given: </span><span class="si">%s</span><span class="s2">&quot;</span>
-                        <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;TopologyBuilder cannot take a spec without name&quot;</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-
-  <span class="k">def</span> <span class="nf">add_spout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">spout_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a spout to the topology&quot;&quot;&quot;</span>
-    <span class="n">spout_spec</span> <span class="o">=</span> <span class="n">spout_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                                <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">spout_spec</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">spout_spec</span>
-
-  <span class="k">def</span> <span class="nf">add_bolt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bolt_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a bolt to the topology&quot;&quot;&quot;</span>
-    <span class="n">bolt_spec</span> <span class="o">=</span> <span class="n">bolt_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                              <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">bolt_spec</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bolt_spec</span>
-
-  <span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Set topology-wide configuration to the topology</span>
-
-<span class="sd">    :type config: dict</span>
-<span class="sd">    :param config: topology-wide config</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to set_config needs to be dict, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="n">config</span>
-
-  <span class="k">def</span> <span class="nf">_construct_topo_class_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">class_dict</span> <span class="o">=</span> <span class="p">{}</span>
-
-    <span class="c1"># specs</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span><span class="p">:</span>
-      <span class="n">name</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span>
-      <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate spec names: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
-
-    <span class="c1"># config</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span>
-    <span class="k">return</span> <span class="n">class_dict</span>
-
-  <span class="k">def</span> <span class="nf">build_and_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Builds the topology and submits to the destination&quot;&quot;&quot;</span>
-    <span class="n">class_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_topo_class_dict</span><span class="p">()</span>
-    <span class="n">topo_cls</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span><span class="p">,</span> <span class="p">(</span><span class="n">Topology</span><span class="p">,),</span> <span class="n">class_dict</span><span class="p">)</span>
-    <span class="n">topo_cls</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-
+    <pre><code>#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+# Copyright 2016 Twitter. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+"""
+topology.py: module for defining Heron topologies in Python
+"""
+
+import os
+import uuid
+
+import heronpy.api.api_constants as api_constants
+from heronpy.api.serializer import default_serializer
+from heronpy.proto import topology_pb2
+
+from heronpy.api.component.component_spec import HeronComponentSpec
+
+class TopologyType(type):
+  """Metaclass to define a Heron topology in Python"""
+  DEFAULT_TOPOLOGY_CONFIG = {
+      api_constants.TOPOLOGY_DEBUG: "false",
+      api_constants.TOPOLOGY_STMGRS: "1",
+      api_constants.TOPOLOGY_MESSAGE_TIMEOUT_SECS: "30",
+      api_constants.TOPOLOGY_COMPONENT_PARALLELISM: "1",
+      api_constants.TOPOLOGY_MAX_SPOUT_PENDING: "100",
+      api_constants.TOPOLOGY_RELIABILITY_MODE: api_constants.TopologyReliabilityMode.ATMOST_ONCE,
+      api_constants.TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS: "true"}
+  def __new__(mcs, classname, bases, class_dict):
+    bolt_specs = {}
+    spout_specs = {}
+    # Copy HeronComponentSpec items out of class_dict
+    specs = TopologyType.class_dict_to_specs(class_dict)
+    for spec in iter(specs.values()):
+      if spec.is_spout:
+        TopologyType.add_spout_specs(spec, spout_specs)
+      else:
+        TopologyType.add_bolt_specs(spec, bolt_specs)
+    if classname != 'Topology' and not spout_specs:
+      raise ValueError("A Topology requires at least one Spout")
+
+    topology_config = TopologyType.class_dict_to_topo_config(class_dict)
+
+    if classname != 'Topology':
+      class_dict['_topo_config'] = topology_config
+      class_dict['_protobuf_bolts'] = bolt_specs
+      class_dict['_protobuf_spouts'] = spout_specs
+      class_dict['_heron_specs'] = list(specs.values())
+
+      # create topology protobuf here
+      TopologyType.init_topology(classname, class_dict)
+
+    return type.__new__(mcs, classname, bases, class_dict)
+
+  @classmethod
+  def class_dict_to_specs(mcs, class_dict):
+    """Takes a class `__dict__` and returns `HeronComponentSpec` entries"""
+    specs = {}
+
+    for name, spec in class_dict.items():
+      if isinstance(spec, HeronComponentSpec):
+        # Use the variable name as the specification name.
+        if spec.name is None:
+          spec.name = name
+        if spec.name in specs:
+          raise ValueError("Duplicate component name: %s" % spec.name)
+        else:
+          specs[spec.name] = spec
+    return specs
+
+  @classmethod
+  def class_dict_to_topo_config(mcs, class_dict):
+    """
+    Takes a class `__dict__` and returns a map containing topology-wide
+    configuration.
+
+    The returned dictionary is a sanitized `dict` of type `<str ->
+    (str|object)>`.
+
+    This classmethod firsts insert default topology configuration and then
+    overrides it with a given topology-wide configuration. Note that this
+    configuration will be overriden by a component-specific configuration at
+    runtime.
+    """
+    topo_config = {}
+
+    # add defaults
+    topo_config.update(mcs.DEFAULT_TOPOLOGY_CONFIG)
+
+    for name, custom_config in class_dict.items():
+      if name == 'config' and isinstance(custom_config, dict):
+        sanitized_dict = mcs._sanitize_config(custom_config)
+        topo_config.update(sanitized_dict)
+
+    return topo_config
+
+  @classmethod
+  def add_spout_specs(mcs, spec, spout_specs):
+    if not spec.outputs:
+      raise ValueError(
+          "%s: %s requires at least one output, because it is a spout" %
+          (spec.python_class_path, spec.name))
+    spout_specs[spec.name] = spec.get_protobuf()
+
+  @classmethod
+  def add_bolt_specs(mcs, spec, bolt_specs):
+    if not spec.inputs:
+      raise ValueError(
+          "%s: %s requires at least one input, because it is a bolt" %
+          (spec.python_class_path, spec.name))
+    bolt_specs[spec.name] = spec.get_protobuf()
+
+  @classmethod
+  def get_topology_config_protobuf(mcs, class_dict):
+    config = topology_pb2.Config()
+    conf_dict = class_dict['_topo_config']
+
+    for key, value in conf_dict.items():
+      if isinstance(value, str):
+        kvs = config.kvs.add()
+        kvs.key = key
+        kvs.value = value
+        kvs.type = topology_pb2.ConfigValueType.Value("STRING_VALUE")
+      else:
+        # need to serialize
+        kvs = config.kvs.add()
+        kvs.key = key
+        kvs.serialized_value = default_serializer.serialize(value)
+        kvs.type = topology_pb2.ConfigValueType.Value("PYTHON_SERIALIZED_VALUE")
+
+    return config
+
+  @classmethod
+  def init_topology(mcs, classname, class_dict):
+    """Initializes a topology protobuf"""
+    if classname == 'Topology':
+      # Base class can't initialize protobuf
+      return
+    heron_options = TopologyType.get_heron_options_from_env()
+    initial_state = heron_options.get("cmdline.topology.initial.state", "RUNNING")
+    tmp_directory = heron_options.get("cmdline.topologydefn.tmpdirectory", None)
+    if tmp_directory is None:
+      raise RuntimeError("Topology definition temp directory not specified")
+
+    topology_name = heron_options.get("cmdline.topology.name", classname)
+    topology_id = topology_name + str(uuid.uuid4())
+
+    # create protobuf
+    topology = topology_pb2.Topology()
+    topology.id = topology_id
+    topology.name = topology_name
+    topology.state = topology_pb2.TopologyState.Value(initial_state)
+    topology.topology_config.CopyFrom(TopologyType.get_topology_config_protobuf(class_dict))
+
+    TopologyType.add_bolts_and_spouts(topology, class_dict)
+
+    class_dict['topology_name'] = topology_name
+    class_dict['topology_id'] = topology_id
+    class_dict['protobuf_topology'] = topology
+    class_dict['topologydefn_tmpdir'] = tmp_directory
+    class_dict['heron_runtime_options'] = heron_options
+
+  @staticmethod
+  def get_heron_options_from_env():
+    """Retrieves heron options from the `HERON_OPTIONS` environment variable.
+
+    Heron options have the following format:
+
+        cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir
+        cmdline.topology.initial.state=PAUSED
+
+    In this case, the returned map will contain:
+
+        #!json
+        {
+          "cmdline.topologydefn.tmpdirectory": "/var/folders/tmpdir",
+          "cmdline.topology.initial.state": "PAUSED"
+        }
+
+    Currently supports the following options natively:
+
+    - `cmdline.topologydefn.tmpdirectory`: the directory to which this
+    topology's defn file is written
+    - `cmdline.topology.initial.state`: the initial state of the topology
+    - `cmdline.topology.name`: topology name on deployment
+
+    Returns: map mapping from key to value
+    """
+    heron_options_raw = os.environ.get("HERON_OPTIONS", None)
+    if heron_options_raw is None:
+      raise RuntimeError("HERON_OPTIONS environment variable not found")
+
+    ret = {}
+    heron_opt_list = heron_options_raw.replace("%%%%", " ").split(',')
+    for opt_raw in heron_opt_list:
+      opt = opt_raw.split("=")
+      if len(opt) == 2:
+        ret[opt[0]] = opt[1]
+    return ret
+
+  @classmethod
+  def add_bolts_and_spouts(mcs, topology, class_dict):
+    spouts = list(class_dict["_protobuf_spouts"].values())
+    bolts = list(class_dict["_protobuf_bolts"].values())
+
+    for spout in spouts:
+      added = topology.spouts.add()
+      added.CopyFrom(spout)
+    for bolt in bolts:
+      added = topology.bolts.add()
+      added.CopyFrom(bolt)
+
+  @staticmethod
+  def _sanitize_config(custom_config):
+    """Checks whether a given custom_config and returns a sanitized dict <str -> (str|object)>
+
+    It checks if keys are all strings and sanitizes values of a given dictionary as follows:
+
+    - If string, number or boolean is given as a value, it is converted to string.
+      For string and number (int, float), it is converted to string by a built-in ``str()`` method.
+      For a boolean value, ``True`` is converted to "true" instead of "True", and ``False`` is
+      converted to "false" instead of "False", in order to keep the consistency with
+      Java configuration.
+
+    - If neither of the above is given as a value, it is inserted into the sanitized dict as it is.
+      These values will need to be serialized before adding to a protobuf message.
+    """
+    sanitized = {}
+    for key, value in custom_config.items():
+      if not isinstance(key, str):
+        raise TypeError("Key for topology-wide configuration must be string, given: %s: %s"
+                        % (str(type(key)), str(key)))
+
+      if isinstance(value, bool):
+        sanitized[key] = "true" if value else "false"
+      elif isinstance(value, (str, int, float)):
+        sanitized[key] = str(value)
+      else:
+        sanitized[key] = value
+
+    return sanitized
+
+class Topology(object):
+  """Topology is an abstract class for defining a topology
+
+  Topology writers can define their custom topology by inheriting this class.
+  The usage of this class is compatible with StreamParse API.
+
+  Defining a topology is simple. Topology writers need to create a subclass, in which information
+  about the components in their topology and how they connect to each other are specified
+  by placing `HeronComponentSpec` as class instances.
+  For more information, refer to `spec()` method of both the `Bolt` and `Spout` classes.
+
+  In addition, you can also set a topology-wide configuration, by adding a ``config`` class
+  attribute to your topology class, that is dict mapping from option names to their values.
+  Note that topology-wide configurations are overridden by component-specific configurations
+  that might be specified from ``spec()`` method of ``Bolt`` or ``Spout`` class.
+
+  **Example**: A sample `WordCountTopology` can be defined as follows:
+
+    #!python
+    from heronpy.api.src.python import Topology
+    from heronpy.examples.src.python import WordSpout, CountBolt
+
+    class WordCount(Topology):
+        config = {"topology.wide.config": "some value"}
+
+        word_spout = WordSpout.spec(par=1)
+        count_bolt = CountBolt.spec(par=1,
+                                    inputs={word_spout: Grouping.fields('word')},
+                                    config={"count_bolt.specific.config": "another value"})
+  """
+  __metaclass__ = TopologyType
+
+  # pylint: disable=no-member
+  @classmethod
+  def write(cls):
+    """Writes the Topology .defn file to ``dest``
+
+    This classmethod is meant be used by heron-cli when submitting a topology.
+    """
+    if cls.__name__ == 'Topology':
+      raise ValueError("The base Topology class cannot be writable")
+    filename = "%s.defn" % cls.topology_name
+    path = os.path.join(cls.topologydefn_tmpdir, filename)
+
+    with open(path, 'wb') as f:
+      f.write(cls.protobuf_topology.SerializeToString())
+
+class TopologyBuilder(object):
+  """Builder for heronpy.api.src.python topology
+
+  This class dynamically creates a subclass of `Topology` with given spouts and
+  bolts and writes its definition files when `build_and_submit()` is called.
+
+  **Example**: A sample `WordCountTopology` can be defined as follows:
+
+    #!python
+    import sys
+    from heronpy.api.src.python import TopologyBuilder
+    from heronpy.examples.spout import WordSpout
+    from heronpy.examples.bolt import CountBolt
+
+    if __name__ == '__main__':
+        builder = TopologyBuilder(name=sys.argv[1])
+        word_spout = builder.add_spout("word-spout", WordSpout, 2)
+
+        builder.add_bolt("count-bolt", CountBolt, 2,
+                         inputs={word_spout: Grouping.fields('word')},
+                         config={"count_bolt.specific.config": "some value"})
+
+        builder.build_and_submit()
+  """
+  def __init__(self, name):
+    """Initialize this TopologyBuilder
+
+    :type name: str
+    :param name: topology name
+    """
+    assert name is not None and isinstance(name, str) and name != "Topology"
+
+    self.topology_name = name
+
+    self._specs = []
+    self._topology_config = {}
+
+  def add_spec(self, *specs):
+    """Add specs to the topology
+
+    :type specs: HeronComponentSpec
+    :param specs: specs to add to the topology
+    """
+    for spec in specs:
+      if not isinstance(spec, HeronComponentSpec):
+        raise TypeError("Argument to add_spec needs to be HeronComponentSpec, given: %s"
+                        % str(spec))
+      if spec.name is None:
+        raise ValueError("TopologyBuilder cannot take a spec without name")
+      self._specs.append(spec)
+
+  def add_spout(self, name, spout_cls, par, config=None, optional_outputs=None):
+    """Add a spout to the topology"""
+    spout_spec = spout_cls.spec(name=name, par=par, config=config,
+                                optional_outputs=optional_outputs)
+    self.add_spec(spout_spec)
+    return spout_spec
+
+  def add_bolt(self, name, bolt_cls, par, inputs, config=None, optional_outputs=None):
+    """Add a bolt to the topology"""
+    bolt_spec = bolt_cls.spec(name=name, par=par, inputs=inputs, config=config,
+                              optional_outputs=optional_outputs)
+    self.add_spec(bolt_spec)
+    return bolt_spec
+
+  def set_config(self, config):
+    """Set topology-wide configuration to the topology
+
+    :type config: dict
+    :param config: topology-wide config
+    """
+    if not isinstance(config, dict):
+      raise TypeError("Argument to set_config needs to be dict, given: %s" % str(config))
+    self._topology_config = config
+
+  def _construct_topo_class_dict(self):
+    class_dict = {}
+
+    # specs
+    for spec in self._specs:
+      name = spec.name
+      if name in class_dict:
+        raise ValueError("Duplicate spec names: %s" % name)
+      class_dict[name] = spec
+
+    # config
+    class_dict["config"] = self._topology_config
+    return class_dict
+
+  def build_and_submit(self):
+    """Builds the topology and submits to the destination"""
+    class_dict = self._construct_topo_class_dict()
+    topo_cls = TopologyType(self.topology_name, (Topology,), class_dict)
+    topo_cls.write()
+</code></pre>
   </div>
 
   </header>
@@ -1524,62 +1456,61 @@ that might be specified from <code>spec()</code> method of <code>Bolt</code> or 
   from heronpy.examples.src.python import WordSpout, CountBolt</p>
 <p>class WordCount(Topology):
       config = {"topology.wide.config": "some value"}</p>
-<div class="codehilite"><pre><span></span>  word_spout = WordSpout.spec(par=1)
+<pre><code>  word_spout = WordSpout.spec(par=1)
   count_bolt = CountBolt.spec(par=1,
-                              inputs={word_spout: Grouping.fields(&#39;word&#39;)},
-                              config={&quot;count_bolt.specific.config&quot;: &quot;another value&quot;})
-</pre></div></div>
+                              inputs={word_spout: Grouping.fields('word')},
+                              config={"count_bolt.specific.config": "another value"})
+</code></pre></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.Topology', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.Topology" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Topology</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Topology is an abstract class for defining a topology</span>
+    <pre><code>class Topology(object):
+  """Topology is an abstract class for defining a topology
 
-<span class="sd">  Topology writers can define their custom topology by inheriting this class.</span>
-<span class="sd">  The usage of this class is compatible with StreamParse API.</span>
+  Topology writers can define their custom topology by inheriting this class.
+  The usage of this class is compatible with StreamParse API.
 
-<span class="sd">  Defining a topology is simple. Topology writers need to create a subclass, in which information</span>
-<span class="sd">  about the components in their topology and how they connect to each other are specified</span>
-<span class="sd">  by placing `HeronComponentSpec` as class instances.</span>
-<span class="sd">  For more information, refer to `spec()` method of both the `Bolt` and `Spout` classes.</span>
+  Defining a topology is simple. Topology writers need to create a subclass, in which information
+  about the components in their topology and how they connect to each other are specified
+  by placing `HeronComponentSpec` as class instances.
+  For more information, refer to `spec()` method of both the `Bolt` and `Spout` classes.
 
-<span class="sd">  In addition, you can also set a topology-wide configuration, by adding a ``config`` class</span>
-<span class="sd">  attribute to your topology class, that is dict mapping from option names to their values.</span>
-<span class="sd">  Note that topology-wide configurations are overridden by component-specific configurations</span>
-<span class="sd">  that might be specified from ``spec()`` method of ``Bolt`` or ``Spout`` class.</span>
+  In addition, you can also set a topology-wide configuration, by adding a ``config`` class
+  attribute to your topology class, that is dict mapping from option names to their values.
+  Note that topology-wide configurations are overridden by component-specific configurations
+  that might be specified from ``spec()`` method of ``Bolt`` or ``Spout`` class.
 
-<span class="sd">  **Example**: A sample `WordCountTopology` can be defined as follows:</span>
+  **Example**: A sample `WordCountTopology` can be defined as follows:
 
-<span class="sd">    #!python</span>
-<span class="sd">    from heronpy.api.src.python import Topology</span>
-<span class="sd">    from heronpy.examples.src.python import WordSpout, CountBolt</span>
+    #!python
+    from heronpy.api.src.python import Topology
+    from heronpy.examples.src.python import WordSpout, CountBolt
 
-<span class="sd">    class WordCount(Topology):</span>
-<span class="sd">        config = {&quot;topology.wide.config&quot;: &quot;some value&quot;}</span>
+    class WordCount(Topology):
+        config = {"topology.wide.config": "some value"}
 
-<span class="sd">        word_spout = WordSpout.spec(par=1)</span>
-<span class="sd">        count_bolt = CountBolt.spec(par=1,</span>
-<span class="sd">                                    inputs={word_spout: Grouping.fields(&#39;word&#39;)},</span>
-<span class="sd">                                    config={&quot;count_bolt.specific.config&quot;: &quot;another value&quot;})</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">TopologyType</span>
+        word_spout = WordSpout.spec(par=1)
+        count_bolt = CountBolt.spec(par=1,
+                                    inputs={word_spout: Grouping.fields('word')},
+                                    config={"count_bolt.specific.config": "another value"})
+  """
+  __metaclass__ = TopologyType
 
-  <span class="c1"># pylint: disable=no-member</span>
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Writes the Topology .defn file to ``dest``</span>
+  # pylint: disable=no-member
+  @classmethod
+  def write(cls):
+    """Writes the Topology .defn file to ``dest``
 
-<span class="sd">    This classmethod is meant be used by heron-cli when submitting a topology.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">cls</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The base Topology class cannot be writable&quot;</span><span class="p">)</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.defn&quot;</span> <span class="o">%</span> <span class="n">cls</span><span class="o">.</span><span class="n">topology_name</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">topologydefn_tmpdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    This classmethod is meant be used by heron-cli when submitting a topology.
+    """
+    if cls.__name__ == 'Topology':
+      raise ValueError("The base Topology class cannot be writable")
+    filename = "%s.defn" % cls.topology_name
+    path = os.path.join(cls.topologydefn_tmpdir, filename)
 
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">protobuf_topology</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span>
-</pre></div>
-
+    with open(path, 'wb') as f:
+      f.write(cls.protobuf_topology.SerializeToString())
+</code></pre>
   </div>
 </div>
 
@@ -1605,19 +1536,18 @@ that might be specified from <code>spec()</code> method of <code>Bolt</code> or 
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.Topology.write', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.Topology.write" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Writes the Topology .defn file to ``dest``</span>
-<span class="sd">  This classmethod is meant be used by heron-cli when submitting a topology.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">cls</span><span class="o">.</span><span class="n">__name__</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The base Topology class cannot be writable&quot;</span><span class="p">)</span>
-  <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.defn&quot;</span> <span class="o">%</span> <span class="n">cls</span><span class="o">.</span><span class="n">topology_name</span>
-  <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">topologydefn_tmpdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-  <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">protobuf_topology</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def write(cls):
+  """Writes the Topology .defn file to ``dest``
+  This classmethod is meant be used by heron-cli when submitting a topology.
+  """
+  if cls.__name__ == 'Topology':
+    raise ValueError("The base Topology class cannot be writable")
+  filename = "%s.defn" % cls.topology_name
+  path = os.path.join(cls.topologydefn_tmpdir, filename)
+  with open(path, 'wb') as f:
+    f.write(cls.protobuf_topology.SerializeToString())
+</code></pre>
   </div>
 </div>
 
@@ -1642,111 +1572,110 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
 <p>if <strong>name</strong> == '<strong>main</strong>':
       builder = TopologyBuilder(name=sys.argv[1])
       word_spout = builder.add_spout("word-spout", WordSpout, 2)</p>
-<div class="codehilite"><pre><span></span>  builder.add_bolt(&quot;count-bolt&quot;, CountBolt, 2,
-                   inputs={word_spout: Grouping.fields(&#39;word&#39;)},
-                   config={&quot;count_bolt.specific.config&quot;: &quot;some value&quot;})
+<pre><code>  builder.add_bolt("count-bolt", CountBolt, 2,
+                   inputs={word_spout: Grouping.fields('word')},
+                   config={"count_bolt.specific.config": "some value"})
 
   builder.build_and_submit()
-</pre></div></div>
+</code></pre></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TopologyBuilder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Builder for heronpy.api.src.python topology</span>
+    <pre><code>class TopologyBuilder(object):
+  """Builder for heronpy.api.src.python topology
 
-<span class="sd">  This class dynamically creates a subclass of `Topology` with given spouts and</span>
-<span class="sd">  bolts and writes its definition files when `build_and_submit()` is called.</span>
+  This class dynamically creates a subclass of `Topology` with given spouts and
+  bolts and writes its definition files when `build_and_submit()` is called.
 
-<span class="sd">  **Example**: A sample `WordCountTopology` can be defined as follows:</span>
+  **Example**: A sample `WordCountTopology` can be defined as follows:
 
-<span class="sd">    #!python</span>
-<span class="sd">    import sys</span>
-<span class="sd">    from heronpy.api.src.python import TopologyBuilder</span>
-<span class="sd">    from heronpy.examples.spout import WordSpout</span>
-<span class="sd">    from heronpy.examples.bolt import CountBolt</span>
+    #!python
+    import sys
+    from heronpy.api.src.python import TopologyBuilder
+    from heronpy.examples.spout import WordSpout
+    from heronpy.examples.bolt import CountBolt
 
-<span class="sd">    if __name__ == &#39;__main__&#39;:</span>
-<span class="sd">        builder = TopologyBuilder(name=sys.argv[1])</span>
-<span class="sd">        word_spout = builder.add_spout(&quot;word-spout&quot;, WordSpout, 2)</span>
+    if __name__ == '__main__':
+        builder = TopologyBuilder(name=sys.argv[1])
+        word_spout = builder.add_spout("word-spout", WordSpout, 2)
 
-<span class="sd">        builder.add_bolt(&quot;count-bolt&quot;, CountBolt, 2,</span>
-<span class="sd">                         inputs={word_spout: Grouping.fields(&#39;word&#39;)},</span>
-<span class="sd">                         config={&quot;count_bolt.specific.config&quot;: &quot;some value&quot;})</span>
+        builder.add_bolt("count-bolt", CountBolt, 2,
+                         inputs={word_spout: Grouping.fields('word')},
+                         config={"count_bolt.specific.config": "some value"})
 
-<span class="sd">        builder.build_and_submit()</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initialize this TopologyBuilder</span>
+        builder.build_and_submit()
+  """
+  def __init__(self, name):
+    """Initialize this TopologyBuilder
 
-<span class="sd">    :type name: str</span>
-<span class="sd">    :param name: topology name</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;Topology&quot;</span>
+    :type name: str
+    :param name: topology name
+    """
+    assert name is not None and isinstance(name, str) and name != "Topology"
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span> <span class="o">=</span> <span class="n">name</span>
+    self.topology_name = name
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="p">{}</span>
+    self._specs = []
+    self._topology_config = {}
 
-  <span class="k">def</span> <span class="nf">add_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">specs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add specs to the topology</span>
+  def add_spec(self, *specs):
+    """Add specs to the topology
 
-<span class="sd">    :type specs: HeronComponentSpec</span>
-<span class="sd">    :param specs: specs to add to the topology</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to add_spec needs to be HeronComponentSpec, given: </span><span class="si">%s</span><span class="s2">&quot;</span>
-                        <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;TopologyBuilder cannot take a spec without name&quot;</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+    :type specs: HeronComponentSpec
+    :param specs: specs to add to the topology
+    """
+    for spec in specs:
+      if not isinstance(spec, HeronComponentSpec):
+        raise TypeError("Argument to add_spec needs to be HeronComponentSpec, given: %s"
+                        % str(spec))
+      if spec.name is None:
+        raise ValueError("TopologyBuilder cannot take a spec without name")
+      self._specs.append(spec)
 
-  <span class="k">def</span> <span class="nf">add_spout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">spout_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a spout to the topology&quot;&quot;&quot;</span>
-    <span class="n">spout_spec</span> <span class="o">=</span> <span class="n">spout_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                                <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">spout_spec</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">spout_spec</span>
+  def add_spout(self, name, spout_cls, par, config=None, optional_outputs=None):
+    """Add a spout to the topology"""
+    spout_spec = spout_cls.spec(name=name, par=par, config=config,
+                                optional_outputs=optional_outputs)
+    self.add_spec(spout_spec)
+    return spout_spec
 
-  <span class="k">def</span> <span class="nf">add_bolt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bolt_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Add a bolt to the topology&quot;&quot;&quot;</span>
-    <span class="n">bolt_spec</span> <span class="o">=</span> <span class="n">bolt_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                              <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">bolt_spec</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">bolt_spec</span>
+  def add_bolt(self, name, bolt_cls, par, inputs, config=None, optional_outputs=None):
+    """Add a bolt to the topology"""
+    bolt_spec = bolt_cls.spec(name=name, par=par, inputs=inputs, config=config,
+                              optional_outputs=optional_outputs)
+    self.add_spec(bolt_spec)
+    return bolt_spec
 
-  <span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Set topology-wide configuration to the topology</span>
+  def set_config(self, config):
+    """Set topology-wide configuration to the topology
 
-<span class="sd">    :type config: dict</span>
-<span class="sd">    :param config: topology-wide config</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to set_config needs to be dict, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="n">config</span>
+    :type config: dict
+    :param config: topology-wide config
+    """
+    if not isinstance(config, dict):
+      raise TypeError("Argument to set_config needs to be dict, given: %s" % str(config))
+    self._topology_config = config
 
-  <span class="k">def</span> <span class="nf">_construct_topo_class_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">class_dict</span> <span class="o">=</span> <span class="p">{}</span>
+  def _construct_topo_class_dict(self):
+    class_dict = {}
 
-    <span class="c1"># specs</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span><span class="p">:</span>
-      <span class="n">name</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span>
-      <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate spec names: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
+    # specs
+    for spec in self._specs:
+      name = spec.name
+      if name in class_dict:
+        raise ValueError("Duplicate spec names: %s" % name)
+      class_dict[name] = spec
 
-    <span class="c1"># config</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span>
-    <span class="k">return</span> <span class="n">class_dict</span>
+    # config
+    class_dict["config"] = self._topology_config
+    return class_dict
 
-  <span class="k">def</span> <span class="nf">build_and_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Builds the topology and submits to the destination&quot;&quot;&quot;</span>
-    <span class="n">class_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_topo_class_dict</span><span class="p">()</span>
-    <span class="n">topo_cls</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span><span class="p">,</span> <span class="p">(</span><span class="n">Topology</span><span class="p">,),</span> <span class="n">class_dict</span><span class="p">)</span>
-    <span class="n">topo_cls</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-
+  def build_and_submit(self):
+    """Builds the topology and submits to the destination"""
+    class_dict = self._construct_topo_class_dict()
+    topo_cls = TopologyType(self.topology_name, (Topology,), class_dict)
+    topo_cls.write()
+</code></pre>
   </div>
 </div>
 
@@ -1784,17 +1713,16 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.__init__', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.__init__" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Initialize this TopologyBuilder</span>
-<span class="sd">  :type name: str</span>
-<span class="sd">  :param name: topology name</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">assert</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;Topology&quot;</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span> <span class="o">=</span> <span class="n">name</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span> <span class="o">=</span> <span class="p">[]</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="p">{}</span>
-</pre></div>
-
+    <pre><code>def __init__(self, name):
+  """Initialize this TopologyBuilder
+  :type name: str
+  :param name: topology name
+  """
+  assert name is not None and isinstance(name, str) and name != "Topology"
+  self.topology_name = name
+  self._specs = []
+  self._topology_config = {}
+</code></pre>
   </div>
 </div>
 
@@ -1813,14 +1741,13 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.add_bolt', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.add_bolt" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_bolt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">bolt_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Add a bolt to the topology&quot;&quot;&quot;</span>
-  <span class="n">bolt_spec</span> <span class="o">=</span> <span class="n">bolt_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                            <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">bolt_spec</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">bolt_spec</span>
-</pre></div>
-
+    <pre><code>def add_bolt(self, name, bolt_cls, par, inputs, config=None, optional_outputs=None):
+  """Add a bolt to the topology"""
+  bolt_spec = bolt_cls.spec(name=name, par=par, inputs=inputs, config=config,
+                            optional_outputs=optional_outputs)
+  self.add_spec(bolt_spec)
+  return bolt_spec
+</code></pre>
   </div>
 </div>
 
@@ -1841,20 +1768,19 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.add_spec', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.add_spec" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">specs</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Add specs to the topology</span>
-<span class="sd">  :type specs: HeronComponentSpec</span>
-<span class="sd">  :param specs: specs to add to the topology</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to add_spec needs to be HeronComponentSpec, given: </span><span class="si">%s</span><span class="s2">&quot;</span>
-                      <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;TopologyBuilder cannot take a spec without name&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_specs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>def add_spec(self, *specs):
+  """Add specs to the topology
+  :type specs: HeronComponentSpec
+  :param specs: specs to add to the topology
+  """
+  for spec in specs:
+    if not isinstance(spec, HeronComponentSpec):
+      raise TypeError("Argument to add_spec needs to be HeronComponentSpec, given: %s"
+                      % str(spec))
+    if spec.name is None:
+      raise ValueError("TopologyBuilder cannot take a spec without name")
+    self._specs.append(spec)
+</code></pre>
   </div>
 </div>
 
@@ -1873,14 +1799,13 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.add_spout', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.add_spout" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">add_spout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">spout_cls</span><span class="p">,</span> <span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">optional_outputs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Add a spout to the topology&quot;&quot;&quot;</span>
-  <span class="n">spout_spec</span> <span class="o">=</span> <span class="n">spout_cls</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">par</span><span class="o">=</span><span class="n">par</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
-                              <span class="n">optional_outputs</span><span class="o">=</span><span class="n">optional_outputs</span><span class="p">)</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">add_spec</span><span class="p">(</span><span class="n">spout_spec</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">spout_spec</span>
-</pre></div>
-
+    <pre><code>def add_spout(self, name, spout_cls, par, config=None, optional_outputs=None):
+  """Add a spout to the topology"""
+  spout_spec = spout_cls.spec(name=name, par=par, config=config,
+                              optional_outputs=optional_outputs)
+  self.add_spec(spout_spec)
+  return spout_spec
+</code></pre>
   </div>
 </div>
 
@@ -1899,13 +1824,12 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.build_and_submit', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.build_and_submit" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">build_and_submit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Builds the topology and submits to the destination&quot;&quot;&quot;</span>
-  <span class="n">class_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_topo_class_dict</span><span class="p">()</span>
-  <span class="n">topo_cls</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">topology_name</span><span class="p">,</span> <span class="p">(</span><span class="n">Topology</span><span class="p">,),</span> <span class="n">class_dict</span><span class="p">)</span>
-  <span class="n">topo_cls</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
-</pre></div>
-
+    <pre><code>def build_and_submit(self):
+  """Builds the topology and submits to the destination"""
+  class_dict = self._construct_topo_class_dict()
+  topo_cls = TopologyType(self.topology_name, (Topology,), class_dict)
+  topo_cls.write()
+</code></pre>
   </div>
 </div>
 
@@ -1926,16 +1850,15 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyBuilder.set_config', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyBuilder.set_config" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">set_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Set topology-wide configuration to the topology</span>
-<span class="sd">  :type config: dict</span>
-<span class="sd">  :param config: topology-wide config</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Argument to set_config needs to be dict, given: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-  <span class="bp">self</span><span class="o">.</span><span class="n">_topology_config</span> <span class="o">=</span> <span class="n">config</span>
-</pre></div>
-
+    <pre><code>def set_config(self, config):
+  """Set topology-wide configuration to the topology
+  :type config: dict
+  :param config: topology-wide config
+  """
+  if not isinstance(config, dict):
+    raise TypeError("Argument to set_config needs to be dict, given: %s" % str(config))
+  self._topology_config = config
+</code></pre>
   </div>
 </div>
 
@@ -1952,231 +1875,230 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType" class="source">
-    <div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">TopologyType</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Metaclass to define a Heron topology in Python&quot;&quot;&quot;</span>
-  <span class="n">DEFAULT_TOPOLOGY_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_DEBUG</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_STMGRS</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_MESSAGE_TIMEOUT_SECS</span><span class="p">:</span> <span class="s2">&quot;30&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_COMPONENT_PARALLELISM</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_MAX_SPOUT_PENDING</span><span class="p">:</span> <span class="s2">&quot;100&quot;</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_RELIABILITY_MODE</span><span class="p">:</span> <span class="n">api_constants</span><span class="o">.</span><span class="n">TopologyReliabilityMode</span><span class="o">.</span><span class="n">ATMOST_ONCE</span><span class="p">,</span>
-      <span class="n">api_constants</span><span class="o">.</span><span class="n">TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">}</span>
-  <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">bolt_specs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">spout_specs</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="c1"># Copy HeronComponentSpec items out of class_dict</span>
-    <span class="n">specs</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">class_dict_to_specs</span><span class="p">(</span><span class="n">class_dict</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="nb">iter</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">is_spout</span><span class="p">:</span>
-        <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_spout_specs</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">spout_specs</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_bolt_specs</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">bolt_specs</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">!=</span> <span class="s1">&#39;Topology&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">spout_specs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A Topology requires at least one Spout&quot;</span><span class="p">)</span>
+    <pre><code>class TopologyType(type):
+  """Metaclass to define a Heron topology in Python"""
+  DEFAULT_TOPOLOGY_CONFIG = {
+      api_constants.TOPOLOGY_DEBUG: "false",
+      api_constants.TOPOLOGY_STMGRS: "1",
+      api_constants.TOPOLOGY_MESSAGE_TIMEOUT_SECS: "30",
+      api_constants.TOPOLOGY_COMPONENT_PARALLELISM: "1",
+      api_constants.TOPOLOGY_MAX_SPOUT_PENDING: "100",
+      api_constants.TOPOLOGY_RELIABILITY_MODE: api_constants.TopologyReliabilityMode.ATMOST_ONCE,
+      api_constants.TOPOLOGY_ENABLE_MESSAGE_TIMEOUTS: "true"}
+  def __new__(mcs, classname, bases, class_dict):
+    bolt_specs = {}
+    spout_specs = {}
+    # Copy HeronComponentSpec items out of class_dict
+    specs = TopologyType.class_dict_to_specs(class_dict)
+    for spec in iter(specs.values()):
+      if spec.is_spout:
+        TopologyType.add_spout_specs(spec, spout_specs)
+      else:
+        TopologyType.add_bolt_specs(spec, bolt_specs)
+    if classname != 'Topology' and not spout_specs:
+      raise ValueError("A Topology requires at least one Spout")
 
-    <span class="n">topology_config</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">class_dict_to_topo_config</span><span class="p">(</span><span class="n">class_dict</span><span class="p">)</span>
+    topology_config = TopologyType.class_dict_to_topo_config(class_dict)
 
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">!=</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_topo_config&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_config</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_protobuf_bolts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bolt_specs</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_protobuf_spouts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spout_specs</span>
-      <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_heron_specs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">specs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    if classname != 'Topology':
+      class_dict['_topo_config'] = topology_config
+      class_dict['_protobuf_bolts'] = bolt_specs
+      class_dict['_protobuf_spouts'] = spout_specs
+      class_dict['_heron_specs'] = list(specs.values())
 
-      <span class="c1"># create topology protobuf here</span>
-      <span class="n">TopologyType</span><span class="o">.</span><span class="n">init_topology</span><span class="p">(</span><span class="n">classname</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
+      # create topology protobuf here
+      TopologyType.init_topology(classname, class_dict)
 
-    <span class="k">return</span> <span class="nb">type</span><span class="o">.</span><span class="n">__new__</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">bases</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
+    return type.__new__(mcs, classname, bases, class_dict)
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">class_dict_to_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Takes a class `__dict__` and returns `HeronComponentSpec` entries&quot;&quot;&quot;</span>
-    <span class="n">specs</span> <span class="o">=</span> <span class="p">{}</span>
+  @classmethod
+  def class_dict_to_specs(mcs, class_dict):
+    """Takes a class `__dict__` and returns `HeronComponentSpec` entries"""
+    specs = {}
 
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-        <span class="c1"># Use the variable name as the specification name.</span>
-        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-          <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate component name: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-          <span class="n">specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
-    <span class="k">return</span> <span class="n">specs</span>
+    for name, spec in class_dict.items():
+      if isinstance(spec, HeronComponentSpec):
+        # Use the variable name as the specification name.
+        if spec.name is None:
+          spec.name = name
+        if spec.name in specs:
+          raise ValueError("Duplicate component name: %s" % spec.name)
+        else:
+          specs[spec.name] = spec
+    return specs
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">class_dict_to_topo_config</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Takes a class `__dict__` and returns a map containing topology-wide</span>
-<span class="sd">    configuration.</span>
+  @classmethod
+  def class_dict_to_topo_config(mcs, class_dict):
+    """
+    Takes a class `__dict__` and returns a map containing topology-wide
+    configuration.
 
-<span class="sd">    The returned dictionary is a sanitized `dict` of type `&lt;str -&gt;</span>
-<span class="sd">    (str|object)&gt;`.</span>
+    The returned dictionary is a sanitized `dict` of type `<str ->
+    (str|object)>`.
 
-<span class="sd">    This classmethod firsts insert default topology configuration and then</span>
-<span class="sd">    overrides it with a given topology-wide configuration. Note that this</span>
-<span class="sd">    configuration will be overriden by a component-specific configuration at</span>
-<span class="sd">    runtime.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">topo_config</span> <span class="o">=</span> <span class="p">{}</span>
+    This classmethod firsts insert default topology configuration and then
+    overrides it with a given topology-wide configuration. Note that this
+    configuration will be overriden by a component-specific configuration at
+    runtime.
+    """
+    topo_config = {}
 
-    <span class="c1"># add defaults</span>
-    <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mcs</span><span class="o">.</span><span class="n">DEFAULT_TOPOLOGY_CONFIG</span><span class="p">)</span>
+    # add defaults
+    topo_config.update(mcs.DEFAULT_TOPOLOGY_CONFIG)
 
-    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">custom_config</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;config&#39;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">custom_config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">sanitized_dict</span> <span class="o">=</span> <span class="n">mcs</span><span class="o">.</span><span class="n">_sanitize_config</span><span class="p">(</span><span class="n">custom_config</span><span class="p">)</span>
-        <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sanitized_dict</span><span class="p">)</span>
+    for name, custom_config in class_dict.items():
+      if name == 'config' and isinstance(custom_config, dict):
+        sanitized_dict = mcs._sanitize_config(custom_config)
+        topo_config.update(sanitized_dict)
 
-    <span class="k">return</span> <span class="n">topo_config</span>
+    return topo_config
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_spout_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">spout_specs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-          <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one output, because it is a spout&quot;</span> <span class="o">%</span>
-          <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-    <span class="n">spout_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
+  @classmethod
+  def add_spout_specs(mcs, spec, spout_specs):
+    if not spec.outputs:
+      raise ValueError(
+          "%s: %s requires at least one output, because it is a spout" %
+          (spec.python_class_path, spec.name))
+    spout_specs[spec.name] = spec.get_protobuf()
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_bolt_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">bolt_specs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-          <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one input, because it is a bolt&quot;</span> <span class="o">%</span>
-          <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-    <span class="n">bolt_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
+  @classmethod
+  def add_bolt_specs(mcs, spec, bolt_specs):
+    if not spec.inputs:
+      raise ValueError(
+          "%s: %s requires at least one input, because it is a bolt" %
+          (spec.python_class_path, spec.name))
+    bolt_specs[spec.name] = spec.get_protobuf()
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">get_topology_config_protobuf</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">config</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
-    <span class="n">conf_dict</span> <span class="o">=</span> <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_topo_config&#39;</span><span class="p">]</span>
+  @classmethod
+  def get_topology_config_protobuf(mcs, class_dict):
+    config = topology_pb2.Config()
+    conf_dict = class_dict['_topo_config']
 
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">conf_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;STRING_VALUE&quot;</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># need to serialize</span>
-        <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">serialized_value</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;PYTHON_SERIALIZED_VALUE&quot;</span><span class="p">)</span>
+    for key, value in conf_dict.items():
+      if isinstance(value, str):
+        kvs = config.kvs.add()
+        kvs.key = key
+        kvs.value = value
+        kvs.type = topology_pb2.ConfigValueType.Value("STRING_VALUE")
+      else:
+        # need to serialize
+        kvs = config.kvs.add()
+        kvs.key = key
+        kvs.serialized_value = default_serializer.serialize(value)
+        kvs.type = topology_pb2.ConfigValueType.Value("PYTHON_SERIALIZED_VALUE")
 
-    <span class="k">return</span> <span class="n">config</span>
+    return config
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">init_topology</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initializes a topology protobuf&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">classname</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-      <span class="c1"># Base class can&#39;t initialize protobuf</span>
-      <span class="k">return</span>
-    <span class="n">heron_options</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">get_heron_options_from_env</span><span class="p">()</span>
-    <span class="n">initial_state</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.initial.state&quot;</span><span class="p">,</span> <span class="s2">&quot;RUNNING&quot;</span><span class="p">)</span>
-    <span class="n">tmp_directory</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topologydefn.tmpdirectory&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">tmp_directory</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Topology definition temp directory not specified&quot;</span><span class="p">)</span>
+  @classmethod
+  def init_topology(mcs, classname, class_dict):
+    """Initializes a topology protobuf"""
+    if classname == 'Topology':
+      # Base class can't initialize protobuf
+      return
+    heron_options = TopologyType.get_heron_options_from_env()
+    initial_state = heron_options.get("cmdline.topology.initial.state", "RUNNING")
+    tmp_directory = heron_options.get("cmdline.topologydefn.tmpdirectory", None)
+    if tmp_directory is None:
+      raise RuntimeError("Topology definition temp directory not specified")
 
-    <span class="n">topology_name</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.name&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
-    <span class="n">topology_id</span> <span class="o">=</span> <span class="n">topology_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    topology_name = heron_options.get("cmdline.topology.name", classname)
+    topology_id = topology_name + str(uuid.uuid4())
 
-    <span class="c1"># create protobuf</span>
-    <span class="n">topology</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Topology</span><span class="p">()</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">topology_id</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">topology_name</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">TopologyState</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
-    <span class="n">topology</span><span class="o">.</span><span class="n">topology_config</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">TopologyType</span><span class="o">.</span><span class="n">get_topology_config_protobuf</span><span class="p">(</span><span class="n">class_dict</span><span class="p">))</span>
+    # create protobuf
+    topology = topology_pb2.Topology()
+    topology.id = topology_id
+    topology.name = topology_name
+    topology.state = topology_pb2.TopologyState.Value(initial_state)
+    topology.topology_config.CopyFrom(TopologyType.get_topology_config_protobuf(class_dict))
 
-    <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_bolts_and_spouts</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
+    TopologyType.add_bolts_and_spouts(topology, class_dict)
 
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_name</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_id</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;protobuf_topology&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topologydefn_tmpdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_directory</span>
-    <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;heron_runtime_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heron_options</span>
+    class_dict['topology_name'] = topology_name
+    class_dict['topology_id'] = topology_id
+    class_dict['protobuf_topology'] = topology
+    class_dict['topologydefn_tmpdir'] = tmp_directory
+    class_dict['heron_runtime_options'] = heron_options
 
-  <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">get_heron_options_from_env</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Retrieves heron options from the `HERON_OPTIONS` environment variable.</span>
+  @staticmethod
+  def get_heron_options_from_env():
+    """Retrieves heron options from the `HERON_OPTIONS` environment variable.
 
-<span class="sd">    Heron options have the following format:</span>
+    Heron options have the following format:
 
-<span class="sd">        cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir</span>
-<span class="sd">        cmdline.topology.initial.state=PAUSED</span>
+        cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir
+        cmdline.topology.initial.state=PAUSED
 
-<span class="sd">    In this case, the returned map will contain:</span>
+    In this case, the returned map will contain:
 
-<span class="sd">        #!json</span>
-<span class="sd">        {</span>
-<span class="sd">          &quot;cmdline.topologydefn.tmpdirectory&quot;: &quot;/var/folders/tmpdir&quot;,</span>
-<span class="sd">          &quot;cmdline.topology.initial.state&quot;: &quot;PAUSED&quot;</span>
-<span class="sd">        }</span>
+        #!json
+        {
+          "cmdline.topologydefn.tmpdirectory": "/var/folders/tmpdir",
+          "cmdline.topology.initial.state": "PAUSED"
+        }
 
-<span class="sd">    Currently supports the following options natively:</span>
+    Currently supports the following options natively:
 
-<span class="sd">    - `cmdline.topologydefn.tmpdirectory`: the directory to which this</span>
-<span class="sd">    topology&#39;s defn file is written</span>
-<span class="sd">    - `cmdline.topology.initial.state`: the initial state of the topology</span>
-<span class="sd">    - `cmdline.topology.name`: topology name on deployment</span>
+    - `cmdline.topologydefn.tmpdirectory`: the directory to which this
+    topology's defn file is written
+    - `cmdline.topology.initial.state`: the initial state of the topology
+    - `cmdline.topology.name`: topology name on deployment
 
-<span class="sd">    Returns: map mapping from key to value</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">heron_options_raw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">heron_options_raw</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS environment variable not found&quot;</span><span class="p">)</span>
+    Returns: map mapping from key to value
+    """
+    heron_options_raw = os.environ.get("HERON_OPTIONS", None)
+    if heron_options_raw is None:
+      raise RuntimeError("HERON_OPTIONS environment variable not found")
 
-    <span class="n">ret</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">heron_opt_list</span> <span class="o">=</span> <span class="n">heron_options_raw</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">opt_raw</span> <span class="ow">in</span> <span class="n">heron_opt_list</span><span class="p">:</span>
-      <span class="n">opt</span> <span class="o">=</span> <span class="n">opt_raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
-      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ret</span><span class="p">[</span><span class="n">opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">ret</span>
+    ret = {}
+    heron_opt_list = heron_options_raw.replace("%%%%", " ").split(',')
+    for opt_raw in heron_opt_list:
+      opt = opt_raw.split("=")
+      if len(opt) == 2:
+        ret[opt[0]] = opt[1]
+    return ret
 
-  <span class="nd">@classmethod</span>
-  <span class="k">def</span> <span class="nf">add_bolts_and_spouts</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-    <span class="n">spouts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_spouts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-    <span class="n">bolts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_bolts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+  @classmethod
+  def add_bolts_and_spouts(mcs, topology, class_dict):
+    spouts = list(class_dict["_protobuf_spouts"].values())
+    bolts = list(class_dict["_protobuf_bolts"].values())
 
-    <span class="k">for</span> <span class="n">spout</span> <span class="ow">in</span> <span class="n">spouts</span><span class="p">:</span>
-      <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">spouts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">spout</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">bolt</span> <span class="ow">in</span> <span class="n">bolts</span><span class="p">:</span>
-      <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">bolts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">bolt</span><span class="p">)</span>
+    for spout in spouts:
+      added = topology.spouts.add()
+      added.CopyFrom(spout)
+    for bolt in bolts:
+      added = topology.bolts.add()
+      added.CopyFrom(bolt)
 
-  <span class="nd">@staticmethod</span>
-  <span class="k">def</span> <span class="nf">_sanitize_config</span><span class="p">(</span><span class="n">custom_config</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Checks whether a given custom_config and returns a sanitized dict &lt;str -&gt; (str|object)&gt;</span>
+  @staticmethod
+  def _sanitize_config(custom_config):
+    """Checks whether a given custom_config and returns a sanitized dict <str -> (str|object)>
 
-<span class="sd">    It checks if keys are all strings and sanitizes values of a given dictionary as follows:</span>
+    It checks if keys are all strings and sanitizes values of a given dictionary as follows:
 
-<span class="sd">    - If string, number or boolean is given as a value, it is converted to string.</span>
-<span class="sd">      For string and number (int, float), it is converted to string by a built-in ``str()`` method.</span>
-<span class="sd">      For a boolean value, ``True`` is converted to &quot;true&quot; instead of &quot;True&quot;, and ``False`` is</span>
-<span class="sd">      converted to &quot;false&quot; instead of &quot;False&quot;, in order to keep the consistency with</span>
-<span class="sd">      Java configuration.</span>
+    - If string, number or boolean is given as a value, it is converted to string.
+      For string and number (int, float), it is converted to string by a built-in ``str()`` method.
+      For a boolean value, ``True`` is converted to "true" instead of "True", and ``False`` is
+      converted to "false" instead of "False", in order to keep the consistency with
+      Java configuration.
 
-<span class="sd">    - If neither of the above is given as a value, it is inserted into the sanitized dict as it is.</span>
-<span class="sd">      These values will need to be serialized before adding to a protobuf message.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">sanitized</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">custom_config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-      <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Key for topology-wide configuration must be string, given: </span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span>
-                        <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">key</span><span class="p">)),</span> <span class="nb">str</span><span class="p">(</span><span class="n">key</span><span class="p">)))</span>
+    - If neither of the above is given as a value, it is inserted into the sanitized dict as it is.
+      These values will need to be serialized before adding to a protobuf message.
+    """
+    sanitized = {}
+    for key, value in custom_config.items():
+      if not isinstance(key, str):
+        raise TypeError("Key for topology-wide configuration must be string, given: %s: %s"
+                        % (str(type(key)), str(key)))
 
-      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span> <span class="k">if</span> <span class="n">value</span> <span class="k">else</span> <span class="s2">&quot;false&quot;</span>
-      <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="n">sanitized</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+      if isinstance(value, bool):
+        sanitized[key] = "true" if value else "false"
+      elif isinstance(value, (str, int, float)):
+        sanitized[key] = str(value)
+      else:
+        sanitized[key] = value
 
-    <span class="k">return</span> <span class="n">sanitized</span>
-</pre></div>
-
+    return sanitized
+</code></pre>
   </div>
 </div>
 
@@ -2211,19 +2133,16 @@ bolts and writes its definition files when <code>build_and_submit()</code> is ca
   
     <div class="desc"><p>Retrieves heron options from the <code>HERON_OPTIONS</code> environment variable.</p>
 <p>Heron options have the following format:</p>
-<div class="codehilite"><pre><span></span>cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir
+<pre><code>cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir
 cmdline.topology.initial.state=PAUSED
-</pre></div>
-
-
+</code></pre>
 <p>In this case, the returned map will contain:</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;cmdline.topologydefn.tmpdirectory&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/folders/tmpdir&quot;</span><span class="p">,</span>
-  <span class="nt">&quot;cmdline.topology.initial.state&quot;</span><span class="p">:</span> <span class="s2">&quot;PAUSED&quot;</span>
-<span class="p">}</span>
-</pre></div>
-
-
+<pre><code>#!json
+{
+  "cmdline.topologydefn.tmpdirectory": "/var/folders/tmpdir",
+  "cmdline.topology.initial.state": "PAUSED"
+}
+</code></pre>
 <p>Currently supports the following options natively:</p>
 <ul>
 <li><code>cmdline.topologydefn.tmpdirectory</code>: the directory to which this
@@ -2235,37 +2154,36 @@ topology's defn file is written</li>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.get_heron_options_from_env', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.get_heron_options_from_env" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@staticmethod</span>
-<span class="k">def</span> <span class="nf">get_heron_options_from_env</span><span class="p">():</span>
-  <span class="sd">&quot;&quot;&quot;Retrieves heron options from the `HERON_OPTIONS` environment variable.</span>
-<span class="sd">  Heron options have the following format:</span>
-<span class="sd">      cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir</span>
-<span class="sd">      cmdline.topology.initial.state=PAUSED</span>
-<span class="sd">  In this case, the returned map will contain:</span>
-<span class="sd">      #!json</span>
-<span class="sd">      {</span>
-<span class="sd">        &quot;cmdline.topologydefn.tmpdirectory&quot;: &quot;/var/folders/tmpdir&quot;,</span>
-<span class="sd">        &quot;cmdline.topology.initial.state&quot;: &quot;PAUSED&quot;</span>
-<span class="sd">      }</span>
-<span class="sd">  Currently supports the following options natively:</span>
-<span class="sd">  - `cmdline.topologydefn.tmpdirectory`: the directory to which this</span>
-<span class="sd">  topology&#39;s defn file is written</span>
-<span class="sd">  - `cmdline.topology.initial.state`: the initial state of the topology</span>
-<span class="sd">  - `cmdline.topology.name`: topology name on deployment</span>
-<span class="sd">  Returns: map mapping from key to value</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">heron_options_raw</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">heron_options_raw</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;HERON_OPTIONS environment variable not found&quot;</span><span class="p">)</span>
-  <span class="n">ret</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="n">heron_opt_list</span> <span class="o">=</span> <span class="n">heron_options_raw</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%%%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">opt_raw</span> <span class="ow">in</span> <span class="n">heron_opt_list</span><span class="p">:</span>
-    <span class="n">opt</span> <span class="o">=</span> <span class="n">opt_raw</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-      <span class="n">ret</span><span class="p">[</span><span class="n">opt</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-  <span class="k">return</span> <span class="n">ret</span>
-</pre></div>
-
+    <pre><code>@staticmethod
+def get_heron_options_from_env():
+  """Retrieves heron options from the `HERON_OPTIONS` environment variable.
+  Heron options have the following format:
+      cmdline.topologydefn.tmpdirectory=/var/folders/tmpdir
+      cmdline.topology.initial.state=PAUSED
+  In this case, the returned map will contain:
+      #!json
+      {
+        "cmdline.topologydefn.tmpdirectory": "/var/folders/tmpdir",
+        "cmdline.topology.initial.state": "PAUSED"
+      }
+  Currently supports the following options natively:
+  - `cmdline.topologydefn.tmpdirectory`: the directory to which this
+  topology's defn file is written
+  - `cmdline.topology.initial.state`: the initial state of the topology
+  - `cmdline.topology.name`: topology name on deployment
+  Returns: map mapping from key to value
+  """
+  heron_options_raw = os.environ.get("HERON_OPTIONS", None)
+  if heron_options_raw is None:
+    raise RuntimeError("HERON_OPTIONS environment variable not found")
+  ret = {}
+  heron_opt_list = heron_options_raw.replace("%%%%", " ").split(',')
+  for opt_raw in heron_opt_list:
+    opt = opt_raw.split("=")
+    if len(opt) == 2:
+      ret[opt[0]] = opt[1]
+  return ret
+</code></pre>
   </div>
 </div>
 
@@ -2284,15 +2202,14 @@ topology's defn file is written</li>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.add_bolt_specs', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.add_bolt_specs" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">add_bolt_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">bolt_specs</span><span class="p">):</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one input, because it is a bolt&quot;</span> <span class="o">%</span>
-        <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-  <span class="n">bolt_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def add_bolt_specs(mcs, spec, bolt_specs):
+  if not spec.inputs:
+    raise ValueError(
+        "%s: %s requires at least one input, because it is a bolt" %
+        (spec.python_class_path, spec.name))
+  bolt_specs[spec.name] = spec.get_protobuf()
+</code></pre>
   </div>
 </div>
 
@@ -2310,18 +2227,17 @@ topology's defn file is written</li>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.add_bolts_and_spouts', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.add_bolts_and_spouts" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">add_bolts_and_spouts</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-  <span class="n">spouts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_spouts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-  <span class="n">bolts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">class_dict</span><span class="p">[</span><span class="s2">&quot;_protobuf_bolts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-  <span class="k">for</span> <span class="n">spout</span> <span class="ow">in</span> <span class="n">spouts</span><span class="p">:</span>
-    <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">spouts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-    <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">spout</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">bolt</span> <span class="ow">in</span> <span class="n">bolts</span><span class="p">:</span>
-    <span class="n">added</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">bolts</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-    <span class="n">added</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">bolt</span><span class="p">)</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def add_bolts_and_spouts(mcs, topology, class_dict):
+  spouts = list(class_dict["_protobuf_spouts"].values())
+  bolts = list(class_dict["_protobuf_bolts"].values())
+  for spout in spouts:
+    added = topology.spouts.add()
+    added.CopyFrom(spout)
+  for bolt in bolts:
+    added = topology.bolts.add()
+    added.CopyFrom(bolt)
+</code></pre>
   </div>
 </div>
 
@@ -2339,15 +2255,14 @@ topology's defn file is written</li>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.add_spout_specs', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.add_spout_specs" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">add_spout_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">spec</span><span class="p">,</span> <span class="n">spout_specs</span><span class="p">):</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">spec</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-        <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2"> requires at least one output, because it is a spout&quot;</span> <span class="o">%</span>
-        <span class="p">(</span><span class="n">spec</span><span class="o">.</span><span class="n">python_class_path</span><span class="p">,</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-  <span class="n">spout_specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">get_protobuf</span><span class="p">()</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def add_spout_specs(mcs, spec, spout_specs):
+  if not spec.outputs:
+    raise ValueError(
+        "%s: %s requires at least one output, because it is a spout" %
+        (spec.python_class_path, spec.name))
+  spout_specs[spec.name] = spec.get_protobuf()
+</code></pre>
   </div>
 </div>
 
@@ -2366,22 +2281,21 @@ topology's defn file is written</li>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.class_dict_to_specs', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.class_dict_to_specs" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">class_dict_to_specs</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Takes a class `__dict__` and returns `HeronComponentSpec` entries&quot;&quot;&quot;</span>
-  <span class="n">specs</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">HeronComponentSpec</span><span class="p">):</span>
-      <span class="c1"># Use the variable name as the specification name.</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-      <span class="k">if</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">specs</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Duplicate component name: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-      <span class="k">else</span><span class="p">:</span>
-        <span class="n">specs</span><span class="p">[</span><span class="n">spec</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">spec</span>
-  <span class="k">return</span> <span class="n">specs</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def class_dict_to_specs(mcs, class_dict):
+  """Takes a class `__dict__` and returns `HeronComponentSpec` entries"""
+  specs = {}
+  for name, spec in class_dict.items():
+    if isinstance(spec, HeronComponentSpec):
+      # Use the variable name as the specification name.
+      if spec.name is None:
+        spec.name = name
+      if spec.name in specs:
+        raise ValueError("Duplicate component name: %s" % spec.name)
+      else:
+        specs[spec.name] = spec
+  return specs
+</code></pre>
   </div>
 </div>
 
@@ -2407,28 +2321,27 @@ runtime.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.class_dict_to_topo_config', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.class_dict_to_topo_config" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">class_dict_to_topo_config</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">  Takes a class `__dict__` and returns a map containing topology-wide</span>
-<span class="sd">  configuration.</span>
-<span class="sd">  The returned dictionary is a sanitized `dict` of type `&lt;str -&gt;</span>
-<span class="sd">  (str|object)&gt;`.</span>
-<span class="sd">  This classmethod firsts insert default topology configuration and then</span>
-<span class="sd">  overrides it with a given topology-wide configuration. Note that this</span>
-<span class="sd">  configuration will be overriden by a component-specific configuration at</span>
-<span class="sd">  runtime.</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">topo_config</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="c1"># add defaults</span>
-  <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mcs</span><span class="o">.</span><span class="n">DEFAULT_TOPOLOGY_CONFIG</span><span class="p">)</span>
-  <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">custom_config</span> <span class="ow">in</span> <span class="n">class_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;config&#39;</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">custom_config</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-      <span class="n">sanitized_dict</span> <span class="o">=</span> <span class="n">mcs</span><span class="o">.</span><span class="n">_sanitize_config</span><span class="p">(</span><span class="n">custom_config</span><span class="p">)</span>
-      <span class="n">topo_config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sanitized_dict</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">topo_config</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def class_dict_to_topo_config(mcs, class_dict):
+  """
+  Takes a class `__dict__` and returns a map containing topology-wide
+  configuration.
+  The returned dictionary is a sanitized `dict` of type `<str ->
+  (str|object)>`.
+  This classmethod firsts insert default topology configuration and then
+  overrides it with a given topology-wide configuration. Note that this
+  configuration will be overriden by a component-specific configuration at
+  runtime.
+  """
+  topo_config = {}
+  # add defaults
+  topo_config.update(mcs.DEFAULT_TOPOLOGY_CONFIG)
+  for name, custom_config in class_dict.items():
+    if name == 'config' and isinstance(custom_config, dict):
+      sanitized_dict = mcs._sanitize_config(custom_config)
+      topo_config.update(sanitized_dict)
+  return topo_config
+</code></pre>
   </div>
 </div>
 
@@ -2446,25 +2359,24 @@ runtime.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.get_topology_config_protobuf', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.get_topology_config_protobuf" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">get_topology_config_protobuf</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-  <span class="n">config</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Config</span><span class="p">()</span>
-  <span class="n">conf_dict</span> <span class="o">=</span> <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;_topo_config&#39;</span><span class="p">]</span>
-  <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">conf_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-      <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;STRING_VALUE&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="c1"># need to serialize</span>
-      <span class="n">kvs</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">kvs</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">key</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">serialized_value</span> <span class="o">=</span> <span class="n">default_serializer</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-      <span class="n">kvs</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">ConfigValueType</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="s2">&quot;PYTHON_SERIALIZED_VALUE&quot;</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">config</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def get_topology_config_protobuf(mcs, class_dict):
+  config = topology_pb2.Config()
+  conf_dict = class_dict['_topo_config']
+  for key, value in conf_dict.items():
+    if isinstance(value, str):
+      kvs = config.kvs.add()
+      kvs.key = key
+      kvs.value = value
+      kvs.type = topology_pb2.ConfigValueType.Value("STRING_VALUE")
+    else:
+      # need to serialize
+      kvs = config.kvs.add()
+      kvs.key = key
+      kvs.serialized_value = default_serializer.serialize(value)
+      kvs.type = topology_pb2.ConfigValueType.Value("PYTHON_SERIALIZED_VALUE")
+  return config
+</code></pre>
   </div>
 </div>
 
@@ -2483,33 +2395,32 @@ runtime.</p></div>
   <div class="source_cont">
   <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-heronpy.api.topology.TopologyType.init_topology', this);">Show source &equiv;</a></p>
   <div id="source-heronpy.api.topology.TopologyType.init_topology" class="source">
-    <div class="codehilite"><pre><span></span><span class="nd">@classmethod</span>
-<span class="k">def</span> <span class="nf">init_topology</span><span class="p">(</span><span class="n">mcs</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Initializes a topology protobuf&quot;&quot;&quot;</span>
-  <span class="k">if</span> <span class="n">classname</span> <span class="o">==</span> <span class="s1">&#39;Topology&#39;</span><span class="p">:</span>
-    <span class="c1"># Base class can&#39;t initialize protobuf</span>
-    <span class="k">return</span>
-  <span class="n">heron_options</span> <span class="o">=</span> <span class="n">TopologyType</span><span class="o">.</span><span class="n">get_heron_options_from_env</span><span class="p">()</span>
-  <span class="n">initial_state</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.initial.state&quot;</span><span class="p">,</span> <span class="s2">&quot;RUNNING&quot;</span><span class="p">)</span>
-  <span class="n">tmp_directory</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topologydefn.tmpdirectory&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-  <span class="k">if</span> <span class="n">tmp_directory</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Topology definition temp directory not specified&quot;</span><span class="p">)</span>
-  <span class="n">topology_name</span> <span class="o">=</span> <span class="n">heron_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;cmdline.topology.name&quot;</span><span class="p">,</span> <span class="n">classname</span><span class="p">)</span>
-  <span class="n">topology_id</span> <span class="o">=</span> <span class="n">topology_name</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
-  <span class="c1"># create protobuf</span>
-  <span class="n">topology</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">Topology</span><span class="p">()</span>
-  <span class="n">topology</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">topology_id</span>
-  <span class="n">topology</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">topology_name</span>
-  <span class="n">topology</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">topology_pb2</span><span class="o">.</span><span class="n">TopologyState</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
-  <span class="n">topology</span><span class="o">.</span><span class="n">topology_config</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">TopologyType</span><span class="o">.</span><span class="n">get_topology_config_protobuf</span><span class="p">(</span><span class="n">class_dict</span><span class="p">))</span>
-  <span class="n">TopologyType</span><span class="o">.</span><span class="n">add_bolts_and_spouts</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">class_dict</span><span class="p">)</span>
-  <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_name</span>
-  <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topology_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology_id</span>
-  <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;protobuf_topology&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topology</span>
-  <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;topologydefn_tmpdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_directory</span>
-  <span class="n">class_dict</span><span class="p">[</span><span class="s1">&#39;heron_runtime_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">heron_options</span>
-</pre></div>
-
+    <pre><code>@classmethod
+def init_topology(mcs, classname, class_dict):
+  """Initializes a topology protobuf"""
+  if classname == 'Topology':
+    # Base class can't initialize protobuf
+    return
+  heron_options = TopologyType.get_heron_options_from_env()
+  initial_state = heron_options.get("cmdline.topology.initial.state", "RUNNING")
+  tmp_directory = heron_options.get("cmdline.topologydefn.tmpdirectory", None)
+  if tmp_directory is None:
+    raise RuntimeError("Topology definition temp directory not specified")
+  topology_name = heron_options.get("cmdline.topology.name", classname)
+  topology_id = topology_name + str(uuid.uuid4())
+  # create protobuf
+  topology = topology_pb2.Topology()
+  topology.id = topology_id
+  topology.name = topology_name
+  topology.state = topology_pb2.TopologyState.Value(initial_state)
+  topology.topology_config.CopyFrom(TopologyType.get_topology_config_protobuf(class_dict))
+  TopologyType.add_bolts_and_spouts(topology, class_dict)
+  class_dict['topology_name'] = topology_name
+  class_dict['topology_id'] = topology_id
+  class_dict['protobuf_topology'] = topology
+  class_dict['topologydefn_tmpdir'] = tmp_directory
+  class_dict['heron_runtime_options'] = heron_options
+</code></pre>
   </div>
 </div>
 
