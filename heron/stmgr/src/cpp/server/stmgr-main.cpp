@@ -53,10 +53,9 @@ int main(int argc, char* argv[]) {
   std::vector<std::string> instances = StrUtils::split(FLAGS_instance_ids, ",");
 
   for (std::vector<std::string>::const_iterator i = instances.begin(); i != instances.end(); ++i)
-      LOG(INFO) << *i << " ";
-    LOG(INFO) << endl;
+      LOG(INFO) << "Instance name: " << *i << " ";
+  LOG(INFO) << endl ;
 
-  LOG(INFO) << << ;
   EventLoopImpl ss;
 
   // Read heron internals config from local file
