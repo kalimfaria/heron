@@ -568,6 +568,7 @@ void StMgr::NewPhysicalPlan(proto::system::PhysicalPlan* _pplan) {
   for (sp_int32 i = 0; i < _pplan->instances_size(); ++i) {
     sp_int32 task_id = _pplan->instances(i).info().task_id();
     task_id_to_stmgr_[task_id] = _pplan->instances(i).stmgr_id();
+    LOG(INFO) << " Task ID:  " << task_id << " Stream Manager: " << task_id_to_stmgr_[task_id];
     const sp_string& component_name = _pplan->instances(i).info().component_name();
     if (component_to_task_ids.find(component_name) == component_to_task_ids.end()) {
       component_to_task_ids[component_name] = std::vector<sp_int32>();
