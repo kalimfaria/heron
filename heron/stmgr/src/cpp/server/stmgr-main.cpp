@@ -54,7 +54,6 @@ int main(int argc, char* argv[]) {
 
   for (std::vector<std::string>::const_iterator i = instances.begin(); i != instances.end(); ++i)
       LOG(INFO) << "Instance name: " << *i << " ";
-  LOG(INFO) << endl ;
 
   EventLoopImpl ss;
 
