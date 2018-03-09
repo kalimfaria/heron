@@ -269,8 +269,8 @@ public class BoltInstance implements IInstance {
               dataTuple.getRootsList(), values, startExecuteTuple, false, sourceTaskId);
 
           // Adding logging to find out if the size of the data can be found
-          LOG.info("Size of data in tupleImpl: " + t.size() + " type: " +
-              (t.size() > 0 ? t.getValue(0).getClass() : " empty list"));
+          LOG.info("Size of data in tupleImpl: " + t.size() + " type: "
+              + (t.size() > 0 ? t.getValue(0).getClass() : " empty list"));
 
           // Delegate to the use defined bolt
           bolt.execute(t);
