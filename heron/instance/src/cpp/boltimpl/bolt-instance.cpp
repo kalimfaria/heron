@@ -16,10 +16,10 @@
 
 #include <dlfcn.h>
 #include <stdlib.h>
+#include <google/protobuf/message.h>
 
 #include <list>
 #include <string>
-#include <google/protobuf/message.h>
 
 #include "boltimpl/bolt-instance.h"
 #include "proto/messages.h"
@@ -104,8 +104,6 @@ void BoltInstance::DoWork() {
 
 void BoltInstance::executeTuple(const proto::api::StreamId& stream,
                                 std::shared_ptr<const proto::system::HeronDataTuple> tup) {
-
-
   LOG(INFO) << "Data size: "<< tup->SpaceUsed();
 
   std::shared_ptr<TupleImpl> t(new TupleImpl(serializer_, taskContext_, stream, tup));
