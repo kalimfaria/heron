@@ -338,6 +338,8 @@ public class SchedulerMain {
     String statemgrClass = Context.stateManagerClass(config);
     IStateManager statemgr;
 
+    LOG.log(Level.INFO, "State manager class: " + statemgrClass);
+
     try {
       // create an instance of state manager
       statemgr = ReflectionUtils.newInstance(statemgrClass);
@@ -366,6 +368,8 @@ public class SchedulerMain {
       }
       LOG.log(Level.INFO, "Packing plan fetched from state: {0}", serializedPackingPlan);
       PackingPlan packedPlan = new PackingPlanProtoDeserializer().fromProto(serializedPackingPlan);
+
+      LOG.log(Level.INFO, "Packed Plan ID: " + packedPlan.getId() + " Number of containers: " + packedPlan.getContainers().size());
 
       // build the runtime config
       LauncherUtils launcherUtils = LauncherUtils.getInstance();
