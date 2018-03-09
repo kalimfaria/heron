@@ -30,7 +30,6 @@
 #include "boltimpl/tuple-impl.h"
 #include "boltimpl/tick-tuple.h"
 
-namespace google::protobuf
 
 namespace heron {
 namespace instance {
