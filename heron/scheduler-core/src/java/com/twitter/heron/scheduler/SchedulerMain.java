@@ -369,7 +369,8 @@ public class SchedulerMain {
       LOG.log(Level.INFO, "Packing plan fetched from state: {0}", serializedPackingPlan);
       PackingPlan packedPlan = new PackingPlanProtoDeserializer().fromProto(serializedPackingPlan);
 
-      LOG.log(Level.INFO, "Packed Plan ID: " + packedPlan.getId() + " Number of containers: " + packedPlan.getContainers().size());
+      LOG.log(Level.INFO, "Packed Plan ID: " + packedPlan.getId()
+          + " Number of containers: " + packedPlan.getContainers().size());
 
       // build the runtime config
       LauncherUtils launcherUtils = LauncherUtils.getInstance();
