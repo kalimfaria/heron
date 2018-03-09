@@ -809,8 +809,8 @@ void StMgr::HandleInstanceData(const sp_int32 _src_task_id, bool _local_spout,
       LOG(INFO) << "Information from the stream manager: "
       << _src_task_id_ << " " << _local_spout << " "
       << _tuple.key << " ";
-      for (std::vector<char>::const_iterator i = out_tasks.begin(); i != out_tasks_.end(); ++i)
-          LOG(INFO) << "Out tasks: " << *i;
+      for (auto iter  = out_tasks.begin(); iter != out_tasks_.end(); ++iter)
+          LOG(INFO) << "Out tasks: " << *iter;
 
         // TODO(vikasr) Do a fast path that does not involve copying
         CopyDataOutBound(_src_task_id, _local_spout, d->stream(), _tuple, out_tasks_);
