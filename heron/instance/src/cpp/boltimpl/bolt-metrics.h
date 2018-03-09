@@ -52,6 +52,7 @@ class BoltMetrics {
   std::shared_ptr<api::metric::MultiMeanMetric> executeLatency_;
   std::shared_ptr<api::metric::MultiCountMetric> executeTime_;
   std::shared_ptr<api::metric::MultiCountMetric> emitCount_;
+  std::shared_ptr<api::metric::MultiMeanMetric> emitSize_;
 };
 
 }  // namespace instance

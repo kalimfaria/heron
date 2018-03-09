@@ -35,6 +35,7 @@ BoltMetrics::BoltMetrics(std::shared_ptr<api::metric::IMetricsRegistrar> metrics
   failLatency_.reset(new api::metric::MultiMeanMetric());
   executeTime_.reset(new api::metric::MultiCountMetric());
   emitCount_.reset(new api::metric::MultiCountMetric());
+  emitSize_.reset(new api::metric::MultiMeanMetric());
 
   int interval = config::HeronInternalsConfigReader::Instance()
                  ->GetHeronMetricsExportIntervalSec();
@@ -46,6 +47,7 @@ BoltMetrics::BoltMetrics(std::shared_ptr<api::metric::IMetricsRegistrar> metrics
   metricsRegistrar->registerMetric("__execute-latency", executeLatency_, interval);
   metricsRegistrar->registerMetric("__execute-time-ns", executeTime_, interval);
   metricsRegistrar->registerMetric("__emit-count", emitCount_, interval);
+  metricsRegistrar->registerMetric("__emit-size", emitSize_, interval);
 }
 
 BoltMetrics::~BoltMetrics() {

@@ -19,6 +19,7 @@
 
 #include <list>
 #include <string>
+#include <google/protobuf/message.h>
 
 #include "boltimpl/bolt-instance.h"
 #include "proto/messages.h"
@@ -28,6 +29,8 @@
 
 #include "boltimpl/tuple-impl.h"
 #include "boltimpl/tick-tuple.h"
+
+namespace google::protobuf
 
 namespace heron {
 namespace instance {
@@ -102,6 +105,10 @@ void BoltInstance::DoWork() {
 
 void BoltInstance::executeTuple(const proto::api::StreamId& stream,
                                 std::shared_ptr<const proto::system::HeronDataTuple> tup) {
+
+
+  LOG(INFO) << "Data size: "<< tup->SpaceUsed();
+
   std::shared_ptr<TupleImpl> t(new TupleImpl(serializer_, taskContext_, stream, tup));
   int64_t startTime = std::chrono::duration_cast<std::chrono::nanoseconds>(
                                    std::chrono::system_clock::now().time_since_epoch()).count();
