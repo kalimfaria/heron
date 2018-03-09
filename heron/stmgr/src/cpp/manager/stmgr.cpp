@@ -807,9 +807,9 @@ void StMgr::HandleInstanceData(const sp_int32 _src_task_id, bool _local_spout,
         }
 
       LOG(INFO) << "Information from the stream manager: "
-      << _src_task_id_ << " " << _local_spout << " "
-      << _tuple.key << " ";
-      for (auto iter  = out_tasks.begin(); iter != out_tasks_.end(); ++iter)
+      << _src_task_id << " " << _local_spout << " "
+      << _tuple << " ";
+      for (auto iter  = out_tasks_.begin(); iter != out_tasks_.end(); ++iter)
           LOG(INFO) << "Out tasks: " << *iter;
 
         // TODO(vikasr) Do a fast path that does not involve copying
