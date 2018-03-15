@@ -264,7 +264,7 @@ public class BoltInstance implements IInstance {
           // Create the value list and fill the value
           List<Object> values = new ArrayList<>(nValues);
           for (int i = 0; i < nValues; i++) {
-            byte [] arr = dataTuple.getValues(i).toByteArray();
+            byte[] arr = dataTuple.getValues(i).toByteArray();
             byteArraySize += arr.length;
             values.add(serializer.deserialize(arr));
           }
@@ -275,7 +275,8 @@ public class BoltInstance implements IInstance {
 
           // Adding logging to find out if the size of the data can be found
           LOG.info("Size of data in tupleImpl: " + t.size() + " type: "
-              + (t.size() > 0 ? t.getValue(0).getClass() : " empty list") + " byteArrSize: " + byteArraySize);
+              + (t.size() > 0 ? t.getValue(0).getClass() : " empty list")
+              + " byteArrSize: " + byteArraySize);
 
           // Delegate to the use defined bolt
           bolt.execute(t);
@@ -289,7 +290,8 @@ public class BoltInstance implements IInstance {
           topologyContext.invokeHookBoltExecute(t, Duration.ofNanos(executeLatency));
 
           // Update metrics
-          boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency, byteArraySize);
+          boltMetrics.executeTuple(stream.getId(),
+              stream.getComponentName(), executeLatency, byteArraySize);
         }
 
         // To avoid spending too much time

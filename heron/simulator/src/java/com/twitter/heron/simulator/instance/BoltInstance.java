@@ -60,7 +60,7 @@ public class BoltInstance
     int size = 0;
     List<Object> values = new ArrayList<>();
     for (ByteString b : dataTuple.getValuesList()) {
-      byte [] arr = b.toByteArray();
+      byte[] arr = b.toByteArray();
       size = arr.length;
       values.add(serializer.deserialize(arr));
     }
