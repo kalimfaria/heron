@@ -327,7 +327,7 @@ public class BoltInstance implements IInstance {
     long startTime = System.nanoTime();
     bolt.execute(t);
     long latency = System.nanoTime() - startTime;
-    boltMetrics.executeTuple(t.getSourceStreamId(), t.getSourceComponent(), latency);
+    boltMetrics.executeTuple(t.getSourceStreamId(), t.getSourceComponent(), latency, t.size());
 
     collector.sendOutTuples();
   }
