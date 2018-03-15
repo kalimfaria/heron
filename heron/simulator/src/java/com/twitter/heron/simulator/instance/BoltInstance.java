@@ -83,7 +83,8 @@ public class BoltInstance
         deserializedTime - startTime);
 
     // Update metrics
-    boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency.toNanos(), size);
+    boltMetrics.executeTuple(stream.getId(),
+        stream.getComponentName(), executeLatency.toNanos(), size);
   }
 
   @Override
