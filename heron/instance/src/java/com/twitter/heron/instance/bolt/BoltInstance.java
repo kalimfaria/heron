@@ -232,16 +232,12 @@ public class BoltInstance implements IInstance {
     TopologyContextImpl topologyContext = helper.getTopologyContext();
     Duration instanceExecuteBatchTime = systemConfig.getInstanceExecuteBatchTime();
 
-    LOG.info("Starting in readTuples and Execute");
-
     long startOfCycle = System.nanoTime();
     // Read data from in Queues
     collector.getTotalDataEmittedInBytes();
 
     while (!inQueue.isEmpty()) {
       Message msg = inQueue.poll();
-
-      LOG.info("Starting in readTuples and Execute -- in Loop");
 
       if (msg instanceof CheckpointManager.InitiateStatefulCheckpoint) {
         String checkpointId =
@@ -256,36 +252,33 @@ public class BoltInstance implements IInstance {
           throw new RuntimeException("Bolt cannot get acks/fails from other components");
         }
 
-        LOG.info("Starting in readTuples and Execute -- checking stream ID");
-
         // Get meta data of tuples
         TopologyAPI.StreamId stream = tuples.getData().getStream();
         int nValues = topologyContext.getComponentOutputFields(
             stream.getComponentName(), stream.getId()).size();
         int sourceTaskId = tuples.getSrcTaskId();
 
+        int byteArraySize = 0;
         for (HeronTuples.HeronDataTuple dataTuple : tuples.getData().getTuplesList()) {
           long startExecuteTuple = System.nanoTime();
           // Create the value list and fill the value
           List<Object> values = new ArrayList<>(nValues);
           for (int i = 0; i < nValues; i++) {
-            values.add(serializer.deserialize(dataTuple.getValues(i).toByteArray()));
+            byte [] arr = dataTuple.getValues(i).toByteArray();
+            byteArraySize += arr.length;
+            values.add(serializer.deserialize(arr));
           }
 
-          LOG.info("Starting in readTuples and Execute -- after deserialization");
           // Decode the tuple
           TupleImpl t = new TupleImpl(topologyContext, stream, dataTuple.getKey(),
               dataTuple.getRootsList(), values, startExecuteTuple, false, sourceTaskId);
 
-          LOG.info("Starting in readTuples and Execute -- Getting the tuple");
           // Adding logging to find out if the size of the data can be found
           LOG.info("Size of data in tupleImpl: " + t.size() + " type: "
-              + (t.size() > 0 ? t.getValue(0).getClass() : " empty list"));
+              + (t.size() > 0 ? t.getValue(0).getClass() : " empty list") + " byteArrSize: " + byteArraySize);
 
           // Delegate to the use defined bolt
           bolt.execute(t);
-
-          LOG.info("Starting in readTuples and Execute -- bolt executed tuple");
 
           // record the end of a tuple execution
           long endExecuteTuple = System.nanoTime();
@@ -295,9 +288,8 @@ public class BoltInstance implements IInstance {
           // Invoke user-defined execute task hook
           topologyContext.invokeHookBoltExecute(t, Duration.ofNanos(executeLatency));
 
-          LOG.info("Starting in readTuples and Execute -- updating metrics");
           // Update metrics
-          boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency);
+          boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency, byteArraySize);
         }
 
         // To avoid spending too much time
