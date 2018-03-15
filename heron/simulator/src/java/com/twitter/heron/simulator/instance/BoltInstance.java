@@ -57,9 +57,12 @@ public class BoltInstance
                                int srcTaskId) {
     long startTime = System.nanoTime();
 
+    int size = 0;
     List<Object> values = new ArrayList<>();
     for (ByteString b : dataTuple.getValuesList()) {
-      values.add(serializer.deserialize(b.toByteArray()));
+      byte [] arr = b.toByteArray();
+      size = arr.length;
+      values.add(serializer.deserialize(arr));
     }
 
     // Decode the tuple
@@ -80,7 +83,7 @@ public class BoltInstance
         deserializedTime - startTime);
 
     // Update metrics
-    boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency.toNanos());
+    boltMetrics.executeTuple(stream.getId(), stream.getComponentName(), executeLatency.toNanos(), size);
   }
 
   @Override
