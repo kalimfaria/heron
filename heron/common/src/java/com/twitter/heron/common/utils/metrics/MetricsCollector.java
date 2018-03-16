@@ -169,8 +169,10 @@ public class MetricsCollector implements IMetricsRegister {
       Metrics.MetricPublisherPublishMessage.Builder builder) {
 
     Object metricValue = metrics.get(metricName).getValueAndReset();
+    LOG.info("In metrics collector: " + metricName + " " + metricValue);
     // Decide how to handle the metric based on type
     if (metricValue == null) {
+      LOG.info("In metrics collector: " + metricName + " " + metricValue);
       return;
     }
     if (metricValue instanceof Map) {
