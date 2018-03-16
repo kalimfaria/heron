@@ -174,7 +174,8 @@ public class MetricsCollector implements IMetricsRegister {
         if (entry.getKey() != null && entry.getValue() != null) {
           addDataToMetricPublisher(
               builder, metricName + "/" + entry.getKey().toString(), entry.getValue());
-          LOG.info("Metric name in Map: " + metricName + " " + entry.getKey().toString() + " " + entry.getValue());
+          LOG.info("Metric name in Map: " + metricName + " "
+              + entry.getKey().toString() + " " + entry.getValue());
         }
       }
     } else if (metricValue instanceof Collection) {
