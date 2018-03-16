@@ -118,6 +118,7 @@ public class MetricsCollector implements IMetricsRegister {
                                         String metricName,
                                         Object metricValue) {
     // Metric name is discarded if value is of type MetricsDatum or ExceptionData.
+    LOG.info("In metrics collector: name: " + metricName + " " + metricValue);
     if (metricValue instanceof Metrics.MetricDatum.Builder) {
       builder.addMetrics((Metrics.MetricDatum.Builder) metricValue);
     } else if (metricValue instanceof Metrics.ExceptionData.Builder) {

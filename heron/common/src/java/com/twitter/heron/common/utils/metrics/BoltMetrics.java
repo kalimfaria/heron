@@ -43,7 +43,7 @@ public class BoltMetrics implements ComponentMetrics {
   private final CountMetric failCount;
   private final CountMetric executeCount;
   private final ReducedMetric<MeanReducerState, Number, Double> executeLatency;
-  private final CountMetric executeSize;
+  private final ReducedMetric<MeanReducerState, Number, Double> executeSize;
 
   // Time in nano-seconds spending in execute() at every interval
   private final CountMetric emitCount;
@@ -62,7 +62,7 @@ public class BoltMetrics implements ComponentMetrics {
     executeLatency = new ReducedMetric<>(new MeanReducer());
     emitCount = new CountMetric();
     outQueueFullCount = new CountMetric();
-    executeSize = new CountMetric();
+    executeSize = new ReducedMetric<>(new MeanReducer());
   }
 
   public void registerMetrics(TopologyContextImpl topologyContext) {
@@ -106,7 +106,7 @@ public class BoltMetrics implements ComponentMetrics {
     LOG.info("Are we in BoltMetrics? " + streamId);
     executeCount.incr();
     executeLatency.update(latency);
-    executeSize.incrBy(size);
+    executeSize.update(size);
   }
 
   public void emittedTuple(String streamId) {

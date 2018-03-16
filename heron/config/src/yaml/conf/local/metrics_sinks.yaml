@@ -46,7 +46,7 @@ tmaster-sink:
     "__execute-count": SUM
     "__fail-count": SUM
     "__ack-count": SUM
-    "__execute-size": SUM
+    "__execute-size": AVG
     "__complete-latency": AVG
     "__execute-latency": AVG
     "__process-latency": AVG
@@ -76,9 +76,9 @@ metricscache-sink:
   metricscache-metrics-type:
     "__emit-count": SUM
     "__execute-count": SUM
-    "__execute-size": SUM
     "__fail-count": SUM
     "__ack-count": SUM
+    "__execute-size": AVG
     "__complete-latency": AVG
     "__execute-latency": AVG
     "__process-latency": AVG

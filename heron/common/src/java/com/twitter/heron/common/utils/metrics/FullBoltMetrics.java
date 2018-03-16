@@ -46,7 +46,7 @@ public class FullBoltMetrics extends BoltMetrics {
   private final MultiReducedMetric<MeanReducerState, Number, Double> failLatency;
   private final MultiCountMetric failCount;
   private final MultiCountMetric executeCount;
-  private final CountMetric executeSize;
+  private final MultiReducedMetric<MeanReducerState, Number, Double> executeSize;
   private final MultiReducedMetric<MeanReducerState, Number, Double> executeLatency;
 
   // Time in nano-seconds spending in execute() at every interval
@@ -70,7 +70,7 @@ public class FullBoltMetrics extends BoltMetrics {
     executeTimeNs = new MultiCountMetric();
     emitCount = new MultiCountMetric();
     outQueueFullCount = new CountMetric();
-    executeSize = new CountMetric();
+    executeSize = new MultiReducedMetric<>(new MeanReducer());
 
     deserializationTimeNs = new MultiCountMetric();
     serializationTimeNs = new MultiCountMetric();
@@ -158,7 +158,7 @@ public class FullBoltMetrics extends BoltMetrics {
     executeCount.scope(streamId).incr();
     executeLatency.scope(streamId).update(latency);
     executeTimeNs.scope(streamId).incrBy(latency);
-    executeSize.incrBy(size);
+    executeSize.scope(streamId).update(size);
 
 
     // Consider there are cases that different streams with the same streamId,
