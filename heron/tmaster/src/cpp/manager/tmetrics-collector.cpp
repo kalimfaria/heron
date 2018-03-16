@@ -389,7 +389,7 @@ void TMetricsCollector::InstanceMetrics::GetMetrics(const MetricRequest& request
   for (sp_int32 i = 0; i < request.metric_size(); ++i) {
     const sp_string& id = request.metric(i);
     if (metrics_.find(id) != metrics_.end()) {
-      LOG(INFO) << "Metrics ID: " << id << " instance metrics "  + instance_id_ + " instance id" ;
+      LOG(INFO) << "Metrics ID: " << id << " instance metrics "  + instance_id_ + " instance id";
       metrics_[id]->GetMetrics(request.minutely(), start_time, end_time, m->add_metric());
     }
   }
