@@ -163,7 +163,7 @@ public class MetricsCollector implements IMetricsRegister {
   private void gatherOneMetric(
       String metricName,
       Metrics.MetricPublisherPublishMessage.Builder builder) {
-    LOG.info("Metric name: " + metricName);
+
     Object metricValue = metrics.get(metricName).getValueAndReset();
     // Decide how to handle the metric based on type
     if (metricValue == null) {
@@ -174,15 +174,18 @@ public class MetricsCollector implements IMetricsRegister {
         if (entry.getKey() != null && entry.getValue() != null) {
           addDataToMetricPublisher(
               builder, metricName + "/" + entry.getKey().toString(), entry.getValue());
+          LOG.info("Metric name in Map: " + metricName + " " + entry.getKey().toString() + " " + entry.getValue());
         }
       }
     } else if (metricValue instanceof Collection) {
       int index = 0;
       for (Object value : (Collection) metricValue) {
         addDataToMetricPublisher(builder, metricName + "/" + (index++), value);
+        LOG.info("Metric name in Map2: " + metricName + " " + index + " " + value);
       }
     } else {
       addDataToMetricPublisher(builder, metricName, metricValue);
+      LOG.info("Metric name in Map3: " + metricName + " " + metricValue);
     }
   }
 }
