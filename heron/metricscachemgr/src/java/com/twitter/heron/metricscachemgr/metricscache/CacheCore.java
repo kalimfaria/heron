@@ -274,6 +274,11 @@ public class CacheCore {
         metricNameFilter = idxMetricName.keySet();
       }
 
+
+      for (String keys: idxMetricName.keySet()) {
+        LOG.info("Keys in idxMetricName: " + keys);
+      }
+
       // candidate component names
       Map<String, Set<String>> componentInstanceMap = request.getComponentNameInstanceId();
       Set<String> componentNameFilter;
@@ -284,6 +289,7 @@ public class CacheCore {
       }
 
       for (String metricName : metricNameFilter) {
+        LOG.info("Metric name: " + metricName + "In Cache Core");
         if (!metricExists(metricName)) {
           continue;
         }
