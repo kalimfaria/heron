@@ -97,6 +97,11 @@ var AllMetrics = React.createClass({
         scaleDevisor: 1,
         aggregationType: SUM
       },
+      "__execute-size/": {
+              name: "Execute Size",
+              scaleDevisor: 1,
+              aggregationType: SUM
+            },
       "__complete-latency/": {
         name: "Complete Latency (ms)",
         scaleDevisor: 1000000,
@@ -163,6 +168,11 @@ var AllMetrics = React.createClass({
     this.boltMetricsInput = {
       "__execute-count/": {
         name: "Execute Count",
+        scaleDevisor: 1,
+        aggregationType: SUM
+      },
+      "__execute-size/": {
+        name: "Execute Size",
         scaleDevisor: 1,
         aggregationType: SUM
       },

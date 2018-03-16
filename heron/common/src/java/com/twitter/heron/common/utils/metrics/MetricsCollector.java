@@ -59,8 +59,7 @@ public class MetricsCollector implements IMetricsRegister {
     if (metrics.containsKey(name)) {
       throw new RuntimeException("Another metric has already been registered with name: " + name);
     }
-
-    LOG.info("Register metric: " + name);
+    
     metrics.put(name, metric);
     if (timeBucketToMetricNames.containsKey(timeBucketSizeInSecs)) {
       timeBucketToMetricNames.get(timeBucketSizeInSecs).add(name);
