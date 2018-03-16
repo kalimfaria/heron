@@ -59,11 +59,14 @@ public class MetricsCollector implements IMetricsRegister {
     if (metrics.containsKey(name)) {
       throw new RuntimeException("Another metric has already been registered with name: " + name);
     }
-    
+
+    LOG.info("register metric: " + name + " metric: " + metric.toString());
     metrics.put(name, metric);
     if (timeBucketToMetricNames.containsKey(timeBucketSizeInSecs)) {
+      LOG.info("Is the name added? register metric: " + name + " metric: " + metric.toString());
       timeBucketToMetricNames.get(timeBucketSizeInSecs).add(name);
     } else {
+      LOG.info("Is the name added? register metric: " + name + " metric: " + metric.toString());
       timeBucketToMetricNames.put(timeBucketSizeInSecs, new LinkedList<String>());
       timeBucketToMetricNames.get(timeBucketSizeInSecs).add(name);
 
@@ -138,6 +141,7 @@ public class MetricsCollector implements IMetricsRegister {
       Metrics.MetricPublisherPublishMessage.Builder builder =
           Metrics.MetricPublisherPublishMessage.newBuilder();
       for (String metricName : timeBucketToMetricNames.get(timeBucketSizeInSecs)) {
+        LOG.info("Metric names: " + metricName);
         gatherOneMetric(metricName, builder);
       }
 
@@ -173,19 +177,15 @@ public class MetricsCollector implements IMetricsRegister {
         if (entry.getKey() != null && entry.getValue() != null) {
           addDataToMetricPublisher(
               builder, metricName + "/" + entry.getKey().toString(), entry.getValue());
-          LOG.info("Metric name in Map: " + metricName + " "
-              + entry.getKey().toString() + " " + entry.getValue());
         }
       }
     } else if (metricValue instanceof Collection) {
       int index = 0;
       for (Object value : (Collection) metricValue) {
         addDataToMetricPublisher(builder, metricName + "/" + (index++), value);
-        LOG.info("Metric name in Map2: " + metricName + " " + index + " " + value);
       }
     } else {
       addDataToMetricPublisher(builder, metricName, metricValue);
-      LOG.info("Metric name in Map3: " + metricName + " " + metricValue);
     }
   }
 }

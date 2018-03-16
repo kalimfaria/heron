@@ -76,6 +76,7 @@ metricscache-sink:
   metricscache-metrics-type:
     "__emit-count": SUM
     "__execute-count": SUM
+    "__execute-size": SUM
     "__fail-count": SUM
     "__ack-count": SUM
     "__complete-latency": AVG

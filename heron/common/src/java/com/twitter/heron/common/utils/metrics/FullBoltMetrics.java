@@ -42,6 +42,7 @@ public class FullBoltMetrics extends BoltMetrics {
   private final MultiReducedMetric<MeanReducerState, Number, Double> failLatency;
   private final MultiCountMetric failCount;
   private final MultiCountMetric executeCount;
+  private final CountMetric executeSize;
   private final MultiReducedMetric<MeanReducerState, Number, Double> executeLatency;
 
   // Time in nano-seconds spending in execute() at every interval
@@ -65,6 +66,7 @@ public class FullBoltMetrics extends BoltMetrics {
     executeTimeNs = new MultiCountMetric();
     emitCount = new MultiCountMetric();
     outQueueFullCount = new CountMetric();
+    executeSize = new CountMetric();
 
     deserializationTimeNs = new MultiCountMetric();
     serializationTimeNs = new MultiCountMetric();
@@ -84,6 +86,7 @@ public class FullBoltMetrics extends BoltMetrics {
     topologyContext.registerMetric("__execute-latency", executeLatency, interval);
     topologyContext.registerMetric("__execute-time-ns", executeTimeNs, interval);
     topologyContext.registerMetric("__emit-count", emitCount, interval);
+    topologyContext.registerMetric("__execute-size", executeSize, interval);
     topologyContext.registerMetric("__out-queue-full-count", outQueueFullCount, interval);
     topologyContext.registerMetric(
         "__tuple-deserialization-time-ns", deserializationTimeNs, interval);
@@ -146,10 +149,13 @@ public class FullBoltMetrics extends BoltMetrics {
     failLatency.scope(globalStreamId).update(latency);
   }
 
-  public void executeTuple(String streamId, String sourceComponent, long latency) {
+  public void executeTuple(String streamId, String sourceComponent, long latency, long size) {
+    System.out.println("Execute tuple -- " + streamId);
     executeCount.scope(streamId).incr();
     executeLatency.scope(streamId).update(latency);
     executeTimeNs.scope(streamId).incrBy(latency);
+    executeSize.incrBy(size);
+
 
     // Consider there are cases that different streams with the same streamId,
     // but with different source component. We need to distinguish them too.
