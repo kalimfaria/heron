@@ -172,7 +172,7 @@ public class MetricsCollector implements IMetricsRegister {
     LOG.info("In metrics collector: " + metricName + " " + metricValue);
     // Decide how to handle the metric based on type
     if (metricValue == null) {
-      LOG.info("In metrics collector: " + metricName + " " + metricValue);
+      LOG.info("The value was null. In metrics collector: " + metricName + " " + metricValue);
       return;
     }
     if (metricValue instanceof Map) {

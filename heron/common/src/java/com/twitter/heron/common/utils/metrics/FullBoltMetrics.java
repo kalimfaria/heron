@@ -116,11 +116,13 @@ public class FullBoltMetrics extends BoltMetrics {
       failCount.scope(streamId);
       executeCount.scope(streamId);
       executeTimeNs.scope(streamId);
+      executeSize.scope(streamId);
 
       ackCount.scope(globalStreamId);
       failCount.scope(globalStreamId);
       executeCount.scope(globalStreamId);
       executeTimeNs.scope(globalStreamId);
+      executeSize.scope(globalStreamId);
     }
     List<TopologyAPI.OutputStream> outputs = helper.getMyBolt().getOutputsList();
     for (TopologyAPI.OutputStream outputStream : outputs) {
@@ -153,7 +155,7 @@ public class FullBoltMetrics extends BoltMetrics {
     failLatency.scope(globalStreamId).update(latency);
   }
 
-  public void executeTuple(String streamId, String sourceComponent, long latency, long size) {
+  public void executeTuple(String streamId, String sourceComponent, long latency, int size) {
     LOG.info("Execute tuple -- " + streamId);
     executeCount.scope(streamId).incr();
     executeLatency.scope(streamId).update(latency);
@@ -168,6 +170,7 @@ public class FullBoltMetrics extends BoltMetrics {
     executeCount.scope(globalStreamId).incr();
     executeLatency.scope(globalStreamId).update(latency);
     executeTimeNs.scope(globalStreamId).incrBy(latency);
+    executeSize.scope(globalStreamId).update(size);
   }
 
   public void emittedTuple(String streamId) {
