@@ -156,7 +156,6 @@ public class FullBoltMetrics extends BoltMetrics {
   }
 
   public void executeTuple(String streamId, String sourceComponent, long latency, int size) {
-    LOG.info("Execute tuple -- " + streamId);
     executeCount.scope(streamId).incr();
     executeLatency.scope(streamId).update(latency);
     executeTimeNs.scope(streamId).incrBy(latency);

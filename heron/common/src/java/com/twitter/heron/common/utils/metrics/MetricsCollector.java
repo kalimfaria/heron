@@ -60,13 +60,11 @@ public class MetricsCollector implements IMetricsRegister {
       throw new RuntimeException("Another metric has already been registered with name: " + name);
     }
 
-    LOG.info("register metric: " + name + " metric: " + metric.toString());
+
     metrics.put(name, metric);
     if (timeBucketToMetricNames.containsKey(timeBucketSizeInSecs)) {
-      LOG.info("Is the name added? register metric: " + name + " metric: " + metric.toString());
       timeBucketToMetricNames.get(timeBucketSizeInSecs).add(name);
     } else {
-      LOG.info("Is the name added? register metric: " + name + " metric: " + metric.toString());
       timeBucketToMetricNames.put(timeBucketSizeInSecs, new LinkedList<String>());
       timeBucketToMetricNames.get(timeBucketSizeInSecs).add(name);
 
@@ -118,7 +116,6 @@ public class MetricsCollector implements IMetricsRegister {
                                         String metricName,
                                         Object metricValue) {
     // Metric name is discarded if value is of type MetricsDatum or ExceptionData.
-    LOG.info("In metrics collector: name: " + metricName + " " + metricValue);
     if (metricValue instanceof Metrics.MetricDatum.Builder) {
       builder.addMetrics((Metrics.MetricDatum.Builder) metricValue);
     } else if (metricValue instanceof Metrics.ExceptionData.Builder) {
@@ -142,7 +139,6 @@ public class MetricsCollector implements IMetricsRegister {
       Metrics.MetricPublisherPublishMessage.Builder builder =
           Metrics.MetricPublisherPublishMessage.newBuilder();
       for (String metricName : timeBucketToMetricNames.get(timeBucketSizeInSecs)) {
-        LOG.info("Metric names: " + metricName);
         gatherOneMetric(metricName, builder);
       }
 
@@ -169,10 +165,8 @@ public class MetricsCollector implements IMetricsRegister {
       Metrics.MetricPublisherPublishMessage.Builder builder) {
 
     Object metricValue = metrics.get(metricName).getValueAndReset();
-    LOG.info("In metrics collector: " + metricName + " " + metricValue);
     // Decide how to handle the metric based on type
     if (metricValue == null) {
-      LOG.info("The value was null. In metrics collector: " + metricName + " " + metricValue);
       return;
     }
     if (metricValue instanceof Map) {

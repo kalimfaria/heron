@@ -103,7 +103,6 @@ public class BoltMetrics implements ComponentMetrics {
   }
 
   public void executeTuple(String streamId, String sourceComponent, long latency, int size) {
-    LOG.info("Are we in BoltMetrics? " + streamId);
     executeCount.incr();
     executeLatency.update(latency);
     executeSize.update(size);
