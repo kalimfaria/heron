@@ -78,8 +78,10 @@ void TMetricsCollector::Purge(EventLoop::Status) {
 
 void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
                                                const proto::tmaster::MetricDatum& metrics_data) {
+  LOG(INFO) << "FK: Component Name: " << component_name;
   ComponentMetrics* component_metrics = GetOrCreateComponentMetrics(component_name);
   const sp_string& name = metrics_data.name();
+  LOG(INFO) << "FK: Metric Name: " << name;
   const TMasterMetrics::MetricAggregationType& type = tmetrics_info_->GetAggregationType(name);
   component_metrics->AddMetricForInstance(metrics_data.instance_id(), name, type,
                                           metrics_data.value());
@@ -269,6 +271,8 @@ void TMetricsCollector::ComponentMetrics::Purge() {
 void TMetricsCollector::ComponentMetrics::AddMetricForInstance(
     const sp_string& instance_id, const sp_string& name, TMasterMetrics::MetricAggregationType type,
     const sp_string& value) {
+    LOG(INFO) << "FK: Add Metric for Instance: " << name +
+    " instance_id: " + instance_id + " value: " + value;
   InstanceMetrics* instance_metrics = GetOrCreateInstanceMetrics(instance_id);
   instance_metrics->AddMetricWithName(name, type, value);
 }
