@@ -140,10 +140,10 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
       if (found != std::string::npos) {
         if (response->metric(i).metric_size() > 0) {
           if (executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
-            executedTuples[_topology->bolts(i).comp().name()] = response->metric(i).metric(0).value();
+            executedTuples[_topology->bolts(i).comp().name()] = strtod(response->metric(i).metric(0).value().c_str(), NULL);
         } else {
         executedTuples[_topology->bolts(i).comp().name()] = executedTuples[_topology->bolts(i).comp().name()] +
-                                                          response->metric(i).metric(0).value();
+                                                          strtod(response->metric(i).metric(0).value().c_str(), NULL);
         }
       } else {
         LOG(INFO) << "No metrics for instance Id " << response->metric(i).instance_id();
