@@ -188,8 +188,8 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
 
   for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
     LOG(INFO) << "pToC " << iter->first;
-    std::list<std::string> s = iter->second;
-    for(std::list<string>::iterator s = Listings.begin(); s != Listings.end(); s++) {
+    std::list<std::string> children = iter->second;
+    for(std::list<string>::iterator s = children.begin(); s != children.end(); s++) {
        LOG(INFO) << "pToC values " << *s;
     }
     }
