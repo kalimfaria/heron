@@ -432,8 +432,8 @@ void TMetricsCollector::InstanceMetrics::GetMetricsWithoutRequest(MetricResponse
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
     LOG(INFO) << "FK: Instance Metrics " << iter->first;
-    std::size_t found= (iter->first).find("execute-size");
-    if (found!=std::string::npos) {
+    std::size_t found = (iter->first).find("execute-size");
+    if (found != std::string::npos) {
       iter->second->GetMetricsWithoutRequest(true,  m->add_metric());
     }
   }
