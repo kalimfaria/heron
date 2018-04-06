@@ -136,19 +136,19 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < response->metric_size(); j++) {
-      std::size_t found = response->metric(i).instance_id().find(_topology->bolts(i).comp().name());
-      LOG(INFO) << "Looking for data for instance: " << response->metric(i).instance_id();
+      std::size_t found = response->metric(j).instance_id().find(_topology->bolts(i).comp().name());
+      LOG(INFO) << "Looking for data for instance: " << response->metric(j).instance_id();
       if (found != std::string::npos) {
         if (response->metric(i).metric_size() > 0) {
           if (executedTuples.find(_topology->bolts(i).comp().name()) == executedTuples.end()) {
             LOG(INFO) << "Map already contains values";
             executedTuples[_topology->bolts(i).comp().name()] =
-            strtod(response->metric(i).metric(0).value().c_str(), NULL);
+            strtod(response->metric(j).metric(0).value().c_str(), NULL);
           } else {
             LOG(INFO) << "Map does not contain values already";
             executedTuples[_topology->bolts(i).comp().name()] =
             executedTuples[_topology->bolts(i).comp().name()] +
-            strtod(response->metric(i).metric(0).value().c_str(), NULL);
+            strtod(response->metric(j).metric(0).value().c_str(), NULL);
           }
         } else {
           LOG(INFO) << "No execute metrics for instance Id " << response->metric(i).instance_id();
