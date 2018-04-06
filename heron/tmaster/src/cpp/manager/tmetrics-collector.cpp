@@ -141,7 +141,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
       " " <<  _topology->bolts(i).comp().name() << " " << found;
       if (found != std::string::npos) {
         if (response->metric(i).metric_size() > 0) {
-          if (executedTuples.find(_topology->bolts(i).comp().name()) == executedTuples.end()) {
+          if (executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
             LOG(INFO) << "Map already contains values";
             executedTuples[_topology->bolts(i).comp().name()] =
             strtod(response->metric(j).metric(0).value().c_str(), NULL);
