@@ -165,7 +165,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
        s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
        parentToChild[_topology->spouts(i).comp().name()] = s;
      } else {
-       std::list<std::string> s =  parentToChild.get(_topology->spouts(i).comp().name());
+       std::list<std::string> s =  parentToChild[_topology->spouts(i).comp().name()];
        s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
        parentToChild[_topology->spouts(i).comp().name()] = s;
      }
@@ -179,7 +179,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
         s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
         parentToChild[_topology->bolts(i).comp().name()] = s;
       } else {
-        std::list<std::string> s =  parentToChild.get(_topology->bolts(i).comp().name());
+        std::list<std::string> s =  parentToChild[_topology->bolts(i).comp().name()];
         s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
         parentToChild[_topology->bolts(i).comp().name()] = s;
       }
