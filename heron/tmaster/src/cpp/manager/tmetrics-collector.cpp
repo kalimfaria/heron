@@ -132,7 +132,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
     }
   }
 
-  std::map<sp_string, int> executedTuples; // = new map<sp_string, int>;
+  std::map<sp_string, int> executedTuples;  // = new map<sp_string, int>;
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < response->metric_size(); j++) {
@@ -140,10 +140,12 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
       if (found != std::string::npos) {
         if (response->metric(i).metric_size() > 0) {
           if (executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
-            executedTuples[_topology->bolts(i).comp().name()] = strtod(response->metric(i).metric(0).value().c_str(), NULL);
+            executedTuples[_topology->bolts(i).comp().name()] =
+            strtod(response->metric(i).metric(0).value().c_str(), NULL);
         } else {
-        executedTuples[_topology->bolts(i).comp().name()] = executedTuples[_topology->bolts(i).comp().name()] +
-                                                          strtod(response->metric(i).metric(0).value().c_str(), NULL);
+            executedTuples[_topology->bolts(i).comp().name()] =
+            executedTuples[_topology->bolts(i).comp().name()] +
+            strtod(response->metric(i).metric(0).value().c_str(), NULL);
         }
       } else {
         LOG(INFO) << "No metrics for instance Id " << response->metric(i).instance_id();
@@ -152,12 +154,11 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 }
 
-  for (auto iter = executedTuples.begin(); iter != executedTuples.end(); ++iter) {
-    LOG(INFO) << "ExecutedTuples " << iter->first << " " << iter->second;
-  }
+ for (auto iter = executedTuples.begin(); iter != executedTuples.end(); ++iter) {
+   LOG(INFO) << "ExecutedTuples " << iter->first << " " << iter->second;
+ }
 
-
- std::map<sp_string, std::list<std::string>> parentToChild; // = new map<sp_string, list<sp_string>>;
+ std::map<sp_string, std::list<std::string>> parentToChild;  // = new map<sp_string, list<sp_string>>;
  for (int i = 0; i < _topology->spouts_size(); i++) {
    for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
      if (parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
