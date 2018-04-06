@@ -85,6 +85,9 @@ void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
   const TMasterMetrics::MetricAggregationType& type = tmetrics_info_->GetAggregationType(name);
   component_metrics->AddMetricForInstance(metrics_data.instance_id(), name, type,
                                           metrics_data.value());
+
+  //TODO: Move to appropriate place
+   GetMetricsWithoutRequest();
 }
 
 void TMetricsCollector::AddExceptionsForComponent(const sp_string& component_name,
@@ -110,10 +113,10 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   LOG (INFO) << "FK: In metrics collector level";
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-        iter->second.component_name()->GetMetricsWithoutRequest(response);
+        iter->second->GetMetricsWithoutRequest(response);
    }
 
-   LOG(INFO) << "FK: Printing protobuf object" << response.DebugString() ;
+   LOG(INFO) << "FK: Printing protobuf object" << response->DebugString() ;
   return response;
 }
 
@@ -288,9 +291,6 @@ void TMetricsCollector::ComponentMetrics::AddMetricForInstance(
     " instance_id: " + instance_id + " value: " + value;
   InstanceMetrics* instance_metrics = GetOrCreateInstanceMetrics(instance_id);
   instance_metrics->AddMetricWithName(name, type, value);
-
- //TODO: Move to appropriate place
-  GetMetricsWithoutRequest();
 }
 
 void TMetricsCollector::ComponentMetrics::AddExceptionForInstance(
