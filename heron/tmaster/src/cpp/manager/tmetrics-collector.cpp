@@ -92,6 +92,7 @@ void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
   // TODO(faria): Move to appropriate place
 
   GetMetricsWithoutRequest();
+  LOG(INFO) << "Function returns" ;
 }
 
 void TMetricsCollector::AddExceptionsForComponent(const sp_string& component_name,
@@ -118,10 +119,12 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   // LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
+    LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
     metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
   }
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
+    LOG(INFO) << "Bolt name:" << " " << _topology->bolts(i).comp().name();
     metrics_[_topology->bolts(i).comp().name()]->GetMetricsWithoutRequest(response);
   }
 
