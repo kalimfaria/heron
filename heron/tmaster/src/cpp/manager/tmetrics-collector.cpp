@@ -135,18 +135,18 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   std::map<std::string, int> executedTuples = new map<string, int>;
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
-    for (int j = 0; j < response.metric_size(); j++) {
-      std::size_t found = response.metric(i).instance_id().find(_topology->bolts(i).comp().name());
+    for (int j = 0; j < response->metric_size(); j++) {
+      std::size_t found = response->metric(i).instance_id().find(_topology->bolts(i).comp().name());
       if (found != std::string::npos) {
         if (response.metric(i).instance_id().metric_size() > 0) {
           if (!executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
-            executedTuples[_topology->bolts(i).comp().name()] = response.metric(i).instance_id().metric(0).value();
+            executedTuples[_topology->bolts(i).comp().name()] = response->metric(i).instance_id().metric(0).value();
         } else {
         executedTuples[_topology->bolts(i).comp().name()] = executedTuples[_topology->bolts(i).comp().name()] +
-                                                          response.metric(i).instance_id().metric(0).value();
+                                                          response->metric(i).instance_id().metric(0).value();
         }
       } else {
-        LOG(INFO) << "No metrics for instance Id " << response.metric(i).instance_id();
+        LOG(INFO) << "No metrics for instance Id " << response->metric(i).instance_id();
       }
     }
   }
