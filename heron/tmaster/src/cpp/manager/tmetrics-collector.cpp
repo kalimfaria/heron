@@ -133,56 +133,56 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
   std::map<sp_string, int> executedTuples;
+
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < response->metric_size(); j++) {
       std::size_t found = response->metric(i).instance_id().find(_topology->bolts(i).comp().name());
+      LOG(INFO) << "Looking for data for instance: " << response->metric(i).instance_id();
       if (found != std::string::npos) {
         if (response->metric(i).metric_size() > 0) {
-          if (executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
+          if (executedTuples.find(_topology->bolts(i).comp().name()) == executedTuples.end()) {
+            LOG(INFO) << "Map already contains values";
             executedTuples[_topology->bolts(i).comp().name()] =
             strtod(response->metric(i).metric(0).value().c_str(), NULL);
-        } else {
+          } else {
+            LOG(INFO) << "Map does not contain values already";
             executedTuples[_topology->bolts(i).comp().name()] =
             executedTuples[_topology->bolts(i).comp().name()] +
             strtod(response->metric(i).metric(0).value().c_str(), NULL);
+          }
+        } else {
+          LOG(INFO) << "No execute metrics for instance Id " << response->metric(i).instance_id();
         }
       } else {
-        LOG(INFO) << "No metrics for instance Id " << response->metric(i).instance_id();
+        LOG(INFO) << "Data not found for instance " << response->metric(i).instance_id();
       }
     }
   }
-}
 
   for (auto iter = executedTuples.begin(); iter != executedTuples.end(); ++iter) {
-    LOG(INFO) << "ExecutedTuples " << iter->first << " " << iter->second;
+    LOG(INFO) << "Executed Tuples " << iter->first << " " << iter->second;
   }
 
   std::map<sp_string, std::list<std::string>> parentToChild;
-    for (int i = 0; i < _topology->spouts_size(); i++) {
-      for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
-       if (parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
-         std::list<sp_string> s;
-         s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
-         parentToChild[_topology->spouts(i).comp().name()] = s;
-      } else {
-         std::list<std::string> s =  parentToChild[_topology->spouts(i).comp().name()];
-         s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
-         parentToChild[_topology->spouts(i).comp().name()] = s;
+  for (int i = 0; i < _topology->spouts_size(); i++) {
+    for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
+      std::list<sp_string> s;
+      if (parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
+        s = parentToChild[_topology->spouts(i).comp().name()];
       }
+      s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
+      parentToChild[_topology->spouts(i).comp().name()] = s;
     }
   }
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < _topology->bolts(i).outputs_size(); j++) {
-      if (parentToChild.find(_topology->bolts(i).comp().name()) != parentToChild.end()) {
-        std::list<std::string> s;
-        s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
-        parentToChild[_topology->bolts(i).comp().name()] = s;
-      } else {
-        std::list<std::string> s =  parentToChild[_topology->bolts(i).comp().name()];
-        s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
-        parentToChild[_topology->bolts(i).comp().name()] = s;
-      }
+      std::list<sp_string> s;
+        if (parentToChild.find(_topology->bolts(i).comp().name()) != parentToChild.end()) {
+          s = parentToChild[_topology->bolts(i).comp().name()];
+        }
+      s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
+      parentToChild[_topology->bolts(i).comp().name()] = s;
     }
   }
 
@@ -193,7 +193,6 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
        LOG(INFO) << "pToC values " << *s;
     }
   }
-
 
   LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
