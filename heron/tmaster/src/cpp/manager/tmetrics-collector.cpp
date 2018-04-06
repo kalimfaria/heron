@@ -113,7 +113,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
         iter->second.component_name()->GetMetricsWithoutRequest(response);
    }
 
-   LOG(INFO) << "FK" Printing protobuf object" << response.DebugString() ;
+   LOG(INFO) << "FK: Printing protobuf object" << response.DebugString() ;
   return response;
 }
 
