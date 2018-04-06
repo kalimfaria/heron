@@ -118,6 +118,18 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   const proto::api::Topology* _topology = tmaster_->getInitialTopology();
   // LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
+  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+    LOG (INFO) << "FK:Printing metrics names: " << iter->first;
+  }
+
+  for (int i = 0; i < _topology->spouts_size(); i++) {
+    LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
+  }
+
+  for (int i = 0; i < _topology->bolts_size(); i++) {
+    LOG(INFO) << "Bolt name:" << " " << _topology->bolts(i).comp().name();
+  }
+
   for (int i = 0; i < _topology->spouts_size(); i++) {
     LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
     metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
@@ -135,7 +147,6 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
 MetricResponse* TMetricsCollector::GetMetrics(const MetricRequest& _request,
                                               const proto::api::Topology* _topology) {
   auto response = new MetricResponse();
-
   if (metrics_.find(_request.component_name()) == metrics_.end()) {
     bool component_exists = false;
     for (int i = 0; i < _topology->spouts_size(); i++) {
