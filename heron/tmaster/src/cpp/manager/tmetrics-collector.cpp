@@ -87,6 +87,7 @@ void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
                                           metrics_data.value());
 
   // TODO(faria): Move to appropriate place
+
   GetMetricsWithoutRequest();
 }
 
@@ -110,13 +111,18 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   auto response = new MetricResponse();
-  LOG(INFO) << "FK: In metrics collector level";
+  proto::api::Topology* _topology = tmaster -> getInitialTopology();
+  LOG(INFO) << "FK: In metrics collector level: " << _topology.ShortDebugString();
 
-  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-        iter->second->GetMetricsWithoutRequest(response);
+  for (int i = 0; i < _topology->spouts_size(); i++) {
+    metrics_[_topology->spouts(i)).comp().name()]- GetMetricsWithoutRequest(response);
   }
 
-  LOG(INFO) << "FK: Printing protobuf object" << response->DebugString();
+  for (int i = 0; i < _topology->bolts_size(); i++) {
+    metrics_[_topology->bolts(i)).comp().name()]->GetMetricsWithoutRequest(response);
+  }
+  
+  LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
 }
 
@@ -495,7 +501,7 @@ void TMetricsCollector::Metric::GetMetricsWithoutRequest
     result = all_time_cumulative_;
   }
   _response->set_value(std::to_string(result));
-  LOG(INFO) << "FK: We should hit here string: " << name_ << " " << _response->DebugString();
+  LOG(INFO) << "FK: We should hit here string: " << name_ << " " << _response->ShortDebugString();
 
   /*if (minutely) {
     // we need minutely data
