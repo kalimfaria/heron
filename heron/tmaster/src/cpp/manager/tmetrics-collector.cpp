@@ -118,27 +118,19 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   const proto::api::Topology* _topology = tmaster_->getInitialTopology();
   // LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
-  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-    LOG(INFO) << "FK:Printing metrics names: " << iter->first;
-  }
-
   for (int i = 0; i < _topology->spouts_size(); i++) {
     LOG(INFO) << "FK: Spout name:" << " " << _topology->spouts(i).comp().name();
+    if (metrics_.find(_topology->spouts(i).comp().name()) != metrics_.end()) {
+      metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
+    }
   }
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
-    LOG(INFO) << "FK: Bolt name:" << " " << _topology->bolts(i).comp().name();
+    if (metrics_.find(_topology->bolts(i).comp().name()) != metrics_.end()) {
+      LOG(INFO) << "FK: Bolt name:" << " " << _topology->bolts(i).comp().name();
+      metrics_[_topology->bolts(i).comp().name()]->GetMetricsWithoutRequest(response);
+    }
   }
-
-  /*for (int i = 0; i < _topology->spouts_size(); i++) {
-    LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
-    metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
-  }
-
-  for (int i = 0; i < _topology->bolts_size(); i++) {
-    LOG(INFO) << "Bolt name:" << " " << _topology->bolts(i).comp().name();
-    metrics_[_topology->bolts(i).comp().name()]->GetMetricsWithoutRequest(response);
-  }*/
 
   LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
@@ -333,7 +325,7 @@ TMetricsCollector::InstanceMetrics* TMetricsCollector::ComponentMetrics::GetOrCr
 void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricResponse* _response) {
   // This means that all instances need to be returned
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-      LOG(INFO) << "FK: In component metrics get metrics without request";
+      LOG(INFO) << "FK: In component metrics get metrics without request" << iter->first;
         iter->second->GetMetricsWithoutRequest(_response);
       }
   _response->mutable_status()->set_status(proto::system::OK);
@@ -439,7 +431,8 @@ void TMetricsCollector::InstanceMetrics::GetMetricsWithoutRequest(MetricResponse
   m->set_instance_id(instance_id_);
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-    iter->second-> GetMetricsWithoutRequest(true,  m->add_metric());
+    LOG(INFO) << "FK: Instance Metrics " << iter->first;
+    iter->second->GetMetricsWithoutRequest(true,  m->add_metric());
   }
 }
 
