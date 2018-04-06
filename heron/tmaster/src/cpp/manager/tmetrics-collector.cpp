@@ -165,7 +165,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
   std::map<sp_string, std::list<std::string>> parentToChild;
-  for (int i = 0; i < _topology->spouts_size(); i++) {
+  /*for (int i = 0; i < _topology->spouts_size(); i++) {
     for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
       std::list<sp_string> s;
       if (parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
@@ -174,9 +174,9 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
       s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
       parentToChild[_topology->spouts(i).comp().name()] = s;
     }
-  }
+  }*/
 
-  for (int i = 0; i < _topology->bolts_size(); i++) {
+  /*for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < _topology->bolts(i).outputs_size(); j++) {
       std::list<sp_string> s;
         if (parentToChild.find(_topology->bolts(i).comp().name()) != parentToChild.end()) {
@@ -185,7 +185,19 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
       s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
       parentToChild[_topology->bolts(i).comp().name()] = s;
     }
+  }*/
+
+  for (int i = 0; i < _topology->bolts_size(); i++) {
+    for (int j = 0; j < _topology->bolts(i).inputs_size(); j++) {
+      std::list<sp_string> s;
+        if (parentToChild.find(_topology->bolts(i).inputs(j).stream().component_name()) != parentToChild.end()) {
+          s = parentToChild[_topology->bolts(i).inputs(j).stream().component_name()];
+        }
+      s.push_back(_topology->bolts(i).comp().name());
+      parentToChild[_topology->bolts(i).inputs(j).stream().component_name()] = s;
+    }
   }
+
 
   for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
     LOG(INFO) << "pToC " << iter->first;
