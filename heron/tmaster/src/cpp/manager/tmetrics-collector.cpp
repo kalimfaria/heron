@@ -109,7 +109,6 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 
 
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
-
   auto response = new MetricResponse();
   LOG(INFO) << "FK: In metrics collector level";
 
