@@ -86,8 +86,8 @@ void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
   component_metrics->AddMetricForInstance(metrics_data.instance_id(), name, type,
                                           metrics_data.value());
 
-  //TODO: Move to appropriate place
-   GetMetricsWithoutRequest();
+  // TODO(faria): Move to appropriate place
+  GetMetricsWithoutRequest();
 }
 
 void TMetricsCollector::AddExceptionsForComponent(const sp_string& component_name,
@@ -114,9 +114,9 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
         iter->second->GetMetricsWithoutRequest(response);
-   }
+  }
 
-   LOG(INFO) << "FK: Printing protobuf object" << response->DebugString() ;
+  LOG(INFO) << "FK: Printing protobuf object" << response->DebugString() ;
   return response;
 }
 
@@ -300,7 +300,7 @@ void TMetricsCollector::ComponentMetrics::AddExceptionForInstance(
 }
 
 TMetricsCollector::InstanceMetrics* TMetricsCollector::ComponentMetrics::GetOrCreateInstanceMetrics(
-    const sp_string& instance_id) {
+  const sp_string& instance_id) {
   if (metrics_.find(instance_id) == metrics_.end()) {
     metrics_[instance_id] = new InstanceMetrics(instance_id, nbuckets_, bucket_interval_);
   }
@@ -308,8 +308,8 @@ TMetricsCollector::InstanceMetrics* TMetricsCollector::ComponentMetrics::GetOrCr
 }
 
 void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricResponse* _response) {
-   // This means that all instances need to be returned
-      for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+  // This means that all instances need to be returned
+  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
       LOG (INFO) << "FK: In component metrics get metrics without request" ;
         iter->second->GetMetricsWithoutRequest(_response);
         if (_response->status().status() != proto::system::OK) {
