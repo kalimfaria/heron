@@ -109,6 +109,7 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 
 
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
+
   auto response = new MetricResponse();
   LOG(INFO) << "FK: In metrics collector level";
 
@@ -312,9 +313,6 @@ void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricRespons
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
       LOG(INFO) << "FK: In component metrics get metrics without request";
         iter->second->GetMetricsWithoutRequest(_response);
-        if (_response->status().status() != proto::system::OK) {
-          return;
-        }
       }
   _response->mutable_status()->set_status(proto::system::OK);
 }
@@ -498,6 +496,7 @@ void TMetricsCollector::Metric::GetMetricsWithoutRequest
     result = all_time_cumulative_;
   }
   _response->set_value(std::to_string(result));
+  LOG(INFO) << "FK: We should hit here string: " << name_ << " " << _response->DebugString();
 
   /*if (minutely) {
     // we need minutely data
