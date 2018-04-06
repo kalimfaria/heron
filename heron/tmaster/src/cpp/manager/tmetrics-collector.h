@@ -36,7 +36,7 @@ class TMetricsCollector {
  public:
   // _max_interval is how far along we keep individual metric blobs.
   TMetricsCollector(sp_int32 _max_interval, EventLoop* eventLoop,
-                    const std::string& metrics_sinks_yaml);
+                    const std::string& metrics_sinks_yaml, TMaster* _tmaster);
 
   // Deletes all stored ComponentMetrics.
   virtual ~TMetricsCollector();
@@ -258,6 +258,7 @@ class TMetricsCollector {
   std::string metrics_sinks_yaml_;
   common::TMasterMetrics* tmetrics_info_;
   time_t start_time_;
+  TMaster* tmaster_;
 };
 }  // namespace tmaster
 }  // namespace heron
