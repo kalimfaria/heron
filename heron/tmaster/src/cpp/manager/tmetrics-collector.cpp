@@ -157,15 +157,15 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
 
- std::map<sp_string, std::vector<string>> parentToChild = new map<string, vector<string>>;
+ std::map<sp_string, std::list<string>> parentToChild = new map<string, list<string>>;
  for (int i = 0; i < _topology->spouts_size(); i++) {
    for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
      if (!parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
-       std::vector<string> s;
+       std::list<string> s;
        s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
        parentToChild.put(_topology->spouts(i).comp().name(), s);
      } else {
-       std::vector<string> s =  parentToChild.get(_topology->spouts(i).comp().name());
+       std::list<string> s =  parentToChild.get(_topology->spouts(i).comp().name());
        s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
        parentToChild.put(_topology->spouts(i).comp().name(), s);
      }
@@ -175,11 +175,11 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
  for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < _topology->bolts(i).outputs_size(); j++) {
       if (!parentToChild.find(_topology->bolts(i).comp().name()) != parentToChild.end()) {
-        std::vector<string> s;
+        std::list<string> s;
         s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
         parentToChild.put(_topology->bolts(i).comp().name(), s);
       } else {
-        std::vector<string> s =  parentToChild.get(_topology->bolts(i).comp().name());
+        std::list<string> s =  parentToChild.get(_topology->bolts(i).comp().name());
         s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
         parentToChild.put(_topology->bolts(i).comp().name(), s);
       }
@@ -188,7 +188,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
 
   for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
       LOG(INFO) << "pToC " << iter->first;
-      vector s = iter->second;
+      std::list<string> s = iter->second;
       for(int i = 0; i < s.size(); ++i)
          LOG(INFO) << "pToC values " << s[i];
     }
