@@ -418,10 +418,9 @@ void TMetricsCollector::InstanceMetrics::GetMetricsWithoutRequest(MetricResponse
   MetricResponse::TaskMetric* m = response->add_metric();
   m->set_instance_id(instance_id_);
 
-   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-      iter->second-> GetMetricsWithoutRequest(true,  m->add_metric());
-    }
-
+  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+    iter->second-> GetMetricsWithoutRequest(true,  m->add_metric());
+  }
 }
 
 void TMetricsCollector::InstanceMetrics::GetMetrics(const MetricRequest& request,
@@ -488,12 +487,10 @@ void TMetricsCollector::Metric::AddValueToMetric(const sp_string& _value) {
 void TMetricsCollector::Metric::GetMetricsWithoutRequest(bool minutely, IndividualMetric* _response) {
   _response->set_name(name_);
   sp_double64 result = 0;
-
   // We want cumulative metrics
   if (metric_type_ == common::TMasterMetrics::SUM) {
     result = all_time_cumulative_;
   } else if (metric_type_ == common::TMasterMetrics::AVG) {
-
     result = all_time_cumulative_ / all_time_nitems_;
     LOG(INFO) << "FK: We should hit here " << name_ << " " << result ;
   } else if (metric_type_ == common::TMasterMetrics::LAST) {
@@ -539,7 +536,6 @@ void TMetricsCollector::Metric::GetMetricsWithoutRequest(bool minutely, Individu
         result = all_time_cumulative_;
       }
     }*/
-
   }
 
 
