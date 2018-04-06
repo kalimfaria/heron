@@ -51,7 +51,7 @@ class TMetricsCollector {
   proto::tmaster::MetricResponse* GetMetrics(const proto::tmaster::MetricRequest& _request,
                                              const proto::api::Topology* _topology);
 
-  proto::tmaster::MetricResponse* TMetricsCollector::GetMetricsWithoutRequest();
+  proto::tmaster::MetricResponse* GetMetricsWithoutRequest();
 
   // Returns response for fetching exceptions. Doesn't own response.
   proto::tmaster::ExceptionLogResponse* GetExceptions(
