@@ -115,13 +115,13 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   LOG(INFO) << "FK: In metrics collector level: " << _topology.ShortDebugString();
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
-    metrics_[_topology->spouts(i)).comp().name()]- GetMetricsWithoutRequest(response);
+    metrics_[_topology->spouts(i)).comp().name()]->GetMetricsWithoutRequest(response);
   }
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
     metrics_[_topology->bolts(i)).comp().name()]->GetMetricsWithoutRequest(response);
   }
-  
+
   LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
 }
