@@ -132,7 +132,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
     }
   }
 
-  std::map<std::string, int> executedTuples = new map<string, int>;
+  std::map<sp_string, int> executedTuples = new map<sp_string, int>;
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < response->metric_size(); j++) {
@@ -157,11 +157,11 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
 
- std::map<std::string, std::list<std::string>> parentToChild = new map<string, list<string>>;
+ std::map<sp_string, std::list<std::string>> parentToChild = new map<sp_string, list<sp_string>>;
  for (int i = 0; i < _topology->spouts_size(); i++) {
    for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
      if (parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
-       std::list<std::string> s;
+       std::list<sp_string> s;
        s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
        parentToChild[_topology->spouts(i).comp().name()] = s;
      } else {
@@ -189,7 +189,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
     LOG(INFO) << "pToC " << iter->first;
     std::list<std::string> children = iter->second;
-    for(std::list<string>::iterator s = children.begin(); s != children.end(); s++) {
+    for(std::list<sp_string>::iterator s = children.begin(); s != children.end(); s++) {
        LOG(INFO) << "pToC values " << *s;
     }
     }
