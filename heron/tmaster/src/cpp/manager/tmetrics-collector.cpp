@@ -23,6 +23,7 @@
 #include "basics/basics.h"
 #include "errors/errors.h"
 #include "threads/threads.h"
+#include "manager/tmaster.h"
 #include "network/network.h"
 #include "zookeeper/zkclient.h"
 #include "proto/metrics.pb.h"

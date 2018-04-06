@@ -21,6 +21,7 @@
 #include <list>
 #include <string>
 #include "basics/callback.h"
+#include "manager/tmaster.h"
 #include "basics/sptypes.h"
 #include "network/event_loop.h"
 #include "proto/tmaster.pb.h"
