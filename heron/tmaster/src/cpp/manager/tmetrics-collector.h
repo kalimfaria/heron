@@ -45,10 +45,13 @@ class TMetricsCollector {
   // to add metrics/exception stored in '_metrics' to the respective components.
   void AddMetric(const proto::tmaster::PublishMetrics& _metrics);
 
+
   // Returns a new response to fetch metrics. The request gets propagated to Component's and
   // Instance's get metrics. Doesn't own Response.
   proto::tmaster::MetricResponse* GetMetrics(const proto::tmaster::MetricRequest& _request,
                                              const proto::api::Topology* _topology);
+
+  proto::tmaster::MetricResponse* TMetricsCollector::GetMetricsWithoutRequest();
 
   // Returns response for fetching exceptions. Doesn't own response.
   proto::tmaster::ExceptionLogResponse* GetExceptions(
@@ -129,6 +132,9 @@ class TMetricsCollector {
     // Add a new value to the end of 'data_' extending the time series.
     void AddValueToMetric(const sp_string& value);
 
+    void GetMetricsWithoutRequest(bool minutely,
+      proto::tmaster::MetricResponse::IndividualMetric* response);
+
     // Return  past '_nbuckets' value for this metric.
     void GetMetrics(bool minutely, sp_int64 start_time, sp_int64 end_time,
                     proto::tmaster::MetricResponse::IndividualMetric* response);
@@ -168,6 +174,8 @@ class TMetricsCollector {
 
     // Add TmasterExceptionLog to the list of exceptions for this instance_id.
     void AddExceptions(const proto::tmaster::TmasterExceptionLog& exception);
+
+    void GetMetricsWithoutRequest(proto::tmaster::MetricResponse* response);
 
     // Returns the metric metrics. Doesn't own _response.
     void GetMetrics(const proto::tmaster::MetricRequest& request, sp_int64 start_time,
@@ -215,6 +223,8 @@ class TMetricsCollector {
     // Doesn't own '_response' object.
     void GetMetrics(const proto::tmaster::MetricRequest& request, sp_int64 start_time,
                     sp_int64 end_time, proto::tmaster::MetricResponse* response);
+
+    void GetMetricsWithoutRequest(proto::tmaster::MetricResponse* response);
 
     // Returns response for fetching exceptions. Doesn't own response.
     void GetExceptionsForInstance(const sp_string& instance_id,
