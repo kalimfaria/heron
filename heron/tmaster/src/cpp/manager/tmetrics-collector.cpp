@@ -54,7 +54,7 @@ TMetricsCollector::TMetricsCollector(sp_int32 _max_interval, EventLoop* eventLoo
       metrics_sinks_yaml_(metrics_sinks_yaml),
       tmetrics_info_(new common::TMasterMetrics(metrics_sinks_yaml, eventLoop)),
       start_time_(time(NULL)) {
-  this.tmaster_ = _tmaster;
+  tmaster_ = _tmaster;
   interval_ = config::HeronInternalsConfigReader::Instance()
                   ->GetHeronTmasterMetricsCollectorPurgeIntervalSec();
   CHECK_EQ(max_interval_ % interval_, 0);
@@ -114,7 +114,7 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   auto response = new MetricResponse();
-  proto::api::Topology* _topology = tmaster_->getInitialTopology();
+  const proto::api::Topology* _topology = tmaster_->getInitialTopology();
   LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
