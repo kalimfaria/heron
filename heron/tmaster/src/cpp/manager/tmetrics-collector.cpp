@@ -92,7 +92,7 @@ void TMetricsCollector::AddMetricsForComponent(const sp_string& component_name,
   // TODO(faria): Move to appropriate place
 
   GetMetricsWithoutRequest();
-  LOG(INFO) << "Function returns" ;
+  LOG(INFO) << "Function returns";
 }
 
 void TMetricsCollector::AddExceptionsForComponent(const sp_string& component_name,
