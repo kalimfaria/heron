@@ -138,8 +138,8 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
     for (int j = 0; j < response->metric_size(); j++) {
       std::size_t found = response->metric(i).instance_id().find(_topology->bolts(i).comp().name());
       if (found != std::string::npos) {
-        if (response.metric(i).instance_id().metric_size() > 0) {
-          if (!executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
+        if (response->metric(i).instance_id().metric_size() > 0) {
+          if (executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
             executedTuples[_topology->bolts(i).comp().name()] = response->metric(i).instance_id().metric(0).value();
         } else {
         executedTuples[_topology->bolts(i).comp().name()] = executedTuples[_topology->bolts(i).comp().name()] +
