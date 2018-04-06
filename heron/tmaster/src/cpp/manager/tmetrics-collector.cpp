@@ -115,7 +115,7 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   auto response = new MetricResponse();
   const proto::api::Topology* _topology = tmaster_->getInitialTopology();
-  LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
+  // LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
     metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
