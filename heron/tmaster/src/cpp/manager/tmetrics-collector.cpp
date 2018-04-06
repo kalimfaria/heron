@@ -119,7 +119,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   // LOG(INFO) << "FK: In metrics collector level: " << _topology->ShortDebugString();
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-    LOG (INFO) << "FK:Printing metrics names: " << iter->first;
+    LOG(INFO) << "FK:Printing metrics names: " << iter->first;
   }
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
