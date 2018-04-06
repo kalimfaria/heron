@@ -187,10 +187,11 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
   for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
-      LOG(INFO) << "pToC " << iter->first;
-      std::list<std::string> s = iter->second;
-      for(int i = 0; i < s.size(); ++i)
-         LOG(INFO) << "pToC values " << s[i];
+    LOG(INFO) << "pToC " << iter->first;
+    std::list<std::string> s = iter->second;
+    for(list<string>::iterator s = Listings.begin(); s != Listings.end(); s++) {
+       LOG(INFO) << "pToC values " << *s;
+    }
     }
 
 
