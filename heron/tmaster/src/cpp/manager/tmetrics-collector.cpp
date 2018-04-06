@@ -104,6 +104,19 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
   }
 }
 
+
+MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
+  auto response = new MetricResponse();
+  LOG (INFO) << "FK: In metrics collector level";
+
+  for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+        iter->second.component_name()->GetMetricsWithoutRequest(response);
+   }
+
+   LOG(INFO) << "FK" Printing protobuf object" << response.DebugString() ;
+  return response;
+}
+
 MetricResponse* TMetricsCollector::GetMetrics(const MetricRequest& _request,
                                               const proto::api::Topology* _topology) {
   auto response = new MetricResponse();
@@ -275,6 +288,9 @@ void TMetricsCollector::ComponentMetrics::AddMetricForInstance(
     " instance_id: " + instance_id + " value: " + value;
   InstanceMetrics* instance_metrics = GetOrCreateInstanceMetrics(instance_id);
   instance_metrics->AddMetricWithName(name, type, value);
+
+ //TODO: Move to appropriate place
+  GetMetricsWithoutRequest();
 }
 
 void TMetricsCollector::ComponentMetrics::AddExceptionForInstance(
@@ -289,6 +305,18 @@ TMetricsCollector::InstanceMetrics* TMetricsCollector::ComponentMetrics::GetOrCr
     metrics_[instance_id] = new InstanceMetrics(instance_id, nbuckets_, bucket_interval_);
   }
   return metrics_[instance_id];
+}
+
+void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricResponse* _response) {
+   // This means that all instances need to be returned
+      for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+      LOG (INFO) << "FK: In component metrics get metrics without request" ;
+        iter->second->GetMetricsWithoutRequest(_response);
+        if (_response->status().status() != proto::system::OK) {
+          return;
+        }
+      }
+  _response->mutable_status()->set_status(proto::system::OK);
 }
 
 void TMetricsCollector::ComponentMetrics::GetMetrics(const MetricRequest& _request,
@@ -385,6 +413,17 @@ TMetricsCollector::Metric* TMetricsCollector::InstanceMetrics::GetOrCreateMetric
   return metrics_[name];
 }
 
+
+void TMetricsCollector::InstanceMetrics::GetMetricsWithoutRequest(MetricResponse* response) {
+  MetricResponse::TaskMetric* m = response->add_metric();
+  m->set_instance_id(instance_id_);
+
+   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
+      iter->second-> GetMetricsWithoutRequest(true,  m->add_metric());
+    }
+
+}
+
 void TMetricsCollector::InstanceMetrics::GetMetrics(const MetricRequest& request,
                                                     sp_int64 start_time, sp_int64 end_time,
                                                     MetricResponse* response) {
@@ -445,6 +484,64 @@ void TMetricsCollector::Metric::AddValueToMetric(const sp_string& _value) {
     all_time_nitems_++;
   }
 }
+
+void TMetricsCollector::Metric::GetMetricsWithoutRequest(bool minutely, IndividualMetric* _response) {
+  _response->set_name(name_);
+  sp_double64 result = 0;
+
+  // We want cumulative metrics
+  if (metric_type_ == common::TMasterMetrics::SUM) {
+    result = all_time_cumulative_;
+  } else if (metric_type_ == common::TMasterMetrics::AVG) {
+
+    result = all_time_cumulative_ / all_time_nitems_;
+    LOG(INFO) << "FK: We should hit here " << name_ << " " << result ;
+  } else if (metric_type_ == common::TMasterMetrics::LAST) {
+    result = all_time_cumulative_;
+  }
+  _response->set_value(std::to_string(result));
+
+  /*if (minutely) {
+    // we need minutely data
+    for (auto iter = data_.begin(); iter != data_.end(); ++iter) {
+      TimeBucket* bucket = *iter;
+      // Does this time bucket have overlap with needed range
+      if (bucket->overlaps(start_time, end_time)) {
+        IntervalValue* val = _response->add_interval_values();
+        val->mutable_interval()->set_start(bucket->start_time_);
+        val->mutable_interval()->set_end(bucket->end_time_);
+        sp_double64 result = bucket->aggregate();
+        if (metric_type_ == common::TMasterMetrics::SUM) {
+          val->set_value(std::to_string(result));
+        } else if (metric_type_ == common::TMasterMetrics::AVG) {
+          sp_double64 avg = result / bucket->count();
+          val->set_value(std::to_string(avg));
+        } else if (metric_type_ == common::TMasterMetrics::LAST) {
+          val->set_value(std::to_string(result));
+        } else {
+          LOG(FATAL) << "Unknown metric type " << metric_type_;
+        }
+      }
+      // The timebuckets are reverse chronologically arranged
+      if (start_time > bucket->end_time_) break;
+    }
+  } else {
+    // We don't need minutely data
+    sp_double64 result = 0;
+    if (start_time <= 0) {
+      // We want cumulative metrics
+      if (metric_type_ == common::TMasterMetrics::SUM) {
+        result = all_time_cumulative_;
+      } else if (metric_type_ == common::TMasterMetrics::AVG) {
+      LOG(INFO) << "FK: We should hit here" ;
+        result = all_time_cumulative_ / all_time_nitems_;
+      } else if (metric_type_ == common::TMasterMetrics::LAST) {
+        result = all_time_cumulative_;
+      }
+    }*/
+
+  }
+
 
 void TMetricsCollector::Metric::GetMetrics(bool minutely, sp_int64 start_time, sp_int64 end_time,
                                            IndividualMetric* _response) {
