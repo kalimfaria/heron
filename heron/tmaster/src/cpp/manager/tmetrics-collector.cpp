@@ -151,10 +151,10 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
             strtod(response->metric(j).metric(0).value().c_str(), NULL);
           }
         } else {
-          LOG(INFO) << "No execute metrics for instance Id " << response->metric(i).instance_id();
+          LOG(INFO) << "No execute metrics for instance Id " << response->metric(j).instance_id();
         }
       } else {
-        LOG(INFO) << "Data not found for instance " << response->metric(i).instance_id();
+        LOG(INFO) << "Data not found for instance " << response->metric(j).instance_id();
       }
     }
   }
