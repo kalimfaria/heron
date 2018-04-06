@@ -132,6 +132,68 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
     }
   }
 
+  std::map<sp_string, int> executedTuples = new map<string, int>;
+
+  for (int i = 0; i < _topology->bolts_size(); i++) {
+    for (int j = 0; j < response.metric_size(); j++) {
+      std::size_t found = response.metric(i).instance_id().find(_topology->bolts(i).comp().name());
+      if (found != std::string::npos) {
+        if (response.metric(i).instance_id().metric_size() > 0) {
+          if (!executedTuples.find(_topology->bolts(i).comp().name()) != executedTuples.end()) {
+            executedTuples[_topology->bolts(i).comp().name()] = response.metric(i).instance_id().metric(0).value();
+        } else {
+        executedTuples[_topology->bolts(i).comp().name()] = executedTuples[_topology->bolts(i).comp().name()] +
+                                                          response.metric(i).instance_id().metric(0).value();
+        }
+      } else {
+        LOG(INFO) << "No metrics for instance Id " << response.metric(i).instance_id();
+      }
+    }
+  }
+}
+
+  for (auto iter = executedTuples.begin(); iter != executedTuples.end(); ++iter) {
+    LOG(INFO) << "ExecutedTuples " << iter->first << " " << iter->second;
+  }
+
+
+ std::map<sp_string, std::vector<string>> parentToChild = new map<string, vector<string>>;
+ for (int i = 0; i < _topology->spouts_size(); i++) {
+   for (int j = 0; j < _topology->spouts(i).outputs_size(); j++) {
+     if (!parentToChild.find(_topology->spouts(i).comp().name()) != parentToChild.end()) {
+       vector s;
+       s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
+       parentToChild.put(_topology->spouts(i).comp().name(), s);
+     } else {
+       vector s =  parentToChild.get(_topology->spouts(i).comp().name());
+       s.push_back(_topology->spouts(i).outputs(j).stream().component_name());
+       parentToChild.put(_topology->spouts(i).comp().name(), s);
+     }
+   }
+ }
+
+ for (int i = 0; i < _topology->bolts_size(); i++) {
+    for (int j = 0; j < _topology->bolts(i).outputs_size(); j++) {
+      if (!parentToChild.find(_topology->bolts(i).comp().name()) != parentToChild.end()) {
+        vector s;
+        s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
+        parentToChild.put(_topology->bolts(i).comp().name(), s);
+      } else {
+        vector s =  parentToChild.get(_topology->bolts(i).comp().name());
+        s.push_back(_topology->bolts(i).outputs(j).stream().component_name());
+        parentToChild.put(_topology->bolts(i).comp().name(), s);
+      }
+    }
+  }
+
+  for (auto iter = parentToChild.begin(); iter != parentToChild.end(); ++iter) {
+      LOG(INFO) << "pToC " << iter->first;
+      vector s = iter->second;
+      for(int i = 0; i < s.size(); ++i)
+         LOG(INFO) << "pToC values " << s[i];
+    }
+
+
   LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
 }
@@ -326,8 +388,8 @@ void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricRespons
   // This means that all instances need to be returned
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
       LOG(INFO) << "FK: In component metrics get metrics without request" << iter->first;
-        iter->second->GetMetricsWithoutRequest(_response);
-      }
+      iter->second->GetMetricsWithoutRequest(_response);
+  }
   _response->mutable_status()->set_status(proto::system::OK);
 }
 
@@ -509,7 +571,6 @@ void TMetricsCollector::Metric::GetMetricsWithoutRequest
     result = all_time_cumulative_;
   } else if (metric_type_ == common::TMasterMetrics::AVG) {
     result = all_time_cumulative_ / all_time_nitems_;
-    LOG(INFO) << "FK: We should hit here " << name_ << " " << result;
   } else if (metric_type_ == common::TMasterMetrics::LAST) {
     result = all_time_cumulative_;
   }
