@@ -190,7 +190,8 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   for (int i = 0; i < _topology->bolts_size(); i++) {
     for (int j = 0; j < _topology->bolts(i).inputs_size(); j++) {
       std::list<sp_string> s;
-        if (parentToChild.find(_topology->bolts(i).inputs(j).stream().component_name()) != parentToChild.end()) {
+        if (parentToChild.find(_topology->bolts(i).inputs(j).stream().component_name())
+                                                                != parentToChild.end()) {
           s = parentToChild[_topology->bolts(i).inputs(j).stream().component_name()];
         }
       s.push_back(_topology->bolts(i).comp().name());
