@@ -123,14 +123,14 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   }
 
   for (int i = 0; i < _topology->spouts_size(); i++) {
-    LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
+    LOG(INFO) << "FK: Spout name:" << " " << _topology->spouts(i).comp().name();
   }
 
   for (int i = 0; i < _topology->bolts_size(); i++) {
-    LOG(INFO) << "Bolt name:" << " " << _topology->bolts(i).comp().name();
+    LOG(INFO) << "FK: Bolt name:" << " " << _topology->bolts(i).comp().name();
   }
 
-  for (int i = 0; i < _topology->spouts_size(); i++) {
+  /*for (int i = 0; i < _topology->spouts_size(); i++) {
     LOG(INFO) << "Spout name:" << " " << _topology->spouts(i).comp().name();
     metrics_[_topology->spouts(i).comp().name()]->GetMetricsWithoutRequest(response);
   }
@@ -138,7 +138,7 @@ MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   for (int i = 0; i < _topology->bolts_size(); i++) {
     LOG(INFO) << "Bolt name:" << " " << _topology->bolts(i).comp().name();
     metrics_[_topology->bolts(i).comp().name()]->GetMetricsWithoutRequest(response);
-  }
+  }*/
 
   LOG(INFO) << "FK: Printing protobuf object: " << response->ShortDebugString();
   return response;
