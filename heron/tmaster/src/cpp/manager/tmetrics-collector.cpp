@@ -110,13 +110,13 @@ void TMetricsCollector::AddMetric(const PublishMetrics& _metrics) {
 
 MetricResponse* TMetricsCollector::GetMetricsWithoutRequest() {
   auto response = new MetricResponse();
-  LOG (INFO) << "FK: In metrics collector level";
+  LOG(INFO) << "FK: In metrics collector level";
 
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
         iter->second->GetMetricsWithoutRequest(response);
   }
 
-  LOG(INFO) << "FK: Printing protobuf object" << response->DebugString() ;
+  LOG(INFO) << "FK: Printing protobuf object" << response->DebugString();
   return response;
 }
 
@@ -310,7 +310,7 @@ TMetricsCollector::InstanceMetrics* TMetricsCollector::ComponentMetrics::GetOrCr
 void TMetricsCollector::ComponentMetrics::GetMetricsWithoutRequest(MetricResponse* _response) {
   // This means that all instances need to be returned
   for (auto iter = metrics_.begin(); iter != metrics_.end(); ++iter) {
-      LOG (INFO) << "FK: In component metrics get metrics without request" ;
+      LOG(INFO) << "FK: In component metrics get metrics without request";
         iter->second->GetMetricsWithoutRequest(_response);
         if (_response->status().status() != proto::system::OK) {
           return;
@@ -484,7 +484,8 @@ void TMetricsCollector::Metric::AddValueToMetric(const sp_string& _value) {
   }
 }
 
-void TMetricsCollector::Metric::GetMetricsWithoutRequest(bool minutely, IndividualMetric* _response) {
+void TMetricsCollector::Metric::GetMetricsWithoutRequest
+                                (bool minutely, IndividualMetric* _response) {
   _response->set_name(name_);
   sp_double64 result = 0;
   // We want cumulative metrics
@@ -492,7 +493,7 @@ void TMetricsCollector::Metric::GetMetricsWithoutRequest(bool minutely, Individu
     result = all_time_cumulative_;
   } else if (metric_type_ == common::TMasterMetrics::AVG) {
     result = all_time_cumulative_ / all_time_nitems_;
-    LOG(INFO) << "FK: We should hit here " << name_ << " " << result ;
+    LOG(INFO) << "FK: We should hit here " << name_ << " " << result;
   } else if (metric_type_ == common::TMasterMetrics::LAST) {
     result = all_time_cumulative_;
   }
