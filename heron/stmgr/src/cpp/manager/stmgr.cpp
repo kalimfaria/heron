@@ -682,7 +682,7 @@ void StMgr::HandleStreamManagerData(const sp_string&,
     LOG(INFO) << "Dropping data received from stmgr because we are in Restore";
     dropped_during_restore_metrics_->scope(RESTORE_DROPPED_STMGR_BYTES)
            ->incr_by(_message->set().size());
-    __global_protobuf_pool_release__(_message);
+    __global_protobuf_pool_release__(_msessage);
     return;
   }
   // We received message from another stream manager
